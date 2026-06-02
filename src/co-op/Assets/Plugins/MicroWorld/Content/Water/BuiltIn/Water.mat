@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Water
+  m_Shader: {fileID: 4800000, guid: bf69de85616f6e445b2e827a001cdb13, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: 8ddef071ede2f6a48a3fe5d442fe2a3b, type: 3}
+        m_Scale: {x: 6, y: 9}
+        m_Offset: {x: 0, y: 0}
+    - _Cube:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Fresnel:
+        m_Texture: {fileID: 2800000, guid: 5b5c5575fd4c74abd9f7b30862fb76a3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: c39a5f33bb43b4242bbba0753ab247ef, type: 3}
+        m_Scale: {x: 12, y: 12}
+        m_Offset: {x: 0, y: 0}
+    - _ReflectionTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ReflectiveColor:
+        m_Texture: {fileID: 2800000, guid: b725b62cfc9d04e4886735ab2a8107d1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ReflectiveColorCube:
+        m_Texture: {fileID: 8900000, guid: 15c6acc4f11254a04b03849245d80574, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RefractionTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 3, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Tex1_n:
+        m_Texture: {fileID: 2800000, guid: c74237998f94f6844a45ceaf0ab31d39, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BumpAmt: 10
+    - _BumpScale: 0.19
+    - _ColorIntencity: 0.941
+    - _DistortAmt: 30
+    - _Glossiness: 0.959
+    - _Lightening: 2
+    - _Metallic: -0.809
+    - _NoiseSize: 120.16
+    - _NoiseSpeed: 5.3
+    - _NoiseStrength: -5.9
+    - _Octaves: 8
+    - _ReflDistort: 0.306
+    - _RefrDistort: 0.306
+    - _Refraction: 30.7
+    - _RimEffect: 0
+    - _RimPower: 3
+    - _Speed: 0.022
+    - _WaveScale: 10
+    m_Colors:
+    - WaveSpeed: {r: -0.03, g: 0.01, b: 0.03, a: -0.01}
+    - _BumpMap_ST: {r: 1, g: 1, b: 0, a: 0}
+    - _Color: {r: 0.24125418, g: 0.43307033, b: 0.5212617, a: 0.9372549}
+    - _Fresnel_ST: {r: 1, g: 1, b: 0, a: 0}
+    - _HorizonColor: {r: 0.14901961, g: 0.28235295, b: 0.38039216, a: 0}
+    - _MainCol: {r: 1, g: 1, b: 1, a: 0.10980392}
+    - _MainTex_ST: {r: 1, g: 1, b: 0, a: 0}
+    - _ReflectColor: {r: 1, g: 1, b: 1, a: 0.5}
+    - _ReflectionTex_ST: {r: 1, g: 1, b: 0, a: 0}
+    - _ReflectiveColorCube_ST: {r: 1, g: 1, b: 0, a: 0}
+    - _ReflectiveColor_ST: {r: 1, g: 1, b: 0, a: 0}
+    - _RefrColor: {r: 0.71965635, g: 0.94401914, b: 1, a: 1}
+    - _RefractionTex_ST: {r: 1, g: 1, b: 0, a: 0}
+    - _RimColor: {r: 0.25999996, g: 0.18999997, b: 0.15999997, a: 0}
+  m_BuildTextureStacks: []
+--- !u!1002 &2100001
+EditorExtensionImpl:
+  serializedVersion: 6

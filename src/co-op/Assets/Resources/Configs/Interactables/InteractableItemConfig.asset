@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e671817a775484ab0344c233a19981, type: 3}
+  m_Name: InteractableItemConfig
+  m_EditorClassIdentifier: Assembly-CSharp::Data.Configs.InteractableItemConfig
+  Prefab: {fileID: 5169839222677621110, guid: 473f50271f2c21b45b8bf16c60d1b1ba, type: 3}
+  Mass: 8
+  MaxCarrySpeed: 5
+  HoldDistance: 0
+  MinHolders: 1

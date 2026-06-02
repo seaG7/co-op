@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5a075418de6104482efe19a20b0692, type: 3}
+  m_Name: MovementConfig
+  m_EditorClassIdentifier: Assembly-CSharp::Data.Configs.MovementConfig
+  MoveSpeed: 5.5
+  Acceleration: 50
+  Deceleration: 70
+  AirControlCoefficient: 0.55
+  Gravity: 25
+  FallGravityMultiplier: 1.8
+  ApexGravityMultiplier: 0.55
+  ApexThreshold: 2
+  MaxFallSpeed: 40
+  JumpHeight: 1.6
+  VariableJumpCutoff: 0.4
+  CoyoteTimeSec: 0.12
+  JumpBufferSec: 0.12
+  GroundProbeDistance: 0.15
+  MaxSlopeAngle: 50

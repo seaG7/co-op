@@ -1,0 +1,3043 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2922517628162154709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2098996736487782313}
+  - component: {fileID: 8190975401541225682}
+  m_Layer: 0
+  m_Name: BushesAndPlants
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2098996736487782313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2922517628162154709}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7924060536385964273}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8190975401541225682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2922517628162154709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2cc2b6a77f299418c0ffb36de8cf1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Comment: 
+  Semantic: 3
+  DistanceFromCenter:
+    Min: 0.39225984
+    Max: 1
+    Type: 0
+  Slope:
+    Min: 0
+    Max: 50
+    Type: 0
+  CellTypes:
+  - -Ruins
+  - -Gate
+  OppositeCellTypes: []
+  WallAngle:
+    Min: -90
+    Max: 90
+    Type: 0
+  EdgeConditions: 4
+  Tags: []
+  ExclusiveGroups:
+    TerrainExclusiveGroup: 
+    Chance: 1
+    CellExclusiveGroup: 
+    SectorExclusiveGroup: 
+  Density:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 30
+  AdvancedSpawn:
+    ChanceInCell: 1
+    ChanceInSector: 1
+    SpawnLimitsPerCell:
+      Min: 0
+      Max: 1000
+      Type: 0
+    Features: 2
+  DragHerePrefabToAddToList: {fileID: 0}
+  Prefabs:
+  - Name: '[2] Bush Tropical'
+    prefab: {fileID: 4521745410520419678, guid: 48b711d7eaf7b5a40b9b4f7577b1b91c, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 2
+    RepeatChance: 0.9
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 5
+    BunchRadius: 3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1.7
+    ScaleVariance: 0.5
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[0,5] Plant Tropical'
+    prefab: {fileID: 1245694926437824076, guid: e31f23a0db3fbc34d99e5dd11c317ddf, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 0.5
+    RepeatChance: 0.8
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 3
+    BunchRadius: 1.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.8
+    ScaleVariance: 0.5
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 0.7240213, g: 0.65320224, b: 0.3546705, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[2] Fern'
+    prefab: {fileID: 4184883848006509313, guid: 6c97f738bc7adf546bd0e993a6dde0a6, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 2
+    RepeatChance: 0.8
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 3
+    BunchRadius: 1.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.35
+    ScaleVariance: 0.407
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 0.7254902, g: 0.654902, b: 0.3529412, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[3] Tropical1'
+    prefab: {fileID: 6540035528445568768, guid: 3d6966893dd07ce42a3a4b9338fd2786, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 3
+    RepeatChance: 0.8
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 2
+    BunchRadius: 2
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.45
+    ScaleVariance: 0.407
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 0.7254902, g: 0.654902, b: 0.3529412, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[3] Tropical2'
+    prefab: {fileID: 318370659192571824, guid: 4ca801153ebe353429b7a75891dabe80, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 3
+    RepeatChance: 0.8
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 3
+    BunchRadius: 1.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.25
+    ScaleVariance: 0.407
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 0.7254902, g: 0.654902, b: 0.3529412, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[3] Tropical3'
+    prefab: {fileID: 8384823865497314599, guid: 1568dc9614a63d445b966ed9fb22ac9d, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 3
+    RepeatChance: 0.8
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 3
+    BunchRadius: 1.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.45
+    ScaleVariance: 0.407
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 0.7240213, g: 0.65320224, b: 0.3546705, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[1] Plant'
+    prefab: {fileID: 1148579050357532850, guid: 31f8639e2135bbd4683e4c63a322cc0e, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 1
+    RepeatChance: 0.8
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 3
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.25
+    ScaleVariance: 0.389
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 0.7240213, g: 0.65320224, b: 0.3546705, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[2] TreeBush2 Tropical'
+    prefab: {fileID: 5769441131450612013, guid: 4ac5f4a0a4969de4f866640b71a24143, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 2
+    RepeatChance: 0.8
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 3
+    BunchRadius: 2
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.5
+    ScaleVariance: 0.2
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[2] Palm2_small'
+    prefab: {fileID: 3298000998718993085, guid: 969264c6767c59040809761a29c1c7e1, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 2
+    RepeatChance: 0.8
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 2
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1.4
+    ScaleVariance: 0.2
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 0
+      Max: 25
+      Type: 0
+    Features: 1
+  - Name: '[2] Jungle1'
+    prefab: {fileID: 2035941700558180456, guid: 3241750ac16b7d94ca1442a3821214b4, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 2
+    RepeatChance: 0.8
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 12
+    BunchRadius: 3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1.7
+    ScaleVariance: 0.4
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: -0.2
+      Max: 35
+      Type: 0
+    Features: 1
+  - Name: '[2] Jungle2'
+    prefab: {fileID: 2894283915190101060, guid: 642a99fd892f93b488e0d51d7bb5b6c0, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 2
+    RepeatChance: 0.9
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 12
+    BunchRadius: 3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1.7
+    ScaleVariance: 0.4
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: -0.2
+      Max: 35
+      Type: 0
+    Features: 1
+  - Name: '[2] TreeBush Tropical'
+    prefab: {fileID: 3394817233236783791, guid: 95dc216d825fd854f99db309fffd1f92, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 2
+    RepeatChance: 0.9
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 3
+    BunchRadius: 3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.8
+    ScaleVariance: 0.4
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 0
+      Max: 50
+      Type: 0
+    Features: 1
+  - Name: '[2] GroundFlower'
+    prefab: {fileID: 4578195802135569857, guid: 468fc21103ca7934e8bbd669a388f728, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 2
+    RepeatChance: 0.7
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 4
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.7
+    ScaleVariance: 0.4
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 2
+      Max: 50
+      Type: 0
+    Features: 1
+  - Name: '[3] WaterLily'
+    prefab: {fileID: 4492265742819521016, guid: 8ba53bf0452ea8b4cb22e175a9d73efc, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 3
+    RepeatChance: 0.9
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 3
+    BunchRadius: 3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.9
+    ScaleVariance: 0.4
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: -0.3
+      Max: -0.1
+      Type: 0
+    Features: 9
+--- !u!1 &4097133273543521617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7376113501998953486}
+  - component: {fileID: 3614301726946880364}
+  - component: {fileID: 9127795293342144234}
+  m_Layer: 0
+  m_Name: Moss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7376113501998953486
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4097133273543521617}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7924060536385964273}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3614301726946880364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4097133273543521617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2cc2b6a77f299418c0ffb36de8cf1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Comment: Moss on water
+  Semantic: 0
+  DistanceFromCenter:
+    Min: 0
+    Max: 1
+    Type: 0
+  Slope:
+    Min: 0
+    Max: 50
+    Type: 0
+  CellTypes:
+  - -Ruins
+  - -Gate
+  OppositeCellTypes: []
+  WallAngle:
+    Min: -90
+    Max: 90
+    Type: 0
+  EdgeConditions: 4
+  Tags: []
+  ExclusiveGroups:
+    TerrainExclusiveGroup: 
+    Chance: 1
+    CellExclusiveGroup: 
+    SectorExclusiveGroup: 
+  Density:
+    m_Mode: 0
+    m_CurveMultiplier: 1
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0.3064524
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.38122463
+        value: 0.116827205
+        inSlope: 0.3064524
+        outSlope: 12.686622
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0.2449804
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.43999627
+        value: 0.86244076
+        inSlope: 12.686622
+        outSlope: 0.24563985
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0.24563985
+        outSlope: 0
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 100
+  AdvancedSpawn:
+    ChanceInCell: 1
+    ChanceInSector: 1
+    SpawnLimitsPerCell:
+      Min: 0
+      Max: 1000
+      Type: 0
+    Features: 2
+  DragHerePrefabToAddToList: {fileID: 0}
+  Prefabs:
+  - Name: '[1] MossOnWater'
+    prefab: {fileID: 4738219048858916718, guid: d93ea995375621e429ba94e968c5ede5, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 1
+    RepeatChance: 0.9
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 2
+    BunchRadius: 4
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 14
+    ScaleVariance: 0.1
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0.15
+    HeightAboveWater:
+      Min: -0.02
+      Max: 0.1
+      Type: 0
+    Features: 9
+--- !u!114 &9127795293342144234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4097133273543521617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2cc2b6a77f299418c0ffb36de8cf1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Comment: Moss on ground
+  Semantic: 0
+  DistanceFromCenter:
+    Min: 0
+    Max: 0.9
+    Type: 0
+  Slope:
+    Min: 0
+    Max: 25
+    Type: 0
+  CellTypes: []
+  OppositeCellTypes: []
+  WallAngle:
+    Min: -25
+    Max: 90
+    Type: 0
+  EdgeConditions: 0
+  Tags: []
+  ExclusiveGroups:
+    TerrainExclusiveGroup: 
+    Chance: 1
+    CellExclusiveGroup: 
+    SectorExclusiveGroup: 
+  Density:
+    m_Mode: 0
+    m_CurveMultiplier: 1
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0.3064524
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.38122463
+        value: 0.116827205
+        inSlope: 0.3064524
+        outSlope: 12.686622
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0.2449804
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.43999627
+        value: 0.86244076
+        inSlope: 12.686622
+        outSlope: 0.24563985
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0.24563985
+        outSlope: 0
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 5
+  AdvancedSpawn:
+    ChanceInCell: 1
+    ChanceInSector: 1
+    SpawnLimitsPerCell:
+      Min: 0
+      Max: 1000
+      Type: 0
+    Features: 0
+  DragHerePrefabToAddToList: {fileID: 0}
+  Prefabs:
+  - Name: '[1] Moss'
+    prefab: {fileID: 4738219048858916718, guid: 775339361212c6f4cb9215939c1ee3aa, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 1
+    RepeatChance: 0.9
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 2
+    BunchRadius: 4
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 20
+    ScaleVariance: 0.1
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0.1
+      Max: 100
+      Type: 0
+    Features: 9
+--- !u!1 &5115573362557731469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1380564244898279853}
+  - component: {fileID: 674155046982684669}
+  m_Layer: 0
+  m_Name: Trees
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1380564244898279853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5115573362557731469}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1200}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7924060536385964273}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &674155046982684669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5115573362557731469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2cc2b6a77f299418c0ffb36de8cf1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Comment: 
+  Semantic: 6
+  DistanceFromCenter:
+    Min: 0.16413125
+    Max: 0.88135874
+    Type: 0
+  Slope:
+    Min: 0
+    Max: 27.647785
+    Type: 0
+  CellTypes:
+  - Forest
+  - Border
+  OppositeCellTypes: []
+  WallAngle:
+    Min: -90
+    Max: 90
+    Type: 0
+  EdgeConditions: 4
+  Tags: []
+  ExclusiveGroups:
+    TerrainExclusiveGroup: 
+    Chance: 1
+    CellExclusiveGroup: 
+    SectorExclusiveGroup: 
+  Density:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 6
+  AdvancedSpawn:
+    ChanceInCell: 1
+    ChanceInSector: 1
+    SpawnLimitsPerCell:
+      Min: 0
+      Max: 1000
+      Type: 0
+    Features: 0
+  DragHerePrefabToAddToList: {fileID: 0}
+  Prefabs:
+  - Name: '[Disabled] Tree6_fir'
+    prefab: {fileID: 919132149155446097, guid: 931eaffc91fafb240aebf0d9591b01c2, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 0
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 4
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1
+    ScaleVariance: 1
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: 1
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[Disabled] Tree8_fir'
+    prefab: {fileID: 919132149155446097, guid: 9d96c40e4ec1c2d4fbeb57fdc4131a5e, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 0
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 4
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1
+    ScaleVariance: 1
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: 1
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[Disabled] Tree7_pine'
+    prefab: {fileID: 919132149155446097, guid: 0ec940fbd65980145b7d5ec793fc5e2f, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 0
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 4
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1
+    ScaleVariance: 0.457
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: 10
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[Disabled] Tree9_pine'
+    prefab: {fileID: 919132149155446097, guid: 6d250d07960f376489de0a1912b04cc8, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 0
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 4
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1
+    ScaleVariance: 0.457
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: 10
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[Disabled] Tree12'
+    prefab: {fileID: 919132149155446097, guid: 30da5e7e9cbd0d442b5e8e7c458c7ce5, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 0
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 4
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1
+    ScaleVariance: 0.457
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: 1
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[Disabled] Empty'
+    prefab: {fileID: 919132149155446097, guid: de8460f8e42e5a947b7eb7b8f46ca4c2, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 0
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 4
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1
+    ScaleVariance: 0.457
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: 1
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[Disabled] Empty'
+    prefab: {fileID: 919132149155446097, guid: 5d1468281ea96474683fa98664bb4822, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 0
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 4
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1
+    ScaleVariance: 0.457
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: 1
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[1] Tree16_eucalyptus'
+    prefab: {fileID: 7771369184462265015, guid: a456afe163dd15d4ea54df02755c2008, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 4
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1
+    ScaleVariance: 0.457
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: 20
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[1] Tree15'
+    prefab: {fileID: 3427825203779969839, guid: 68138b8b2b0b083418feb9c2f6451d8d, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 4
+    BunchGravity: 1
+    BunchPeripheryScale: 0.4
+    Scale: 1
+    ScaleVariance: 0.457
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: 15
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[3] Kapok'
+    prefab: {fileID: 6828410529605009207, guid: bb9b1cf05604b354593cc2d406b1adc4, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 3
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 4
+    BunchGravity: 1
+    BunchPeripheryScale: 0.4
+    Scale: 1
+    ScaleVariance: 0.457
+    ExclusiveRadius: 1.5
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: 15
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[3] Dipterocarpaceae'
+    prefab: {fileID: 6796011409557578100, guid: 164d87ecec85c0b419962c50f41f6b90, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 3
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 4
+    BunchGravity: 1
+    BunchPeripheryScale: 0.4
+    Scale: 1
+    ScaleVariance: 0.457
+    ExclusiveRadius: 1.2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: 15
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[3] Ficus'
+    prefab: {fileID: 5255000058542791132, guid: ea38da61eec13d64682de55684d9aafc, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 3
+    RepeatChance: 0.5
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 4
+    BunchGravity: 1
+    BunchPeripheryScale: 0.4
+    Scale: 1
+    ScaleVariance: 0.2
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0.7
+    HeightAboveWater:
+      Min: 7
+      Max: 30
+      Type: 0
+    Features: 65
+--- !u!1 &5804130496747286517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3028304515361422685}
+  - component: {fileID: 5630871833029948335}
+  m_Layer: 0
+  m_Name: UnderTree
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3028304515361422685
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5804130496747286517}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7924060536385964273}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5630871833029948335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5804130496747286517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2cc2b6a77f299418c0ffb36de8cf1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Comment: 
+  Semantic: 0
+  DistanceFromCenter:
+    Min: 0.086925864
+    Max: 0.53991467
+    Type: 0
+  Slope:
+    Min: 0
+    Max: 30.23099
+    Type: 0
+  CellTypes:
+  - Forest
+  OppositeCellTypes: []
+  WallAngle:
+    Min: -90
+    Max: 90
+    Type: 0
+  EdgeConditions: 0
+  Tags: []
+  ExclusiveGroups:
+    TerrainExclusiveGroup: 
+    Chance: 1
+    CellExclusiveGroup: 
+    SectorExclusiveGroup: 
+  Density:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 15
+  AdvancedSpawn:
+    ChanceInCell: 1
+    ChanceInSector: 1
+    SpawnLimitsPerCell:
+      Min: 0
+      Max: 1000
+      Type: 0
+    Features: 0
+  DragHerePrefabToAddToList: {fileID: 0}
+  Prefabs:
+  - Name: '[0,2] Mushrooms_01'
+    prefab: {fileID: 1430455215307612972, guid: 1570ba860d54ac9489e09e7d6a45a5d1, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 0.2
+    RepeatChance: 0.2
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 12
+    BunchRadius: 1.5
+    BunchGravity: 1.5
+    BunchPeripheryScale: 0.5
+    Scale: 1
+    ScaleVariance: 0.6
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 2
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[0,1] Mushrooms_02'
+    prefab: {fileID: 4283275509356734718, guid: 4992213196e40ac4b8653d177f6af840, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 0.1
+    RepeatChance: 0.2
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 12
+    BunchRadius: 1.5
+    BunchGravity: 1.5
+    BunchPeripheryScale: 0.5
+    Scale: 1
+    ScaleVariance: 0.6
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 2
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[0,1] Mushrooms_03'
+    prefab: {fileID: 8279346337112823257, guid: 8a1bfcf62537d6b4497f171b96f6fb7c, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 0.1
+    RepeatChance: 0.2
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 15
+    BunchRadius: 0.8
+    BunchGravity: 1.5
+    BunchPeripheryScale: 0.5
+    Scale: 1
+    ScaleVariance: 0.6
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 2
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[0,1] Mushrooms_04'
+    prefab: {fileID: 2352158913456006954, guid: 25ecc0193cb2bec42bdeef6c231e4912, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 0.1
+    RepeatChance: 0.2
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 12
+    BunchRadius: 1.5
+    BunchGravity: 1.5
+    BunchPeripheryScale: 0.5
+    Scale: 1
+    ScaleVariance: 0.6
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 2
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[3] Tree15_small'
+    prefab: {fileID: 2616474495591958166, guid: b3217104d409c4c45ac50ce50176e851, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 3
+    RepeatChance: 0.1
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1.1
+    ScaleVariance: 0.3
+    ExclusiveRadius: 0.2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 0.7240213, g: 0.65320224, b: 0.3546705, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: 1
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[5] DryBranches'
+    prefab: {fileID: 5870176051670251705, guid: 88ac64bd13ea917449c39da544bf59f4, type: 3}
+    PrefabsFromGenerator: 15
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 5
+    RepeatChance: 0.6
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 2
+    BunchRadius: 2
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 7
+    ScaleVariance: 0.4
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 2
+      Max: 100
+      Type: 0
+    Features: 1
+--- !u!1 &6084396259255538707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1733104971865707089}
+  - component: {fileID: 5355069120469452651}
+  m_Layer: 0
+  m_Name: SticksAndLogs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1733104971865707089
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6084396259255538707}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7924060536385964273}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5355069120469452651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6084396259255538707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2cc2b6a77f299418c0ffb36de8cf1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Comment: 
+  Semantic: 4
+  DistanceFromCenter:
+    Min: 0.1
+    Max: 0.95
+    Type: 0
+  Slope:
+    Min: 0
+    Max: 23.272364
+    Type: 0
+  CellTypes:
+  - Forest
+  OppositeCellTypes: []
+  WallAngle:
+    Min: -90
+    Max: 90
+    Type: 0
+  EdgeConditions: 4
+  Tags: []
+  ExclusiveGroups:
+    TerrainExclusiveGroup: 
+    Chance: 1
+    CellExclusiveGroup: 
+    SectorExclusiveGroup: 
+  Density:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 17
+  AdvancedSpawn:
+    ChanceInCell: 1
+    ChanceInSector: 1
+    SpawnLimitsPerCell:
+      Min: 0
+      Max: 1000
+      Type: 0
+    Features: 0
+  DragHerePrefabToAddToList: {fileID: 0}
+  Prefabs:
+  - Name: '[15] sticks'
+    prefab: {fileID: 2540967180927257190, guid: e501a063887ff2e47822e37dc21a7b66, type: 3}
+    PrefabsFromGenerator: 15
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 15
+    RepeatChance: 0.6
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 2
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.6
+    ScaleVariance: 0.1
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 2
+    Verticality: 0
+    HeightAboveWater:
+      Min: 2
+      Max: 100
+      Type: 0
+    Features: 577
+  - Name: '[1] logs'
+    prefab: {fileID: 4498618202138633560, guid: 2d8c2148f9693a840b063bace60dfcee, type: 3}
+    PrefabsFromGenerator: 15
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.2
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: -2
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[0,2] Stumps'
+    prefab: {fileID: 4498618202138633560, guid: 33cfed81333fa024d9b5e98377bf4b33, type: 3}
+    PrefabsFromGenerator: 15
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 0.2
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 2
+    ScaleVariance: 0.1
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 2
+      Max: 100
+      Type: 0
+    Features: 69
+  - Name: '[0,1] Tree14_dry'
+    prefab: {fileID: 2146829912076004659, guid: 023f2e1a85bb1aa4ead5e1178bf5689b, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 0.1
+    RepeatChance: 0.3
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1
+    ScaleVariance: 0.407
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 0.7240213, g: 0.65320224, b: 0.3546705, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: 3
+      Max: 100
+      Type: 0
+    Features: 65
+  - Name: '[1] SnagsHoriz'
+    prefab: {fileID: 7193534966875516832, guid: 49edc822854c8d94db5c0b63a5481d85, type: 3}
+    PrefabsFromGenerator: 15
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0.893
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.407
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 0.7240213, g: 0.65320224, b: 0.3546705, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: -2
+      Max: 100
+      Type: 0
+    Features: 577
+  - Name: '[1] SnagsVert'
+    prefab: {fileID: 7193534966875516832, guid: 8990c5c3518ba304796281c95116f6d0, type: 3}
+    PrefabsFromGenerator: 15
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0.893
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.407
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 0.7240213, g: 0.65320224, b: 0.3546705, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: -2
+      Max: 100
+      Type: 0
+    Features: 577
+--- !u!1 &6721930926451476642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6285579283017211353}
+  - component: {fileID: 2761707852055530904}
+  m_Layer: 0
+  m_Name: Palms
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6285579283017211353
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6721930926451476642}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7924060536385964273}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2761707852055530904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6721930926451476642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2cc2b6a77f299418c0ffb36de8cf1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Comment: 
+  Semantic: 6
+  DistanceFromCenter:
+    Min: 0.16413125
+    Max: 0.88135874
+    Type: 0
+  Slope:
+    Min: 0
+    Max: 46.407345
+    Type: 0
+  CellTypes:
+  - Forest
+  - Border
+  OppositeCellTypes: []
+  WallAngle:
+    Min: -90
+    Max: 90
+    Type: 0
+  EdgeConditions: 4
+  Tags: []
+  ExclusiveGroups:
+    TerrainExclusiveGroup: 
+    Chance: 1
+    CellExclusiveGroup: 
+    SectorExclusiveGroup: 
+  Density:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 6
+  AdvancedSpawn:
+    ChanceInCell: 1
+    ChanceInSector: 1
+    SpawnLimitsPerCell:
+      Min: 0
+      Max: 1000
+      Type: 0
+    Features: 2
+  DragHerePrefabToAddToList: {fileID: 0}
+  Prefabs:
+  - Name: '[1] Palm1'
+    prefab: {fileID: 5549791771995081531, guid: 2e0c7c0b0910d5843bed2e2ab731780c, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 4
+    BunchGravity: 1
+    BunchPeripheryScale: 0.4
+    Scale: 1
+    ScaleVariance: 0.457
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0.7
+    HeightAboveWater:
+      Min: 1
+      Max: 25
+      Type: 0
+    Features: 65
+--- !u!1 &7862763896485800859
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 259509260038983229}
+  - component: {fileID: 1206568053759719295}
+  m_Layer: 0
+  m_Name: PlantsOnSlope
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &259509260038983229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7862763896485800859}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7924060536385964273}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1206568053759719295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7862763896485800859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2cc2b6a77f299418c0ffb36de8cf1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Comment: 
+  Semantic: 3
+  DistanceFromCenter:
+    Min: 0.6
+    Max: 1
+    Type: 0
+  Slope:
+    Min: 41
+    Max: 90
+    Type: 0
+  CellTypes: []
+  OppositeCellTypes: []
+  WallAngle:
+    Min: -40
+    Max: 40
+    Type: 1
+  EdgeConditions: 0
+  Tags: []
+  ExclusiveGroups:
+    TerrainExclusiveGroup: 
+    Chance: 1
+    CellExclusiveGroup: 
+    SectorExclusiveGroup: 
+  Density:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 18
+  AdvancedSpawn:
+    ChanceInCell: 1
+    ChanceInSector: 1
+    SpawnLimitsPerCell:
+      Min: 0
+      Max: 1000
+      Type: 0
+    Features: 0
+  DragHerePrefabToAddToList: {fileID: 0}
+  Prefabs:
+  - Name: '[2] TreeBush2 Tropical'
+    prefab: {fileID: 5769441131450612013, guid: 4ac5f4a0a4969de4f866640b71a24143, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 2
+    RepeatChance: 0.7
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.5
+    ScaleVariance: 0.2
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[2] Fern'
+    prefab: {fileID: 4184883848006509313, guid: 6c97f738bc7adf546bd0e993a6dde0a6, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 2
+    RepeatChance: 0.8
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.4
+    ScaleVariance: 0.407
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 0.7254902, g: 0.654902, b: 0.3529412, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[3] Tropical2'
+    prefab: {fileID: 318370659192571824, guid: 4ca801153ebe353429b7a75891dabe80, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 3
+    RepeatChance: 0.8
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.3
+    ScaleVariance: 0.407
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 0.7254902, g: 0.654902, b: 0.3529412, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[3] Tropical3'
+    prefab: {fileID: 8384823865497314599, guid: 1568dc9614a63d445b966ed9fb22ac9d, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 3
+    RepeatChance: 0.8
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 2
+    BunchRadius: 1.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.45
+    ScaleVariance: 0.407
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 0.7240213, g: 0.65320224, b: 0.3546705, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[1] Plant'
+    prefab: {fileID: 1148579050357532850, guid: 31f8639e2135bbd4683e4c63a322cc0e, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 1
+    RepeatChance: 0.8
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 3
+    BunchRadius: 0.5
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.18
+    ScaleVariance: 0.407
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 0.7240213, g: 0.65320224, b: 0.3546705, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[1] Tree14_dry'
+    prefab: {fileID: 2146829912076004659, guid: 023f2e1a85bb1aa4ead5e1178bf5689b, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0.3
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1
+    ScaleVariance: 0.407
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 0.7240213, g: 0.65320224, b: 0.3546705, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: 20
+      Max: 100
+      Type: 0
+    Features: 1
+--- !u!1 &8139561760066542147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4082308665831893120}
+  - component: {fileID: 2198820216376625735}
+  m_Layer: 0
+  m_Name: RichGrass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4082308665831893120
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8139561760066542147}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7924060536385964273}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2198820216376625735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8139561760066542147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2cc2b6a77f299418c0ffb36de8cf1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Comment: 
+  Semantic: 1
+  DistanceFromCenter:
+    Min: 0
+    Max: 1
+    Type: 0
+  Slope:
+    Min: 0
+    Max: 35
+    Type: 0
+  CellTypes: []
+  OppositeCellTypes: []
+  WallAngle:
+    Min: -90
+    Max: 90
+    Type: 0
+  EdgeConditions: 0
+  Tags: []
+  ExclusiveGroups:
+    TerrainExclusiveGroup: 
+    Chance: 1
+    CellExclusiveGroup: 
+    SectorExclusiveGroup: 
+  Density:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 20
+  AdvancedSpawn:
+    ChanceInCell: 1
+    ChanceInSector: 1
+    SpawnLimitsPerCell:
+      Min: 0
+      Max: 1000
+      Type: 0
+    Features: 2
+  DragHerePrefabToAddToList: {fileID: 0}
+  Prefabs:
+  - Name: '[2] FlowerGrass11'
+    prefab: {fileID: 2800000, guid: 1c87582626b88f4488a9c970d8f26673, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 3
+    Chance: 2
+    RepeatChance: 0.5
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 30
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1.38
+    ScaleVariance: 0.505
+    ExclusiveRadius: 0
+    Color: {r: 0.23553969, g: 0.33877778, b: 0.09497416, a: 1}
+    AltColor: {r: 0.35905385, g: 0.3315515, b: 0.035136938, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[1] FlowerGrass19'
+    prefab: {fileID: 2800000, guid: 3adc168b525a57040b70b39e15b66dec, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 3
+    Chance: 1
+    RepeatChance: 0.9
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 15
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 2
+    ScaleVariance: 0.505
+    ExclusiveRadius: 0
+    Color: {r: 0.85243595, g: 0.85243595, b: 0.85243595, a: 1}
+    AltColor: {r: 0.66319346, g: 0.49677756, b: 0.051453024, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[1] FlowerGrass18'
+    prefab: {fileID: 2800000, guid: fcfd3693e4922d940ac06371c59faadc, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 3
+    Chance: 1
+    RepeatChance: 0.9
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 15
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 2
+    ScaleVariance: 0.505
+    ExclusiveRadius: 0
+    Color: {r: 0.85243595, g: 0.85243595, b: 0.85243595, a: 1}
+    AltColor: {r: 0.66319346, g: 0.49677756, b: 0.051453024, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[1] Grass2'
+    prefab: {fileID: 2800000, guid: 8912032e4bd23da4c815eeaddd8c4d8f, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 3
+    Chance: 1
+    RepeatChance: 0.98
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 3
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.505
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 0.791608, g: 0.791608, b: 0.791608, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 20
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[1] Grass4'
+    prefab: {fileID: 2800000, guid: f39d72ab323ceef42b1b7e2102af37cb, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 3
+    Chance: 1
+    RepeatChance: 0.98
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 13
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.746
+    ExclusiveRadius: 0
+    Color: {r: 0.7483498, g: 1, b: 0.59124184, a: 1}
+    AltColor: {r: 0.7442974, g: 0.5588117, b: 0.39981613, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 0
+      Max: 5
+      Type: 0
+    Features: 1
+  - Name: '[2] FlowerTropical3'
+    prefab: {fileID: 2800000, guid: 3a031c2e0cd11a94a9e2c59f743873b3, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 3
+    Chance: 2
+    RepeatChance: 0.9
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 12
+    BunchRadius: 0.5
+    BunchGravity: 2
+    BunchPeripheryScale: 1
+    Scale: 1.3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 0
+    Color: {r: 0.7483498, g: 1, b: 0.59124184, a: 1}
+    AltColor: {r: 0.7442974, g: 0.5588117, b: 0.39981613, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 5
+      Max: 20
+      Type: 0
+    Features: 1
+  - Name: '[1] FlowerTropical4'
+    prefab: {fileID: 2800000, guid: 21618c6be28ef0748910809f39bec260, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 3
+    Chance: 1
+    RepeatChance: 0.85
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 9
+    BunchRadius: 0.5
+    BunchGravity: 2
+    BunchPeripheryScale: 1
+    Scale: 1.3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 0
+    Color: {r: 0.7483498, g: 1, b: 0.59124184, a: 1}
+    AltColor: {r: 0.7442974, g: 0.5588117, b: 0.39981613, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 5
+      Max: 20
+      Type: 0
+    Features: 1
+  - Name: '[1] FlowerTropical2'
+    prefab: {fileID: 2800000, guid: 13cf2792f146ce04f91de4145f9ab80d, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 3
+    Chance: 1
+    RepeatChance: 0.85
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 9
+    BunchRadius: 0.5
+    BunchGravity: 2
+    BunchPeripheryScale: 1
+    Scale: 1.3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 0
+    Color: {r: 0.7483498, g: 1, b: 0.59124184, a: 1}
+    AltColor: {r: 0.7442974, g: 0.5588117, b: 0.39981613, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 5
+      Max: 20
+      Type: 0
+    Features: 1
+  - Name: '[1] FlowerTropical1'
+    prefab: {fileID: 2800000, guid: 3324ea60d6f769841ab7ec2e615ceca7, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 3
+    Chance: 1
+    RepeatChance: 0.85
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 9
+    BunchRadius: 0.5
+    BunchGravity: 2
+    BunchPeripheryScale: 1
+    Scale: 1.6
+    ScaleVariance: 0.5
+    ExclusiveRadius: 0
+    Color: {r: 0.7483498, g: 1, b: 0.59124184, a: 1}
+    AltColor: {r: 0.7442974, g: 0.5588117, b: 0.39981613, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 5
+      Max: 20
+      Type: 0
+    Features: 1
+  - Name: '[1] FlowerTropical0'
+    prefab: {fileID: 2800000, guid: 3ab4d83c48efe81499bed68328543f29, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 3
+    Chance: 1
+    RepeatChance: 0.85
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 9
+    BunchRadius: 0.5
+    BunchGravity: 2
+    BunchPeripheryScale: 1
+    Scale: 1
+    ScaleVariance: 0.5
+    ExclusiveRadius: 0
+    Color: {r: 0.7483498, g: 1, b: 0.59124184, a: 1}
+    AltColor: {r: 0.7442974, g: 0.5588117, b: 0.39981613, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 5
+      Max: 20
+      Type: 0
+    Features: 1
+  - Name: '[1] FlowerTropical5'
+    prefab: {fileID: 2800000, guid: e2cbe9ad7666af24e8a9e496949c32b9, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 3
+    Chance: 1
+    RepeatChance: 0.85
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 9
+    BunchRadius: 0.5
+    BunchGravity: 2
+    BunchPeripheryScale: 1
+    Scale: 1.3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 0
+    Color: {r: 0.7483498, g: 1, b: 0.59124184, a: 1}
+    AltColor: {r: 0.7442974, g: 0.5588117, b: 0.39981613, a: 1}
+    OffsetY: 0
+    Verticality: 0.5
+    HeightAboveWater:
+      Min: 5
+      Max: 20
+      Type: 0
+    Features: 1
+--- !u!1 &8768935299690230374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7924060536385964273}
+  m_Layer: 0
+  m_Name: BiomeTropical
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7924060536385964273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8768935299690230374}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 665942705739258634}
+  - {fileID: 259509260038983229}
+  - {fileID: 6285579283017211353}
+  - {fileID: 1380564244898279853}
+  - {fileID: 7376113501998953486}
+  - {fileID: 1733104971865707089}
+  - {fileID: 3028304515361422685}
+  - {fileID: 2098996736487782313}
+  - {fileID: 4082308665831893120}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8980061054448971844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 665942705739258634}
+  - component: {fileID: 5794440570058421414}
+  - component: {fileID: 7822934742873907872}
+  - component: {fileID: 2752559469338927363}
+  m_Layer: 0
+  m_Name: GrassCover
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &665942705739258634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8980061054448971844}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -63.516975, y: -17.163155, z: -130.90857}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7924060536385964273}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5794440570058421414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8980061054448971844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 323b8583f49a6af4b89467fbb636317c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeightAboveWater:
+    Min: 0
+    Max: 200
+    Type: 0
+  CellTypes: []
+  MaxSlope: 45
+  DragHereTextureToAddToList: {fileID: 0}
+  Prefabs:
+  - Texture: {fileID: 2800000, guid: 2ad90eababb0a4a4c840317743d0553f, type: 3}
+    Density: 0.45
+    Bunch: 1
+    HealthyColor: {r: 0.30340242, g: 0.5280203, b: 0.15873316, a: 0.101960786}
+    DryColor: {r: 0.49137598, g: 0.5212617, b: 0.096809946, a: 0.101960786}
+    Verticality: 0.4
+    ScaleXZ:
+      Min: 0.6
+      Max: 0.7
+      Type: 0
+    ScaleY:
+      Min: 0.8
+      Max: 1
+      Type: 0
+    RenderMode: 2
+  - Texture: {fileID: 2800000, guid: 24d9806f37653f44182dc61e7e68b699, type: 3}
+    Density: 0.45
+    Bunch: 1
+    HealthyColor: {r: 0.30340242, g: 0.5280203, b: 0.15873316, a: 0.101960786}
+    DryColor: {r: 0.49137598, g: 0.5212617, b: 0.096809946, a: 0.101960786}
+    Verticality: 0.4
+    ScaleXZ:
+      Min: 0.6
+      Max: 0.7
+      Type: 0
+    ScaleY:
+      Min: 0.5
+      Max: 0.6
+      Type: 0
+    RenderMode: 2
+  - Texture: {fileID: 2800000, guid: 0835f118ebd9e484aa405995724d6e58, type: 3}
+    Density: 0.45
+    Bunch: 1
+    HealthyColor: {r: 0.30340242, g: 0.5280203, b: 0.15873316, a: 0.101960786}
+    DryColor: {r: 0.49137598, g: 0.5212617, b: 0.096809946, a: 0.101960786}
+    Verticality: 0.4
+    ScaleXZ:
+      Min: 0.6
+      Max: 0.7
+      Type: 0
+    ScaleY:
+      Min: 0.5
+      Max: 0.6
+      Type: 0
+    RenderMode: 2
+  - Texture: {fileID: 2800000, guid: 140ad2569c1f3e742bf8e5cb24d3b565, type: 3}
+    Density: 0.45
+    Bunch: 1
+    HealthyColor: {r: 0.30340242, g: 0.5280203, b: 0.15873316, a: 0.101960786}
+    DryColor: {r: 0.49137598, g: 0.5212617, b: 0.096809946, a: 0.101960786}
+    Verticality: 0.4
+    ScaleXZ:
+      Min: 0.6
+      Max: 0.7
+      Type: 0
+    ScaleY:
+      Min: 0.7
+      Max: 0.7
+      Type: 0
+    RenderMode: 2
+--- !u!114 &7822934742873907872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8980061054448971844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c79648fc6b9fec499e3c7a972660150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Chance>k__BackingField: 1
+  TerrainMaterial: {fileID: 2100000, guid: 7fa3fd94f0e15494ca00259bc55a3aed, type: 2}
+  GrassRockBalance:
+    m_Mode: 3
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0.7
+  RocksTint:
+    m_Mode: 4
+    m_GradientMin:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    m_GradientMax:
+      serializedVersion: 2
+      key0: {r: 0.5294118, g: 0.4509804, b: 0.40392157, a: 1}
+      key1: {r: 0.7780907, g: 0.70696735, b: 0.47581637, a: 1}
+      key2: {r: 0.79607844, g: 0.78039217, b: 0.7294118, a: 0}
+      key3: {r: 0.79607844, g: 0.78039217, b: 0.7294118, a: 0}
+      key4: {r: 0.54509807, g: 0.5882353, b: 0.54901963, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 11869
+      ctime2: 24284
+      ctime3: 49390
+      ctime4: 65535
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: 0
+      m_NumColorKeys: 5
+      m_NumAlphaKeys: 2
+    m_ColorMin: {r: 0.41312307, g: 0.35947138, b: 0.3280204, a: 1}
+    m_ColorMax: {r: 0.798, g: 0.782, b: 0.731, a: 1}
+  SandTextureHeightAboveWater: 0
+--- !u!114 &2752559469338927363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8980061054448971844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c79648fc6b9fec499e3c7a972660150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Chance>k__BackingField: 1
+  TerrainMaterial: {fileID: 2100000, guid: 5990a81a3e29f8c499d025bd21b6a603, type: 2}
+  GrassRockBalance:
+    m_Mode: 3
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0.7
+  RocksTint:
+    m_Mode: 4
+    m_GradientMin:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    m_GradientMax:
+      serializedVersion: 2
+      key0: {r: 0.7019608, g: 0.7019608, b: 0.7019608, a: 1}
+      key1: {r: 0.8997466, g: 0.8997466, b: 0.8997466, a: 1}
+      key2: {r: 1, g: 1, b: 1, a: 0}
+      key3: {r: 0.7529412, g: 0.6117647, b: 0.47843137, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 15180
+      ctime2: 38906
+      ctime3: 65535
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: 0
+      m_NumColorKeys: 4
+      m_NumAlphaKeys: 2
+    m_ColorMin: {r: 0.41312307, g: 0.35947138, b: 0.3280204, a: 1}
+    m_ColorMax: {r: 0.798, g: 0.782, b: 0.731, a: 1}
+  SandTextureHeightAboveWater: 0

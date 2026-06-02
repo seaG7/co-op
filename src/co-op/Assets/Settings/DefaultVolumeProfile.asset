@@ -146,6 +146,37 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+--- !u!114 &-6639988342464874465
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d3354a117cf0634aa1e2b726dc0e1bb, type: 3}
+  m_Name: CustomTonemapping
+  m_EditorClassIdentifier: HSR.NPRShader.Runtime::HSR.NPRShader.PostProcessing.CustomTonemapping
+  active: 1
+  Mode:
+    m_OverrideState: 1
+    m_Value: 0
+  ACESParamA:
+    m_OverrideState: 1
+    m_Value: 2.8
+  ACESParamB:
+    m_OverrideState: 1
+    m_Value: 0.4
+  ACESParamC:
+    m_OverrideState: 1
+    m_Value: 2.1
+  ACESParamD:
+    m_OverrideState: 1
+    m_Value: 0.5
+  ACESParamE:
+    m_OverrideState: 1
+    m_Value: 1.5
 --- !u!114 &-6335409530604852063
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -342,6 +373,9 @@ MonoBehaviour:
   skyOcclusionIntensityMultiplier:
     m_OverrideState: 1
     m_Value: 1
+  worldOffset:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0, z: 0}
 --- !u!114 &-1216621516061285780
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -374,6 +408,9 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   highQualityFiltering:
+    m_OverrideState: 1
+    m_Value: 0
+  filter:
     m_OverrideState: 1
     m_Value: 0
   downscale:
@@ -462,8 +499,8 @@ MonoBehaviour:
   - {fileID: -6288072647309666549}
   - {fileID: 7518938298396184218}
   - {fileID: -1410297666881709256}
-  - {fileID: -7750755424749557576}
-  - {fileID: -5139089513906902183}
+  - {fileID: -6639988342464874465}
+  - {fileID: 5605567531788458533}
 --- !u!114 &853819529557874667
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -852,6 +889,55 @@ MonoBehaviour:
   intensity:
     m_OverrideState: 1
     m_Value: 0
+--- !u!114 &5605567531788458533
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c62a9a166e71eac40a2f371bab721d2b, type: 3}
+  m_Name: CustomBloom
+  m_EditorClassIdentifier: HSR.NPRShader.Runtime::HSR.NPRShader.PostProcessing.CustomBloom
+  active: 1
+  Intensity:
+    m_OverrideState: 1
+    m_Value: 0
+  Threshold:
+    m_OverrideState: 1
+    m_Value: 0.7
+  Clamp:
+    m_OverrideState: 1
+    m_Value: 65472
+  Tint:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  MipDownCount:
+    m_OverrideState: 1
+    m_Value: 2
+  CharactersOnly:
+    m_OverrideState: 1
+    m_Value: 1
+  BlurFirstRTWidth:
+    m_OverrideState: 1
+    m_Value: 310
+  BlurFirstRTHeight:
+    m_OverrideState: 1
+    m_Value: 174
+  KernelSize1:
+    m_OverrideState: 1
+    m_Value: 4
+  KernelSize2:
+    m_OverrideState: 1
+    m_Value: 4
+  KernelSize3:
+    m_OverrideState: 1
+    m_Value: 6
+  KernelSize4:
+    m_OverrideState: 1
+    m_Value: 14
 --- !u!114 &6940869943325143175
 MonoBehaviour:
   m_ObjectHideFlags: 3

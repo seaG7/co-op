@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.besty.unity-skills": "https://github.com/Besty0728/Unity-Skills.git?path=/SkillsForUnity#beta",
     "com.coplaydev.unity-mcp": "https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#beta",
     "com.unity.ai.navigation": "2.0.9",
     "com.unity.collab-proxy": "2.11.3",
@@ -8,8 +9,11 @@
     "com.unity.inputsystem": "1.18.0",
     "com.unity.multiplayer.center": "1.0.1",
     "com.unity.render-pipelines.universal": "17.3.0",
+    "com.unity.sdk.linux-x86_64": "1.1.0",
     "com.unity.test-framework": "1.6.0",
     "com.unity.timeline": "1.8.10",
+    "com.unity.toolchain.win-x86_64-linux": "1.1.0",
+    "com.unity.toonshader": "0.14.1-preview",
     "com.unity.ugui": "2.0.0",
     "com.unity.visualscripting": "1.9.9",
     "com.unity.modules.accessibility": "1.0.0",

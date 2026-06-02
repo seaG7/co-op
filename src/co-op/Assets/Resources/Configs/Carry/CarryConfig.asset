@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae4be95538ba94f44b1fb9b038c537f6, type: 3}
+  m_Name: CarryConfig
+  m_EditorClassIdentifier: Assembly-CSharp::Data.Configs.CarryConfig
+  MaxReach: 1.5
+  ServerReachTolerance: 1.2
+  DefaultHoldDistance: 0.7
+  PickupBlendDuration: 0.25
+  FreeCarryMass: 5
+  MovementSlowdownPerKg: 0.05
+  MinSpeedMultiplier: 0.3
+  ThrowVelocityScale: 1.2
+  MaxThrowSpeed: 12
+  DebugDrawRaycast: 0
+  DebugDrawGrab: 0
+  DebugOverlay: 0

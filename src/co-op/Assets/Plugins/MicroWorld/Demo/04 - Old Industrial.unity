@@ -1,0 +1,6563 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 9
+  m_Fog: 0
+  m_FogColor: {r: 0.45024434, g: 0.4956033, b: 0.5145029, a: 1}
+  m_FogMode: 1
+  m_FogDensity: 0.005
+  m_LinearFogStart: 40
+  m_LinearFogEnd: 150
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 0
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 85d481dc56ee79b4d94fcf6f17c09967, type: 2}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 294502595}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 12
+  m_GIWorkflowMode: 1
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 1
+    m_EnableRealtimeLightmaps: 0
+  m_LightmapEditorSettings:
+    serializedVersion: 12
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1
+    m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 2
+    m_BakeBackend: 1
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 512
+    m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 256
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 1
+    m_PVRDenoiserTypeDirect: 1
+    m_PVRDenoiserTypeIndirect: 1
+    m_PVRDenoiserTypeAO: 1
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVREnvironmentMIS: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
+  m_LightingDataAsset: {fileID: 112000000, guid: bcc4a04d79177b841b7118c96da4a404, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 70b119e8fb6b8564dbce9b1af9f44a47, type: 2}
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 3
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    buildHeightMesh: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!1 &294502594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 294502596}
+  - component: {fileID: 294502595}
+  m_Layer: 0
+  m_Name: Directional Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &294502595
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294502594}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 1
+  m_Shape: 0
+  m_Color: {r: 1, g: 0.9595513, b: 0.9021402, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &294502596
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294502594}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.5532866, y: 0.16593194, z: -0.113573425, w: 0.8083573}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 68.78, y: 23.2, z: 0}
+--- !u!1 &710426206
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 710426207}
+  m_Layer: 0
+  m_Name: 'NOTE: You can change Seed of MicroWorld to build another terrain'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &710426207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710426206}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &757192227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 757192228}
+  m_Layer: 0
+  m_Name: 'NOTE: Select MicroWorld and press Build'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &757192228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757192227}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &965031713
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1754681366}
+    m_Modifications:
+    - target: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5012864530511275023, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_Name
+      value: GatesAndBorders
+      objectReference: {fileID: 0}
+    - target: {fileID: 5012864530511275023, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+--- !u!4 &965031714 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+  m_PrefabInstance: {fileID: 965031713}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1081744660
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1754681366}
+    m_Modifications:
+    - target: {fileID: 4066241322250486385, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: CellTypes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4066241322250486385, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: CellTypes.Array.data[0]
+      value: Forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 4066241322250486385, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: CellTypes.Array.data[1]
+      value: -Ruins
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830809689412711857, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_Name
+      value: Rocks
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830809689412711857, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6666002826281773997, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: CellTypes.Array.data[0]
+      value: Forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 7883030413679080306, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: CellTypes.Array.data[0]
+      value: Forest
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+--- !u!4 &1081744661 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+  m_PrefabInstance: {fileID: 1081744660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1353765069
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2860639203252979548, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860639203252979548, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860639203252979548, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860639203252979548, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860639203252979548, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860639203252979548, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860639203252979548, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860639203252979548, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860639203252979548, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860639203252979548, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5920709459919231403, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+--- !u!1001 &1443076716
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1754681366}
+    m_Modifications:
+    - target: {fileID: 2681798537151400760, guid: c8d836ea1b0280143b0711e0f580d69d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681798537151400760, guid: c8d836ea1b0280143b0711e0f580d69d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681798537151400760, guid: c8d836ea1b0280143b0711e0f580d69d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681798537151400760, guid: c8d836ea1b0280143b0711e0f580d69d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681798537151400760, guid: c8d836ea1b0280143b0711e0f580d69d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681798537151400760, guid: c8d836ea1b0280143b0711e0f580d69d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681798537151400760, guid: c8d836ea1b0280143b0711e0f580d69d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681798537151400760, guid: c8d836ea1b0280143b0711e0f580d69d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681798537151400760, guid: c8d836ea1b0280143b0711e0f580d69d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681798537151400760, guid: c8d836ea1b0280143b0711e0f580d69d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803616796246793389, guid: c8d836ea1b0280143b0711e0f580d69d, type: 3}
+      propertyPath: m_Name
+      value: Roads
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c8d836ea1b0280143b0711e0f580d69d, type: 3}
+--- !u!4 &1443076717 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2681798537151400760, guid: c8d836ea1b0280143b0711e0f580d69d, type: 3}
+  m_PrefabInstance: {fileID: 1443076716}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1568055420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1568055421}
+  - component: {fileID: 1568055422}
+  m_Layer: 0
+  m_Name: ForestFieldsHex
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1568055421
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568055420}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1754681366}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1568055422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568055420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb636acf4d7aac4094b706c83d19f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Chance>k__BackingField: 0.5
+  MapSize:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 15
+    m_ConstantMax: 12
+  CellSize:
+    m_Mode: 3
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 8
+    m_ConstantMax: 12
+  BorderPadding: 1
+  Geometry: 0
+  CellTypeFrequency:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 3
+  CellTypeUniformity: 0
+  CellTypes:
+  - Name: Forest
+    Chance: 1
+    MicroNoiseScale: 1
+    HeightPower: 1
+    HeightSharpness: 1
+    Elevation: 0
+    Features: 0
+  - Name: Field
+    Chance: 1
+    MicroNoiseScale: 0
+    HeightPower: 20
+    HeightSharpness: 100
+    Elevation: 0
+    Features: 0
+  BorderCellType:
+    Name: Border
+    Chance: 1
+    MicroNoiseScale: 1
+    HeightPower: 1
+    HeightSharpness: 3
+    Elevation: 0
+    Features: 0
+  GateCellType:
+    Name: Gate
+    Chance: 1
+    MicroNoiseScale: 0
+    HeightPower: 5
+    HeightSharpness: 10
+    Elevation: 0
+    Features: 0
+  FallbackCellType:
+    Name: Fallback
+    Chance: 1
+    MicroNoiseScale: 1
+    HeightPower: 1
+    HeightSharpness: 1
+    Elevation: 0
+    Features: 0
+  drawHex: 1
+  drawHexIndex: 0
+--- !u!1001 &1590211598
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1754681366}
+    m_Modifications:
+    - target: {fileID: 802723791220906737, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 821720472397816364, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: CellTypes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 821720472397816364, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: CellTypes.Array.data[0]
+      value: Field
+      objectReference: {fileID: 0}
+    - target: {fileID: 821720472397816364, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: CellTypes.Array.data[1]
+      value: Forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 821720472397816364, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: ExclusiveGroups.CellExclusiveGroup
+      value: RichGrass
+      objectReference: {fileID: 0}
+    - target: {fileID: 821720472397816364, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: ExclusiveGroups.TerrainExclusiveGroup
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 858359083545434420, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482767972998450136, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2532320744545460984, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721800071842083093, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: CellTypes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721800071842083093, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: ExclusiveGroups.Chance
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721800071842083093, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: CellTypes.Array.data[0]
+      value: Field
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721800071842083093, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: CellTypes.Array.data[1]
+      value: Forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721800071842083093, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: ExclusiveGroups.CellExclusiveGroup
+      value: RichGrass
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721800071842083093, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: ExclusiveGroups.TerrainExclusiveGroup
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935834572579591594, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3961523484387847175, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4530096010616709017, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5121940114432012914, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_Name
+      value: BiomeTemperate
+      objectReference: {fileID: 0}
+    - target: {fileID: 5121940114432012914, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210663244271477950, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7322491484686879392, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+--- !u!4 &1590211599 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+  m_PrefabInstance: {fileID: 1590211598}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1734610764
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1754681366}
+    m_Modifications:
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Place
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Chance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].EdgeType
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Zoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.SelectedShapeIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].MeshScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].VisibleFaces.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].VisibleFaces.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].VisibleFaces.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].VisibleFaces.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].VisibleFaces.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].VisibleFaces.Array.data[4]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].VisibleFaces.Array.data[5]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[6].Shapes.Items.Array.data[0].Points.Array.data[4].Point.y
+      value: -130
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[6].Shapes.Items.Array.data[0].Points.Array.data[5].Point.y
+      value: -130
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[6].Shapes.Items.Array.data[0].Points.Array.data[6].Point.y
+      value: -130
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[6].Shapes.Items.Array.data[0].Points.Array.data[7].Point.y
+      value: -130
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[0].Point.x
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[0].Point.y
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[0].Point.z
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[1].Point.x
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[1].Point.y
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[1].Point.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[2].Point.x
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[2].Point.y
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[2].Point.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[3].Point.x
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[3].Point.y
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[3].Point.z
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[4].Point.x
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[4].Point.y
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[4].Point.z
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[5].Point.x
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[5].Point.y
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[5].Point.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[6].Point.x
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[6].Point.y
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[6].Point.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[7].Point.x
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[7].Point.y
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[14].Shapes.Items.Array.data[0].Points.Array.data[7].Point.z
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[6].Shapes.Items.Array.data[0].Points.Array.data[3].draggedAxes.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[6].Shapes.Items.Array.data[0].Points.Array.data[3].draggedAxes.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[6].Shapes.Items.Array.data[0].Points.Array.data[5].draggedAxes.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 264683991249983523, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: Elements.Array.data[6].Shapes.Items.Array.data[0].Points.Array.data[7].draggedAxes.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521767010417968445, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: ChanceInCell
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521767010417968445, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: DrawElements
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521767010417968445, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: CellTypes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521767010417968445, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: CellTypes.Array.data[2]
+      value: Field
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521767010417968445, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: CellTypes.Array.data[3]
+      value: Forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521767010417968445, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: CeilCellTypes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521767010417968445, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: CeilCellTypes.Array.data[0]
+      value: Ruins
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521767010417968445, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: CeilCellTypes.Array.data[1]
+      value: Gate
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521767010417968445, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: CeilCellTypes.Array.data[2]
+      value: Field
+      objectReference: {fileID: 0}
+    - target: {fileID: 7806377787295672663, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: m_Name
+      value: OldIndustrial
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205413885175032741, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205413885175032741, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205413885175032741, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205413885175032741, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205413885175032741, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205413885175032741, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205413885175032741, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205413885175032741, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205413885175032741, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205413885175032741, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+--- !u!4 &1734610765 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9205413885175032741, guid: 09fd01e5a2cbcca4cb0a3cbb7bdafa00, type: 3}
+  m_PrefabInstance: {fileID: 1734610764}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1754681364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1754681366}
+  - component: {fileID: 1754681365}
+  m_Layer: 0
+  m_Name: MicroWorld
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!114 &1754681365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754681364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d38886acdcc21142883fa5ee7969de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Seed: 3
+  Locked: 0
+  Gates:
+  - Name: North Gate
+    WorldSide: 0
+    Cell: {x: 4, y: 13}
+    ReferenceType: 0
+    Target: {fileID: 0}
+    TargetId: 
+    Gate: {fileID: 0}
+    GatePrefab: {fileID: 0}
+  - Name: South Gate
+    WorldSide: 20
+    Cell: {x: 9, y: 0}
+    ReferenceType: 0
+    Target: {fileID: 0}
+    TargetId: 
+    Gate: {fileID: 0}
+    GatePrefab: {fileID: 0}
+  CustomCells: []
+  ForbiddenTags: []
+  <Map>k__BackingField:
+    Size: 14
+    Geometry:
+      rid: 6670490249840558224
+    Cells:
+    - Type:
+        rid: 6670490249840558225
+      Height: 13.0006
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 13.0006
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 13.00067
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 13.00067
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 14.000594
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 14.000594
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 16.00009
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 18.000576
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 20.000223
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558226
+      Height: 15.001137
+      Parent: {x: 9, y: 1}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 20.000223
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 19.000639
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 19.000639
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 19.00039
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 15.000203
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 8.0006
+      Parent: {x: 2, y: 1}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 7.0000296
+      Parent: {x: 2, y: 2}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 8.00067
+      Parent: {x: 3, y: 2}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 7.000825
+      Parent: {x: 5, y: 1}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 9.000594
+      Parent: {x: 6, y: 1}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 9.000547
+      Parent: {x: 7, y: 1}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 11.00009
+      Parent: {x: 7, y: 2}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 13.000575
+      Parent: {x: 8, y: 2}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 15.000223
+      Parent: {x: 9, y: 2}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 14.0004
+      Parent: {x: 9, y: 1}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 14.000639
+      Parent: {x: 10, y: 1}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 14.000389
+      Parent: {x: 11, y: 1}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 21.00072
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 15.000917
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 10.000203
+      Parent: {x: 1, y: 1}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 7.0000453
+      Parent: {x: 2, y: 3}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 7.0009923
+      Parent: {x: 3, y: 3}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 5.0004277
+      Parent: {x: 4, y: 1}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 4.0005555
+      Parent: {x: 4, y: 2}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 7.000396
+      Parent: {x: 6, y: 1}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 13.000191
+      Parent: {x: 8, y: 2}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 13.000776
+      Parent: {x: 9, y: 2}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 13.000116
+      Parent: {x: 9, y: 3}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 12.000017
+      Parent: {x: 11, y: 2}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 14.000738
+      Parent: {x: 11, y: 1}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 16.00072
+      Parent: {x: 12, y: 1}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 23.000868
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 15.000917
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 10.000917
+      Parent: {x: 1, y: 2}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 7.000265
+      Parent: {x: 3, y: 3}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 7.000625
+      Parent: {x: 4, y: 3}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 7.00003
+      Parent: {x: 4, y: 2}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 9.000873
+      Parent: {x: 4, y: 3}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 15.000883
+      Parent: {x: 7, y: 3}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 13.000866
+      Parent: {x: 8, y: 3}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 13.000876
+      Parent: {x: 8, y: 2}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 13.000341
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 11.000471
+      Parent: {x: 10, y: 2}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 14.00033
+      Parent: {x: 11, y: 2}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 18.000868
+      Parent: {x: 12, y: 2}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 23.000868
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 15.000917
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 10.000274
+      Parent: {x: 1, y: 3}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 10.000536
+      Parent: {x: 1, y: 4}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 12.000333
+      Parent: {x: 2, y: 4}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 12.000644
+      Parent: {x: 3, y: 4}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 12.000787
+      Parent: {x: 4, y: 4}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 19.000338
+      Parent: {x: 7, y: 4}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 19.00061
+      Parent: {x: 7, y: 5}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 19.000238
+      Parent: {x: 7, y: 4}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 15.000688
+      Parent: {x: 9, y: 3}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 12.000908
+      Parent: {x: 11, y: 4}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 13.000013
+      Parent: {x: 11, y: 3}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 18.00014
+      Parent: {x: 12, y: 3}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 23.000868
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 15.000746
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 10.000746
+      Parent: {x: 1, y: 4}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 12.000129
+      Parent: {x: 1, y: 5}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 12.000928
+      Parent: {x: 2, y: 5}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 14.000514
+      Parent: {x: 3, y: 5}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 15.000924
+      Parent: {x: 4, y: 5}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 19.000036
+      Parent: {x: 6, y: 6}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 19.000904
+      Parent: {x: 6, y: 5}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 21.000538
+      Parent: {x: 8, y: 4}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 15.000588
+      Parent: {x: 9, y: 4}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 12.000144
+      Parent: {x: 10, y: 4}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 11.000012
+      Parent: {x: 11, y: 4}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 18.000381
+      Parent: {x: 12, y: 4}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 23.000694
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 15.000746
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 10.000638
+      Parent: {x: 1, y: 5}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 12.000541
+      Parent: {x: 1, y: 6}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 12.000463
+      Parent: {x: 2, y: 6}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 14.000478
+      Parent: {x: 4, y: 5}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 16.000376
+      Parent: {x: 5, y: 5}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 17.000666
+      Parent: {x: 5, y: 6}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 19.000542
+      Parent: {x: 7, y: 5}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 9.000488
+      Parent: {x: 9, y: 6}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 9.000289
+      Parent: {x: 10, y: 6}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 9.000296
+      Parent: {x: 11, y: 6}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 9.000252
+      Parent: {x: 11, y: 5}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 18.000694
+      Parent: {x: 12, y: 5}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 23.000694
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 15.000638
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 7.0004234
+      Parent: {x: 1, y: 8}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 9.0003
+      Parent: {x: 1, y: 7}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 9.000194
+      Parent: {x: 2, y: 7}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 9.00026
+      Parent: {x: 3, y: 7}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 17.000114
+      Parent: {x: 5, y: 6}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 17.000122
+      Parent: {x: 5, y: 7}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 17.000664
+      Parent: {x: 6, y: 7}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 7.000298
+      Parent: {x: 9, y: 7}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 7.0009084
+      Parent: {x: 10, y: 7}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 7.0006065
+      Parent: {x: 10, y: 8}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 9.000719
+      Parent: {x: 11, y: 6}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 16.000109
+      Parent: {x: 12, y: 6}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 23.000694
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 12.000423
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 5.0007844
+      Parent: {x: 2, y: 8}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 5.0009475
+      Parent: {x: 2, y: 9}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558229
+      Height: 3.000258
+      Parent: {x: 3, y: 9}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 5.000845
+      Parent: {x: 4, y: 9}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 9.000998
+      Parent: {x: 6, y: 8}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 8.000182
+      Parent: {x: 7, y: 8}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 7.0009427
+      Parent: {x: 7, y: 9}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 9.000507
+      Parent: {x: 8, y: 9}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 9.000662
+      Parent: {x: 9, y: 9}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 7.0005555
+      Parent: {x: 10, y: 9}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 11.00088
+      Parent: {x: 11, y: 7}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 18.000534
+      Parent: {x: 12, y: 7}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 23.000656
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 10.00099
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 5.00099
+      Parent: {x: 1, y: 8}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558229
+      Height: 3.0006094
+      Parent: {x: 2, y: 10}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 5.0004983
+      Parent: {x: 4, y: 9}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 5.000903
+      Parent: {x: 5, y: 9}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 7.000852
+      Parent: {x: 6, y: 9}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 8.000332
+      Parent: {x: 6, y: 10}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 8.000997
+      Parent: {x: 8, y: 9}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 9.000551
+      Parent: {x: 9, y: 9}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 9.000387
+      Parent: {x: 10, y: 9}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 9.00088
+      Parent: {x: 10, y: 10}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 11.0005245
+      Parent: {x: 11, y: 8}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 18.000656
+      Parent: {x: 12, y: 8}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 23.000656
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 10.00099
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 5.0004773
+      Parent: {x: 1, y: 9}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 5.0003624
+      Parent: {x: 3, y: 10}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 5.0008698
+      Parent: {x: 3, y: 9}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 7.0004344
+      Parent: {x: 5, y: 10}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 7.0002537
+      Parent: {x: 5, y: 9}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 8.000756
+      Parent: {x: 7, y: 10}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 8.000866
+      Parent: {x: 7, y: 9}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 5.0001283
+      Parent: {x: 9, y: 10}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 7.000157
+      Parent: {x: 10, y: 10}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 9.000207
+      Parent: {x: 11, y: 10}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 11.000179
+      Parent: {x: 11, y: 9}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 18.000374
+      Parent: {x: 12, y: 9}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 23.000656
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 12.000696
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 5.0005865
+      Parent: {x: 1, y: 10}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 6.0004005
+      Parent: {x: 1, y: 11}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 6.000653
+      Parent: {x: 2, y: 11}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 7.0004663
+      Parent: {x: 3, y: 11}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 9.000768
+      Parent: {x: 4, y: 11}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 6.000445
+      Parent: {x: 7, y: 11}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 6.000867
+      Parent: {x: 8, y: 11}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 7.000281
+      Parent: {x: 9, y: 11}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 7.000371
+      Parent: {x: 9, y: 10}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 7.000699
+      Parent: {x: 9, y: 11}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 9.00054
+      Parent: {x: 11, y: 10}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 17.000748
+      Parent: {x: 12, y: 10}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 23.000374
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 12.000696
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 7.0006957
+      Parent: {x: 1, y: 11}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 9.000959
+      Parent: {x: 1, y: 12}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 10.000791
+      Parent: {x: 2, y: 12}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 11.000317
+      Parent: {x: 3, y: 12}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 11.000276
+      Parent: {x: 4, y: 12}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 12.0002365
+      Parent: {x: 7, y: 12}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 10.000129
+      Parent: {x: 8, y: 12}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 8.000892
+      Parent: {x: 8, y: 11}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 6.0003986
+      Parent: {x: 9, y: 11}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 6.000299
+      Parent: {x: 9, y: 12}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558228
+      Height: 14.000232
+      Parent: {x: 12, y: 12}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558227
+      Height: 15.000234
+      Parent: {x: 12, y: 11}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 22.000748
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 12.000696
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 14.000959
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 15.000791
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 16.000317
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558226
+      Height: 11.000465
+      Parent: {x: 4, y: 12}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 17.000237
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 17.000237
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 17.000237
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 15.000129
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 13.000892
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 19.000233
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 20.000233
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 20.000233
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    - Type:
+        rid: 6670490249840558225
+      Height: 20.000233
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 1
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+    LeftBorder: 0
+    RightBorder: 13
+    defaultCell:
+      Type:
+        rid: 6670490249840558230
+      Height: 0
+      Parent: {x: 0, y: 0}
+      Edges:
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      - WallHeight: 0
+        IsCellTypeBorder: 0
+        isRoad: 0
+        isRiver: 0
+      IsRoad: 0
+      IsRoadCross: 0
+      MicroNoiseScale: 0
+  <Terrain>k__BackingField: {fileID: 0}
+  <WaterLevel>k__BackingField: 3.9005556
+  _BuildInEditor_Build: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 6670490249840558224
+      type: {class: RectCellGeometry, ns: MicroWorldNS, asm: MicroWorld}
+      data:
+        <Radius>k__BackingField: 11.313708
+        <Offset>k__BackingField: {x: 8, y: 0, z: 8}
+        <InnerRadius>k__BackingField: 8
+        <Width>k__BackingField: 16
+        <Height>k__BackingField: 16
+        <EdgeLength>k__BackingField: 16
+        <VertSpacing>k__BackingField: 16
+        <HorzSpacing>k__BackingField: 16
+        <Area>k__BackingField: 256
+        <CornersCount>k__BackingField: 4
+        corners:
+        - {x: -7.9999995, y: 0, z: 7.9999995}
+        - {x: 7.9999995, y: 0, z: 7.9999995}
+        - {x: 7.9999995, y: 0, z: -7.9999995}
+        - {x: -7.9999995, y: 0, z: -7.9999995}
+        edgeNormals:
+        - {x: 0, y: 0, z: 1}
+        - {x: 1, y: 0, z: 0}
+        - {x: 0, y: 0, z: -1}
+        - {x: -1, y: 0, z: 0}
+    - rid: 6670490249840558225
+      type: {class: CellType, ns: MicroWorldNS, asm: MicroWorld}
+      data:
+        Name: Border
+        Chance: 1
+        MicroNoiseScale: 1
+        HeightPower: 1
+        HeightSharpness: 3
+        Elevation: 0
+        Features: 0
+    - rid: 6670490249840558226
+      type: {class: CellType, ns: MicroWorldNS, asm: MicroWorld}
+      data:
+        Name: Gate
+        Chance: 1
+        MicroNoiseScale: 0
+        HeightPower: 5
+        HeightSharpness: 10
+        Elevation: 0
+        Features: 0
+    - rid: 6670490249840558227
+      type: {class: CellType, ns: MicroWorldNS, asm: MicroWorld}
+      data:
+        Name: Forest
+        Chance: 1
+        MicroNoiseScale: 1
+        HeightPower: 1
+        HeightSharpness: 1
+        Elevation: 0
+        Features: 0
+    - rid: 6670490249840558228
+      type: {class: CellType, ns: MicroWorldNS, asm: MicroWorld}
+      data:
+        Name: Field
+        Chance: 1
+        MicroNoiseScale: 0
+        HeightPower: 20
+        HeightSharpness: 100
+        Elevation: 0
+        Features: 0
+    - rid: 6670490249840558229
+      type: {class: CellType, ns: MicroWorldNS, asm: MicroWorld}
+      data:
+        Name: Fallback
+        Chance: 1
+        MicroNoiseScale: 1
+        HeightPower: 1
+        HeightSharpness: 1
+        Elevation: 0
+        Features: 0
+    - rid: 6670490249840558230
+      type: {class: CellType, ns: MicroWorldNS, asm: MicroWorld}
+      data:
+        Name: 
+        Chance: 1
+        MicroNoiseScale: 1
+        HeightPower: 1
+        HeightSharpness: 1
+        Elevation: 0
+        Features: 0
+--- !u!4 &1754681366
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754681364}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1568055421}
+  - {fileID: 2080131333}
+  - {fileID: 2119979315}
+  - {fileID: 965031714}
+  - {fileID: 1081744661}
+  - {fileID: 1443076717}
+  - {fileID: 1734610765}
+  - {fileID: 1872938127}
+  - {fileID: 1590211599}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1872938126
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1754681366}
+    m_Modifications:
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[1].time
+      value: 0.38597745
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[2].time
+      value: 0.44633847
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[3].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[1].value
+      value: 0.12726249
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[2].value
+      value: 0.83486736
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[3].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[1].inSlope
+      value: 0.32971483
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[2].inSlope
+      value: 11.722877
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[3].inSlope
+      value: 0.2982556
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[0].outSlope
+      value: 0.32971483
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[1].inWeight
+      value: 0.2449804
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[1].outSlope
+      value: 11.722877
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[2].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[2].outSlope
+      value: 0.2982556
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[2].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[0].tangentMode
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[1].tangentMode
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[2].tangentMode
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198820216376625735, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[3].tangentMode
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 7924060536385964273, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7924060536385964273, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7924060536385964273, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7924060536385964273, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7924060536385964273, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7924060536385964273, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7924060536385964273, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7924060536385964273, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7924060536385964273, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7924060536385964273, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[1].time
+      value: 0.38597745
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[2].time
+      value: 0.44633847
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[3].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[1].value
+      value: 0.12726249
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[2].value
+      value: 0.83486736
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[3].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[1].inSlope
+      value: 0.32971483
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[2].inSlope
+      value: 11.722877
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[3].inSlope
+      value: 0.2982556
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[0].outSlope
+      value: 0.32971483
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[1].inWeight
+      value: 0.2449804
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[1].outSlope
+      value: 11.722877
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[2].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[2].outSlope
+      value: 0.2982556
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[2].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[0].tangentMode
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[1].tangentMode
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[2].tangentMode
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190975401541225682, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: Density.m_CurveMax.m_Curve.Array.data[3].tangentMode
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768935299690230374, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: m_Name
+      value: BiomeTropical
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768935299690230374, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+--- !u!4 &1872938127 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7924060536385964273, guid: 2aae94b33a9aa3a438d44aa7235d0109, type: 3}
+  m_PrefabInstance: {fileID: 1872938126}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2080131332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2080131333}
+  - component: {fileID: 2080131334}
+  m_Layer: 0
+  m_Name: ForestFieldsSquare
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2080131333
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080131332}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1754681366}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2080131334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080131332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb636acf4d7aac4094b706c83d19f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Chance>k__BackingField: 1
+  MapSize:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 15
+    m_ConstantMax: 12
+  CellSize:
+    m_Mode: 3
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 8
+    m_ConstantMax: 12
+  BorderPadding: 1
+  Geometry: 1
+  CellTypeFrequency:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 3
+  CellTypeUniformity: 0
+  CellTypes:
+  - Name: Forest
+    Chance: 1
+    MicroNoiseScale: 1
+    HeightPower: 1
+    HeightSharpness: 1
+    Elevation: 0
+    Features: 0
+  - Name: Field
+    Chance: 1
+    MicroNoiseScale: 0
+    HeightPower: 20
+    HeightSharpness: 100
+    Elevation: 0
+    Features: 0
+  BorderCellType:
+    Name: Border
+    Chance: 1
+    MicroNoiseScale: 1
+    HeightPower: 1
+    HeightSharpness: 3
+    Elevation: 0
+    Features: 0
+  GateCellType:
+    Name: Gate
+    Chance: 1
+    MicroNoiseScale: 0
+    HeightPower: 5
+    HeightSharpness: 10
+    Elevation: 0
+    Features: 0
+  FallbackCellType:
+    Name: Fallback
+    Chance: 1
+    MicroNoiseScale: 1
+    HeightPower: 1
+    HeightSharpness: 1
+    Elevation: 0
+    Features: 0
+  drawHex: 1
+  drawHexIndex: 0
+--- !u!1001 &2119979314
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1754681366}
+    m_Modifications:
+    - target: {fileID: 777466463995285710, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: FlatChance.m_ConstantMax
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 817512990542899864, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: FlatChance.m_ConstantMax
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258799235711234268, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: m_Name
+      value: TerrainSpawners
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576750761021754983, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: FlatChance.m_ConstantMax
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704601866708406549, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: FlatChance.m_ConstantMax
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955429586424646781, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: FlatChance.m_ConstantMax
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4142811629663638029, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: FlatChance.m_ConstantMax
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149700973017978419, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: FlatChance.m_ConstantMax
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929497504752193842, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: FlatChance.m_ConstantMax
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5427576074621621916, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: FlatChance.m_ConstantMax
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5562012966514362780, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: FlatChance.m_ConstantMax
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590709320783647799, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: FlatChance.m_ConstantMax
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6740447970289748682, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: FlatChance.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6740447970289748682, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: FlatChance.m_ConstantMax
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260153727201930482, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260153727201930482, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260153727201930482, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260153727201930482, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260153727201930482, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260153727201930482, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260153727201930482, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260153727201930482, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260153727201930482, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260153727201930482, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7533099817840456144, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: FlatChance.m_ConstantMax
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595037475854419069, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: FlatChance.m_ConstantMax
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387971704739290577, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: FlatChance.m_ConstantMax
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8606979898087736935, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+      propertyPath: FlatChance.m_ConstantMax
+      value: 0.4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+--- !u!4 &2119979315 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7260153727201930482, guid: eac15422d26129944bd6bf40da85b6d4, type: 3}
+  m_PrefabInstance: {fileID: 2119979314}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 1353765069}
+  - {fileID: 294502596}
+  - {fileID: 1754681366}
+  - {fileID: 757192228}
+  - {fileID: 710426207}

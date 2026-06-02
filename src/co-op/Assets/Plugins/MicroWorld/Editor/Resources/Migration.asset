@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a24f130b920374409496c367c7524b1, type: 3}
+  m_Name: Migration
+  m_EditorClassIdentifier: 
+  Shaders:
+  - BuiltIn: {fileID: 4800000, guid: 5c275e28f835af2419dd0a97593756da, type: 3}
+    URP: {fileID: -6465566751694194690, guid: 36b3946151d78a84f80aaf382d07d2fc, type: 3}
+  - BuiltIn: {fileID: 10505, guid: 0000000000000000f000000000000000, type: 0}
+    URP: {fileID: -6465566751694194690, guid: 36b3946151d78a84f80aaf382d07d2fc, type: 3}
+  Materials:
+  - BuiltIn: {fileID: 2100000, guid: c96d6b5a3b6765d459820d81dcaa7afb, type: 2}
+    URP: {fileID: 2100000, guid: 430e19d6af6d9204bab86e724f96c5ef, type: 2}

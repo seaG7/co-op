@@ -1,0 +1,535 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9136348747257432685
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5099004342918011455}
+  - component: {fileID: 1083642295344292675}
+  - component: {fileID: 4711184858803653402}
+  m_Layer: 0
+  m_Name: AntiqueGarden
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5099004342918011455
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9136348747257432685}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1083642295344292675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9136348747257432685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f50d64b2ff83464d925e45a6575f572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Chance>k__BackingField: 1
+  CellTypes:
+  - Ruins
+  - Gate
+  - Forest
+  - Field
+  DrawElements: 77
+  WallMaterial: {fileID: 2100000, guid: 9927acb255691db4e8f11b77057dceb3, type: 2}
+  WallHeight: 5
+  WallWidth: 0.7
+  WallSegmentLength: 3
+  WallCornerPadding: 1.5
+  InnerPassageWallChance: 0.7
+  InnerFlatPassageWallChance: 0.5
+  AlwaysMakeWallBeforeDoor: 0
+  InteriorWallChance: 0.5
+  InteriorWallCornerPadding: 2
+  BasementMaterial: {fileID: 2100000, guid: 9927acb255691db4e8f11b77057dceb3, type: 2}
+  BasementPadding: 0
+  BasementHeight: 2
+  BasementLiftUp: -0.1
+  CeilMaterial: {fileID: 2100000, guid: be5461509acd23b409a3b628bba41a74, type: 2}
+  CeilHeight: 0.1
+  CeilDepth: 0
+  CeilLiftUp: 0
+  CeilChance: 0.5
+  CeilCellTypes: []
+  ColumnsOverDepth: 0.3
+  WallWindowBalance: 0.5
+  OuterWindowsChance: 1
+  InnerPassageFenceChance: 0.5
+  WindowBalconyBalance: 0.2
+  WallBalconyBalance: 0.1
+  StepsType: 1
+  StepDepth: 0.6
+  TerrainExclusiveGroup: BuildingsSpawner
+  CyclesChance: 0.1
+  ChanceInCell: 0.5
+  MaxHeightToMakeAddPassage: 3.1
+  HeightAboveWater:
+    Min: 1
+    Max: 100
+    Type: 0
+  ColliderLayer: 0
+  SpawnCellsInSeparateMesh: 0
+  ShowGoodSpawnPoints: 0
+--- !u!114 &4711184858803653402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9136348747257432685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b39aa8caa98abc44ba314d20faf78ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StretchByY: 0
+  Materials:
+  - {fileID: 2100000, guid: b04a48bffcbf55045be9c3fdaeac41a5, type: 2}
+  Elements:
+  - Name: "Door\u202F"
+    Enabled: 1
+    Place: 4
+    SegmentOrder: 0
+    EdgeType: 15
+    Offset: {x: 0, y: 0, z: 0}
+    Chance: 1
+    SegmentExclusiveGroup: Door
+    Features: 0
+    Shapes:
+      Items:
+      - Points:
+        - Point: {x: -120, y: 120, z: -30}
+          draggedAxes: {x: 0, y: 0}
+        - Point: {x: -120, y: 120, z: 30}
+          draggedAxes: {x: 0, y: 0}
+        - Point: {x: 120, y: 120, z: 30}
+          draggedAxes: {x: 0, y: 0}
+        - Point: {x: 120, y: 120, z: -30}
+          draggedAxes: {x: 0, y: 0}
+        - Point: {x: -120, y: -120, z: -30}
+          draggedAxes: {x: 0, y: 0}
+        - Point: {x: -120, y: -120, z: 30}
+          draggedAxes: {x: 0, y: 0}
+        - Point: {x: 120, y: -120, z: 30}
+          draggedAxes: {x: 0, y: 0}
+        - Point: {x: 120, y: -120, z: -30}
+          draggedAxes: {x: 0, y: 0}
+        VisibleFaces: 010101010101
+        Type: 11
+        Features: 0
+        MaterialIndex: 0
+        Material: {fileID: 0}
+        Prefab: {fileID: 4300000, guid: 572de55790784cc409c12d73fa69b1e6, type: 2}
+        MeshScale: 1
+      SelectedShapeIndex: 0
+      Zoom: 1
+  - Name: "Door\u202F"
+    Enabled: 1
+    Place: 4
+    SegmentOrder: 0
+    EdgeType: 15
+    Offset: {x: 0, y: 0, z: 0}
+    Chance: 1
+    SegmentExclusiveGroup: Door
+    Features: 0
+    Shapes:
+      Items:
+      - Points:
+        - Point: {x: -140, y: 120, z: -30}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: -140, y: 120, z: 15}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: -105, y: 120, z: 15}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: -105, y: 120, z: -30}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: -140, y: -120, z: -30}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: -140, y: -120, z: 15}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: -105, y: -120, z: 15}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: -105, y: -120, z: -30}
+          draggedAxes: {x: 1, y: 0}
+        VisibleFaces: 000001010101
+        Type: 6
+        Features: 1
+        MaterialIndex: 0
+        Material: {fileID: 0}
+        Prefab: {fileID: 4300000, guid: 572de55790784cc409c12d73fa69b1e6, type: 2}
+        MeshScale: 1
+      - Points:
+        - Point: {x: -155, y: -120, z: -35}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: -155, y: -120, z: 25}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: -90, y: -120, z: 25}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: -90, y: -120, z: -35}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: -155, y: -130, z: -35}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: -155, y: -130, z: 25}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: -90, y: -130, z: 25}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: -90, y: -130, z: -35}
+          draggedAxes: {x: 1, y: 0}
+        VisibleFaces: 010101010101
+        Type: 0
+        Features: 1
+        MaterialIndex: 0
+        Material: {fileID: 0}
+        Prefab: {fileID: 0}
+        MeshScale: 1
+      - Points:
+        - Point: {x: 105, y: 120, z: -30}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: 105, y: 120, z: 15}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: 140, y: 120, z: 15}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: 140, y: 120, z: -30}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: 105, y: -120, z: -30}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 105, y: -120, z: 15}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 140, y: -120, z: 15}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 140, y: -120, z: -30}
+          draggedAxes: {x: 1, y: 0}
+        VisibleFaces: 010101010101
+        Type: 6
+        Features: 1
+        MaterialIndex: 0
+        Material: {fileID: 0}
+        Prefab: {fileID: 0}
+        MeshScale: 1
+      - Points:
+        - Point: {x: 85, y: -120, z: -35}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 85, y: -120, z: 25}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 155, y: -120, z: 25}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 155, y: -120, z: -35}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 85, y: -130, z: -35}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 85, y: -130, z: 25}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 155, y: -130, z: 25}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 155, y: -130, z: -35}
+          draggedAxes: {x: 1, y: 0}
+        VisibleFaces: 010101010101
+        Type: 0
+        Features: 1
+        MaterialIndex: 0
+        Material: {fileID: 0}
+        Prefab: {fileID: 0}
+        MeshScale: 1
+      - Points:
+        - Point: {x: -150, y: -130, z: -30}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: -150, y: -130, z: 20}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: 150, y: -130, z: 20}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: 150, y: -130, z: -30}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: -150, y: -145, z: -30}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: -150, y: -145, z: 20}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: 150, y: -145, z: 20}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: 150, y: -145, z: -30}
+          draggedAxes: {x: 1, y: 1}
+        VisibleFaces: 010101010101
+        Type: 0
+        Features: 0
+        MaterialIndex: 0
+        Material: {fileID: 0}
+        Prefab: {fileID: 0}
+        MeshScale: 1
+      - Points:
+        - Point: {x: -140, y: -145, z: -25}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: -140, y: -145, z: 15}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 140, y: -145, z: 15}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 140, y: -145, z: -25}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 0, y: -180, z: -25}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 0, y: -180, z: 15}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 0, y: -180, z: 15}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 0, y: -180, z: -25}
+          draggedAxes: {x: 1, y: 0}
+        VisibleFaces: 000101010101
+        Type: 0
+        Features: 0
+        MaterialIndex: 0
+        Material: {fileID: 0}
+        Prefab: {fileID: 0}
+        MeshScale: 1
+      - Points:
+        - Point: {x: -120, y: 120, z: -35}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: -120, y: 120, z: 25}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: -55, y: 120, z: 25}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: -55, y: 120, z: -35}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: -120, y: 95, z: -35}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: -120, y: 95, z: 25}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: -55, y: 95, z: 25}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: -55, y: 95, z: -35}
+          draggedAxes: {x: 1, y: 0}
+        VisibleFaces: 010101010101
+        Type: 0
+        Features: 0
+        MaterialIndex: 0
+        Material: {fileID: 0}
+        Prefab: {fileID: 0}
+        MeshScale: 1
+      - Points:
+        - Point: {x: 60, y: 120, z: -35}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: 60, y: 120, z: 25}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: 120, y: 120, z: 25}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: 120, y: 120, z: -35}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: 60, y: 95, z: -35}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 60, y: 95, z: 25}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 120, y: 95, z: 25}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 120, y: 95, z: -35}
+          draggedAxes: {x: 1, y: 0}
+        VisibleFaces: 010101010101
+        Type: 0
+        Features: 0
+        MaterialIndex: 0
+        Material: {fileID: 0}
+        Prefab: {fileID: 0}
+        MeshScale: 1
+      SelectedShapeIndex: 6
+      Zoom: 0.5
+  - Name: "Door\u202FEmpty"
+    Enabled: 1
+    Place: 4
+    SegmentOrder: 0
+    EdgeType: 15
+    Offset: {x: 0, y: 0, z: 0}
+    Chance: 1
+    SegmentExclusiveGroup: Door
+    Features: 0
+    Shapes:
+      Items:
+      - Points:
+        - Point: {x: -120, y: 120, z: -30}
+          draggedAxes: {x: 0, y: 0}
+        - Point: {x: -120, y: 120, z: 30}
+          draggedAxes: {x: 0, y: 0}
+        - Point: {x: 120, y: 120, z: 30}
+          draggedAxes: {x: 0, y: 0}
+        - Point: {x: 120, y: 120, z: -30}
+          draggedAxes: {x: 0, y: 0}
+        - Point: {x: -120, y: -120, z: -30}
+          draggedAxes: {x: 0, y: 0}
+        - Point: {x: -120, y: -120, z: 30}
+          draggedAxes: {x: 0, y: 0}
+        - Point: {x: 120, y: -120, z: 30}
+          draggedAxes: {x: 0, y: 0}
+        - Point: {x: 120, y: -120, z: -30}
+          draggedAxes: {x: 0, y: 0}
+        VisibleFaces: 010101010101
+        Type: 255
+        Features: 0
+        MaterialIndex: 0
+        Material: {fileID: 0}
+        Prefab: {fileID: 0}
+        MeshScale: 1
+      SelectedShapeIndex: 0
+      Zoom: 0.5
+  - Name: "Wall, Window, Balcony, WallPadding\u202F"
+    Enabled: 1
+    Place: 267
+    SegmentOrder: 0
+    EdgeType: 15
+    Offset: {x: 0, y: 0, z: 0}
+    Chance: 1
+    SegmentExclusiveGroup: 
+    Features: 0
+    Shapes:
+      Items:
+      - Points:
+        - Point: {x: -120, y: 120, z: -30}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: -120, y: 120, z: -15}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: 120, y: 120, z: -15}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: 120, y: 120, z: -30}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: -120, y: 80, z: -30}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: -120, y: 80, z: -15}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 120, y: 80, z: -15}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 120, y: 80, z: -30}
+          draggedAxes: {x: 1, y: 0}
+        VisibleFaces: 010101010101
+        Type: 0
+        Features: 0
+        MaterialIndex: 0
+        Material: {fileID: 0}
+        Prefab: {fileID: 4300000, guid: 572de55790784cc409c12d73fa69b1e6, type: 2}
+        MeshScale: 1
+      SelectedShapeIndex: 0
+      Zoom: 1
+  - Name: "Corner\u202F"
+    Enabled: 1
+    Place: 64
+    SegmentOrder: 0
+    EdgeType: 15
+    Offset: {x: 0, y: 0, z: 0}
+    Chance: 1
+    SegmentExclusiveGroup: 
+    Features: 0
+    Shapes:
+      Items:
+      - Points:
+        - Point: {x: -45, y: 110, z: -10}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: -45, y: 110, z: 10}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: 55, y: 110, z: 10}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: 55, y: 110, z: -10}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: -45, y: -5, z: -10}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: -45, y: -5, z: 10}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 55, y: -5, z: 10}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 55, y: -5, z: -10}
+          draggedAxes: {x: 1, y: 0}
+        VisibleFaces: 000001010101
+        Type: 5
+        Features: 1
+        MaterialIndex: 0
+        Material: {fileID: 0}
+        Prefab: {fileID: 4300000, guid: 572de55790784cc409c12d73fa69b1e6, type: 2}
+        MeshScale: 1
+      - Points:
+        - Point: {x: -45, y: -5, z: -10}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: -45, y: -5, z: 10}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: 55, y: -5, z: 10}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: 55, y: -5, z: -10}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: -55, y: -15, z: -15}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: -55, y: -15, z: 15}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: 65, y: -15, z: 15}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: 65, y: -15, z: -15}
+          draggedAxes: {x: 1, y: 1}
+        VisibleFaces: 010001010101
+        Type: 0
+        Features: 0
+        MaterialIndex: 0
+        Material: {fileID: 0}
+        Prefab: {fileID: 0}
+        MeshScale: 1
+      - Points:
+        - Point: {x: -80, y: -15, z: -20}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: -80, y: -15, z: 20}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: 85, y: -15, z: 20}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: 85, y: -15, z: -20}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: -80, y: -30, z: -20}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: -80, y: -30, z: 20}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 85, y: -30, z: 20}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 85, y: -30, z: -20}
+          draggedAxes: {x: 1, y: 0}
+        VisibleFaces: 010101010101
+        Type: 0
+        Features: 1
+        MaterialIndex: 0
+        Material: {fileID: 0}
+        Prefab: {fileID: 0}
+        MeshScale: 1
+      - Points:
+        - Point: {x: -80, y: 125, z: -20}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: -80, y: 125, z: 20}
+          draggedAxes: {x: 0, y: 1}
+        - Point: {x: 80, y: 125, z: 20}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: 80, y: 125, z: -20}
+          draggedAxes: {x: 1, y: 1}
+        - Point: {x: -75, y: 110, z: -20}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: -75, y: 110, z: 20}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 75, y: 110, z: 20}
+          draggedAxes: {x: 1, y: 0}
+        - Point: {x: 75, y: 110, z: -20}
+          draggedAxes: {x: 1, y: 0}
+        VisibleFaces: 010101010101
+        Type: 0
+        Features: 0
+        MaterialIndex: 0
+        Material: {fileID: 0}
+        Prefab: {fileID: 0}
+        MeshScale: 1
+      SelectedShapeIndex: -1
+      Zoom: 1
+  _CreateElement: 0

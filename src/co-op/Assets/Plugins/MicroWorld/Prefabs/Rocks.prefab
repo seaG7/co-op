@@ -1,0 +1,2024 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4830809689412711857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6429272421641622231}
+  - component: {fileID: 4066241322250486385}
+  - component: {fileID: 6666002826281773997}
+  - component: {fileID: 7883030413679080306}
+  - component: {fileID: 7462148242910929941}
+  m_Layer: 0
+  m_Name: Rocks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6429272421641622231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4830809689412711857}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4066241322250486385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4830809689412711857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2cc2b6a77f299418c0ffb36de8cf1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Comment: High Rocks
+  Semantic: 10
+  DistanceFromCenter:
+    Min: 0.18423632
+    Max: 0.5453243
+    Type: 0
+  Slope:
+    Min: 0
+    Max: 45
+    Type: 0
+  CellTypes:
+  - -Ruins
+  OppositeCellTypes: []
+  WallAngle:
+    Min: -90
+    Max: 90
+    Type: 0
+  EdgeConditions: 4
+  Tags: []
+  ExclusiveGroups:
+    TerrainExclusiveGroup: 
+    Chance: 1
+    CellExclusiveGroup: 
+    SectorExclusiveGroup: 
+  Density:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0.1
+  AdvancedSpawn:
+    ChanceInCell: 1
+    ChanceInSector: 1
+    SpawnLimitsPerCell:
+      Min: 0
+      Max: 1000
+      Type: 0
+    Features: 0
+  DragHerePrefabToAddToList: {fileID: 0}
+  Prefabs:
+  - Name: '[1] vert rock 4000'
+    prefab: {fileID: 1925299109320566685, guid: d19f44fb47309d343a5d0ef6f8fd17ae, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.3
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 193
+  - Name: '[1] vert rock 19426'
+    prefab: {fileID: 480332578164593079, guid: f431b81ba3539fc49951975bdece3ed9, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.3
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 193
+  - Name: '[1] vert rock 30270'
+    prefab: {fileID: 5392437165844371856, guid: 977d709eab7041e4bafc5777e3b82e34, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 4
+    ScaleVariance: 0.3
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 193
+  - Name: '[1] vert rock 44510'
+    prefab: {fileID: 2024383185348251721, guid: 2ed1b3101adf0934ba17df362bcef7e7, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.3
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 193
+  - Name: '[1] vert rock 48838'
+    prefab: {fileID: 441656837971482181, guid: a192e4e250ed6944da68873331e05b6f, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.3
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 1
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 193
+--- !u!114 &6666002826281773997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4830809689412711857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2cc2b6a77f299418c0ffb36de8cf1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Comment: Big Rocks
+  Semantic: 10
+  DistanceFromCenter:
+    Min: 0.17041855
+    Max: 0.77806544
+    Type: 0
+  Slope:
+    Min: 0
+    Max: 45
+    Type: 0
+  CellTypes:
+  - -Ruins
+  OppositeCellTypes: []
+  WallAngle:
+    Min: -90
+    Max: 90
+    Type: 0
+  EdgeConditions: 4
+  Tags: []
+  ExclusiveGroups:
+    TerrainExclusiveGroup: 
+    Chance: 1
+    CellExclusiveGroup: 
+    SectorExclusiveGroup: 
+  Density:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0.3
+  AdvancedSpawn:
+    ChanceInCell: 1
+    ChanceInSector: 1
+    SpawnLimitsPerCell:
+      Min: 0
+      Max: 1000
+      Type: 0
+    Features: 0
+  DragHerePrefabToAddToList: {fileID: 0}
+  Prefabs:
+  - Name: '[1] rock 9400'
+    prefab: {fileID: 4867751872399215229, guid: f34da4ce679cf1a428288b3799746180, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] rock 14964'
+    prefab: {fileID: 428490163074544528, guid: 0aee57a460dc11246b1d0edb9af45172, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] rock 15854'
+    prefab: {fileID: 7646447856530078361, guid: 9d46577114f87d7419507e1c7ecb2359, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] rock 27876'
+    prefab: {fileID: 882059234158046859, guid: 6cd98f2c68fa23243986983f094645c2, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] rock 31714'
+    prefab: {fileID: 989688569407595383, guid: e8fd538d0a97ef64fa88ae898a018471, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] rock 39778'
+    prefab: {fileID: 1146764444174764970, guid: 53c0ffd6b7595424fbd7cd23d7ae253d, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] rock 42292'
+    prefab: {fileID: 1015096018871476674, guid: d41f9ee53bd24324e86bd4851381a6fb, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] rock 45792'
+    prefab: {fileID: 500913831203382717, guid: 45254ee3a82ce864cb04964e8cd4c205, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] rock 49119'
+    prefab: {fileID: 2133755838293108064, guid: 825b36d12b5210147a1633a8fb8785f5, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] flat rock 15050'
+    prefab: {fileID: 4322757380690442379, guid: 94bd15f274a3f6d48bb01f41afe08821, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] flat rock 23658'
+    prefab: {fileID: 5523978119078375239, guid: 406746e3044e05d488fe1a9ee20c5c63, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] flat rock 27181'
+    prefab: {fileID: 2977127517943191477, guid: b218727972652ab47b93b99937121930, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] flat rock 35597'
+    prefab: {fileID: 7776991883517291163, guid: 4fa4b487979541540a7112de41e0b990, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] flat rock 37364'
+    prefab: {fileID: 7270804934953332620, guid: 34daa27cf952bbd4abb5f2f5247e6432, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] flat rock 40152'
+    prefab: {fileID: 4486846988281654046, guid: 51bbf45701197cb4782d765eca01db61, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] flat rock 41358'
+    prefab: {fileID: 387907550300615419, guid: 723e7b5ba4a040c479b0df73f760bfa0, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] flat rock 44595'
+    prefab: {fileID: 7192944778953148357, guid: 90e4f43474f881145ab2bed281d95926, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] flat rock 48780'
+    prefab: {fileID: 2876128316138114159, guid: 2ecb45040be948946ba3dc29235e2797, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 3
+    ScaleVariance: 0.5
+    ExclusiveRadius: 2
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+--- !u!114 &7883030413679080306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4830809689412711857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2cc2b6a77f299418c0ffb36de8cf1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Comment: Stones
+  Semantic: 10
+  DistanceFromCenter:
+    Min: 0.31260026
+    Max: 1
+    Type: 0
+  Slope:
+    Min: 0
+    Max: 25
+    Type: 0
+  CellTypes:
+  - -Ruins
+  OppositeCellTypes: []
+  WallAngle:
+    Min: -90
+    Max: 90
+    Type: 0
+  EdgeConditions: 0
+  Tags: []
+  ExclusiveGroups:
+    TerrainExclusiveGroup: 
+    Chance: 1
+    CellExclusiveGroup: 
+    SectorExclusiveGroup: 
+  Density:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 4
+  AdvancedSpawn:
+    ChanceInCell: 1
+    ChanceInSector: 1
+    SpawnLimitsPerCell:
+      Min: 0
+      Max: 1000
+      Type: 0
+    Features: 0
+  DragHerePrefabToAddToList: {fileID: 0}
+  Prefabs:
+  - Name: '[1] rock 45792'
+    prefab: {fileID: 500913831203382717, guid: 45254ee3a82ce864cb04964e8cd4c205, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1
+    ScaleVariance: 0.7
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] rock 49119'
+    prefab: {fileID: 2133755838293108064, guid: 825b36d12b5210147a1633a8fb8785f5, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1
+    ScaleVariance: 0.7
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] rock 42292'
+    prefab: {fileID: 1015096018871476674, guid: d41f9ee53bd24324e86bd4851381a6fb, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1
+    ScaleVariance: 0.7
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] rock 39778'
+    prefab: {fileID: 1146764444174764970, guid: 53c0ffd6b7595424fbd7cd23d7ae253d, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1
+    ScaleVariance: 0.7
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] rock 31714'
+    prefab: {fileID: 989688569407595383, guid: e8fd538d0a97ef64fa88ae898a018471, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1
+    ScaleVariance: 0.7
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] rock 27876'
+    prefab: {fileID: 882059234158046859, guid: 6cd98f2c68fa23243986983f094645c2, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1
+    ScaleVariance: 0.7
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] rock 15854'
+    prefab: {fileID: 7646447856530078361, guid: 9d46577114f87d7419507e1c7ecb2359, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1
+    ScaleVariance: 0.7
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] rock 14964'
+    prefab: {fileID: 428490163074544528, guid: 0aee57a460dc11246b1d0edb9af45172, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1
+    ScaleVariance: 0.7
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] rock 9400'
+    prefab: {fileID: 4867751872399215229, guid: f34da4ce679cf1a428288b3799746180, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1
+    ScaleVariance: 0.7
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 66
+  - Name: '[1] flat long rock 20793'
+    prefab: {fileID: 8952945666121623932, guid: 034b9e99e853d7b4a9d92f7d9b688f6e, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1.2
+    ScaleVariance: 0.5
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 193
+  - Name: '[1] flat long rock 29874'
+    prefab: {fileID: 3826749145141187701, guid: ba86970dd10acb640abfa17c026fc38d, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1.2
+    ScaleVariance: 0.5
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 193
+  - Name: '[1] flat long rock 31025'
+    prefab: {fileID: 7974993842994313824, guid: d4f207708502b1a45a8edd4d86a3e57b, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1.2
+    ScaleVariance: 0.5
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 193
+  - Name: '[1] flat long rock 39289'
+    prefab: {fileID: 3454710730220654718, guid: b51bcb7ab3282bd48adffb5831f29281, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1.2
+    ScaleVariance: 0.5
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 193
+  - Name: '[1] flat long rock 45360'
+    prefab: {fileID: 3094176774897789135, guid: 9fcd2f5fb029ad84ca0b48c19c41b6da, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1.2
+    ScaleVariance: 0.5
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 193
+  - Name: '[1] flat rock 15050'
+    prefab: {fileID: 4322757380690442379, guid: 94bd15f274a3f6d48bb01f41afe08821, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1.2
+    ScaleVariance: 0.7
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 193
+  - Name: '[1] flat rock 23658'
+    prefab: {fileID: 5523978119078375239, guid: 406746e3044e05d488fe1a9ee20c5c63, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1.2
+    ScaleVariance: 0.7
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 193
+  - Name: '[1] flat rock 27181'
+    prefab: {fileID: 2977127517943191477, guid: b218727972652ab47b93b99937121930, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1.2
+    ScaleVariance: 0.7
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 193
+  - Name: '[1] flat rock 35597'
+    prefab: {fileID: 7776991883517291163, guid: 4fa4b487979541540a7112de41e0b990, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1.2
+    ScaleVariance: 0.7
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 193
+  - Name: '[1] flat rock 37364'
+    prefab: {fileID: 7270804934953332620, guid: 34daa27cf952bbd4abb5f2f5247e6432, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1.2
+    ScaleVariance: 0.5
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 193
+  - Name: '[1] flat rock 40152'
+    prefab: {fileID: 4486846988281654046, guid: 51bbf45701197cb4782d765eca01db61, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1.2
+    ScaleVariance: 0.7
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 193
+  - Name: '[1] flat rock 41358'
+    prefab: {fileID: 387907550300615419, guid: 723e7b5ba4a040c479b0df73f760bfa0, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1.2
+    ScaleVariance: 0.7
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 193
+  - Name: '[1] flat rock 44595'
+    prefab: {fileID: 7192944778953148357, guid: 90e4f43474f881145ab2bed281d95926, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1.2
+    ScaleVariance: 0.7
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 193
+  - Name: '[1] flat rock 48780'
+    prefab: {fileID: 2876128316138114159, guid: 2ecb45040be948946ba3dc29235e2797, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 7
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 0.3
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 1.2
+    ScaleVariance: 0.7
+    ExclusiveRadius: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 193
+--- !u!114 &7462148242910929941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4830809689412711857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2cc2b6a77f299418c0ffb36de8cf1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Comment: Small Stones
+  Semantic: 0
+  DistanceFromCenter:
+    Min: 0.3
+    Max: 1
+    Type: 0
+  Slope:
+    Min: 0
+    Max: 50.049698
+    Type: 0
+  CellTypes: []
+  OppositeCellTypes: []
+  WallAngle:
+    Min: -90
+    Max: 90
+    Type: 0
+  EdgeConditions: 0
+  Tags: []
+  ExclusiveGroups:
+    TerrainExclusiveGroup: 
+    Chance: 1
+    CellExclusiveGroup: 
+    SectorExclusiveGroup: 
+  Density:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 10
+  AdvancedSpawn:
+    ChanceInCell: 1
+    ChanceInSector: 1
+    SpawnLimitsPerCell:
+      Min: 0
+      Max: 1000
+      Type: 0
+    Features: 0
+  DragHerePrefabToAddToList: {fileID: 0}
+  Prefabs:
+  - Name: '[1] Rocks_Round_m_01'
+    prefab: {fileID: 100000, guid: db6c6fdcd4d2b1348a79987ff47f549c, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 2
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.3
+    ScaleVariance: 0.2
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[1] Rocks_Round_m_02'
+    prefab: {fileID: 100000, guid: 75e99c0b0cbdf98469c81eed74975a10, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 2
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.3
+    ScaleVariance: 0.2
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[1] Rocks_Round_m_03'
+    prefab: {fileID: 100000, guid: 6f3ba765b041a244d9569640b03bfe7b, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 2
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.3
+    ScaleVariance: 0.2
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[1] Rocks_Round_m_04'
+    prefab: {fileID: 100000, guid: c19459fc957617c47adbfa0d309a0206, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 2
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.3
+    ScaleVariance: 0.2
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[1] Rock_Round_m_14'
+    prefab: {fileID: 100000, guid: ba8ae788fd6d4f148b417f1b7958feb0, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 2
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.3
+    ScaleVariance: 0.2
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[1] Rock_Round_m_11'
+    prefab: {fileID: 100000, guid: aaf82f79c7c7ff04fa0811bd3ebe5595, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 1
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 1
+    BunchRadius: 2
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.3
+    ScaleVariance: 0.2
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[2] Rock_Round_s_04'
+    prefab: {fileID: 100000, guid: e80ed2f7a68c0a64da5107d74332ccc0, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 2
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 3
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.3
+    ScaleVariance: 0.2
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[2] Rock_Round_s_01'
+    prefab: {fileID: 100000, guid: ba376045b7d4a1b4c811af88401773c6, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 2
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 3
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.3
+    ScaleVariance: 0.2
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[2] Rock_Round_s_01'
+    prefab: {fileID: 100000, guid: ba376045b7d4a1b4c811af88401773c6, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 2
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 3
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.3
+    ScaleVariance: 0.2
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 1
+  - Name: '[2] Rock_Round_m_11'
+    prefab: {fileID: 100000, guid: aaf82f79c7c7ff04fa0811bd3ebe5595, type: 3}
+    PrefabsFromGenerator: 5
+    AdditionalPrefab: {fileID: 0}
+    Enabled: 1
+    UsageChance: 1
+    RenderType: 5
+    Chance: 2
+    RepeatChance: 0
+    Duplicates: 1
+    Tags: []
+    ExclusiveGroups:
+      TerrainExclusiveGroup: 
+      CellExclusiveGroup: 
+      SectorExclusiveGroup: 
+    Bunch: 3
+    BunchRadius: 1
+    BunchGravity: 1
+    BunchPeripheryScale: 1
+    Scale: 0.3
+    ScaleVariance: 0.2
+    ExclusiveRadius: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    AltColor: {r: 1, g: 1, b: 1, a: 1}
+    OffsetY: 0
+    Verticality: 0
+    HeightAboveWater:
+      Min: 0
+      Max: 100
+      Type: 0
+    Features: 1

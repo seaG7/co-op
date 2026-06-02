@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2493407354552962709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5891621274915795155}
+  - component: {fileID: 2191926244599916299}
+  m_Layer: 0
+  m_Name: Forest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5891621274915795155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2493407354552962709}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2191926244599916299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2493407354552962709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb636acf4d7aac4094b706c83d19f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Chance>k__BackingField: 1
+  MapSize:
+    m_Mode: 3
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 4
+    m_ConstantMax: 15
+  CellSize:
+    m_Mode: 3
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 10
+    m_ConstantMax: 10
+  BorderPadding: 1
+  Geometry: 0
+  CellTypeFrequency:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 3
+  CellTypeUniformity: 0
+  CellTypes:
+  - Name: Forest
+    Chance: 1
+    MicroNoiseScale: 1
+    HeightPower: 1
+    HeightSharpness: 1
+    Elevation: 0
+    Features: 0
+  - Name: Field
+    Chance: 0.2
+    MicroNoiseScale: 1
+    HeightPower: 1
+    HeightSharpness: 1
+    Elevation: 0
+    Features: 0
+  - Name: Ruins
+    Chance: 0.02
+    MicroNoiseScale: 0
+    HeightPower: 20
+    HeightSharpness: 100
+    Elevation: 0
+    Features: 0
+  BorderCellType:
+    Name: Border
+    Chance: 1
+    MicroNoiseScale: 1
+    HeightPower: 1
+    HeightSharpness: 3
+    Elevation: 0
+    Features: 0
+  GateCellType:
+    Name: Gate
+    Chance: 1
+    MicroNoiseScale: 0
+    HeightPower: 5
+    HeightSharpness: 10
+    Elevation: 0
+    Features: 0
+  WaterCellType:
+    Name: Water
+    Chance: 1
+    MicroNoiseScale: 1
+    HeightPower: 1
+    HeightSharpness: 1
+    Elevation: 0
+    Features: 0
+  FallbackCellType:
+    Name: Fallback
+    Chance: 1
+    MicroNoiseScale: 1
+    HeightPower: 1
+    HeightSharpness: 1
+    Elevation: 0
+    Features: 0

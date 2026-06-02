@@ -1,0 +1,149 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5077862500209957422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2563969875077443702}
+  - component: {fileID: 6141972301693636647}
+  - component: {fileID: 4992813965815433606}
+  - component: {fileID: 2985592243230710105}
+  m_Layer: 0
+  m_Name: Flowers Temperate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2563969875077443702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5077862500209957422}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &6141972301693636647
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5077862500209957422}
+  m_Mesh: {fileID: 4300000, guid: bbdb873010220374dadc3d50c98ff85a, type: 2}
+--- !u!23 &4992813965815433606
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5077862500209957422}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 3
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 091509f70fafbf24294f29a7d290a6d6, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2985592243230710105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5077862500209957422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9e8c262d99cdb42aa5a8057bd404a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Seed: 0
+  RndColor:
+    serializedVersion: 2
+    key0: {r: 0.7442974, g: 0.113080375, b: 0.1300943, a: 0.8901961}
+    key1: {r: 1, g: 0.9247173, b: 0, a: 0.8901961}
+    key2: {r: 0.6688355, g: 0.06563937, b: 0.9267812, a: 0}
+    key3: {r: 0, g: 0.24839164, b: 0.8186427, a: 0}
+    key4: {r: 1, g: 1, b: 1, a: 0}
+    key5: {r: 0.99607843, g: 0.5467881, b: 0.0784314, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 8144
+    ctime1: 21387
+    ctime2: 31733
+    ctime3: 39872
+    ctime4: 65535
+    ctime5: 65115
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 39596
+    atime2: 65535
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 1
+    m_ColorSpace: 0
+    m_NumColorKeys: 5
+    m_NumAlphaKeys: 3
+  RndColorName: _FlowerColor
+  SubMesh: 0
+  Meshes:
+  - {fileID: 4300000, guid: bbdb873010220374dadc3d50c98ff85a, type: 2}
+  - {fileID: 4300000, guid: bbdb873010220374dadc3d50c98ff85a, type: 2}
+  - {fileID: 4300000, guid: b5b8cb77363446840bb05c86b3b09cc0, type: 2}
+  - {fileID: 4300000, guid: 529659558eaaa134e90f02bb84127ca8, type: 2}
+  Textures:
+  - {fileID: 2800000, guid: 20f392513b5812e4aa07e80318456437, type: 3}
+  - {fileID: 2800000, guid: 5979c814163510b47b96a18b71d9c98e, type: 3}
+  - {fileID: 2800000, guid: da2401525f5c7fb4fbda6788b0cbcdfe, type: 3}
+  - {fileID: 2800000, guid: 68f4cf04ad5b52a4ebb4daa297fc446e, type: 3}
+  - {fileID: 2800000, guid: 9ed7f7724af97e3409a17f05d1cf0abd, type: 3}
+  - {fileID: 2800000, guid: 643684cf7fc9cee43bf65795e57e959d, type: 3}
+  - {fileID: 2800000, guid: a93059f1e76d37240ab2a1b4ddbc086b, type: 3}
+  - {fileID: 2800000, guid: 32d578f5bb00fae40a895d4bf67fe0ec, type: 3}
+  - {fileID: 2800000, guid: b4411ca0429868241956f8c405f67409, type: 3}
+  - {fileID: 2800000, guid: 02a63d52475ecf240833046e40802cd0, type: 3}
+  - {fileID: 2800000, guid: f0ed3c68e59bb2143a8875683cf8495e, type: 3}
+  _Test: 0

@@ -1,0 +1,5141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 9
+  m_Fog: 0
+  m_FogColor: {r: 0.45024434, g: 0.4956033, b: 0.5145029, a: 1}
+  m_FogMode: 1
+  m_FogDensity: 0.005
+  m_LinearFogStart: 40
+  m_LinearFogEnd: 150
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 0
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 85d481dc56ee79b4d94fcf6f17c09967, type: 2}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 294502595}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 12
+  m_GIWorkflowMode: 1
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 1
+    m_EnableRealtimeLightmaps: 0
+  m_LightmapEditorSettings:
+    serializedVersion: 12
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1
+    m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 2
+    m_BakeBackend: 1
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 512
+    m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 256
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 1
+    m_PVRDenoiserTypeDirect: 1
+    m_PVRDenoiserTypeIndirect: 1
+    m_PVRDenoiserTypeAO: 1
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVREnvironmentMIS: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
+  m_LightingDataAsset: {fileID: 112000000, guid: cc052f12ffce1bd458a74b54834f2118, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 70b119e8fb6b8564dbce9b1af9f44a47, type: 2}
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 3
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    buildHeightMesh: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!4 &53130514 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5099004342918011455, guid: c77c8d9e1b8b4494e96a99adce880dba, type: 3}
+  m_PrefabInstance: {fileID: 1415714271847297272}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &116474303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 116474305}
+  - component: {fileID: 116474304}
+  m_Layer: 0
+  m_Name: MicroWorld
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!114 &116474304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116474303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d38886acdcc21142883fa5ee7969de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Seed: 3
+  Locked: 0
+  Gates:
+  - Name: North Gate
+    WorldSide: 0
+    Cell: {x: 7, y: 13}
+    ReferenceType: 0
+    Target: {fileID: 0}
+    TargetId: 
+    Gate: {fileID: 0}
+    GatePrefab: {fileID: 0}
+  - Name: South Gate
+    WorldSide: 20
+    Cell: {x: 8, y: 0}
+    ReferenceType: 0
+    Target: {fileID: 0}
+    TargetId: 
+    Gate: {fileID: 0}
+    GatePrefab: {fileID: 0}
+  CustomCells: []
+  ForbiddenTags: []
+  <Map>k__BackingField:
+    Size: 14
+    Geometry:
+      rid: 6670490249840558249
+    Cells:
+    - Type:
+        rid: 6670490249840558250
+      Height: -1.0000001
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 4.000008
+        IsCellTypeBorder: 0
+      - Height: 4.0009375
+        IsCellTypeBorder: 0
+      - Height: 1.0000001
+        IsCellTypeBorder: 1
+      - Height: 1.0000001
+        IsCellTypeBorder: 1
+      - Height: 1.0000001
+        IsCellTypeBorder: 1
+      - Height: 1.0000001
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 3.0009375
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.99907064
+        IsCellTypeBorder: 1
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: -3.0009375
+        IsCellTypeBorder: 1
+      - Height: -4.0009375
+        IsCellTypeBorder: 0
+      - Height: -0.0009293556
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 3.0009375
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0.9991994
+        IsCellTypeBorder: 0
+      - Height: -3.0009375
+        IsCellTypeBorder: 1
+      - Height: -3.0009375
+        IsCellTypeBorder: 1
+      - Height: -3.0009375
+        IsCellTypeBorder: 1
+      - Height: 0
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 4.000137
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: -0.9995992
+        IsCellTypeBorder: 1
+      - Height: -1.9995992
+        IsCellTypeBorder: 0
+      - Height: -4.000137
+        IsCellTypeBorder: 1
+      - Height: -0.9991994
+        IsCellTypeBorder: 0
+      - Height: 0.0008006096
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 2.0005376
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 3.999914
+        IsCellTypeBorder: 0
+      - Height: -2.0005376
+        IsCellTypeBorder: 1
+      - Height: -2.0005376
+        IsCellTypeBorder: 1
+      - Height: -2.0005376
+        IsCellTypeBorder: 1
+      - Height: 1.9995992
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 6.0004516
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: -1.0002899
+        IsCellTypeBorder: 1
+      - Height: -2.00029
+        IsCellTypeBorder: 0
+      - Height: -6.0004516
+        IsCellTypeBorder: 1
+      - Height: -3.999914
+        IsCellTypeBorder: 0
+      - Height: -2.999914
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 4.0001616
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 2.0005665
+        IsCellTypeBorder: 0
+      - Height: -4.0001616
+        IsCellTypeBorder: 1
+      - Height: -4.0001616
+        IsCellTypeBorder: 1
+      - Height: -4.0001616
+        IsCellTypeBorder: 1
+      - Height: 2.00029
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 6.000728
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0.00006246567
+        IsCellTypeBorder: 1
+      - Height: 0.0007033348
+        IsCellTypeBorder: 1
+      - Height: -6.000728
+        IsCellTypeBorder: 1
+      - Height: -2.0005665
+        IsCellTypeBorder: 0
+      - Height: -1.0005665
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558251
+      Height: 6.0014315
+      Parent: {x: 8, y: 1}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.00064086914
+        IsCellTypeBorder: 1
+      - Height: -1.0006409
+        IsCellTypeBorder: 1
+      - Height: -6.0014315
+        IsCellTypeBorder: 1
+      - Height: -6.0014315
+        IsCellTypeBorder: 1
+      - Height: -6.0014315
+        IsCellTypeBorder: 1
+      - Height: -0.0007033348
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 5.0007906
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.99981165
+        IsCellTypeBorder: 1
+      - Height: -0.00044202805
+        IsCellTypeBorder: 1
+      - Height: -1.000442
+        IsCellTypeBorder: 0
+      - Height: -5.0007906
+        IsCellTypeBorder: 1
+      - Height: 1.0006409
+        IsCellTypeBorder: 1
+      - Height: 1
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 4.0003486
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0.00003862381
+        IsCellTypeBorder: 0
+      - Height: -4.0003486
+        IsCellTypeBorder: 1
+      - Height: -4.0003486
+        IsCellTypeBorder: 1
+      - Height: -4.0003486
+        IsCellTypeBorder: 1
+      - Height: 1.000442
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 4.000387
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: -0.99959636
+        IsCellTypeBorder: 1
+      - Height: -1.9995964
+        IsCellTypeBorder: 0
+      - Height: -4.000387
+        IsCellTypeBorder: 1
+      - Height: -0.00003862381
+        IsCellTypeBorder: 0
+      - Height: 0.9999614
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 2.0007908
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: -2.0007908
+        IsCellTypeBorder: 1
+      - Height: -2.0007908
+        IsCellTypeBorder: 1
+      - Height: -2.0007908
+        IsCellTypeBorder: 1
+      - Height: 1.9995964
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 2.0007908
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: -2.0007908
+        IsCellTypeBorder: 1
+      - Height: -2.0007908
+        IsCellTypeBorder: 1
+      - Height: -2.0007908
+        IsCellTypeBorder: 1
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: 1
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 3.000008
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.00010347366
+        IsCellTypeBorder: 0
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0.0009293556
+        IsCellTypeBorder: 0
+      - Height: -4.000008
+        IsCellTypeBorder: 0
+      - Height: -3.000008
+        IsCellTypeBorder: 1
+      - Height: -3.000008
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 4.000008
+      Parent: {x: 1, y: 2}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.00010347366
+        IsCellTypeBorder: 0
+      - Height: 1.0003018
+        IsCellTypeBorder: 0
+      - Height: 0.0009293556
+        IsCellTypeBorder: 0
+      - Height: -0.99907064
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -0.9998965
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 4.0009375
+      Parent: {x: 1, y: 1}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.9993725
+        IsCellTypeBorder: 0
+      - Height: 0.9991994
+        IsCellTypeBorder: 0
+      - Height: -0.0008006096
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -0.0009293556
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 5.000137
+      Parent: {x: 4, y: 2}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 3.9999795
+        IsCellTypeBorder: 1
+      - Height: 2.0001755
+        IsCellTypeBorder: 1
+      - Height: -1.9995992
+        IsCellTypeBorder: 0
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -0.9991994
+        IsCellTypeBorder: 0
+      - Height: 0.00017309189
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 3.0005376
+      Parent: {x: 3, y: 1}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 3.9997747
+        IsCellTypeBorder: 1
+      - Height: 3.999914
+        IsCellTypeBorder: 1
+      - Height: 2.999914
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: 0.9995992
+        IsCellTypeBorder: 1
+      - Height: 1.9995992
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 7.0004516
+      Parent: {x: 6, y: 2}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 3.0001245
+        IsCellTypeBorder: 0
+      - Height: 2.0001588
+        IsCellTypeBorder: 1
+      - Height: -2.00029
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -3.999914
+        IsCellTypeBorder: 1
+      - Height: -0.00013923645
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 5.0001616
+      Parent: {x: 5, y: 1}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 4.0004487
+        IsCellTypeBorder: 1
+      - Height: 2.0005665
+        IsCellTypeBorder: 1
+      - Height: 1.0005665
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: 1.0002899
+        IsCellTypeBorder: 1
+      - Height: 2.00029
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 7.000728
+      Parent: {x: 6, y: 2}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 4.99976
+        IsCellTypeBorder: 1
+      - Height: -0.00060367584
+        IsCellTypeBorder: 0
+      - Height: -0.99993753
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -2.0005665
+        IsCellTypeBorder: 1
+      - Height: 1.9998822
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 6.0007906
+      Parent: {x: 7, y: 1}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.99933386
+        IsCellTypeBorder: 1
+      - Height: -0.00018835068
+        IsCellTypeBorder: 0
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: 0.00064086914
+        IsCellTypeBorder: 1
+      - Height: -0.00006246567
+        IsCellTypeBorder: 1
+      - Height: 0.99993753
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 6.0006022
+      Parent: {x: 8, y: 2}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 4.0003934
+        IsCellTypeBorder: 0
+      - Height: 1.999784
+        IsCellTypeBorder: 0
+      - Height: -1.0002537
+        IsCellTypeBorder: 1
+      - Height: -0.99981165
+        IsCellTypeBorder: 1
+      - Height: 0.00018835068
+        IsCellTypeBorder: 0
+      - Height: 0.9995222
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 5.0003486
+      Parent: {x: 11, y: 1}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 3.0000377
+        IsCellTypeBorder: 1
+      - Height: 0.00003862381
+        IsCellTypeBorder: 0
+      - Height: -0.9999614
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: 0.00044202805
+        IsCellTypeBorder: 1
+      - Height: 1.0002537
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 5.000387
+      Parent: {x: 12, y: 2}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.0004172
+        IsCellTypeBorder: 1
+      - Height: -2.0001132
+        IsCellTypeBorder: 0
+      - Height: -1.9995964
+        IsCellTypeBorder: 0
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -0.00003862381
+        IsCellTypeBorder: 0
+      - Height: 2.999999
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 3.0007908
+      Parent: {x: 12, y: 2}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.0005168915
+        IsCellTypeBorder: 0
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: 0.99959636
+        IsCellTypeBorder: 1
+      - Height: 1.9995964
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 2.0007908
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.99979
+        IsCellTypeBorder: 0
+      - Height: -2.0007908
+        IsCellTypeBorder: 1
+      - Height: -2.0007908
+        IsCellTypeBorder: 1
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0.9994831
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 3.0001116
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.0006433
+        IsCellTypeBorder: 0
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0.9998965
+        IsCellTypeBorder: 1
+      - Height: -0.00010347366
+        IsCellTypeBorder: 0
+      - Height: -3.0001116
+        IsCellTypeBorder: 1
+      - Height: -3.0001116
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 4.0001116
+      Parent: {x: 2, y: 2}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.0006433
+        IsCellTypeBorder: 0
+      - Height: 3.000297
+        IsCellTypeBorder: 1
+      - Height: 1.0001984
+        IsCellTypeBorder: 0
+      - Height: -0.00010347366
+        IsCellTypeBorder: 0
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: 0.0006432533
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 5.00031
+      Parent: {x: 3, y: 1}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 2.0000987
+        IsCellTypeBorder: 1
+      - Height: 3.9998064
+        IsCellTypeBorder: 1
+      - Height: -0.00017309189
+        IsCellTypeBorder: 0
+      - Height: -0.9993725
+        IsCellTypeBorder: 0
+      - Height: -1.0003018
+        IsCellTypeBorder: 0
+      - Height: -1.0001984
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 9.000116
+      Parent: {x: 4, y: 2}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 4.000305
+        IsCellTypeBorder: 0
+      - Height: 2.0000887
+        IsCellTypeBorder: 0
+      - Height: -1.999804
+        IsCellTypeBorder: 0
+      - Height: -3.9999795
+        IsCellTypeBorder: 1
+      - Height: -3.9998064
+        IsCellTypeBorder: 1
+      - Height: -1.9997077
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 7.0003123
+      Parent: {x: 5, y: 1}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 3.9998927
+        IsCellTypeBorder: 0
+      - Height: 3.0002637
+        IsCellTypeBorder: 1
+      - Height: 0.00013923645
+        IsCellTypeBorder: 1
+      - Height: -3.9997747
+        IsCellTypeBorder: 1
+      - Height: -2.0001755
+        IsCellTypeBorder: 1
+      - Height: 1.999804
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 10.000576
+      Parent: {x: 4, y: 3}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 4.999961
+        IsCellTypeBorder: 0
+      - Height: 4.0002565
+        IsCellTypeBorder: 0
+      - Height: -0.99996567
+        IsCellTypeBorder: 1
+      - Height: -3.0001245
+        IsCellTypeBorder: 0
+      - Height: -3.0002637
+        IsCellTypeBorder: 1
+      - Height: 0.999629
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 9.00061
+      Parent: {x: 5, y: 2}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 5.000222
+        IsCellTypeBorder: 1
+      - Height: 2.999878
+        IsCellTypeBorder: 0
+      - Height: -1.9998822
+        IsCellTypeBorder: 1
+      - Height: -4.0004487
+        IsCellTypeBorder: 1
+      - Height: -2.0001588
+        IsCellTypeBorder: 1
+      - Height: 0.99996567
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 12.000488
+      Parent: {x: 6, y: 3}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 2.0002594
+        IsCellTypeBorder: 1
+      - Height: -0.00031757355
+        IsCellTypeBorder: 1
+      - Height: -5.000364
+        IsCellTypeBorder: 1
+      - Height: -4.99976
+        IsCellTypeBorder: 1
+      - Height: -2.999878
+        IsCellTypeBorder: 0
+      - Height: 2.0003443
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 7.0001245
+      Parent: {x: 7, y: 1}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 5.0000463
+        IsCellTypeBorder: 0
+      - Height: 3.0008712
+        IsCellTypeBorder: 1
+      - Height: -0.9995222
+        IsCellTypeBorder: 1
+      - Height: -0.99933386
+        IsCellTypeBorder: 1
+      - Height: 0.00060367584
+        IsCellTypeBorder: 0
+      - Height: 5.000364
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 10.000996
+      Parent: {x: 8, y: 3}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 3.9998512
+        IsCellTypeBorder: 0
+      - Height: -0.0007686615
+        IsCellTypeBorder: 0
+      - Height: -2.0006094
+        IsCellTypeBorder: 0
+      - Height: -4.0003934
+        IsCellTypeBorder: 0
+      - Height: -3.0008712
+        IsCellTypeBorder: 1
+      - Height: 1.9991751
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 8.000386
+      Parent: {x: 9, y: 1}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.9998407
+        IsCellTypeBorder: 0
+      - Height: -1.9995818
+        IsCellTypeBorder: 1
+      - Height: -2.999999
+        IsCellTypeBorder: 1
+      - Height: -3.0000377
+        IsCellTypeBorder: 1
+      - Height: -1.999784
+        IsCellTypeBorder: 0
+      - Height: 2.0006094
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 6.0008044
+      Parent: {x: 10, y: 2}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.000135
+        IsCellTypeBorder: 1
+      - Height: -1.0002236
+        IsCellTypeBorder: 1
+      - Height: -3.0005305
+        IsCellTypeBorder: 1
+      - Height: -1.0004172
+        IsCellTypeBorder: 1
+      - Height: 1.9995818
+        IsCellTypeBorder: 1
+      - Height: 3.9994226
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 3.000274
+      Parent: {x: 12, y: 3}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 2.0003068
+        IsCellTypeBorder: 0
+      - Height: 1.0003068
+        IsCellTypeBorder: 1
+      - Height: -0.9994831
+        IsCellTypeBorder: 1
+      - Height: 0.0005168915
+        IsCellTypeBorder: 0
+      - Height: 2.0001132
+        IsCellTypeBorder: 0
+      - Height: 3.0005305
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 4.000581
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.9999418
+        IsCellTypeBorder: 0
+      - Height: -4.000581
+        IsCellTypeBorder: 1
+      - Height: -4.000581
+        IsCellTypeBorder: 1
+      - Height: -1.99979
+        IsCellTypeBorder: 0
+      - Height: -1.0003068
+        IsCellTypeBorder: 1
+      - Height: 1
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 4.000755
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: -0.0006432533
+        IsCellTypeBorder: 1
+      - Height: -1.0006433
+        IsCellTypeBorder: 0
+      - Height: -4.000755
+        IsCellTypeBorder: 1
+      - Height: -4.000755
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 5.000755
+      Parent: {x: 1, y: 2}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.00075149536
+        IsCellTypeBorder: 0
+      - Height: 3.0002418
+        IsCellTypeBorder: 1
+      - Height: 1.9996538
+        IsCellTypeBorder: 1
+      - Height: -1.0006433
+        IsCellTypeBorder: 0
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 7.0004086
+      Parent: {x: 3, y: 2}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.0005879
+        IsCellTypeBorder: 1
+      - Height: 6.000013
+        IsCellTypeBorder: 1
+      - Height: 1.9997077
+        IsCellTypeBorder: 1
+      - Height: -2.0000987
+        IsCellTypeBorder: 1
+      - Height: -3.000297
+        IsCellTypeBorder: 1
+      - Height: -1.9996538
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 13.000422
+      Parent: {x: 3, y: 4}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.000025749207
+        IsCellTypeBorder: 0
+      - Height: 0.0005044937
+        IsCellTypeBorder: 1
+      - Height: -2.0002165
+        IsCellTypeBorder: 0
+      - Height: -4.000305
+        IsCellTypeBorder: 0
+      - Height: -6.000013
+        IsCellTypeBorder: 1
+      - Height: -4.999425
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 11.000205
+      Parent: {x: 3, y: 3}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 2.000721
+        IsCellTypeBorder: 1
+      - Height: 4.000332
+        IsCellTypeBorder: 1
+      - Height: -0.999629
+        IsCellTypeBorder: 1
+      - Height: -3.9998927
+        IsCellTypeBorder: 0
+      - Height: -2.0000887
+        IsCellTypeBorder: 0
+      - Height: 2.0002165
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 15.000537
+      Parent: {x: 6, y: 4}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 3.0001802
+        IsCellTypeBorder: 1
+      - Height: 1.0001688
+        IsCellTypeBorder: 1
+      - Height: -0.99970436
+        IsCellTypeBorder: 0
+      - Height: -4.999961
+        IsCellTypeBorder: 0
+      - Height: -4.000332
+        IsCellTypeBorder: 1
+      - Height: -1.9996109
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 14.000833
+      Parent: {x: 5, y: 3}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.9998732
+        IsCellTypeBorder: 1
+      - Height: -0.000084877014
+        IsCellTypeBorder: 0
+      - Height: -2.0003443
+        IsCellTypeBorder: 1
+      - Height: -5.000222
+        IsCellTypeBorder: 1
+      - Height: -4.0002565
+        IsCellTypeBorder: 0
+      - Height: 0.99970436
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 14.000748
+      Parent: {x: 8, y: 4}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 5.0001106
+        IsCellTypeBorder: 1
+      - Height: 1.9992733
+        IsCellTypeBorder: 1
+      - Height: -2.000577
+        IsCellTypeBorder: 0
+      - Height: -2.0002594
+        IsCellTypeBorder: 1
+      - Height: 0.000084877014
+        IsCellTypeBorder: 0
+      - Height: 1.999958
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 12.000171
+      Parent: {x: 7, y: 3}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 3.9998503
+        IsCellTypeBorder: 1
+      - Height: 2.0006762
+        IsCellTypeBorder: 1
+      - Height: -1.9991751
+        IsCellTypeBorder: 1
+      - Height: -5.0000463
+        IsCellTypeBorder: 0
+      - Height: 0.00031757355
+        IsCellTypeBorder: 1
+      - Height: 2.000577
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 14.000847
+      Parent: {x: 8, y: 3}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 2.9995842
+        IsCellTypeBorder: 1
+      - Height: -1.0006742
+        IsCellTypeBorder: 0
+      - Height: -4.00062
+        IsCellTypeBorder: 0
+      - Height: -3.9998512
+        IsCellTypeBorder: 0
+      - Height: -2.0006762
+        IsCellTypeBorder: 1
+      - Height: 1.9991741
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 10.000227
+      Parent: {x: 9, y: 2}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 2.9999456
+        IsCellTypeBorder: 0
+      - Height: -2.9992876
+        IsCellTypeBorder: 0
+      - Height: -3.9994226
+        IsCellTypeBorder: 1
+      - Height: -1.9998407
+        IsCellTypeBorder: 0
+      - Height: 0.0007686615
+        IsCellTypeBorder: 0
+      - Height: 4.00062
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 7.0009394
+      Parent: {x: 11, y: 2}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.9998121
+        IsCellTypeBorder: 1
+      - Height: -1.0004168
+        IsCellTypeBorder: 1
+      - Height: -2.0003586
+        IsCellTypeBorder: 1
+      - Height: -1.000135
+        IsCellTypeBorder: 1
+      - Height: 2.9992876
+        IsCellTypeBorder: 0
+      - Height: 5.9992332
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 5.000581
+      Parent: {x: 11, y: 2}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.9999418
+        IsCellTypeBorder: 1
+      - Height: -0.000058174133
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -2.0003068
+        IsCellTypeBorder: 0
+      - Height: 1.0002236
+        IsCellTypeBorder: 1
+      - Height: 2.0003586
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 5.0005226
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: -5.0005226
+        IsCellTypeBorder: 1
+      - Height: -5.0005226
+        IsCellTypeBorder: 1
+      - Height: -0.9999418
+        IsCellTypeBorder: 0
+      - Height: 0.000058174133
+        IsCellTypeBorder: 1
+      - Height: 1
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 4.000755
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.9999399
+        IsCellTypeBorder: 0
+      - Height: 0.9992485
+        IsCellTypeBorder: 1
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: -4.000755
+        IsCellTypeBorder: 1
+      - Height: -4.000755
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 5.0000033
+      Parent: {x: 1, y: 3}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.0006914
+        IsCellTypeBorder: 1
+      - Height: 4.000732
+        IsCellTypeBorder: 1
+      - Height: 3.0009933
+        IsCellTypeBorder: 1
+      - Height: 0.00075149536
+        IsCellTypeBorder: 0
+      - Height: -0.9992485
+        IsCellTypeBorder: 1
+      - Height: 0.0006914139
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 8.000997
+      Parent: {x: 2, y: 3}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.9997387
+        IsCellTypeBorder: 0
+      - Height: 4.999399
+        IsCellTypeBorder: 0
+      - Height: 4.999425
+        IsCellTypeBorder: 0
+      - Height: -1.0005879
+        IsCellTypeBorder: 1
+      - Height: -3.0002418
+        IsCellTypeBorder: 1
+      - Height: -3.0009933
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 13.000396
+      Parent: {x: 4, y: 4}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.9998951
+        IsCellTypeBorder: 0
+      - Height: 5.999711
+        IsCellTypeBorder: 0
+      - Height: 0.0005302429
+        IsCellTypeBorder: 1
+      - Height: 0.000025749207
+        IsCellTypeBorder: 0
+      - Height: -4.999399
+        IsCellTypeBorder: 0
+      - Height: -3.9996605
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 13.000926
+      Parent: {x: 5, y: 3}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 5.999181
+        IsCellTypeBorder: 1
+      - Height: 4.999791
+        IsCellTypeBorder: 1
+      - Height: 1.9996109
+        IsCellTypeBorder: 0
+      - Height: -2.000721
+        IsCellTypeBorder: 1
+      - Height: -0.0005044937
+        IsCellTypeBorder: 1
+      - Height: -0.0005302429
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 18.000717
+      Parent: {x: 4, y: 5}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.9998341
+        IsCellTypeBorder: 0
+      - Height: 3.9997978
+        IsCellTypeBorder: 1
+      - Height: -2.0000114
+        IsCellTypeBorder: 0
+      - Height: -3.0001802
+        IsCellTypeBorder: 1
+      - Height: -4.999791
+        IsCellTypeBorder: 1
+      - Height: 0.99938965
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 16.000706
+      Parent: {x: 7, y: 3}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 5.9998093
+        IsCellTypeBorder: 1
+      - Height: 3.0001526
+        IsCellTypeBorder: 0
+      - Height: -1.999958
+        IsCellTypeBorder: 1
+      - Height: -1.9998732
+        IsCellTypeBorder: 1
+      - Height: -1.0001688
+        IsCellTypeBorder: 1
+      - Height: 2.0000114
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 19.000858
+      Parent: {x: 8, y: 5}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 4.9997864
+        IsCellTypeBorder: 0
+      - Height: 0.9999447
+        IsCellTypeBorder: 0
+      - Height: -3.0008373
+        IsCellTypeBorder: 0
+      - Height: -5.0001106
+        IsCellTypeBorder: 1
+      - Height: -3.0001526
+        IsCellTypeBorder: 0
+      - Height: 2.9996567
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 16.000021
+      Parent: {x: 9, y: 4}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 4.000782
+        IsCellTypeBorder: 0
+      - Height: 1.0004101
+        IsCellTypeBorder: 1
+      - Height: -1.9991741
+        IsCellTypeBorder: 0
+      - Height: -3.9998503
+        IsCellTypeBorder: 1
+      - Height: -1.9992733
+        IsCellTypeBorder: 1
+      - Height: 3.0008373
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 17.000431
+      Parent: {x: 10, y: 5}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 3.0000515
+        IsCellTypeBorder: 0
+      - Height: -2.0001564
+        IsCellTypeBorder: 1
+      - Height: -4.0002584
+        IsCellTypeBorder: 1
+      - Height: -2.9995842
+        IsCellTypeBorder: 1
+      - Height: -1.0004101
+        IsCellTypeBorder: 1
+      - Height: 3.000372
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 13.000173
+      Parent: {x: 9, y: 3}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 2.000102
+        IsCellTypeBorder: 0
+      - Height: -3.9994211
+        IsCellTypeBorder: 1
+      - Height: -5.9992332
+        IsCellTypeBorder: 0
+      - Height: -2.9999456
+        IsCellTypeBorder: 0
+      - Height: 1.0006742
+        IsCellTypeBorder: 0
+      - Height: 4.0002584
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 9.0007515
+      Parent: {x: 11, y: 3}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.9992571
+        IsCellTypeBorder: 0
+      - Height: -3.0007496
+        IsCellTypeBorder: 0
+      - Height: -3.000229
+        IsCellTypeBorder: 0
+      - Height: -1.9998121
+        IsCellTypeBorder: 1
+      - Height: 3.9994211
+        IsCellTypeBorder: 1
+      - Height: 5.999523
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 6.0005226
+      Parent: {x: 12, y: 3}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.0005207062
+        IsCellTypeBorder: 0
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -0.9999418
+        IsCellTypeBorder: 1
+      - Height: 1.0004168
+        IsCellTypeBorder: 1
+      - Height: 3.000229
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 5.0005226
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.99987745
+        IsCellTypeBorder: 0
+      - Height: -5.0005226
+        IsCellTypeBorder: 1
+      - Height: -5.0005226
+        IsCellTypeBorder: 1
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0.9994793
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 5.0006948
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: -0.0006914139
+        IsCellTypeBorder: 1
+      - Height: -0.9999399
+        IsCellTypeBorder: 0
+      - Height: -5.0006948
+        IsCellTypeBorder: 1
+      - Height: -5.0006948
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 6.0006948
+      Parent: {x: 1, y: 4}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.00039672852
+        IsCellTypeBorder: 1
+      - Height: 3.000258
+        IsCellTypeBorder: 0
+      - Height: 3.0000405
+        IsCellTypeBorder: 1
+      - Height: -1.0006914
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 9.000735
+      Parent: {x: 2, y: 4}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.00021743774
+        IsCellTypeBorder: 1
+      - Height: 5.9995556
+        IsCellTypeBorder: 0
+      - Height: 3.9996605
+        IsCellTypeBorder: 0
+      - Height: -0.9997387
+        IsCellTypeBorder: 0
+      - Height: -4.000732
+        IsCellTypeBorder: 1
+      - Height: -3.0000405
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 15.000291
+      Parent: {x: 3, y: 4}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.0002975464
+        IsCellTypeBorder: 0
+      - Height: 5.0003366
+        IsCellTypeBorder: 0
+      - Height: 3.999816
+        IsCellTypeBorder: 0
+      - Height: -1.9998951
+        IsCellTypeBorder: 0
+      - Height: -5.9995556
+        IsCellTypeBorder: 0
+      - Height: -5.999338
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 19.000107
+      Parent: {x: 4, y: 6}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.0005207
+        IsCellTypeBorder: 0
+      - Height: 1.0004444
+        IsCellTypeBorder: 0
+      - Height: -0.99938965
+        IsCellTypeBorder: 0
+      - Height: -5.999181
+        IsCellTypeBorder: 1
+      - Height: -5.999711
+        IsCellTypeBorder: 0
+      - Height: -3.999816
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 20.000551
+      Parent: {x: 6, y: 5}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 3.9995441
+        IsCellTypeBorder: 0
+      - Height: 4.9994984
+        IsCellTypeBorder: 1
+      - Height: 1.9999638
+        IsCellTypeBorder: 1
+      - Height: -1.9998341
+        IsCellTypeBorder: 0
+      - Height: -1.0004444
+        IsCellTypeBorder: 0
+      - Height: 0.000076293945
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 22.000515
+      Parent: {x: 7, y: 5}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 2.9995346
+        IsCellTypeBorder: 0
+      - Height: 2.0001297
+        IsCellTypeBorder: 1
+      - Height: -2.9996567
+        IsCellTypeBorder: 1
+      - Height: -5.9998093
+        IsCellTypeBorder: 1
+      - Height: -3.9997978
+        IsCellTypeBorder: 1
+      - Height: -1.9999638
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 24.000645
+      Parent: {x: 6, y: 6}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 2.999899
+        IsCellTypeBorder: 1
+      - Height: 0.00015640259
+        IsCellTypeBorder: 0
+      - Height: -3.9998417
+        IsCellTypeBorder: 0
+      - Height: -4.9997864
+        IsCellTypeBorder: 0
+      - Height: -2.0001297
+        IsCellTypeBorder: 1
+      - Height: 0.9994049
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 20.000803
+      Parent: {x: 9, y: 5}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 3.999998
+        IsCellTypeBorder: 0
+      - Height: -0.00032043457
+        IsCellTypeBorder: 1
+      - Height: -3.000372
+        IsCellTypeBorder: 1
+      - Height: -4.000782
+        IsCellTypeBorder: 0
+      - Height: -0.9999447
+        IsCellTypeBorder: 0
+      - Height: 3.9998417
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 20.000483
+      Parent: {x: 9, y: 6}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.00012588501
+        IsCellTypeBorder: 1
+      - Height: -3.00041
+        IsCellTypeBorder: 1
+      - Height: -5.000208
+        IsCellTypeBorder: 1
+      - Height: -3.0000515
+        IsCellTypeBorder: 0
+      - Height: 0.00032043457
+        IsCellTypeBorder: 1
+      - Height: 4.0003185
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 15.000275
+      Parent: {x: 10, y: 6}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.9997978
+        IsCellTypeBorder: 0
+      - Height: -5.000266
+        IsCellTypeBorder: 1
+      - Height: -5.999523
+        IsCellTypeBorder: 1
+      - Height: -2.000102
+        IsCellTypeBorder: 0
+      - Height: 2.0001564
+        IsCellTypeBorder: 1
+      - Height: 5.000208
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 10.000009
+      Parent: {x: 11, y: 4}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.0007315
+        IsCellTypeBorder: 0
+      - Height: -2.9996085
+        IsCellTypeBorder: 1
+      - Height: -4.0000067
+        IsCellTypeBorder: 0
+      - Height: -0.9992571
+        IsCellTypeBorder: 0
+      - Height: 5.000266
+        IsCellTypeBorder: 1
+      - Height: 7.000064
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 6.000002
+      Parent: {x: 12, y: 4}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.0003982
+        IsCellTypeBorder: 1
+      - Height: 0.00039815903
+        IsCellTypeBorder: 1
+      - Height: -0.9994793
+        IsCellTypeBorder: 1
+      - Height: 0.0005207062
+        IsCellTypeBorder: 0
+      - Height: 3.0007496
+        IsCellTypeBorder: 0
+      - Height: 4.0000067
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 6.0004
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.000029563904
+        IsCellTypeBorder: 0
+      - Height: -6.0004
+        IsCellTypeBorder: 1
+      - Height: -6.0004
+        IsCellTypeBorder: 1
+      - Height: -0.99987745
+        IsCellTypeBorder: 0
+      - Height: -0.00039815903
+        IsCellTypeBorder: 1
+      - Height: 1
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 5.0006948
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.99945736
+        IsCellTypeBorder: 0
+      - Height: 0.9996033
+        IsCellTypeBorder: 1
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: -5.0006948
+        IsCellTypeBorder: 1
+      - Height: -5.0006948
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 6.000298
+      Parent: {x: 1, y: 5}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.9998541
+        IsCellTypeBorder: 0
+      - Height: 3.9998689
+        IsCellTypeBorder: 0
+      - Height: 3.0006547
+        IsCellTypeBorder: 1
+      - Height: 0.00039672852
+        IsCellTypeBorder: 1
+      - Height: -0.9996033
+        IsCellTypeBorder: 1
+      - Height: -0.00014591217
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 9.000953
+      Parent: {x: 2, y: 5}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.9992142
+        IsCellTypeBorder: 1
+      - Height: 5.9996357
+        IsCellTypeBorder: 1
+      - Height: 5.999338
+        IsCellTypeBorder: 1
+      - Height: -0.00021743774
+        IsCellTypeBorder: 1
+      - Height: -3.000258
+        IsCellTypeBorder: 0
+      - Height: -3.0006547
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 15.000588
+      Parent: {x: 3, y: 5}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.9999571
+        IsCellTypeBorder: 0
+      - Height: 3.999854
+        IsCellTypeBorder: 1
+      - Height: 5.000039
+        IsCellTypeBorder: 0
+      - Height: -0.0002975464
+        IsCellTypeBorder: 0
+      - Height: -5.9996357
+        IsCellTypeBorder: 1
+      - Height: -5.0004215
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 20.000628
+      Parent: {x: 5, y: 5}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -1.000185
+        IsCellTypeBorder: 1
+      - Height: 3.9994678
+        IsCellTypeBorder: 0
+      - Height: -0.000076293945
+        IsCellTypeBorder: 0
+      - Height: -1.0005207
+        IsCellTypeBorder: 0
+      - Height: -5.0003366
+        IsCellTypeBorder: 0
+      - Height: -5.000039
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 24.000095
+      Parent: {x: 5, y: 7}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.00024604797
+        IsCellTypeBorder: 0
+      - Height: 2.000372
+        IsCellTypeBorder: 0
+      - Height: 0.9999542
+        IsCellTypeBorder: 1
+      - Height: -3.9995441
+        IsCellTypeBorder: 0
+      - Height: -3.9994678
+        IsCellTypeBorder: 0
+      - Height: -4.999653
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 25.00005
+      Parent: {x: 5, y: 6}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.0004177
+        IsCellTypeBorder: 1
+      - Height: 2.000494
+        IsCellTypeBorder: 0
+      - Height: -0.9994049
+        IsCellTypeBorder: 1
+      - Height: -2.9995346
+        IsCellTypeBorder: 0
+      - Height: -4.9994984
+        IsCellTypeBorder: 1
+      - Height: -0.9999542
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 27.000544
+      Parent: {x: 7, y: 7}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.00029945374
+        IsCellTypeBorder: 1
+      - Height: -0.9995537
+        IsCellTypeBorder: 1
+      - Height: -2.9997425
+        IsCellTypeBorder: 1
+      - Height: -2.999899
+        IsCellTypeBorder: 1
+      - Height: -2.000494
+        IsCellTypeBorder: 0
+      - Height: -1.0000763
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 24.000801
+      Parent: {x: 7, y: 5}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 2.0001888
+        IsCellTypeBorder: 0
+      - Height: -4.0004444
+        IsCellTypeBorder: 0
+      - Height: -4.0003185
+        IsCellTypeBorder: 1
+      - Height: -3.999998
+        IsCellTypeBorder: 0
+      - Height: -0.00015640259
+        IsCellTypeBorder: 0
+      - Height: 2.9997425
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 20.000357
+      Parent: {x: 9, y: 7}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 2.0000572
+        IsCellTypeBorder: 1
+      - Height: -1.9997997
+        IsCellTypeBorder: 0
+      - Height: -3.0002842
+        IsCellTypeBorder: 0
+      - Height: 0.00012588501
+        IsCellTypeBorder: 1
+      - Height: 4.0004444
+        IsCellTypeBorder: 0
+      - Height: 6.0006332
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 17.000072
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.0004845
+        IsCellTypeBorder: 0
+      - Height: -5.9993324
+        IsCellTypeBorder: 1
+      - Height: -7.000064
+        IsCellTypeBorder: 1
+      - Height: -1.9997978
+        IsCellTypeBorder: 0
+      - Height: 3.00041
+        IsCellTypeBorder: 1
+      - Height: 3.0002842
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 11.00074
+      Parent: {x: 11, y: 5}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.0002298
+        IsCellTypeBorder: 0
+      - Height: -4.0003104
+        IsCellTypeBorder: 1
+      - Height: -4.00034
+        IsCellTypeBorder: 1
+      - Height: -1.0007315
+        IsCellTypeBorder: 0
+      - Height: 5.9993324
+        IsCellTypeBorder: 1
+      - Height: 6.999817
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 7.0004
+      Parent: {x: 12, y: 5}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.000029563904
+        IsCellTypeBorder: 0
+      - Height: -0.99997044
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -1.0003982
+        IsCellTypeBorder: 1
+      - Height: 2.9996085
+        IsCellTypeBorder: 1
+      - Height: 4.00034
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 6.0004296
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.00028467178
+        IsCellTypeBorder: 0
+      - Height: -6.0004296
+        IsCellTypeBorder: 1
+      - Height: -6.0004296
+        IsCellTypeBorder: 1
+      - Height: -0.000029563904
+        IsCellTypeBorder: 0
+      - Height: 0.99997044
+        IsCellTypeBorder: 1
+      - Height: 1
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 6.000152
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0.00014591217
+        IsCellTypeBorder: 1
+      - Height: -0.99945736
+        IsCellTypeBorder: 0
+      - Height: -6.000152
+        IsCellTypeBorder: 1
+      - Height: -6.000152
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 7.000152
+      Parent: {x: 1, y: 6}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.9996743
+        IsCellTypeBorder: 0
+      - Height: 2.9998536
+        IsCellTypeBorder: 0
+      - Height: 3.0000148
+        IsCellTypeBorder: 0
+      - Height: -0.9998541
+        IsCellTypeBorder: 0
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 10.000167
+      Parent: {x: 2, y: 6}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.00016117096
+        IsCellTypeBorder: 0
+      - Height: 7.0003786
+        IsCellTypeBorder: 0
+      - Height: 5.0004215
+        IsCellTypeBorder: 0
+      - Height: -0.9992142
+        IsCellTypeBorder: 1
+      - Height: -3.9998689
+        IsCellTypeBorder: 0
+      - Height: -3.0000148
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 17.000546
+      Parent: {x: 3, y: 6}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -2.0002508
+        IsCellTypeBorder: 0
+      - Height: 3.999607
+        IsCellTypeBorder: 1
+      - Height: 1.999897
+        IsCellTypeBorder: 1
+      - Height: -1.9999571
+        IsCellTypeBorder: 0
+      - Height: -7.0003786
+        IsCellTypeBorder: 0
+      - Height: -7.00054
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 19.000443
+      Parent: {x: 4, y: 6}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.9997101
+        IsCellTypeBorder: 0
+      - Height: 4.999899
+        IsCellTypeBorder: 1
+      - Height: 4.999653
+        IsCellTypeBorder: 1
+      - Height: 1.000185
+        IsCellTypeBorder: 1
+      - Height: -3.999854
+        IsCellTypeBorder: 1
+      - Height: -1.999897
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 24.000341
+      Parent: {x: 5, y: 8}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.00019836426
+        IsCellTypeBorder: 0
+      - Height: 3.0000057
+        IsCellTypeBorder: 0
+      - Height: 2.000126
+        IsCellTypeBorder: 0
+      - Height: -0.00024604797
+        IsCellTypeBorder: 0
+      - Height: -4.999899
+        IsCellTypeBorder: 1
+      - Height: -3.0001888
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 26.000467
+      Parent: {x: 7, y: 7}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.99987984
+        IsCellTypeBorder: 0
+      - Height: 1.0003757
+        IsCellTypeBorder: 0
+      - Height: 1.0000763
+        IsCellTypeBorder: 1
+      - Height: -1.0004177
+        IsCellTypeBorder: 1
+      - Height: -2.000372
+        IsCellTypeBorder: 0
+      - Height: -2.000126
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 27.000843
+      Parent: {x: 7, y: 8}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -2.0002708
+        IsCellTypeBorder: 0
+      - Height: -1.0000648
+        IsCellTypeBorder: 0
+      - Height: -0.99985313
+        IsCellTypeBorder: 0
+      - Height: -0.00029945374
+        IsCellTypeBorder: 1
+      - Height: -1.0003757
+        IsCellTypeBorder: 0
+      - Height: -0.00049591064
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 26.00099
+      Parent: {x: 8, y: 6}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.0002117157
+        IsCellTypeBorder: 0
+      - Height: -4.000576
+        IsCellTypeBorder: 1
+      - Height: -6.0006332
+        IsCellTypeBorder: 0
+      - Height: -2.0001888
+        IsCellTypeBorder: 0
+      - Height: 0.9995537
+        IsCellTypeBorder: 1
+      - Height: 0.99985313
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 22.000414
+      Parent: {x: 9, y: 8}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.99962044
+        IsCellTypeBorder: 0
+      - Height: -3.9995651
+        IsCellTypeBorder: 1
+      - Height: -3.999857
+        IsCellTypeBorder: 1
+      - Height: -2.0000572
+        IsCellTypeBorder: 1
+      - Height: 4.000576
+        IsCellTypeBorder: 1
+      - Height: 4.0003643
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 18.000557
+      Parent: {x: 10, y: 6}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.00029182434
+        IsCellTypeBorder: 0
+      - Height: -5.999587
+        IsCellTypeBorder: 1
+      - Height: -6.999817
+        IsCellTypeBorder: 1
+      - Height: -1.0004845
+        IsCellTypeBorder: 0
+      - Height: 1.9997997
+        IsCellTypeBorder: 0
+      - Height: 3.999857
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 12.00097
+      Parent: {x: 11, y: 6}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.00070381165
+        IsCellTypeBorder: 0
+      - Height: -5.0002556
+        IsCellTypeBorder: 0
+      - Height: -5.0005403
+        IsCellTypeBorder: 1
+      - Height: -1.0002298
+        IsCellTypeBorder: 0
+      - Height: 5.999587
+        IsCellTypeBorder: 1
+      - Height: 5.999879
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 7.0004296
+      Parent: {x: 12, y: 6}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.00028467178
+        IsCellTypeBorder: 1
+      - Height: -0.9997153
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -0.000029563904
+        IsCellTypeBorder: 0
+      - Height: 4.0003104
+        IsCellTypeBorder: 1
+      - Height: 5.0005403
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 6.0007143
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: -6.0007143
+        IsCellTypeBorder: 1
+      - Height: -6.0007143
+        IsCellTypeBorder: 1
+      - Height: -0.00028467178
+        IsCellTypeBorder: 0
+      - Height: 0.9997153
+        IsCellTypeBorder: 1
+      - Height: 1
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 6.000152
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.9996743
+        IsCellTypeBorder: 0
+      - Height: 0.00032567978
+        IsCellTypeBorder: 1
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: -6.000152
+        IsCellTypeBorder: 1
+      - Height: -6.000152
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 6.000478
+      Parent: {x: 1, y: 7}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.00021839142
+        IsCellTypeBorder: 1
+      - Height: 4.000182
+        IsCellTypeBorder: 0
+      - Height: 3.999528
+        IsCellTypeBorder: 0
+      - Height: 0.9996743
+        IsCellTypeBorder: 0
+      - Height: -0.00032567978
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 10.000006
+      Parent: {x: 2, y: 7}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.0006542206
+        IsCellTypeBorder: 0
+      - Height: 5.000289
+        IsCellTypeBorder: 0
+      - Height: 7.00054
+        IsCellTypeBorder: 0
+      - Height: 0.00016117096
+        IsCellTypeBorder: 0
+      - Height: -2.9998536
+        IsCellTypeBorder: 0
+      - Height: -3.999528
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 15.000295
+      Parent: {x: 3, y: 7}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -1.0001469
+        IsCellTypeBorder: 1
+      - Height: 4.0000944
+        IsCellTypeBorder: 0
+      - Height: 5.999858
+        IsCellTypeBorder: 1
+      - Height: 2.0002508
+        IsCellTypeBorder: 0
+      - Height: -5.000289
+        IsCellTypeBorder: 0
+      - Height: -4.9996347
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 21.000153
+      Parent: {x: 4, y: 7}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -1.9997635
+        IsCellTypeBorder: 1
+      - Height: 2.9999905
+        IsCellTypeBorder: 1
+      - Height: 3.0001888
+        IsCellTypeBorder: 1
+      - Height: -1.9997101
+        IsCellTypeBorder: 0
+      - Height: -3.999607
+        IsCellTypeBorder: 1
+      - Height: -5.999858
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 24.000143
+      Parent: {x: 6, y: 9}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -4.9996223
+        IsCellTypeBorder: 0
+      - Height: -1.9991703
+        IsCellTypeBorder: 1
+      - Height: 3.000204
+        IsCellTypeBorder: 0
+      - Height: 0.00019836426
+        IsCellTypeBorder: 0
+      - Height: -2.9999905
+        IsCellTypeBorder: 1
+      - Height: -4.999754
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 27.000347
+      Parent: {x: 7, y: 7}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -4.9993744
+        IsCellTypeBorder: 1
+      - Height: -1.9997749
+        IsCellTypeBorder: 0
+      - Height: 0.00049591064
+        IsCellTypeBorder: 0
+      - Height: -0.99987984
+        IsCellTypeBorder: 0
+      - Height: -3.0000057
+        IsCellTypeBorder: 0
+      - Height: -3.000204
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 25.000572
+      Parent: {x: 8, y: 8}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -4.000311
+        IsCellTypeBorder: 0
+      - Height: -2.000471
+        IsCellTypeBorder: 0
+      - Height: 1.000206
+        IsCellTypeBorder: 0
+      - Height: 2.0002708
+        IsCellTypeBorder: 0
+      - Height: 1.9997749
+        IsCellTypeBorder: 0
+      - Height: -2.9995995
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 26.000778
+      Parent: {x: 8, y: 7}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -3.000677
+        IsCellTypeBorder: 0
+      - Height: -3.0007439
+        IsCellTypeBorder: 1
+      - Height: -4.0003643
+        IsCellTypeBorder: 1
+      - Height: 0.0002117157
+        IsCellTypeBorder: 0
+      - Height: 1.0000648
+        IsCellTypeBorder: 0
+      - Height: -1.000206
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 23.000034
+      Parent: {x: 8, y: 9}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -3.9997005
+        IsCellTypeBorder: 1
+      - Height: -5.9996643
+        IsCellTypeBorder: 0
+      - Height: -4.9991856
+        IsCellTypeBorder: 1
+      - Height: -0.99962044
+        IsCellTypeBorder: 0
+      - Height: 3.0007439
+        IsCellTypeBorder: 1
+      - Height: 0.0000667572
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 18.000849
+      Parent: {x: 10, y: 7}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -1.0004787
+        IsCellTypeBorder: 1
+      - Height: -6.0005827
+        IsCellTypeBorder: 1
+      - Height: -5.999879
+        IsCellTypeBorder: 1
+      - Height: -0.00029182434
+        IsCellTypeBorder: 0
+      - Height: 3.9995651
+        IsCellTypeBorder: 1
+      - Height: 4.9991856
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 12.000266
+      Parent: {x: 11, y: 7}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -1.9996672
+        IsCellTypeBorder: 0
+      - Height: -5.9995503
+        IsCellTypeBorder: 0
+      - Height: -4.999552
+        IsCellTypeBorder: 0
+      - Height: 0.00070381165
+        IsCellTypeBorder: 0
+      - Height: 6.0005827
+        IsCellTypeBorder: 1
+      - Height: 5.000104
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 7.0007143
+      Parent: {x: 12, y: 7}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.99999857
+        IsCellTypeBorder: 0
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -0.00028467178
+        IsCellTypeBorder: 1
+      - Height: 5.0002556
+        IsCellTypeBorder: 0
+      - Height: 4.999552
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 6.0007143
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.9999695
+        IsCellTypeBorder: 0
+      - Height: -6.0007143
+        IsCellTypeBorder: 1
+      - Height: -6.0007143
+        IsCellTypeBorder: 1
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0.0000014305115
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 5.000478
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.00046539307
+        IsCellTypeBorder: 0
+      - Height: 0.9997816
+        IsCellTypeBorder: 1
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0.9996743
+        IsCellTypeBorder: 0
+      - Height: -5.000478
+        IsCellTypeBorder: 1
+      - Height: -5.000478
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 6.0002594
+      Parent: {x: 1, y: 8}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.0006837845
+        IsCellTypeBorder: 1
+      - Height: 2.99992
+        IsCellTypeBorder: 1
+      - Height: 4.0004005
+        IsCellTypeBorder: 1
+      - Height: 0.00021839142
+        IsCellTypeBorder: 1
+      - Height: -0.9997816
+        IsCellTypeBorder: 1
+      - Height: -0.9993162
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 10.00066
+      Parent: {x: 2, y: 8}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -1.0004807
+        IsCellTypeBorder: 0
+      - Height: 3.9994879
+        IsCellTypeBorder: 1
+      - Height: 4.9996347
+        IsCellTypeBorder: 0
+      - Height: -0.0006542206
+        IsCellTypeBorder: 0
+      - Height: -4.000182
+        IsCellTypeBorder: 0
+      - Height: -4.0004005
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 14.000148
+      Parent: {x: 3, y: 8}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -1.9993496
+        IsCellTypeBorder: 1
+      - Height: 0.00078582764
+        IsCellTypeBorder: 0
+      - Height: 5.0002413
+        IsCellTypeBorder: 1
+      - Height: 1.0001469
+        IsCellTypeBorder: 1
+      - Height: -3.9994879
+        IsCellTypeBorder: 1
+      - Height: -4.9999685
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 19.00039
+      Parent: {x: 4, y: 8}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -4.9994555
+        IsCellTypeBorder: 1
+      - Height: 0.00013160706
+        IsCellTypeBorder: 0
+      - Height: 4.999754
+        IsCellTypeBorder: 0
+      - Height: 1.9997635
+        IsCellTypeBorder: 1
+      - Height: -4.0000944
+        IsCellTypeBorder: 0
+      - Height: -5.0002413
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 19.00052
+      Parent: {x: 4, y: 9}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -5.0004396
+        IsCellTypeBorder: 1
+      - Height: -0.999979
+        IsCellTypeBorder: 0
+      - Height: 3.000452
+        IsCellTypeBorder: 1
+      - Height: 4.9996223
+        IsCellTypeBorder: 0
+      - Height: -0.00013160706
+        IsCellTypeBorder: 0
+      - Height: -4.999587
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 22.000973
+      Parent: {x: 7, y: 9}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -4.000431
+        IsCellTypeBorder: 1
+      - Height: -1.0007114
+        IsCellTypeBorder: 1
+      - Height: 2.9995995
+        IsCellTypeBorder: 1
+      - Height: 4.9993744
+        IsCellTypeBorder: 1
+      - Height: 1.9991703
+        IsCellTypeBorder: 1
+      - Height: -3.000452
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 21.000261
+      Parent: {x: 8, y: 10}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -4.999815
+        IsCellTypeBorder: 0
+      - Height: -1.9993191
+        IsCellTypeBorder: 0
+      - Height: 1.9998398
+        IsCellTypeBorder: 0
+      - Height: 4.000311
+        IsCellTypeBorder: 0
+      - Height: 1.0007114
+        IsCellTypeBorder: 1
+      - Height: -2.9997196
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 23.000101
+      Parent: {x: 7, y: 9}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -3.9991589
+        IsCellTypeBorder: 0
+      - Height: -3.9997673
+        IsCellTypeBorder: 0
+      - Height: -0.0000667572
+        IsCellTypeBorder: 1
+      - Height: 3.000677
+        IsCellTypeBorder: 0
+      - Height: 2.000471
+        IsCellTypeBorder: 0
+      - Height: -1.9998398
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 19.000334
+      Parent: {x: 10, y: 9}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -2.9994373
+        IsCellTypeBorder: 0
+      - Height: -1.999485
+        IsCellTypeBorder: 0
+      - Height: -1.9999638
+        IsCellTypeBorder: 1
+      - Height: 3.9997005
+        IsCellTypeBorder: 1
+      - Height: 3.9997673
+        IsCellTypeBorder: 0
+      - Height: 0.0006084442
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 17.00037
+      Parent: {x: 10, y: 8}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.0004787445
+        IsCellTypeBorder: 1
+      - Height: -6.999771
+        IsCellTypeBorder: 0
+      - Height: -5.000104
+        IsCellTypeBorder: 0
+      - Height: 1.0004787
+        IsCellTypeBorder: 1
+      - Height: 5.9996643
+        IsCellTypeBorder: 0
+      - Height: 1.9999638
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 10.000599
+      Parent: {x: 11, y: 8}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.00055217743
+        IsCellTypeBorder: 1
+      - Height: -3.999854
+        IsCellTypeBorder: 0
+      - Height: -3.9998832
+        IsCellTypeBorder: 0
+      - Height: 1.9996672
+        IsCellTypeBorder: 0
+      - Height: 6.999771
+        IsCellTypeBorder: 0
+      - Height: 7.00025
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 6.0007157
+      Parent: {x: 12, y: 8}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.000029087067
+        IsCellTypeBorder: 0
+      - Height: -0.9999709
+        IsCellTypeBorder: 1
+      - Height: -0.0000014305115
+        IsCellTypeBorder: 1
+      - Height: 0.99999857
+        IsCellTypeBorder: 0
+      - Height: 5.9995503
+        IsCellTypeBorder: 0
+      - Height: 3.9998832
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 5.000745
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: -5.000745
+        IsCellTypeBorder: 1
+      - Height: -5.000745
+        IsCellTypeBorder: 1
+      - Height: 0.9999695
+        IsCellTypeBorder: 0
+      - Height: 0.9999709
+        IsCellTypeBorder: 1
+      - Height: 1
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 5.000943
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0.9993162
+        IsCellTypeBorder: 1
+      - Height: -0.00046539307
+        IsCellTypeBorder: 0
+      - Height: -5.000943
+        IsCellTypeBorder: 1
+      - Height: -5.000943
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 6.000943
+      Parent: {x: 1, y: 9}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -2.0004659
+        IsCellTypeBorder: 1
+      - Height: 1.9995232
+        IsCellTypeBorder: 0
+      - Height: 2.999236
+        IsCellTypeBorder: 0
+      - Height: -0.0006837845
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 9.000179
+      Parent: {x: 2, y: 9}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.99971294
+        IsCellTypeBorder: 0
+      - Height: 3.000619
+        IsCellTypeBorder: 0
+      - Height: 4.9999685
+        IsCellTypeBorder: 1
+      - Height: 1.0004807
+        IsCellTypeBorder: 0
+      - Height: -2.99992
+        IsCellTypeBorder: 1
+      - Height: -2.999236
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 12.000798
+      Parent: {x: 3, y: 9}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -5.0006347
+        IsCellTypeBorder: 0
+      - Height: -0.00014972687
+        IsCellTypeBorder: 0
+      - Height: 2.0001354
+        IsCellTypeBorder: 1
+      - Height: 1.9993496
+        IsCellTypeBorder: 1
+      - Height: -3.000619
+        IsCellTypeBorder: 0
+      - Height: -4.000332
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 14.000934
+      Parent: {x: 3, y: 9}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -2.0002851
+        IsCellTypeBorder: 1
+      - Height: -0.00085258484
+        IsCellTypeBorder: 0
+      - Height: 4.999587
+        IsCellTypeBorder: 1
+      - Height: 4.9994555
+        IsCellTypeBorder: 1
+      - Height: -0.00078582764
+        IsCellTypeBorder: 0
+      - Height: -2.0001354
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 14.000081
+      Parent: {x: 4, y: 10}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -5.9993267
+        IsCellTypeBorder: 1
+      - Height: -1.9992113
+        IsCellTypeBorder: 1
+      - Height: 4.0004606
+        IsCellTypeBorder: 1
+      - Height: 5.0004396
+        IsCellTypeBorder: 1
+      - Height: 0.00085258484
+        IsCellTypeBorder: 0
+      - Height: -1.9994326
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 18.000542
+      Parent: {x: 5, y: 9}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -5.999672
+        IsCellTypeBorder: 0
+      - Height: -2.0000954
+        IsCellTypeBorder: 0
+      - Height: 2.9997196
+        IsCellTypeBorder: 0
+      - Height: 4.000431
+        IsCellTypeBorder: 1
+      - Height: 0.999979
+        IsCellTypeBorder: 0
+      - Height: -4.0004606
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 16.000446
+      Parent: {x: 6, y: 10}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -6.9999676
+        IsCellTypeBorder: 0
+      - Height: -1.9995279
+        IsCellTypeBorder: 0
+      - Height: 3.000496
+        IsCellTypeBorder: 0
+      - Height: 4.999815
+        IsCellTypeBorder: 0
+      - Height: 2.0000954
+        IsCellTypeBorder: 0
+      - Height: -3.9995766
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 19.000942
+      Parent: {x: 9, y: 9}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -5.000024
+        IsCellTypeBorder: 0
+      - Height: -3.0000458
+        IsCellTypeBorder: 0
+      - Height: -0.0006084442
+        IsCellTypeBorder: 0
+      - Height: 3.9991589
+        IsCellTypeBorder: 0
+      - Height: 1.9993191
+        IsCellTypeBorder: 0
+      - Height: -3.000496
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 16.000896
+      Parent: {x: 10, y: 10}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -9.000456
+        IsCellTypeBorder: 1
+      - Height: -4.00058
+        IsCellTypeBorder: 1
+      - Height: 0.9999523
+        IsCellTypeBorder: 0
+      - Height: 2.9994373
+        IsCellTypeBorder: 0
+      - Height: 3.0000458
+        IsCellTypeBorder: 0
+      - Height: -1.9999781
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 17.000849
+      Parent: {x: 10, y: 9}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -5.000532
+        IsCellTypeBorder: 1
+      - Height: -7.000802
+        IsCellTypeBorder: 0
+      - Height: -7.00025
+        IsCellTypeBorder: 1
+      - Height: -0.0004787445
+        IsCellTypeBorder: 1
+      - Height: 1.999485
+        IsCellTypeBorder: 0
+      - Height: -0.9999523
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 10.000047
+      Parent: {x: 11, y: 9}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -2.9991865
+        IsCellTypeBorder: 1
+      - Height: -3.9994273
+        IsCellTypeBorder: 1
+      - Height: -3.999302
+        IsCellTypeBorder: 1
+      - Height: 0.00055217743
+        IsCellTypeBorder: 1
+      - Height: 7.000802
+        IsCellTypeBorder: 0
+      - Height: 2.00027
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 6.000745
+      Parent: {x: 12, y: 9}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.00012540817
+        IsCellTypeBorder: 0
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -0.000029087067
+        IsCellTypeBorder: 0
+      - Height: 3.999854
+        IsCellTypeBorder: 0
+      - Height: 3.999302
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 5.000745
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.00012540817
+        IsCellTypeBorder: 0
+      - Height: -5.000745
+        IsCellTypeBorder: 1
+      - Height: -5.000745
+        IsCellTypeBorder: 1
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0.9998746
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 5.000943
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -2.0004659
+        IsCellTypeBorder: 0
+      - Height: -1.0004659
+        IsCellTypeBorder: 1
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: -5.000943
+        IsCellTypeBorder: 1
+      - Height: -5.000943
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 4.0004773
+      Parent: {x: 1, y: 10}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.00043201447
+        IsCellTypeBorder: 0
+      - Height: 1.0005002
+        IsCellTypeBorder: 0
+      - Height: 3.999989
+        IsCellTypeBorder: 1
+      - Height: 2.0004659
+        IsCellTypeBorder: 1
+      - Height: 1.0004659
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 8.000466
+      Parent: {x: 2, y: 10}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -2.9994888
+        IsCellTypeBorder: 1
+      - Height: -1.0003028
+        IsCellTypeBorder: 0
+      - Height: 4.000332
+        IsCellTypeBorder: 0
+      - Height: 0.99971294
+        IsCellTypeBorder: 0
+      - Height: -1.9995232
+        IsCellTypeBorder: 0
+      - Height: -3.999989
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 7.0001636
+      Parent: {x: 2, y: 11}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -2.000134
+        IsCellTypeBorder: 1
+      - Height: 0.000269413
+        IsCellTypeBorder: 0
+      - Height: 5.000485
+        IsCellTypeBorder: 0
+      - Height: 5.0006347
+        IsCellTypeBorder: 0
+      - Height: 1.0003028
+        IsCellTypeBorder: 0
+      - Height: -1.999186
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 12.0006485
+      Parent: {x: 3, y: 10}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -5.0002155
+        IsCellTypeBorder: 0
+      - Height: -3.9998941
+        IsCellTypeBorder: 0
+      - Height: 1.9994326
+        IsCellTypeBorder: 1
+      - Height: 2.0002851
+        IsCellTypeBorder: 1
+      - Height: 0.00014972687
+        IsCellTypeBorder: 0
+      - Height: -5.000485
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 8.000754
+      Parent: {x: 4, y: 12}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -3.0006685
+        IsCellTypeBorder: 1
+      - Height: -2.0006342
+        IsCellTypeBorder: 0
+      - Height: 4.0001154
+        IsCellTypeBorder: 0
+      - Height: 5.9993267
+        IsCellTypeBorder: 1
+      - Height: 3.9998941
+        IsCellTypeBorder: 0
+      - Height: -1.0003214
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 12.00087
+      Parent: {x: 5, y: 10}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -6.0007496
+        IsCellTypeBorder: 0
+      - Height: -3.000391
+        IsCellTypeBorder: 0
+      - Height: 3.9995766
+        IsCellTypeBorder: 0
+      - Height: 5.999672
+        IsCellTypeBorder: 0
+      - Height: 1.9992113
+        IsCellTypeBorder: 1
+      - Height: -4.0001154
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 9.000479
+      Parent: {x: 8, y: 12}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -3.0001364
+        IsCellTypeBorder: 0
+      - Height: -1.9995852
+        IsCellTypeBorder: 1
+      - Height: 5.0004396
+        IsCellTypeBorder: 0
+      - Height: 6.9999676
+        IsCellTypeBorder: 0
+      - Height: 3.000391
+        IsCellTypeBorder: 0
+      - Height: -3.0003586
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 14.000918
+      Parent: {x: 7, y: 10}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -7.000025
+        IsCellTypeBorder: 1
+      - Height: -7.0004773
+        IsCellTypeBorder: 1
+      - Height: 1.9999781
+        IsCellTypeBorder: 0
+      - Height: 5.000024
+        IsCellTypeBorder: 0
+      - Height: 1.9995279
+        IsCellTypeBorder: 0
+      - Height: -5.0004396
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 7.000441
+      Parent: {x: 10, y: 12}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.00016069412
+        IsCellTypeBorder: 1
+      - Height: 0.00037193298
+        IsCellTypeBorder: 1
+      - Height: 4.9998755
+        IsCellTypeBorder: 0
+      - Height: 9.000456
+        IsCellTypeBorder: 1
+      - Height: 7.0004773
+        IsCellTypeBorder: 1
+      - Height: 0.00045251846
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 12.000317
+      Parent: {x: 11, y: 10}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -4.9995036
+        IsCellTypeBorder: 1
+      - Height: -4.9994564
+        IsCellTypeBorder: 0
+      - Height: -2.00027
+        IsCellTypeBorder: 1
+      - Height: 5.000532
+        IsCellTypeBorder: 1
+      - Height: 4.00058
+        IsCellTypeBorder: 1
+      - Height: -4.9998755
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 7.00086
+      Parent: {x: 12, y: 11}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -2.0004406
+        IsCellTypeBorder: 1
+      - Height: -2.000399
+        IsCellTypeBorder: 1
+      - Height: -1.0002408
+        IsCellTypeBorder: 0
+      - Height: 2.9991865
+        IsCellTypeBorder: 1
+      - Height: 4.9994564
+        IsCellTypeBorder: 0
+      - Height: -0.00004720688
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 6.0006194
+      Parent: {x: 12, y: 10}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -1.0001583
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -0.9998746
+        IsCellTypeBorder: 1
+      - Height: 0.00012540817
+        IsCellTypeBorder: 0
+      - Height: 3.9994273
+        IsCellTypeBorder: 1
+      - Height: 1.0002408
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 5.0006194
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -1.0001583
+        IsCellTypeBorder: 0
+      - Height: -5.0006194
+        IsCellTypeBorder: 1
+      - Height: -5.0006194
+        IsCellTypeBorder: 1
+      - Height: 0.00012540817
+        IsCellTypeBorder: 0
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: -0.00015830994
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 3.0004773
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.00043201447
+        IsCellTypeBorder: 0
+      - Height: 0.999568
+        IsCellTypeBorder: 1
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 2.0004659
+        IsCellTypeBorder: 0
+      - Height: -3.0004773
+        IsCellTypeBorder: 1
+      - Height: -3.0004773
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 4.0000453
+      Parent: {x: 1, y: 11}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: 0.00093221664
+        IsCellTypeBorder: 1
+      - Height: 1.0009322
+        IsCellTypeBorder: 0
+      - Height: 0.00043201447
+        IsCellTypeBorder: 0
+      - Height: -0.999568
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 5.0009775
+      Parent: {x: 1, y: 11}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -0.00094795227
+        IsCellTypeBorder: 0
+      - Height: 1.999186
+        IsCellTypeBorder: 1
+      - Height: 2.9994888
+        IsCellTypeBorder: 1
+      - Height: -1.0005002
+        IsCellTypeBorder: 0
+      - Height: -1.0009322
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 5.0000296
+      Parent: {x: 2, y: 12}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: 1.0004034
+        IsCellTypeBorder: 1
+      - Height: 2.0004034
+        IsCellTypeBorder: 1
+      - Height: 2.000134
+        IsCellTypeBorder: 1
+      - Height: 0.00094795227
+        IsCellTypeBorder: 0
+      - Height: -0.99905205
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 7.000433
+      Parent: {x: 3, y: 11}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -2.0003471
+        IsCellTypeBorder: 1
+      - Height: 1.0003214
+        IsCellTypeBorder: 0
+      - Height: 5.0002155
+        IsCellTypeBorder: 0
+      - Height: -0.000269413
+        IsCellTypeBorder: 0
+      - Height: -2.0004034
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 5.000086
+      Parent: {x: 4, y: 12}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: 0.0002565384
+        IsCellTypeBorder: 1
+      - Height: 1.0000343
+        IsCellTypeBorder: 1
+      - Height: 3.0006685
+        IsCellTypeBorder: 1
+      - Height: 2.0003471
+        IsCellTypeBorder: 1
+      - Height: 1.0003471
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 6.00012
+      Parent: {x: 5, y: 11}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -0.9997778
+        IsCellTypeBorder: 1
+      - Height: 0.00022220612
+        IsCellTypeBorder: 0
+      - Height: 3.0003586
+        IsCellTypeBorder: 0
+      - Height: 6.0007496
+        IsCellTypeBorder: 0
+      - Height: 2.0006342
+        IsCellTypeBorder: 0
+      - Height: -1.0000343
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 6.0003424
+      Parent: {x: 6, y: 12}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0.00088357925
+        IsCellTypeBorder: 1
+      - Height: 0.00055122375
+        IsCellTypeBorder: 1
+      - Height: 1.0005512
+        IsCellTypeBorder: 1
+      - Height: 3.0001364
+        IsCellTypeBorder: 0
+      - Height: -0.00022220612
+        IsCellTypeBorder: 0
+      - Height: -1
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558253
+      Height: 7.0008936
+      Parent: {x: 9, y: 11}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -0.0006132126
+        IsCellTypeBorder: 1
+      - Height: -0.00045251846
+        IsCellTypeBorder: 0
+      - Height: 7.000025
+        IsCellTypeBorder: 1
+      - Height: 1.9995852
+        IsCellTypeBorder: 1
+      - Height: -1.0005512
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 7.0002804
+      Parent: {x: 10, y: 12}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -0.9994674
+        IsCellTypeBorder: 1
+      - Height: 0.0005326271
+        IsCellTypeBorder: 0
+      - Height: 0.00016069412
+        IsCellTypeBorder: 1
+      - Height: 0.0006132126
+        IsCellTypeBorder: 1
+      - Height: -0.9993868
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558254
+      Height: 7.000813
+      Parent: {x: 11, y: 11}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -2.0003934
+        IsCellTypeBorder: 1
+      - Height: 0.00004720688
+        IsCellTypeBorder: 1
+      - Height: 4.9995036
+        IsCellTypeBorder: 1
+      - Height: -0.00037193298
+        IsCellTypeBorder: 1
+      - Height: -0.0005326271
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 5.0004196
+      Parent: {x: 12, y: 12}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -0.9999585
+        IsCellTypeBorder: 1
+      - Height: 0.000041484833
+        IsCellTypeBorder: 0
+      - Height: 2.0004406
+        IsCellTypeBorder: 1
+      - Height: 2.0003934
+        IsCellTypeBorder: 1
+      - Height: 1.0003934
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558252
+      Height: 5.000461
+      Parent: {x: 12, y: 11}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: -1
+        IsCellTypeBorder: 1
+      - Height: 0.00015830994
+        IsCellTypeBorder: 1
+      - Height: 1.0001583
+        IsCellTypeBorder: 1
+      - Height: 2.000399
+        IsCellTypeBorder: 1
+      - Height: -0.000041484833
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 4.000461
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -5.000461
+        IsCellTypeBorder: 0
+      - Height: -4.000461
+        IsCellTypeBorder: 1
+      - Height: -4.000461
+        IsCellTypeBorder: 1
+      - Height: 1.0001583
+        IsCellTypeBorder: 0
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 3.0000453
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -3.0000453
+        IsCellTypeBorder: 1
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0.00043201447
+        IsCellTypeBorder: 0
+      - Height: -3.0000453
+        IsCellTypeBorder: 1
+      - Height: -3.0000453
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 3.0000453
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -3.0000453
+        IsCellTypeBorder: 1
+      - Height: -3.0000453
+        IsCellTypeBorder: 1
+      - Height: 1.0009322
+        IsCellTypeBorder: 0
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: -3.0000453
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 4.0009775
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -4.0009775
+        IsCellTypeBorder: 1
+      - Height: -0.00094795227
+        IsCellTypeBorder: 0
+      - Height: 0.99905205
+        IsCellTypeBorder: 1
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: -0.00093221664
+        IsCellTypeBorder: 1
+      - Height: -1.0009322
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 4.0000296
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -4.0000296
+        IsCellTypeBorder: 1
+      - Height: -4.0000296
+        IsCellTypeBorder: 1
+      - Height: 2.0004034
+        IsCellTypeBorder: 0
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0.00094795227
+        IsCellTypeBorder: 0
+      - Height: -4.0000296
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 6.000433
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -6.000433
+        IsCellTypeBorder: 1
+      - Height: -2.0003471
+        IsCellTypeBorder: 0
+      - Height: -1.0003471
+        IsCellTypeBorder: 1
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: -1.0004034
+        IsCellTypeBorder: 1
+      - Height: -2.0004034
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 4.000086
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -4.000086
+        IsCellTypeBorder: 1
+      - Height: -4.000086
+        IsCellTypeBorder: 1
+      - Height: 1.0002565
+        IsCellTypeBorder: 0
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 2.0003471
+        IsCellTypeBorder: 0
+      - Height: -4.000086
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 5.0003424
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -5.0003424
+        IsCellTypeBorder: 1
+      - Height: 1.0008836
+        IsCellTypeBorder: 1
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0.9997778
+        IsCellTypeBorder: 1
+      - Height: -0.0002565384
+        IsCellTypeBorder: 1
+      - Height: -1.0002565
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558251
+      Height: 6.001226
+      Parent: {x: 7, y: 12}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -6.001226
+        IsCellTypeBorder: 1
+      - Height: -6.001226
+        IsCellTypeBorder: 1
+      - Height: -0.0003323555
+        IsCellTypeBorder: 1
+      - Height: -0.00088357925
+        IsCellTypeBorder: 1
+      - Height: -1.0008836
+        IsCellTypeBorder: 1
+      - Height: -6.001226
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 6.0008936
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -6.0008936
+        IsCellTypeBorder: 1
+      - Height: -0.0006132126
+        IsCellTypeBorder: 0
+      - Height: 0.9993868
+        IsCellTypeBorder: 1
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: -0.00055122375
+        IsCellTypeBorder: 1
+      - Height: 0.0003323555
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 6.0002804
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -6.0002804
+        IsCellTypeBorder: 1
+      - Height: -6.0002804
+        IsCellTypeBorder: 1
+      - Height: 0.0005326271
+        IsCellTypeBorder: 0
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0.0006132126
+        IsCellTypeBorder: 0
+      - Height: -6.0002804
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 6.000813
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -6.000813
+        IsCellTypeBorder: 1
+      - Height: -2.0003934
+        IsCellTypeBorder: 0
+      - Height: -1.0003934
+        IsCellTypeBorder: 1
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0.9994674
+        IsCellTypeBorder: 1
+      - Height: -0.0005326271
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 4.0004196
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -4.0004196
+        IsCellTypeBorder: 1
+      - Height: -4.0004196
+        IsCellTypeBorder: 1
+      - Height: 0.000041484833
+        IsCellTypeBorder: 0
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 2.0003934
+        IsCellTypeBorder: 0
+      - Height: -4.0004196
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: 4.000461
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: -4.000461
+        IsCellTypeBorder: 1
+      - Height: -5.000461
+        IsCellTypeBorder: 0
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: 1
+        IsCellTypeBorder: 1
+      - Height: 0.9999585
+        IsCellTypeBorder: 1
+      - Height: -0.000041484833
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+    - Type:
+        rid: 6670490249840558250
+      Height: -1.0000001
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 1.0000001
+        IsCellTypeBorder: 1
+      - Height: 1.0000001
+        IsCellTypeBorder: 1
+      - Height: 1.0000001
+        IsCellTypeBorder: 1
+      - Height: 5.000461
+        IsCellTypeBorder: 0
+      - Height: 5.000461
+        IsCellTypeBorder: 0
+      - Height: 1.0000001
+        IsCellTypeBorder: 1
+      IsRoad: 0
+      IsRoadCross: 0
+    LeftBorder: 0
+    RightBorder: 13
+    defaultCell:
+      Type:
+        rid: 6670490249840558255
+      Height: 0
+      Parent: {x: 0, y: 0}
+      RoadParent: {x: 0, y: 0}
+      Edges:
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: 0
+        IsCellTypeBorder: 0
+      - Height: 0
+        IsCellTypeBorder: 0
+      IsRoad: 0
+      IsRoadCross: 0
+  <Terrain>k__BackingField: {fileID: 0}
+  <WaterLevel>k__BackingField: 5.900002
+  _BuildInEditor_Build: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 6670490249840558249
+      type: {class: HexCellGeometry, ns: MicroWorldNS, asm: MicroWorld}
+      data:
+        <Radius>k__BackingField: 10
+        <Offset>k__BackingField: {x: 10, y: 0, z: 8.660254}
+        <InnerRadius>k__BackingField: 8.660254
+        <Width>k__BackingField: 20
+        <Height>k__BackingField: 17.320507
+        <EdgeLength>k__BackingField: 10
+        <VertSpacing>k__BackingField: 17.320507
+        <HorzSpacing>k__BackingField: 15
+        <Area>k__BackingField: 259.80762
+        <CornersCount>k__BackingField: 6
+        M0: 15
+        M2: 17.320507
+        N0: 0.06666667
+        N1: 0
+        N2: -0.033333335
+        N3: 0.057735026
+        corners:
+        - {x: -5.0000005, y: 0, z: 8.660254}
+        - {x: 4.9999995, y: 0, z: 8.6602545}
+        - {x: 10, y: 0, z: -0}
+        - {x: 4.9999995, y: 0, z: -8.6602545}
+        - {x: -5.0000005, y: 0, z: -8.660254}
+        - {x: -10, y: 0, z: 0.0000008742278}
+        edgeNormals:
+        - {x: -0.000000055060415, y: 0, z: 1}
+        - {x: 0.8660254, y: 0, z: 0.5}
+        - {x: 0.8660254, y: 0, z: -0.5}
+        - {x: -0.000000055060415, y: 0, z: -1}
+        - {x: -0.86602545, y: 0, z: -0.49999994}
+        - {x: -0.8660254, y: 0, z: 0.5}
+        startAngle: 480
+        edgeAngle: 60
+    - rid: 6670490249840558250
+      type: {class: CellType, ns: MicroWorldNS, asm: MicroWorld}
+      data:
+        Name: Border
+        Chance: 1
+        MicroNoiseScale: 1
+        HeightPower: 1
+        HeightSharpness: 3
+        Elevation: 0
+        Features: 0
+    - rid: 6670490249840558251
+      type: {class: CellType, ns: MicroWorldNS, asm: MicroWorld}
+      data:
+        Name: Gate
+        Chance: 1
+        MicroNoiseScale: 0
+        HeightPower: 5
+        HeightSharpness: 10
+        Elevation: 0
+        Features: 0
+    - rid: 6670490249840558252
+      type: {class: CellType, ns: MicroWorldNS, asm: MicroWorld}
+      data:
+        Name: Fallback
+        Chance: 1
+        MicroNoiseScale: 1
+        HeightPower: 1
+        HeightSharpness: 1
+        Elevation: 0
+        Features: 0
+    - rid: 6670490249840558253
+      type: {class: CellType, ns: MicroWorldNS, asm: MicroWorld}
+      data:
+        Name: Field
+        Chance: 1
+        MicroNoiseScale: 1
+        HeightPower: 1
+        HeightSharpness: 1
+        Elevation: 0
+        Features: 0
+    - rid: 6670490249840558254
+      type: {class: CellType, ns: MicroWorldNS, asm: MicroWorld}
+      data:
+        Name: Forest
+        Chance: 1
+        MicroNoiseScale: 1
+        HeightPower: 1
+        HeightSharpness: 1
+        Elevation: 0
+        Features: 0
+    - rid: 6670490249840558255
+      type: {class: CellType, ns: MicroWorldNS, asm: MicroWorld}
+      data:
+        Name: 
+        Chance: 1
+        MicroNoiseScale: 1
+        HeightPower: 1
+        HeightSharpness: 1
+        Elevation: 0
+        Features: 0
+--- !u!4 &116474305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116474303}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1109863621}
+  - {fileID: 633764708}
+  - {fileID: 1534152994}
+  - {fileID: 1749229997}
+  - {fileID: 53130514}
+  - {fileID: 1093029228}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &294502594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 294502596}
+  - component: {fileID: 294502595}
+  m_Layer: 0
+  m_Name: Directional Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &294502595
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294502594}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 1
+  m_Shape: 0
+  m_Color: {r: 1, g: 0.9595513, b: 0.9021402, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &294502596
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294502594}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.294438, y: 0.4287703, z: -0.8407832, w: -0.15015319}
+  m_LocalPosition: {x: -107.5, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 125.96, y: 218.6, z: 0}
+--- !u!1 &445353440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 445353441}
+  m_Layer: 0
+  m_Name: 'NOTE: You can change Seed of MicroWorld to build another terrain'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &445353441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445353440}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &505588262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 505588263}
+  m_Layer: 0
+  m_Name: 'NOTE: Select MicroWorld and press Build'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &505588263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505588262}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &633764707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 633764708}
+  - component: {fileID: 633764709}
+  m_Layer: 0
+  m_Name: Mountain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &633764708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633764707}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 116474305}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &633764709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633764707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a3ed7692fa4f342ba1742bfe80f50c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Chance>k__BackingField: 1
+  TerrainPrefab: {fileID: 5595708526146390759, guid: d615c1ee21172374ba76d8ebf01042bf, type: 3}
+  WaterPrefab: {fileID: 9207654558737106432, guid: 69962d4f99503df40aa2f6159df605c0, type: 3}
+  SlopeSteepness:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 1
+    m_ConstantMax: 4
+  SlopeSteepnessInPassages: 2
+  FlatChance:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0
+  Smoothing:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 1
+  MaxStepForPassage: 2
+  ClampHeight: 0
+  NoPaths: 0
+  CenterElevation:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 20
+  PeripheryElevation: -1
+  PeripherySize: 2
+  MainNoiseFrequency:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0.5
+  MainNoiseAmpl:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0
+  MidNoiseAmpl:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 4
+  MicroNoiseFrequency:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 1
+    m_ConstantMax: 5
+  MicroNoiseAmpl:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0.5
+  MicroNoiseOffsetY: 0
+  SlopeRoughness: 1
+  SmallSlopeRoughness: 2
+  SlopeRoughnessFrequency: 25
+  WaterCovering:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0.15
+  MaxDepthUnderWater: 10
+  BorderElevation: -1
+  BorderFeatures: 12
+  ValleyWidth:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0
+  ValleyElevation:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: -5
+--- !u!1001 &1093029227
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 116474305}
+    m_Modifications:
+    - target: {fileID: 5121940114432012914, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_Name
+      value: BiomeTemperate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+--- !u!4 &1093029228 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7882829875644086939, guid: af67ac0882f75c643b1b4a16e374e1f0, type: 3}
+  m_PrefabInstance: {fileID: 1093029227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1109863620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1109863621}
+  - component: {fileID: 1109863622}
+  m_Layer: 0
+  m_Name: ForestFieldsHex
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1109863621
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109863620}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 116474305}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1109863622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109863620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb636acf4d7aac4094b706c83d19f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Chance>k__BackingField: 0.5
+  MapSize:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 15
+    m_ConstantMax: 12
+  CellSize:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 10
+    m_ConstantMax: 10
+  BorderPadding: 1
+  Geometry: 0
+  CellTypeFrequency:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 3
+  CellTypeUniformity: 0
+  CellTypes:
+  - Name: Forest
+    Chance: 1
+    MicroNoiseScale: 1
+    HeightPower: 1
+    HeightSharpness: 1
+    Elevation: 0
+    Features: 0
+  - Name: Field
+    Chance: 1
+    MicroNoiseScale: 1
+    HeightPower: 1
+    HeightSharpness: 1
+    Elevation: 0
+    Features: 0
+  - Name: Ruins
+    Chance: 0
+    MicroNoiseScale: 0.5
+    HeightPower: 5
+    HeightSharpness: 5
+    Elevation: 0
+    Features: 0
+  BorderCellType:
+    Name: Border
+    Chance: 1
+    MicroNoiseScale: 1
+    HeightPower: 1
+    HeightSharpness: 3
+    Elevation: 0
+    Features: 0
+  GateCellType:
+    Name: Gate
+    Chance: 1
+    MicroNoiseScale: 0
+    HeightPower: 5
+    HeightSharpness: 10
+    Elevation: 0
+    Features: 0
+  FallbackCellType:
+    Name: Fallback
+    Chance: 1
+    MicroNoiseScale: 1
+    HeightPower: 1
+    HeightSharpness: 1
+    Elevation: 0
+    Features: 0
+  drawHex: 1
+  drawHexIndex: 0
+--- !u!1001 &1225297240
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2860639203252979548, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860639203252979548, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860639203252979548, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860639203252979548, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860639203252979548, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860639203252979548, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860639203252979548, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860639203252979548, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860639203252979548, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860639203252979548, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5920709459919231403, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3cdedebecad7e8145a66fe084f114472, type: 3}
+--- !u!1001 &1534152993
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 116474305}
+    m_Modifications:
+    - target: {fileID: 1265875139445340337, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5012864530511275023, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_Name
+      value: GatesAndBorders
+      objectReference: {fileID: 0}
+    - target: {fileID: 5012864530511275023, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+--- !u!4 &1534152994 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1405877906356870011, guid: 91031c66a30480d47840125ed45a3b7f, type: 3}
+  m_PrefabInstance: {fileID: 1534152993}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1749229996
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 116474305}
+    m_Modifications:
+    - target: {fileID: 4830809689412711857, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_Name
+      value: Rocks
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830809689412711857, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7462148242910929941, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+      propertyPath: CellTypes.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+--- !u!4 &1749229997 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6429272421641622231, guid: 660f04075fb17a745bf81f9b09c64b6b, type: 3}
+  m_PrefabInstance: {fileID: 1749229996}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1415714271847297272
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 116474305}
+    m_Modifications:
+    - target: {fileID: 5099004342918011455, guid: c77c8d9e1b8b4494e96a99adce880dba, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099004342918011455, guid: c77c8d9e1b8b4494e96a99adce880dba, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099004342918011455, guid: c77c8d9e1b8b4494e96a99adce880dba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099004342918011455, guid: c77c8d9e1b8b4494e96a99adce880dba, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099004342918011455, guid: c77c8d9e1b8b4494e96a99adce880dba, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099004342918011455, guid: c77c8d9e1b8b4494e96a99adce880dba, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099004342918011455, guid: c77c8d9e1b8b4494e96a99adce880dba, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099004342918011455, guid: c77c8d9e1b8b4494e96a99adce880dba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099004342918011455, guid: c77c8d9e1b8b4494e96a99adce880dba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099004342918011455, guid: c77c8d9e1b8b4494e96a99adce880dba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136348747257432685, guid: c77c8d9e1b8b4494e96a99adce880dba, type: 3}
+      propertyPath: m_Name
+      value: AntiqueGarden
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c77c8d9e1b8b4494e96a99adce880dba, type: 3}
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 1225297240}
+  - {fileID: 294502596}
+  - {fileID: 116474305}
+  - {fileID: 505588263}
+  - {fileID: 445353441}

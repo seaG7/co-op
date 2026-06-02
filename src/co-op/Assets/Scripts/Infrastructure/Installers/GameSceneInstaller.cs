@@ -1,0 +1,71 @@
+using Infrastructure.Services.Camera;
+using Infrastructure.Services.Network;
+using Infrastructure.Services.Spawn;
+using UnityEngine;
+using Zenject;
+
+namespace Infrastructure.Installers
+{
+    public class GameSceneInstaller : MonoInstaller
+    {
+        [Header("Player")]
+        [SerializeField] private GameObject _playerPrefab;
+
+        [Header("Camera")]
+        [Tooltip("Game scene camera. If empty, CameraService falls back to Camera.main.")]
+        [SerializeField] private UnityEngine.Camera _gameCamera;
+
+        public override void InstallBindings()
+        {
+            BindSpawn();
+            BindMarkerSpawn();
+            BindWeaponBase();
+            BindBridge();
+            BindCamera();
+        }
+
+        private void BindMarkerSpawn()
+        {
+            Container.BindInterfacesAndSelfTo<MarkerBasedSpawnService>().AsSingle().NonLazy();
+        }
+
+        private void BindWeaponBase()
+        {
+            Container.BindInterfacesAndSelfTo<WeaponBaseSpawner>().AsSingle().NonLazy();
+        }
+
+        private void BindSpawn()
+        {
+            Container.Bind<INetworkSpawnService>().To<NetworkSpawnService>().AsSingle();
+
+            if (_playerPrefab == null)
+            {
+                Debug.LogError("[GameSceneInstaller] Player prefab is not assigned. Spawn will fail.", this);
+                Container.BindInterfacesAndSelfTo<PlayerSpawnService>().AsSingle();
+            }
+            else
+            {
+                Container.BindInterfacesAndSelfTo<PlayerSpawnService>().AsSingle().WithArguments(_playerPrefab);
+            }
+        }
+
+        private void BindBridge()
+        {
+            Container.BindInterfacesAndSelfTo<NetworkEventBridge>().AsSingle().NonLazy();
+        }
+
+        private void BindCamera()
+        {
+            if (_gameCamera != null)
+                Container.Bind<UnityEngine.Camera>().FromInstance(_gameCamera).AsSingle();
+            Container.Bind<ICameraService>().To<CameraService>().AsSingle();
+        }
+
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            if (_playerPrefab == null) Debug.LogWarning("[GameSceneInstaller] _playerPrefab not assigned.", this);
+        }
+#endif
+    }
+}
