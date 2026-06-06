@@ -16,6 +16,32 @@ namespace Data.Configs
         public float DefaultHoldDistance = 0.7f;
         [Tooltip("Seconds the item eases into the hand on pickup instead of teleporting. 0 = instant snap.")]
         public float PickupBlendDuration = 0.25f;
+        [Tooltip("(Legacy single-hand kinematic follow — superseded by the physical-follow fields below; kept until the old owner-drive path is fully removed.)")]
+        public float HeldFollowSharpness = 14f;
+
+        [Header("Physical follow (server velocity-drive)")]
+        [Tooltip("Proportional gain for the held item's linear velocity toward the hand target. Higher = snappier/stiffer.")]
+        public float FollowResponsiveness = 18f;
+        [Tooltip("Max linear speed (m/s) the held item is driven at for a LIGHT item. Scaled down by SpeedMultiplierForMass (heavy = slower follow).")]
+        public float FollowMaxSpeed = 9f;
+        [Tooltip("Max angular speed (deg/s) the held item is rotated toward the target orientation.")]
+        public float FollowMaxAngularSpeed = 720f;
+
+        [Header("Two-handed")]
+        [Tooltip("If the two holders' grip points get farther apart than this (meters), the item strains then auto-releases.")]
+        public float TwoHandMaxSeparation = 2.5f;
+
+        [Header("Throw / impact")]
+        [Tooltip("Multiplier on the item's tracked carry velocity applied on release.")]
+        public float ThrowVelocityScaleV2 = 1.0f;
+        [Tooltip("Extra forward impulse (m/s) added along the holder's aim on release.")]
+        public float ThrowAimImpulse = 2.5f;
+        [Tooltip("Default collision impulse above which a carryable fires ItemImpactSignal (used when the item's own FragileImpulse <= 0).")]
+        public float DefaultFragileImpulse = 6f;
+
+        [Header("Snap")]
+        [Tooltip("Max angle (degrees) between the player's look direction and a socket for a release to snap onto it. Beyond this, releasing DROPS instead of placing — so you don't snap to a socket you aren't looking at. Generous = forgiving.")]
+        [Range(5f, 90f)] public float SnapAimMaxAngle = 30f;
 
         [Header("Locomotion (weight → speed)")]
         [Tooltip("Items at or below this mass (kg) do NOT slow the player at all — carried freely.")]
@@ -31,6 +57,13 @@ namespace Data.Configs
         [Tooltip("Hard cap on release velocity (m/s) — anti-cheat + keeps thrown items sane.")]
         public float MaxThrowSpeed = 12f;
 
+        public float SpeedMultiplierForMass(float mass)
+        {
+            float excess = Mathf.Max(0f, mass - FreeCarryMass);
+            if (excess <= 0f) return 1f;
+            return Mathf.Max(MinSpeedMultiplier, 1f / (1f + excess * MovementSlowdownPerKg));
+        }
+
         [Header("Debug")]
         public bool DebugDrawRaycast = false;
         public bool DebugDrawGrab = false;
@@ -42,6 +75,15 @@ namespace Data.Configs
             MaxReach = 2f; ServerReachTolerance = 1.2f;
             DefaultHoldDistance = 0.7f;
             PickupBlendDuration = 0.25f;
+            HeldFollowSharpness = 14f;
+            FollowResponsiveness = 18f;
+            FollowMaxSpeed = 9f;
+            FollowMaxAngularSpeed = 720f;
+            TwoHandMaxSeparation = 2.5f;
+            ThrowVelocityScaleV2 = 1.0f;
+            ThrowAimImpulse = 2.5f;
+            DefaultFragileImpulse = 6f;
+            SnapAimMaxAngle = 30f;
             FreeCarryMass = 5f;
             MovementSlowdownPerKg = 0.05f;
             MinSpeedMultiplier = 0.3f;

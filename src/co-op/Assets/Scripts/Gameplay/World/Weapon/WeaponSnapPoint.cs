@@ -1,12 +1,12 @@
 using System.Collections.Generic;
-using FishNet.Object;
 using FishNet.Object.Synchronizing;
+using Gameplay.Net;
 using Gameplay.World.Items;
 using UnityEngine;
 
 namespace Gameplay.World.Weapon
 {
-    public sealed class WeaponSnapPoint : NetworkBehaviour
+    public sealed class WeaponSnapPoint : InjectableNetworkBehaviour
     {
         [Header("Distances")]
         [Tooltip("From a carried item to this point — within this range the glow particles light up.")]

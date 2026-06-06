@@ -1,21 +1,21 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Gameplay.Player;
+using Data.Players;
 
 namespace Infrastructure.Services.Player
 {
     public interface IPlayerService
     {
-        PlayerNetwork LocalPlayer { get; }
+        ILocalPlayer LocalPlayer { get; }
         bool HasLocalPlayer { get; }
 
-        event Action<PlayerNetwork> LocalPlayerAssigned;
-        event Action<PlayerNetwork> LocalPlayerRemoved;
+        event Action<ILocalPlayer> LocalPlayerAssigned;
+        event Action<ILocalPlayer> LocalPlayerRemoved;
 
-        UniTask<PlayerNetwork> WaitForLocalPlayerAsync(CancellationToken ct = default);
+        UniTask<ILocalPlayer> WaitForLocalPlayerAsync(CancellationToken ct = default);
 
-        void RegisterLocalPlayer(PlayerNetwork player);
-        void UnregisterLocalPlayer(PlayerNetwork player);
+        void RegisterLocalPlayer(ILocalPlayer player);
+        void UnregisterLocalPlayer(ILocalPlayer player);
     }
 }

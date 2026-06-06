@@ -2,23 +2,23 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Gameplay.Player;
+using Data.Players;
 using UnityEngine;
 
 namespace Infrastructure.Services.Player
 {
     public sealed class PlayerService : IPlayerService
     {
-        private readonly List<UniTaskCompletionSource<PlayerNetwork>> _waiters = new();
-        private PlayerNetwork _localPlayer;
+        private readonly List<UniTaskCompletionSource<ILocalPlayer>> _waiters = new();
+        private ILocalPlayer _localPlayer;
 
-        public PlayerNetwork LocalPlayer => _localPlayer;
+        public ILocalPlayer LocalPlayer => _localPlayer;
         public bool HasLocalPlayer => _localPlayer != null;
 
-        public event Action<PlayerNetwork> LocalPlayerAssigned;
-        public event Action<PlayerNetwork> LocalPlayerRemoved;
+        public event Action<ILocalPlayer> LocalPlayerAssigned;
+        public event Action<ILocalPlayer> LocalPlayerRemoved;
 
-        public void RegisterLocalPlayer(PlayerNetwork player)
+        public void RegisterLocalPlayer(ILocalPlayer player)
         {
             if (player == null) { Debug.LogError("[PlayerService] RegisterLocalPlayer received null."); return; }
             if (_localPlayer == player) return;
@@ -33,7 +33,7 @@ namespace Infrastructure.Services.Player
             foreach (var w in snapshot) w.TrySetResult(player);
         }
 
-        public void UnregisterLocalPlayer(PlayerNetwork player)
+        public void UnregisterLocalPlayer(ILocalPlayer player)
         {
             if (_localPlayer != player) return;
             _localPlayer = null;
@@ -44,11 +44,11 @@ namespace Infrastructure.Services.Player
             foreach (var w in snapshot) w.TrySetCanceled();
         }
 
-        public UniTask<PlayerNetwork> WaitForLocalPlayerAsync(CancellationToken ct = default)
+        public UniTask<ILocalPlayer> WaitForLocalPlayerAsync(CancellationToken ct = default)
         {
             if (_localPlayer != null) return UniTask.FromResult(_localPlayer);
 
-            var tcs = new UniTaskCompletionSource<PlayerNetwork>();
+            var tcs = new UniTaskCompletionSource<ILocalPlayer>();
             _waiters.Add(tcs);
 
             if (!ct.CanBeCanceled) return tcs.Task;
@@ -64,8 +64,8 @@ namespace Infrastructure.Services.Player
             return AwaitWithDispose(tcs, reg);
         }
 
-        private static async UniTask<PlayerNetwork> AwaitWithDispose(
-            UniTaskCompletionSource<PlayerNetwork> tcs,
+        private static async UniTask<ILocalPlayer> AwaitWithDispose(
+            UniTaskCompletionSource<ILocalPlayer> tcs,
             CancellationTokenRegistration reg)
         {
             try { return await tcs.Task; }

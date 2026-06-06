@@ -54,6 +54,9 @@ namespace Data.Configs
         [Tooltip("Additional ray distance beyond CC radius for ground SphereCast.")]
         public float GroundProbeDistance = 0.15f;
 
+        [Tooltip("Layers treated as ground for the grounded SphereCast.")]
+        public LayerMask GroundMask = ~0;
+
         [Tooltip("Slope angle (degrees) above which the player slides instead of being grounded.")]
         [Range(0f, 89f)]
         public float MaxSlopeAngle = 50f;

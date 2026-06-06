@@ -1,4 +1,4 @@
-using Gameplay.Player;
+using Data.Players;
 using Infrastructure.Services.Network;
 using Infrastructure.Services.Player;
 using Signals;
@@ -36,8 +36,18 @@ namespace UI.HUD
         }
 
         private void OnSessionState(SessionState _) => Refresh();
-        private void OnLocalPlayer(PlayerNetwork _) => Refresh();
-        private void OnInteractPrompt(InteractPromptSignal s) => _view.SetInteractPrompt(s.Show);
+        private void OnLocalPlayer(ILocalPlayer _) => Refresh();
+
+        private void OnInteractPrompt(InteractPromptSignal s)
+            => _view.SetInteractPrompt(s.Show, s.Show ? PromptText(s.Kind) : null);
+
+        private static string PromptText(InteractPromptKind kind) => kind switch
+        {
+            InteractPromptKind.PickUp => "Hold to pick up",
+            InteractPromptKind.Drop => "Release to drop",
+            InteractPromptKind.PlaceOnSocket => "Release to place",
+            _ => "Hold to interact",
+        };
 
         private void Refresh() =>
             _view.SetStatus($"{_session.State} | ClientId: {_session.LocalClientId} | Player: {(_playerService.HasLocalPlayer ? "OK" : "—")}");

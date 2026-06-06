@@ -1,4 +1,6 @@
 using Infrastructure.Services.Camera;
+using Infrastructure.Services.Carry;
+using Infrastructure.Services.DI;
 using Infrastructure.Services.Network;
 using Infrastructure.Services.Spawn;
 using UnityEngine;
@@ -17,11 +19,36 @@ namespace Infrastructure.Installers
 
         public override void InstallBindings()
         {
+            RegisterSceneContainer();
             BindSpawn();
             BindMarkerSpawn();
             BindWeaponBase();
             BindBridge();
             BindCamera();
+            BindCarry();
+            BindExecutionOrders();
+        }
+
+        private void BindCarry()
+        {
+
+            Container.BindInterfacesAndSelfTo<PhysicalCarryService>().AsSingle().NonLazy();
+        }
+
+        private void RegisterSceneContainer()
+        {
+
+            Container.BindInterfacesAndSelfTo<SceneContainerLifetime>().AsSingle().NonLazy();
+        }
+
+        private void BindExecutionOrders()
+        {
+
+            Container.BindExecutionOrder<SceneContainerLifetime>(-100);
+
+            Container.BindExecutionOrder<PlayerSpawnService>(-20);
+            Container.BindExecutionOrder<WeaponBaseSpawner>(-20);
+            Container.BindExecutionOrder<MarkerBasedSpawnService>(-10);
         }
 
         private void BindMarkerSpawn()

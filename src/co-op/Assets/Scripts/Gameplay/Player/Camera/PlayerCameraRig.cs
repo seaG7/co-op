@@ -20,6 +20,21 @@ namespace Gameplay.Player.Camera
 
         public UnityEngine.Camera Camera => _camera;
 
+        public void SpectateFollow(Transform target, Vector3 localOffset)
+        {
+            if (!base.IsOwner || _camera == null) return;
+            if (target == null)
+            {
+                _camera.transform.SetParent(transform, worldPositionStays: false);
+                _camera.transform.localPosition = _localCameraOffset;
+                _camera.transform.localRotation = Quaternion.identity;
+                return;
+            }
+            _camera.transform.SetParent(target, worldPositionStays: false);
+            _camera.transform.localPosition = localOffset;
+            _camera.transform.localRotation = Quaternion.identity;
+        }
+
         public override void OnStartClient()
         {
             base.OnStartClient();

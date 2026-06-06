@@ -5042,7 +5042,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 5512261607730343044}
   _networkObjectCache: {fileID: 0}
   HighlightDistance: 2
-  SnapDistance: 0.5
+  SnapDistance: 2
   _glowParticles: {fileID: 0}
 --- !u!1 &4209929621778438462
 GameObject:
@@ -5093,7 +5093,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 5512261607730343044}
   _networkObjectCache: {fileID: 0}
   HighlightDistance: 2
-  SnapDistance: 0.5
+  SnapDistance: 2
   _glowParticles: {fileID: 0}
 --- !u!1 &4380278252473106013
 GameObject:
@@ -10092,7 +10092,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 5512261607730343044}
   _networkObjectCache: {fileID: 0}
   HighlightDistance: 2
-  SnapDistance: 0.5
+  SnapDistance: 2
   _glowParticles: {fileID: 0}
 --- !u!1 &8872589774420831108
 GameObject:

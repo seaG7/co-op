@@ -94,12 +94,11 @@ namespace EditorTools
 
             if (prefab.GetComponent<NetworkObject>() == null)
                 Debug.LogError("[CoOp] Player.prefab is missing NetworkObject.", prefab);
-            if (prefab.GetComponent<GameObjectContext>() == null)
-                Debug.LogError("[CoOp] Player.prefab is missing GameObjectContext.", prefab);
-            if (prefab.GetComponent<PlayerInstaller>() == null)
-                Debug.LogError("[CoOp] Player.prefab is missing PlayerInstaller.", prefab);
             if (prefab.GetComponent<PlayerNetwork>() == null)
                 Debug.LogError("[CoOp] Player.prefab is missing PlayerNetwork.", prefab);
+            if (prefab.GetComponent<GameObjectContext>() != null)
+                Debug.LogWarning("[CoOp] Player.prefab still has a GameObjectContext — it is no longer used " +
+                                 "(players inject via the scene-container registry like other networked objects). Remove it.", prefab);
 
             Debug.Log("[CoOp] Player.prefab validation complete.", prefab);
         }

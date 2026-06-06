@@ -25,6 +25,7 @@ namespace Core.States
 
         private CancellationTokenSource _cts;
         private bool _subscribed;
+        private bool _fallingBack;
 
         public GameplayState(
             IGameStateMachine stateMachine,
@@ -122,6 +123,10 @@ namespace Core.States
 
         private void FallbackToMenu()
         {
+
+            if (_fallingBack) return;
+            _fallingBack = true;
+            Unsubscribe();
             _cts?.Cancel();
             _stateMachine.EnterAsync<LoadMainMenuState>().Forget();
         }

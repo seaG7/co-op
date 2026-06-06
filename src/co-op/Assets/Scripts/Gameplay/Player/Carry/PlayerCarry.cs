@@ -1,10 +1,14 @@
 using Cysharp.Threading.Tasks;
+using Data.Configs;
 using FishNet.Connection;
 using FishNet.Object;
 using Gameplay.Player.Camera;
+using Gameplay.Player.Look;
+using Gameplay.Player.Vitals;
 using Gameplay.World.Items;
 using Gameplay.World.Weapon;
 using Infrastructure.Providers.Configs;
+using Infrastructure.Services.Carry;
 using Infrastructure.Services.Input;
 using Signals;
 using UnityEngine;
@@ -20,28 +24,28 @@ namespace Gameplay.Player.Carry
         [Inject] private IInputService _input;
         [Inject] private IConfigDataProvider _configs;
         [Inject] private SignalBus _signalBus;
+        [Inject] private IPhysicalCarryService _carryService;
 
         private Carryable _heldItem;
-
-        private UnityEngine.CharacterController _cc;
+        private PlayerLookController _look;
+        private PlayerVitals _vitals;
         private bool _inputBound;
 
         private WeaponSnapPoint _highlightedSnap;
 
-        private Carryable _carryTrackedItem;
-        private float _pickupBlend;
-        private readonly System.Collections.Generic.List<Collider> _ignoredColliders = new();
+        private Carryable _predItem;
+        private Vector3 _predPos;
+        private Quaternion _predRot;
 
         private bool _promptActive;
-
-        private Vector3 _lastHeldPos;
-        private Vector3 _heldVel;
+        private InteractPromptKind _promptKind;
 
         private NetworkConnection _heldByConnection;
 
         private void Awake()
         {
-            _cc = GetComponent<UnityEngine.CharacterController>();
+            _look = GetComponent<PlayerLookController>();
+            _vitals = GetComponent<PlayerVitals>();
         }
 
         public override void OnStartClient()
@@ -62,7 +66,10 @@ namespace Gameplay.Player.Carry
 
         public override void OnStopServer()
         {
-            ForceRelease(Vector3.zero);
+            if (_heldItem != null)
+                _carryService.Release(_heldItem, _heldByConnection, Vector3.zero);
+            _heldItem = null;
+            _heldByConnection = null;
             base.OnStopServer();
         }
 
@@ -70,7 +77,6 @@ namespace Gameplay.Player.Carry
         {
             UnbindInput();
             ClearSnapHighlight();
-            SetCarryCollisionIgnored(false);
         }
 
         private void BindInput()
@@ -91,9 +97,10 @@ namespace Gameplay.Player.Carry
 
         private void OnInteractStarted()
         {
+            if (_vitals != null && !_vitals.IsAlive) return;
             if (_heldItem != null) return;
             var cam = _cameraRig != null ? _cameraRig.Camera : null;
-            if (cam == null) return;
+            if (cam == null || _configs?.Carry == null) return;
             var carry = _configs.Carry;
             const float crosshairProbeDistance = 50f;
             if (!Physics.Raycast(cam.transform.position, cam.transform.forward, out var hit,
@@ -105,13 +112,18 @@ namespace Gameplay.Player.Carry
             RequestGrab(carryable.NetworkObject);
         }
 
-        private void OnInteractCanceled() => RequestRelease(_heldVel);
+        private void OnInteractCanceled()
+        {
+            var cam = _cameraRig != null ? _cameraRig.Camera : null;
+            Vector3 aimOrigin = cam != null ? cam.transform.position : transform.position;
+            Vector3 aimDir = cam != null ? cam.transform.forward : transform.forward;
+            RequestRelease(aimOrigin, aimDir);
+        }
 
         [ServerRpc]
         private void RequestGrab(NetworkObject itemNob)
         {
-            if (itemNob == null) return;
-            if (_heldItem != null) return;
+            if (itemNob == null || _heldItem != null) return;
             var carryable = itemNob.GetComponent<Carryable>();
             if (carryable == null || carryable.Body == null) return;
             if (carryable.HolderClientId.Value != -1) return;
@@ -133,13 +145,11 @@ namespace Gameplay.Player.Carry
                         break;
                     }
                 }
-                carryable.IsSnapped.Value = false;
             }
 
-            carryable.HolderClientId.Value = base.OwnerId;
-            carryable.HasBeenGrabbedOnce.Value = true;
-            carryable.Body.isKinematic = true;
-            itemNob.GiveOwnership(base.Owner);
+            Vector3 eye = _look != null ? _look.EyePosition : transform.position;
+            Vector3 aim = _look != null ? _look.AimDirection : transform.forward;
+            if (!_carryService.TryGrab(carryable, base.Owner, eye, aim)) return;
 
             _heldItem = carryable;
             _heldByConnection = base.Owner;
@@ -148,19 +158,51 @@ namespace Gameplay.Player.Carry
         }
 
         [ServerRpc]
-        private void RequestRelease(Vector3 throwVel)
+        private void RequestRelease(Vector3 aimOrigin, Vector3 aimDir)
         {
             if (_heldItem == null) return;
-            var snap = FindNearestFreeSnapForServer(_heldItem.transform.position);
-            if (snap != null)
+            var item = _heldItem;
+            var dir = aimDir.sqrMagnitude > 1e-6f ? aimDir.normalized : transform.forward;
+
+            bool soleHolder = _carryService.HolderCount(item) <= 1;
+            WeaponSnapPoint snap = null;
+            if (soleHolder)
             {
-                AnimateSnapAsync(_heldItem, snap).Forget();
-                return;
+                float tol = _configs?.Carry != null ? Mathf.Max(1f, _configs.Carry.ServerReachTolerance) : 1f;
+                float minDot = SnapAimMinDot(_configs?.Carry);
+                snap = FindNearestFreeSnapForServer(item.transform.position, tol, aimOrigin, dir, minDot);
             }
-            ForceRelease(throwVel);
+
+            _carryService.Release(item, base.Owner, snap != null ? Vector3.zero : dir);
+
+            _heldItem = null;
+            _heldByConnection = null;
+            if (base.Owner != null && base.Owner.IsValid && !base.Owner.IsHost)
+                SetHeldItemOnOwner(base.Owner, null);
+
+            if (snap != null) AnimateSnapAsync(item, snap).Forget();
         }
 
-        private static WeaponSnapPoint FindNearestFreeSnapForServer(Vector3 origin)
+        private static float SnapAimMinDot(CarryConfig carry)
+            => carry != null ? Mathf.Cos(Mathf.Clamp(carry.SnapAimMaxAngle, 1f, 180f) * Mathf.Deg2Rad) : -1f;
+
+        private static bool IsSnapCandidate(WeaponSnapPoint s, Vector3 itemPos, float distanceMult,
+            Vector3 aimOrigin, Vector3 aimDir, float minDot)
+        {
+            if (s == null || !s.IsFree) return false;
+
+            float maxDist = s.SnapDistance * distanceMult;
+            if ((itemPos - s.transform.position).sqrMagnitude > maxDist * maxDist) return false;
+
+            Vector3 toSocket = s.transform.position - aimOrigin;
+            float sqr = toSocket.sqrMagnitude;
+            if (sqr < 1e-6f) return true;
+            float dot = Vector3.Dot(aimDir, toSocket * (1f / Mathf.Sqrt(sqr)));
+            return dot >= minDot;
+        }
+
+        private static WeaponSnapPoint FindNearestFreeSnapForServer(Vector3 itemPos, float distanceMult,
+            Vector3 aimOrigin, Vector3 aimDir, float minDot)
         {
             WeaponSnapPoint best = null;
             float bestDistSq = float.MaxValue;
@@ -168,14 +210,9 @@ namespace Gameplay.Player.Carry
             for (int i = 0; i < all.Count; i++)
             {
                 var s = all[i];
-                if (s == null || !s.IsFree) continue;
-                float dSq = (origin - s.transform.position).sqrMagnitude;
-                float maxSq = s.SnapDistance * s.SnapDistance;
-                if (dSq <= maxSq && dSq < bestDistSq)
-                {
-                    bestDistSq = dSq;
-                    best = s;
-                }
+                if (!IsSnapCandidate(s, itemPos, distanceMult, aimOrigin, aimDir, minDot)) continue;
+                float dSq = (itemPos - s.transform.position).sqrMagnitude;
+                if (dSq < bestDistSq) { bestDistSq = dSq; best = s; }
             }
             return best;
         }
@@ -187,18 +224,7 @@ namespace Gameplay.Player.Carry
             snap.AttachedCarryable = item;
             snap.IsOccupied.Value = true;
             item.IsSnapped.Value = true;
-
-            var nob = item.NetworkObject;
-            if (nob != null) nob.RemoveOwnership();
-
-            if (item.Body != null) item.Body.isKinematic = true;
-            item.HolderClientId.Value = -1;
-
-            var holder = _heldByConnection;
-            _heldItem = null;
-            _heldByConnection = null;
-            if (holder != null && holder.IsValid && !holder.IsHost)
-                SetHeldItemOnOwner(holder, null);
+            item.ApplyPhysicsState();
 
             Vector3 startPos = item.transform.position;
             Quaternion startRot = item.transform.rotation;
@@ -208,8 +234,7 @@ namespace Gameplay.Player.Carry
             float t = 0f;
             while (t < SnapAnimationDurationSec)
             {
-                if (item == null) return;
-                if (!item.IsSnapped.Value) return;
+                if (item == null || !item.IsSnapped.Value) return;
                 t += Time.deltaTime;
                 float k = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(t / SnapAnimationDurationSec));
                 item.transform.SetPositionAndRotation(
@@ -223,31 +248,6 @@ namespace Gameplay.Player.Carry
             item.HasBeenGrabbedOnce.Value = false;
         }
 
-        private void ForceRelease(Vector3 throwVel)
-        {
-            if (_heldItem == null) return;
-            var rb = _heldItem.Body;
-            var nob = _heldItem.NetworkObject;
-            if (rb != null)
-            {
-                rb.isKinematic = !_heldItem.HasBeenGrabbedOnce.Value;
-                if (!rb.isKinematic && _configs?.Carry != null)
-                {
-                    var carry = _configs.Carry;
-                    Vector3 v = Vector3.ClampMagnitude(throwVel * carry.ThrowVelocityScale, carry.MaxThrowSpeed);
-                    rb.linearVelocity = v;
-                }
-            }
-            _heldItem.HolderClientId.Value = -1;
-            if (nob != null) nob.RemoveOwnership();
-
-            var holder = _heldByConnection;
-            _heldItem = null;
-            _heldByConnection = null;
-            if (holder != null && holder.IsValid && !holder.IsHost)
-                SetHeldItemOnOwner(holder, null);
-        }
-
         [TargetRpc]
         private void SetHeldItemOnOwner(NetworkConnection conn, NetworkObject itemNob)
         {
@@ -258,83 +258,71 @@ namespace Gameplay.Player.Carry
         {
             if (!base.IsOwner) return;
 
-            SyncCarryTracking();
-
             if (_heldItem == null)
             {
+                _predItem = null;
                 ClearSnapHighlight();
                 var hover = RaycastForCarryable();
-                SetPrompt(hover != null && hover.HolderClientId.Value == -1);
+                bool canPick = hover != null && hover.HolderClientId.Value == -1;
+                SetPrompt(canPick, InteractPromptKind.PickUp);
                 return;
             }
 
-            SetPrompt(false);
-
             var cam = _cameraRig != null ? _cameraRig.Camera : null;
-            if (cam == null) return;
+            if (cam == null || _configs?.Carry == null) return;
             var carry = _configs.Carry;
 
-            float dist = _heldItem.HoldDistance > 0f ? _heldItem.HoldDistance : carry.DefaultHoldDistance;
-            Vector3 handTarget = cam.transform.position + cam.transform.forward * dist + cam.transform.up * -0.1f;
-            Quaternion handRot = cam.transform.rotation;
-
-            float blendDur = Mathf.Max(0.0001f, carry.PickupBlendDuration);
-            _pickupBlend = Mathf.MoveTowards(_pickupBlend, 1f, Time.deltaTime / blendDur);
-            float k = Mathf.SmoothStep(0f, 1f, _pickupBlend);
-            Vector3 pos = Vector3.Lerp(_heldItem.transform.position, handTarget, k);
-            Quaternion rot = Quaternion.Slerp(_heldItem.transform.rotation, handRot, k);
-            _heldItem.transform.SetPositionAndRotation(pos, rot);
-
-            float dt = Mathf.Max(Time.deltaTime, 0.0001f);
-            if (_pickupBlend >= 0.999f)
+            if (!base.IsServerInitialized && _look != null
+                && _heldItem.HoldersRequired <= 1 && !_heldItem.IsSnapped.Value)
             {
-                Vector3 inst = (pos - _lastHeldPos) / dt;
-                _heldVel = Vector3.Lerp(_heldVel, inst, 0.5f);
-            }
-            _lastHeldPos = pos;
-
-            UpdateSnapHighlight(_heldItem.transform.position);
-        }
-
-        private void SyncCarryTracking()
-        {
-            if (_heldItem == _carryTrackedItem) return;
-
-            SetCarryCollisionIgnored(false);
-            _carryTrackedItem = _heldItem;
-            _pickupBlend = 0f;
-            _heldVel = Vector3.zero;
-            if (_carryTrackedItem != null)
-            {
-                _lastHeldPos = _carryTrackedItem.transform.position;
-                SetCarryCollisionIgnored(true);
-            }
-        }
-
-        private void SetCarryCollisionIgnored(bool ignored)
-        {
-            if (_cc == null) return;
-
-            if (ignored)
-            {
-                _ignoredColliders.Clear();
-                if (_carryTrackedItem == null) return;
-                _carryTrackedItem.GetComponentsInChildren(true, _ignoredColliders);
-                for (int i = 0; i < _ignoredColliders.Count; i++)
+                if (_predItem != _heldItem)
                 {
-                    var col = _ignoredColliders[i];
-                    if (col != null && !col.isTrigger) Physics.IgnoreCollision(_cc, col, true);
+                    _predItem = _heldItem;
+                    _predPos = _heldItem.transform.position;
+                    _predRot = _heldItem.transform.rotation;
                 }
+
+                Vector3 aim = _look.AimDirection;
+                aim = aim.sqrMagnitude > 1e-6f ? aim.normalized : cam.transform.forward;
+                float dist = _heldItem.HoldDistance > 0f ? _heldItem.HoldDistance : carry.DefaultHoldDistance;
+                Quaternion targetRot = Quaternion.LookRotation(aim, Vector3.up);
+                Vector3 targetPos = (_look.EyePosition + aim * dist + Vector3.down * 0.1f)
+                                    - targetRot * _heldItem.AnchorLocalPosition(0);
+
+                float dt = Time.deltaTime;
+                float massMult = carry.SpeedMultiplierForMass(_heldItem.Mass);
+                Vector3 vel = CarrySolver.FollowVelocity(_predPos, targetPos, dt,
+                    carry.FollowMaxSpeed * massMult, carry.FollowResponsiveness * massMult);
+                _predPos += vel * dt;
+
+                Vector3 angVel = CarrySolver.AngularVelocity(_predRot, targetRot, dt, carry.FollowMaxAngularSpeed);
+                float w = angVel.magnitude;
+                if (w > 1e-6f)
+                    _predRot = Quaternion.AngleAxis(w * Mathf.Rad2Deg * dt, angVel / w) * _predRot;
+
+                _heldItem.transform.SetPositionAndRotation(_predPos, _predRot);
             }
             else
             {
-                for (int i = 0; i < _ignoredColliders.Count; i++)
-                {
-                    var col = _ignoredColliders[i];
-                    if (col != null) Physics.IgnoreCollision(_cc, col, false);
-                }
-                _ignoredColliders.Clear();
+                _predItem = null;
             }
+
+            UpdateSnapHighlight(_heldItem.transform.position);
+
+            float minDot = SnapAimMinDot(carry);
+            float tol = Mathf.Max(1f, carry.ServerReachTolerance);
+            bool canPlace = HasSnapCandidate(_heldItem.transform.position, tol,
+                cam.transform.position, cam.transform.forward, minDot);
+            SetPrompt(true, canPlace ? InteractPromptKind.PlaceOnSocket : InteractPromptKind.Drop);
+        }
+
+        private static bool HasSnapCandidate(Vector3 itemPos, float distanceMult,
+            Vector3 aimOrigin, Vector3 aimDir, float minDot)
+        {
+            var all = WeaponSnapPoint.All;
+            for (int i = 0; i < all.Count; i++)
+                if (IsSnapCandidate(all[i], itemPos, distanceMult, aimOrigin, aimDir, minDot)) return true;
+            return false;
         }
 
         private Carryable RaycastForCarryable()
@@ -349,11 +337,12 @@ namespace Gameplay.Player.Carry
             return hit.collider.GetComponentInParent<Carryable>();
         }
 
-        private void SetPrompt(bool show)
+        private void SetPrompt(bool show, InteractPromptKind kind = InteractPromptKind.PickUp)
         {
-            if (show == _promptActive) return;
+            if (show == _promptActive && (!show || kind == _promptKind)) return;
             _promptActive = show;
-            _signalBus?.Fire(new InteractPromptSignal(show));
+            _promptKind = kind;
+            _signalBus?.Fire(new InteractPromptSignal(show, kind));
         }
 
         private void UpdateSnapHighlight(Vector3 itemPos)
@@ -391,6 +380,17 @@ namespace Gameplay.Player.Carry
 
         public bool IsHolding => _heldItem != null;
 
+        public void ServerForceDrop()
+        {
+            if (!base.IsServerInitialized || _heldItem == null) return;
+            var item = _heldItem;
+            _carryService.Release(item, _heldByConnection, Vector3.zero);
+            _heldItem = null;
+            _heldByConnection = null;
+            if (base.Owner != null && base.Owner.IsValid && !base.Owner.IsHost)
+                SetHeldItemOnOwner(base.Owner, null);
+        }
+
 #if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
@@ -417,7 +417,7 @@ namespace Gameplay.Player.Carry
             if (!base.IsOwner) return;
             var label = _heldItem != null
                 ? $"Holding: {_heldItem.name} | Mass: {_heldItem.Mass:F1} (FreeCarry: {carry.FreeCarryMass:F1})"
-                : "Holding: —";
+                : "Holding: -";
             GUI.Label(new Rect(10, 10, 600, 24), label);
         }
 #endif

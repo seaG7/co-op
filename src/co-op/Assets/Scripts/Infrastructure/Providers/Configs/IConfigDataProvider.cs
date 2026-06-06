@@ -13,8 +13,9 @@ namespace Infrastructure.Providers.Configs
         WindowsConfig Windows { get; }
         NetworkConfig Network { get; }
         MovementConfig Movement { get; }
-        WorldGenConfig World { get; }
         CarryConfig Carry { get; }
+        VitalsConfig Vitals { get; }
+        WeaponConfig Weapon { get; }
 
         GameObject GetWindowPrefab(WindowID id);
     }

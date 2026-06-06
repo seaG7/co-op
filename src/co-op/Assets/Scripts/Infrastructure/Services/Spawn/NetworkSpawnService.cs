@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using FishNet.Connection;
+using Infrastructure.Services.DI;
 using Infrastructure.Services.Network;
 using UnityEngine;
 using Zenject;
@@ -9,6 +11,8 @@ namespace Infrastructure.Services.Spawn
     {
         private readonly INetworkService _network;
         private readonly DiContainer _sceneContainer;
+
+        private static readonly List<IRuntimeInjectable> _injBuffer = new();
 
         public NetworkSpawnService(INetworkService network, DiContainer sceneContainer)
         {
@@ -31,6 +35,11 @@ namespace Infrastructure.Services.Spawn
 
             var go = _sceneContainer.InstantiatePrefab(prefab, position, rotation, null);
             if (go == null) return null;
+
+            go.transform.GetComponentsInChildren(true, _injBuffer);
+            for (int i = 0; i < _injBuffer.Count; i++)
+                _injBuffer[i]?.MarkAlreadyInjected();
+            _injBuffer.Clear();
 
             _network.NetworkManager.ServerManager.Spawn(go, owner);
             return go;

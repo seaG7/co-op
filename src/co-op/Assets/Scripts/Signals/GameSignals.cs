@@ -1,11 +1,12 @@
-using Gameplay.Player;
+using Data.Players;
+using Data.Rounds;
 
 namespace Signals
 {
     public readonly struct LocalPlayerSpawnedSignal
     {
-        public readonly PlayerNetwork Player;
-        public LocalPlayerSpawnedSignal(PlayerNetwork player) => Player = player;
+        public readonly ILocalPlayer Player;
+        public LocalPlayerSpawnedSignal(ILocalPlayer player) => Player = player;
     }
 
     public readonly struct SpawnFailedSignal
@@ -16,5 +17,10 @@ namespace Signals
     }
 
     public readonly struct GameStartedSignal { }
-    public readonly struct GameEndedSignal { }
+
+    public readonly struct GameEndedSignal
+    {
+        public readonly RoundOutcome Outcome;
+        public GameEndedSignal(RoundOutcome outcome) => Outcome = outcome;
+    }
 }

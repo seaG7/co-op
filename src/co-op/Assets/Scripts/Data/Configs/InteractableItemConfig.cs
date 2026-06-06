@@ -19,8 +19,12 @@ namespace Data.Configs
         [Tooltip("Distance from the camera at which the item floats while held (meters). 0 = use CarryConfig default.")]
         public float HoldDistance = 0f;
 
-        [Header("Two-handed (future)")]
-        [Tooltip("Number of simultaneous holders required to lift this item. MVP supports only 1; field reserved for post-MVP two-handed carry.")]
+        [Header("Two-handed")]
+        [Tooltip("Number of simultaneous holders required to LIFT this item (1 = one-hand, 2 = two-hand). A 2-holder item can't be lifted by one player. The prefab must have at least this many grab anchors on Carryable.")]
         [Min(1)] public int MinHolders = 1;
+
+        [Header("Fragility")]
+        [Tooltip("Collision impulse above which this item fires ItemImpactSignal (audio/VFX). <= 0 falls back to CarryConfig.DefaultFragileImpulse.")]
+        public float FragileImpulse = 0f;
     }
 }

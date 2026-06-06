@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 3429568108762118576}
   - component: {fileID: 7261378827811166523}
   - component: {fileID: -4691359204086986153}
-  - component: {fileID: -7841622231913181300}
-  - component: {fileID: -8450246236446770359}
   - component: {fileID: -5249445323762598928}
   - component: {fileID: 145808521246001412}
   - component: {fileID: 2453911153124144865}
@@ -162,39 +160,6 @@ MonoBehaviour:
     Rotation: {x: 0, y: 0, z: 0, w: 1}
     Scale: {x: 1, y: 1, z: 1}
     IsValid: 1
---- !u!114 &-7841622231913181300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2668258204628415609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Zenject::Zenject.GameObjectContext
-  _scriptableObjectInstallers: []
-  _monoInstallers:
-  - {fileID: -8450246236446770359}
-  _installerPrefabs: []
-  _autoRun: 1
-  _kernel: {fileID: 0}
---- !u!114 &-8450246236446770359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2668258204628415609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab384e36432a5d74583d78eb32c831fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Gameplay.Player.PlayerInstaller
-  _groundMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &-5249445323762598928
 MonoBehaviour:
   m_ObjectHideFlags: 0

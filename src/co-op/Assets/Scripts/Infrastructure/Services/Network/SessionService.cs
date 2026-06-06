@@ -93,8 +93,22 @@ namespace Infrastructure.Services.Network
             }
 
             SetState(SessionState.Connected);
+            SeedConnectedClientsFromServer();
             _signalBus.Fire(new ServerStartedSignal(port));
             return true;
+        }
+
+        private void SeedConnectedClientsFromServer()
+        {
+            var clients = _network?.NetworkManager?.ServerManager?.Clients;
+            if (clients != null)
+            {
+                foreach (var kv in clients)
+                    if (!_clientIds.Contains(kv.Key)) _clientIds.Add(kv.Key);
+            }
+
+            var localId = LocalClientId;
+            if (localId >= 0 && !_clientIds.Contains(localId)) _clientIds.Add(localId);
         }
 
         public async UniTask<bool> JoinAsync(string address, ushort port, CancellationToken ct = default)

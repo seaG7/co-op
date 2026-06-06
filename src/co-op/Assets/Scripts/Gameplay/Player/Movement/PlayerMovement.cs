@@ -1,5 +1,6 @@
 using FishNet.Object;
 using Gameplay.Player.Carry;
+using Gameplay.World.Items;
 using Infrastructure.Providers.Configs;
 using Infrastructure.Services.Input;
 using UnityEngine;
@@ -11,10 +12,11 @@ namespace Gameplay.Player.Movement
     public class PlayerMovement : NetworkBehaviour
     {
         [Inject] private IInputService _input;
-        [Inject] private MovementCalculator _calculator;
-        [Inject] private JumpController _jumpController;
-        [Inject] private GroundProbe _ground;
         [Inject] private IConfigDataProvider _configs;
+
+        private MovementCalculator _calculator;
+        private JumpController _jumpController;
+        private GroundProbe _ground;
 
         private CharacterController _cc;
         private PlayerCarry _playerCarry;
@@ -23,6 +25,7 @@ namespace Gameplay.Player.Movement
         private bool _wasGrounded;
         private bool _jumpPressedThisFrame;
         private bool _inputBound;
+        private bool _built;
 
         public MovementSnapshot Snapshot { get; private set; }
 
@@ -36,12 +39,20 @@ namespace Gameplay.Player.Movement
         public override void OnStartClient()
         {
             base.OnStartClient();
+            PlayerItemPhysics.RegisterPlayer(_cc);
+            if (_configs == null)
+            {
+                Debug.LogError("[PlayerMovement] IConfigDataProvider not injected after spawn — runtime injection failed.");
+                enabled = false;
+                return;
+            }
             if (base.IsOwner) BindInput();
         }
 
         public override void OnStopClient()
         {
             if (base.IsOwner) UnbindInput();
+            PlayerItemPhysics.UnregisterPlayer(_cc);
             base.OnStopClient();
         }
 
@@ -63,10 +74,23 @@ namespace Gameplay.Player.Movement
 
         private void OnJumpStarted() => _jumpPressedThisFrame = true;
 
+        private bool EnsureServices()
+        {
+            if (_built) return true;
+            var cfg = _configs?.Movement;
+            if (cfg == null || _cc == null) return false;
+            _calculator = new MovementCalculator(cfg);
+            _jumpController = new JumpController(cfg);
+            _ground = new GroundProbe(_cc, cfg, cfg.GroundMask);
+            _built = true;
+            return true;
+        }
+
         private void Update()
         {
             var dt = Time.deltaTime;
             if (dt <= 0f) return;
+            if (!EnsureServices()) return;
 
             _ground.Tick();
 
@@ -87,14 +111,9 @@ namespace Gameplay.Player.Movement
 
                 if (_playerCarry != null && _playerCarry.IsHolding && _configs?.Carry != null)
                 {
-                    var cc = _configs.Carry;
-                    float excess = Mathf.Max(0f, _playerCarry.HeldMass - cc.FreeCarryMass);
-                    if (excess > 0f)
-                    {
-                        float mult = Mathf.Max(cc.MinSpeedMultiplier, 1f / (1f + excess * cc.MovementSlowdownPerKg));
-                        _velocity.x *= mult;
-                        _velocity.z *= mult;
-                    }
+                    float mult = _configs.Carry.SpeedMultiplierForMass(_playerCarry.HeldMass);
+                    _velocity.x *= mult;
+                    _velocity.z *= mult;
                 }
 
                 _cc.Move(_velocity * dt);
@@ -106,14 +125,14 @@ namespace Gameplay.Player.Movement
 
             var localVel = transform.InverseTransformDirection(_velocity);
             Snapshot = new MovementSnapshot(
-                localVelocity: localVel,
-                horizontalSpeed: new Vector2(localVel.x, localVel.z).magnitude,
-                isGrounded: _ground.IsGrounded,
-                wasJustGrounded: !_wasGrounded && _ground.IsGrounded,
-                wasJustAirborne: _wasGrounded && !_ground.IsGrounded,
-                jumpJustExecuted: jumpJustExecuted,
-                verticalVelocity: _velocity.y,
-                slopeAngle: _ground.SlopeAngle);
+                localVel,
+                new Vector2(localVel.x, localVel.z).magnitude,
+                _ground.IsGrounded,
+                !_wasGrounded && _ground.IsGrounded,
+                _wasGrounded && !_ground.IsGrounded,
+                jumpJustExecuted,
+                _velocity.y,
+                _ground.SlopeAngle);
 
             _wasGrounded = _ground.IsGrounded;
             _lastPosition = transform.position;

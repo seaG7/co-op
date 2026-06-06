@@ -13,27 +13,30 @@ namespace Infrastructure.Providers.Configs
         public WindowsConfig Windows { get; private set; }
         public NetworkConfig Network { get; private set; }
         public MovementConfig Movement { get; private set; }
-        public WorldGenConfig World { get; private set; }
         public CarryConfig Carry { get; private set; }
+        public VitalsConfig Vitals { get; private set; }
+        public WeaponConfig Weapon { get; private set; }
 
         public async UniTask LoadAsync(CancellationToken ct = default)
         {
-            var (windows, network, movement, world, carry) = await UniTask.WhenAll(
+            var (windows, network, movement, carry, vitals, weapon) = await UniTask.WhenAll(
                 LoadOneAsync<WindowsConfig>(ConfigPaths.WINDOWS_CONFIG_PATH, ct),
                 LoadOneAsync<NetworkConfig>(ConfigPaths.NETWORK_CONFIG_PATH, ct),
                 LoadOneAsync<MovementConfig>(ConfigPaths.MOVEMENT_CONFIG_PATH, ct),
-                LoadOneAsync<WorldGenConfig>(ConfigPaths.WORLD_CONFIG_PATH, ct),
-                LoadOneAsync<CarryConfig>(ConfigPaths.CARRY_CONFIG_PATH, ct));
+                LoadOneAsync<CarryConfig>(ConfigPaths.CARRY_CONFIG_PATH, ct),
+                LoadOneAsync<VitalsConfig>(ConfigPaths.VITALS_CONFIG_PATH, ct),
+                LoadOneAsync<WeaponConfig>(ConfigPaths.WEAPON_CONFIG_PATH, ct));
 
-            Windows = windows; Network = network; Movement = movement; World = world; Carry = carry;
+            Windows = windows; Network = network; Movement = movement; Carry = carry; Vitals = vitals; Weapon = weapon;
 
             Debug.Log(
                 $"[ConfigDataProvider] Loaded — " +
                 $"Windows: {(Windows != null ? $"{Windows.windows?.Count ?? 0} entries" : "MISSING")}, " +
                 $"Network: {(Network != null ? "ok" : "MISSING")}, " +
                 $"Movement: {(Movement != null ? "ok" : "MISSING")}, " +
-                $"World: {(World != null ? "ok" : "MISSING")}, " +
-                $"Carry: {(Carry != null ? "ok" : "MISSING")}.");
+                $"Carry: {(Carry != null ? "ok" : "MISSING")}, " +
+                $"Vitals: {(Vitals != null ? "ok" : "MISSING")}, " +
+                $"Weapon: {(Weapon != null ? "ok" : "MISSING")}.");
         }
 
         public GameObject GetWindowPrefab(WindowID id)
