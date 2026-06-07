@@ -37,6 +37,10 @@ namespace Gameplay.Player.Carry
         private Vector3 _predPos;
         private Quaternion _predRot;
 
+        private Carryable _velItem;
+        private Vector3 _lastHeldPos;
+        private Vector3 _heldVel;
+
         private bool _promptActive;
         private InteractPromptKind _promptKind;
 
@@ -117,7 +121,8 @@ namespace Gameplay.Player.Carry
             var cam = _cameraRig != null ? _cameraRig.Camera : null;
             Vector3 aimOrigin = cam != null ? cam.transform.position : transform.position;
             Vector3 aimDir = cam != null ? cam.transform.forward : transform.forward;
-            RequestRelease(aimOrigin, aimDir);
+            Vector3 releasePos = _heldItem != null ? _heldItem.transform.position : transform.position;
+            RequestRelease(aimOrigin, aimDir, releasePos, _heldVel);
         }
 
         [ServerRpc]
@@ -158,7 +163,7 @@ namespace Gameplay.Player.Carry
         }
 
         [ServerRpc]
-        private void RequestRelease(Vector3 aimOrigin, Vector3 aimDir)
+        private void RequestRelease(Vector3 aimOrigin, Vector3 aimDir, Vector3 releasePos, Vector3 releaseVel)
         {
             if (_heldItem == null) return;
             var item = _heldItem;
@@ -166,14 +171,18 @@ namespace Gameplay.Player.Carry
 
             bool soleHolder = _carryService.HolderCount(item) <= 1;
             WeaponSnapPoint snap = null;
+            Vector3? throwVel = null;
+
             if (soleHolder)
             {
+                item.transform.position = releasePos;
                 float tol = _configs?.Carry != null ? Mathf.Max(1f, _configs.Carry.ServerReachTolerance) : 1f;
                 float minDot = SnapAimMinDot(_configs?.Carry);
-                snap = FindNearestFreeSnapForServer(item.transform.position, tol, aimOrigin, dir, minDot);
+                snap = FindNearestFreeSnapForServer(releasePos, tol, aimOrigin, dir, minDot);
+                if (snap == null) throwVel = releaseVel;
             }
 
-            _carryService.Release(item, base.Owner, snap != null ? Vector3.zero : dir);
+            _carryService.Release(item, base.Owner, snap != null ? Vector3.zero : dir, throwVel);
 
             _heldItem = null;
             _heldByConnection = null;
@@ -261,6 +270,7 @@ namespace Gameplay.Player.Carry
             if (_heldItem == null)
             {
                 _predItem = null;
+                _velItem = null;
                 ClearSnapHighlight();
                 var hover = RaycastForCarryable();
                 bool canPick = hover != null && hover.HolderClientId.Value == -1;
@@ -306,6 +316,17 @@ namespace Gameplay.Player.Carry
             {
                 _predItem = null;
             }
+
+            if (_velItem != _heldItem)
+            {
+                _velItem = _heldItem;
+                _lastHeldPos = _heldItem.transform.position;
+                _heldVel = Vector3.zero;
+            }
+            float vdt = Time.deltaTime;
+            if (vdt > 0f)
+                _heldVel = Vector3.Lerp(_heldVel, (_heldItem.transform.position - _lastHeldPos) / vdt, 0.5f);
+            _lastHeldPos = _heldItem.transform.position;
 
             UpdateSnapHighlight(_heldItem.transform.position);
 

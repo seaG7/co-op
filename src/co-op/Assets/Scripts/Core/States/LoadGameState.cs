@@ -44,6 +44,7 @@ namespace Core.States
                     if (!ok)
                     {
                         Debug.LogError($"[LoadGameState] StartHost failed: {_session.LastError}");
+                        _loadingScreen.Hide();
                         await _stateMachine.EnterAsync<LoadMainMenuState>(CancellationToken.None);
                         return;
                     }
@@ -66,6 +67,7 @@ namespace Core.States
                 catch (TimeoutException)
                 {
                     Debug.LogError("[LoadGameState] Level-ready timed out.");
+                    _loadingScreen.Hide();
                     await _session.LeaveAsync(CancellationToken.None);
                     await _stateMachine.EnterAsync<LoadMainMenuState>(CancellationToken.None);
                     return;
@@ -75,17 +77,18 @@ namespace Core.States
                     _signalBus.TryUnsubscribe<LevelReadySignal>(OnLevelReady);
                 }
             }
-            catch (OperationCanceledException) { throw; }
+            catch (OperationCanceledException)
+            {
+                _loadingScreen.Hide();
+                throw;
+            }
             catch (Exception ex)
             {
                 Debug.LogError($"[LoadGameState] {ex}");
+                _loadingScreen.Hide();
                 await _session.LeaveAsync(CancellationToken.None);
                 await _stateMachine.EnterAsync<LoadMainMenuState>(CancellationToken.None);
                 return;
-            }
-            finally
-            {
-                _loadingScreen.Hide();
             }
 
             await _stateMachine.EnterAsync<GameplayState>(ct);
