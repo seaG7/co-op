@@ -85,7 +85,7 @@ namespace Gameplay.World.Items
 
             _rb.detectCollisions = !held;
 
-            bool serverDynamic = IsServerInitialized && !snapped && (held || HasBeenGrabbedOnce.Value);
+            bool serverDynamic = IsServerInitialized && !snapped && !held && HasBeenGrabbedOnce.Value;
             bool kinematic = !serverDynamic;
 
             if (_rb.isKinematic == kinematic) return;

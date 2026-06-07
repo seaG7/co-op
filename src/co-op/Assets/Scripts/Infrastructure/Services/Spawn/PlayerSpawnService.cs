@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using FishNet.Connection;
+using FishNet.Managing.Scened;
 using FishNet.Transporting;
 using Gameplay.Player;
 using Gameplay.World.Spawn;
@@ -25,7 +26,6 @@ namespace Infrastructure.Services.Spawn
         private readonly HashSet<int> _claimedFixedIndices = new();
 
         private PlayerSpawnArea _area;
-        private bool _levelReady;
 
         public PlayerSpawnService(
             INetworkService network,
@@ -48,6 +48,7 @@ namespace Infrastructure.Services.Spawn
             }
 
             _network.NetworkManager.ServerManager.OnRemoteConnectionState += OnRemoteConn;
+            _network.NetworkManager.SceneManager.OnClientPresenceChangeEnd += OnClientPresenceEnd;
             _signalBus.Subscribe<LevelReadySignal>(OnLevelReady);
         }
 
@@ -57,7 +58,10 @@ namespace Infrastructure.Services.Spawn
             _serviceCts.Dispose();
 
             if (_network?.NetworkManager != null)
+            {
                 _network.NetworkManager.ServerManager.OnRemoteConnectionState -= OnRemoteConn;
+                _network.NetworkManager.SceneManager.OnClientPresenceChangeEnd -= OnClientPresenceEnd;
+            }
 
             _signalBus.TryUnsubscribe<LevelReadySignal>(OnLevelReady);
 
@@ -129,6 +133,9 @@ namespace Infrastructure.Services.Spawn
         private void ResolveSpawnTransform(out Vector3 pos, out Quaternion rot)
         {
             if (_area == null)
+                _area = UnityEngine.Object.FindFirstObjectByType<PlayerSpawnArea>();
+
+            if (_area == null)
             {
                 rot = Quaternion.identity;
                 pos = Vector3.zero + Vector3.up * GetCapsuleSpawnLift();
@@ -168,7 +175,6 @@ namespace Infrastructure.Services.Spawn
 
         private void OnLevelReadyImpl()
         {
-            _levelReady = true;
             if (!_network.IsServer) return;
 
             _area = UnityEngine.Object.FindFirstObjectByType<PlayerSpawnArea>();
@@ -182,21 +188,28 @@ namespace Infrastructure.Services.Spawn
             foreach (var kv in clients)
             {
                 var conn = kv.Value;
-                if (conn == null) continue;
+                if (conn == null || !conn.IsValid || !conn.IsLocalClient) continue;
                 if (_spawnedByClientId.ContainsKey(conn.ClientId)) continue;
                 SpawnPlayerAsync(conn, _serviceCts.Token).Forget();
             }
+        }
+
+        private void OnClientPresenceEnd(ClientPresenceChangeEventArgs args)
+        {
+            if (_network == null || !_network.IsServer || !args.Added) return;
+
+            var conn = args.Connection;
+            if (conn == null || !conn.IsValid) return;
+            if (_spawnedByClientId.ContainsKey(conn.ClientId)) return;
+
+            SpawnPlayerAsync(conn, _serviceCts.Token).Forget();
         }
 
         private void OnRemoteConn(NetworkConnection conn, RemoteConnectionStateArgs args)
         {
             if (_network == null || !_network.IsServer) return;
 
-            if (args.ConnectionState == RemoteConnectionState.Started)
-            {
-                if (_levelReady) SpawnPlayerAsync(conn, _serviceCts.Token).Forget();
-            }
-            else if (args.ConnectionState == RemoteConnectionState.Stopped)
+            if (args.ConnectionState == RemoteConnectionState.Stopped)
                 DespawnPlayer(conn);
         }
     }

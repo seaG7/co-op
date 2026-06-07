@@ -5,6 +5,7 @@ using Cysharp.Threading.Tasks;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.Network;
 using Infrastructure.Services.Player;
+using Infrastructure.Services.Scene;
 using Infrastructure.Services.UI;
 using Signals;
 using UnityEngine;
@@ -21,6 +22,7 @@ namespace Core.States
         private readonly IInputService _inputService;
         private readonly IPlayerService _playerService;
         private readonly ISessionService _session;
+        private readonly ILoadingScreenService _loadingScreen;
         private readonly SignalBus _signalBus;
 
         private CancellationTokenSource _cts;
@@ -33,11 +35,12 @@ namespace Core.States
             IInputService inputService,
             IPlayerService playerService,
             ISessionService session,
+            ILoadingScreenService loadingScreen,
             SignalBus signalBus)
         {
             _stateMachine = stateMachine; _windowService = windowService;
             _inputService = inputService; _playerService = playerService;
-            _session = session; _signalBus = signalBus;
+            _session = session; _loadingScreen = loadingScreen; _signalBus = signalBus;
         }
 
         public async UniTask EnterAsync(CancellationToken ct)
@@ -59,6 +62,7 @@ namespace Core.States
             {
                 await _playerService.WaitForLocalPlayerAsync(watchdogCts.Token);
                 if (!watchdogCts.IsCancellationRequested) watchdogCts.Cancel();
+                _loadingScreen.Hide();
             }
             catch (OperationCanceledException)
             {
@@ -123,9 +127,9 @@ namespace Core.States
 
         private void FallbackToMenu()
         {
-
             if (_fallingBack) return;
             _fallingBack = true;
+            _loadingScreen.Hide();
             Unsubscribe();
             _cts?.Cancel();
             _stateMachine.EnterAsync<LoadMainMenuState>().Forget();

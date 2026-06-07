@@ -8,7 +8,7 @@ namespace Infrastructure.Services.Carry
     {
         bool TryGrab(Carryable item, NetworkConnection conn, Vector3 holderEye, Vector3 holderAim);
 
-        void Release(Carryable item, NetworkConnection conn, Vector3 throwAim);
+        void Release(Carryable item, NetworkConnection conn, Vector3 throwAim, Vector3? explicitVelocity = null);
 
         bool IsHeldBy(Carryable item, NetworkConnection conn);
 

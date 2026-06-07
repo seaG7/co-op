@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using FishNet.Connection;
 using Gameplay.Player.Carry;
 using Gameplay.Player.Look;
@@ -32,7 +34,7 @@ namespace Infrastructure.Services.Carry
         private readonly IConfigDataProvider _configs;
         private readonly Dictionary<Carryable, HeldItem> _held = new();
         private readonly List<Carryable> _toRelease = new();
-        private bool _subscribed;
+        private readonly CancellationTokenSource _cts = new();
 
         public PhysicalCarryService(INetworkService network, IConfigDataProvider configs)
         {
@@ -40,23 +42,12 @@ namespace Infrastructure.Services.Carry
             _configs = configs;
         }
 
-        public void Initialize()
-        {
-            var tm = _network?.NetworkManager?.TimeManager;
-            if (tm == null)
-            {
-                Debug.LogWarning("[PhysicalCarryService] No TimeManager available; carry follow disabled.");
-                return;
-            }
-            tm.OnTick += OnTick;
-            _subscribed = true;
-        }
+        public void Initialize() => DriveLoopAsync(_cts.Token).Forget();
 
         public void Dispose()
         {
-            if (_subscribed && _network?.NetworkManager?.TimeManager != null)
-                _network.NetworkManager.TimeManager.OnTick -= OnTick;
-            _subscribed = false;
+            _cts.Cancel();
+            _cts.Dispose();
             _held.Clear();
         }
 
@@ -89,7 +80,7 @@ namespace Infrastructure.Services.Carry
         public int HolderCount(Carryable item)
             => item != null && _held.TryGetValue(item, out var h) ? h.Holders.Count : 0;
 
-        public void Release(Carryable item, NetworkConnection conn, Vector3 throwAim)
+        public void Release(Carryable item, NetworkConnection conn, Vector3 throwAim, Vector3? explicitVelocity = null)
         {
             if (_network == null || !_network.IsServer || item == null) return;
             if (!_held.TryGetValue(item, out var h)) return;
@@ -101,7 +92,7 @@ namespace Infrastructure.Services.Carry
             }
             if (h.Holders.Count > 0) return;
 
-            var tracked = h.TrackedVelocity;
+            var baseVel = explicitVelocity ?? h.TrackedVelocity;
             _held.Remove(item);
             bool wasLifted = item.HolderClientId.Value != -1;
             item.HolderClientId.Value = -1;
@@ -113,7 +104,7 @@ namespace Infrastructure.Services.Carry
             var rb = item.Body;
             if (rb != null && !rb.isKinematic && carry != null)
             {
-                Vector3 v = tracked * carry.ThrowVelocityScaleV2 + throwAim.normalized * carry.ThrowAimImpulse;
+                Vector3 v = baseVel * carry.ThrowVelocityScaleV2 + throwAim.normalized * carry.ThrowAimImpulse;
                 rb.linearVelocity = Vector3.ClampMagnitude(v, carry.MaxThrowSpeed);
             }
         }
@@ -126,14 +117,24 @@ namespace Infrastructure.Services.Carry
             item.ApplyPhysicsState();
         }
 
-        private void OnTick()
+        private async UniTaskVoid DriveLoopAsync(CancellationToken ct)
         {
-            if (_network == null || !_network.IsServer || _held.Count == 0) return;
-            var carry = _configs?.Carry;
-            if (carry == null) return;
+            try
+            {
+                while (!ct.IsCancellationRequested)
+                {
+                    await UniTask.Yield(PlayerLoopTiming.LastPostLateUpdate, ct);
+                    if (_network == null || !_network.IsServer || _held.Count == 0) continue;
+                    Drive(Time.deltaTime);
+                }
+            }
+            catch (OperationCanceledException) { }
+        }
 
-            float dt = (float)_network.NetworkManager.TimeManager.TickDelta;
-            if (dt <= 0f) dt = Time.fixedDeltaTime;
+        private void Drive(float dt)
+        {
+            var carry = _configs?.Carry;
+            if (carry == null || dt <= 0f) return;
 
             foreach (var kv in _held)
             {
@@ -175,14 +176,22 @@ namespace Infrastructure.Services.Carry
 
                 var target = CarrySolver.SolveTarget(grips, anchors, Vector3.up);
                 float massMult = carry.SpeedMultiplierForMass(item.Mass);
-                var rb = item.Body;
-                rb.linearVelocity = CarrySolver.FollowVelocity(rb.position, target.Position, dt,
-                    carry.FollowMaxSpeed * massMult, carry.FollowResponsiveness * massMult);
-                rb.angularVelocity = CarrySolver.AngularVelocity(rb.rotation, target.Rotation, dt, carry.FollowMaxAngularSpeed);
 
-                h.TrackedVelocity = Vector3.Lerp(h.TrackedVelocity,
-                    (item.transform.position - h.LastPos) / Mathf.Max(dt, 1e-4f), 0.5f);
-                h.LastPos = item.transform.position;
+                Vector3 cur = item.transform.position;
+                Vector3 vel = CarrySolver.FollowVelocity(cur, target.Position, dt,
+                    carry.FollowMaxSpeed * massMult, carry.FollowResponsiveness * massMult);
+                Vector3 newPos = cur + vel * dt;
+
+                Vector3 angVel = CarrySolver.AngularVelocity(item.transform.rotation, target.Rotation, dt, carry.FollowMaxAngularSpeed);
+                float w = angVel.magnitude;
+                Quaternion newRot = w > 1e-6f
+                    ? Quaternion.AngleAxis(w * Mathf.Rad2Deg * dt, angVel / w) * item.transform.rotation
+                    : item.transform.rotation;
+
+                item.transform.SetPositionAndRotation(newPos, newRot);
+
+                h.TrackedVelocity = Vector3.Lerp(h.TrackedVelocity, (newPos - h.LastPos) / dt, 0.5f);
+                h.LastPos = newPos;
             }
 
             for (int i = 0; i < _toRelease.Count; i++)
