@@ -11,5 +11,7 @@ namespace Data.UI
         HUD = 4,
         GameOver = 5,
         Room = 6,
+        Pause = 7,
+        Settings = 8,
     }
 }

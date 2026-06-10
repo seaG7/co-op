@@ -8,6 +8,7 @@ namespace Data.Effects
         PortalAppear, PortalIdle, PortalEnter,
         EnemySpawn, EnemyMove, EnemyStep, EnemyPrePounce, EnemyPounce, LatchImpact, EnemyHit, EnemyDeath,
         PlayerKnockdown, ReviveDone, PlayerDeath, MeleeSwing, MeleeHit,
+        PlayerFootstep, PlayerLand,
         WaveStart, Victory, Defeat
     }
 }

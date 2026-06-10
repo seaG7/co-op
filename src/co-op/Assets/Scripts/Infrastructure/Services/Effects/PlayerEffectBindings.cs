@@ -26,6 +26,8 @@ namespace Infrastructure.Services.Effects
             _bus.Subscribe<PlayerRevivedSignal>(OnRevived);
             _bus.Subscribe<PlayerDiedSignal>(OnDied);
             _bus.Subscribe<PlayerMeleeSignal>(OnMelee);
+            _bus.Subscribe<PlayerFootstepSignal>(OnFootstep);
+            _bus.Subscribe<PlayerLandedSignal>(OnLanded);
         }
 
         public void Dispose()
@@ -34,6 +36,8 @@ namespace Infrastructure.Services.Effects
             _bus.Unsubscribe<PlayerRevivedSignal>(OnRevived);
             _bus.Unsubscribe<PlayerDiedSignal>(OnDied);
             _bus.Unsubscribe<PlayerMeleeSignal>(OnMelee);
+            _bus.Unsubscribe<PlayerFootstepSignal>(OnFootstep);
+            _bus.Unsubscribe<PlayerLandedSignal>(OnLanded);
         }
 
         private static Vector3 PlayerPos(int clientId)
@@ -47,6 +51,18 @@ namespace Infrastructure.Services.Effects
         private void OnDowned(PlayerDownedSignal s) { Vector3 p = PlayerPos(s.ClientId); _vfx.Play(VfxId.PlayerKnockdown, p); _sfx.Play(SfxId.PlayerKnockdown, p); }
         private void OnRevived(PlayerRevivedSignal s) { Vector3 p = PlayerPos(s.ClientId); _vfx.Play(VfxId.ReviveDone, p); _sfx.Play(SfxId.ReviveDone, p); }
         private void OnDied(PlayerDiedSignal s) { Vector3 p = PlayerPos(s.ClientId); _vfx.Play(VfxId.PlayerDeath, p); _sfx.Play(SfxId.PlayerDeath, p); }
+
+        private void OnFootstep(PlayerFootstepSignal s)
+        {
+            _sfx.Play(SfxId.PlayerFootstep, s.Position);
+            _vfx.Play(VfxId.Footstep, s.Position);
+        }
+
+        private void OnLanded(PlayerLandedSignal s)
+        {
+            _sfx.Play(SfxId.PlayerLand, s.Position);
+            _vfx.Play(VfxId.LandDust, s.Position);
+        }
 
         private void OnMelee(PlayerMeleeSignal s)
         {

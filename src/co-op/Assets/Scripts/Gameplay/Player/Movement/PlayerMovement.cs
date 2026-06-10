@@ -3,6 +3,7 @@ using Gameplay.Player.Carry;
 using Gameplay.World.Items;
 using Infrastructure.Providers.Configs;
 using Infrastructure.Services.Input;
+using Signals;
 using UnityEngine;
 using Zenject;
 
@@ -13,6 +14,7 @@ namespace Gameplay.Player.Movement
     {
         [Inject] private IInputService _input;
         [Inject] private IConfigDataProvider _configs;
+        [Inject] private SignalBus _signalBus;
 
         private MovementCalculator _calculator;
         private JumpController _jumpController;
@@ -28,6 +30,12 @@ namespace Gameplay.Player.Movement
         private bool _built;
 
         public MovementSnapshot Snapshot { get; private set; }
+
+        private readonly StepCadence _cadence = new StepCadence();
+        private float _lastVerticalVel;
+
+        public float StepPhase => _cadence.Phase;
+        public Vector3 WorldVelocity => _velocity;
 
         private void Awake()
         {
@@ -92,6 +100,7 @@ namespace Gameplay.Player.Movement
             if (dt <= 0f) return;
             if (!EnsureServices()) return;
 
+            var cfg = _configs.Movement;
             _ground.Tick();
 
             bool jumpJustExecuted = false;
@@ -116,25 +125,43 @@ namespace Gameplay.Player.Movement
                     _velocity.z *= mult;
                 }
 
+                float baseHorizontal = new Vector2(_velocity.x, _velocity.z).magnitude;
+                _cadence.Tick(baseHorizontal, _ground.IsGrounded, cfg.StepLength, cfg.StepMinSpeed, dt);
+                float gait = _cadence.SpeedMultiplier(cfg.GaitSpeedAmplitude);
+                _velocity.x *= gait;
+                _velocity.z *= gait;
+
                 _cc.Move(_velocity * dt);
             }
             else
             {
                 _velocity = (transform.position - _lastPosition) / dt;
+                float observed = new Vector2(_velocity.x, _velocity.z).magnitude;
+                _cadence.Tick(observed, _ground.IsGrounded, cfg.StepLength, cfg.StepMinSpeed, dt);
             }
 
             var localVel = transform.InverseTransformDirection(_velocity);
+            bool justLanded = !_wasGrounded && _ground.IsGrounded;
             Snapshot = new MovementSnapshot(
                 localVel,
                 new Vector2(localVel.x, localVel.z).magnitude,
                 _ground.IsGrounded,
-                !_wasGrounded && _ground.IsGrounded,
+                justLanded,
                 _wasGrounded && !_ground.IsGrounded,
                 jumpJustExecuted,
                 _velocity.y,
                 _ground.SlopeAngle);
 
+            if (_signalBus != null)
+            {
+                if (_cadence.FootfallThisTick)
+                    _signalBus.Fire(new PlayerFootstepSignal(transform.position, _cadence.IsLeftFoot));
+                if (justLanded)
+                    _signalBus.Fire(new PlayerLandedSignal(transform.position, Mathf.Abs(_lastVerticalVel)));
+            }
+
             _wasGrounded = _ground.IsGrounded;
+            _lastVerticalVel = _velocity.y;
             _lastPosition = transform.position;
         }
     }

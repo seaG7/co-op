@@ -20,9 +20,6 @@ namespace Gameplay.Player
             base.OnStartClient();
             if (!base.IsOwner) return;
 
-            var mr = GetComponent<MeshRenderer>();
-            if (mr != null) mr.enabled = false;
-
             if (_playerService == null)
             {
                 Debug.LogError("[PlayerNetwork] IPlayerService not injected after spawn — runtime injection failed.");

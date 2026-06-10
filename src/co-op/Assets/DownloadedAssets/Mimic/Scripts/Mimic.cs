@@ -56,9 +56,6 @@ namespace MimicSpace
         [Tooltip("Layers the legs/body may stand on. EXCLUDE the Player and Enemy layers so feet never anchor to players or other mimics — only world geometry/cannon.")]
         public LayerMask groundMask = ~0;
 
-        [Tooltip("Extra forward lead (seconds of velocity) for leg placement so feet keep up at higher body speeds. Raise if legs drag behind a fast body.")]
-        public float legLeadTime = 0.2f;
-
         void Start()
         {
             ResetMimic();
@@ -101,7 +98,7 @@ namespace MimicSpace
                 return;
 
             // New leg origin is placed in front of the mimic
-            legPlacerOrigin = transform.position + velocity.normalized * newLegRadius + velocity * legLeadTime;
+            legPlacerOrigin = transform.position + velocity.normalized * newLegRadius;
 
             if (legCount <= maxLegs - partsPerLeg)
             {

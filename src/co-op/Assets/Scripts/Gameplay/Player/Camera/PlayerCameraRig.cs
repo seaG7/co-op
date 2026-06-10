@@ -1,5 +1,6 @@
 using FishNet.Object;
 using Gameplay.Player.Look;
+using Gameplay.Player.Movement;
 using Infrastructure.Services.Camera;
 using UnityEngine;
 using Zenject;
@@ -11,18 +12,11 @@ namespace Gameplay.Player.Camera
         [Header("Refs")]
         [SerializeField] private UnityEngine.Camera _camera;
 
-        [Tooltip("Local position of the camera relative to the player root (head-height for first-person). " +
-                 "For a height-2 capsule with pivot at its base, 0.85 m puts the eye just below the top.")]
         [SerializeField] private Vector3 _localCameraOffset = new Vector3(0f, 0.85f, 0f);
 
         [Header("Downed (knocked-down) external view")]
-        [Tooltip("Camera position relative to the player while downed — pulled out to the side/behind so you see your own body and feel you've lost control.")]
         [SerializeField] private Vector3 _downedCameraOffset = new Vector3(3f, 1.8f, -1f);
-
-        [Tooltip("Local point the downed camera frames (roughly the player's chest).")]
         [SerializeField] private Vector3 _downedLookTarget = new Vector3(0f, 1f, 0f);
-
-        [Tooltip("Seconds to ease between first-person and the downed view (both directions).")]
         [SerializeField] private float _blendDuration = 0.4f;
 
         [Header("Camera shake")]
@@ -30,11 +24,35 @@ namespace Gameplay.Player.Camera
         [SerializeField] private float _shakeDecay = 1.8f;
         [SerializeField] private float _shakeFrequency = 22f;
 
+        [Header("Step bob")]
+        [SerializeField] private float _bobAmplitudeY = 0.03f;
+        [SerializeField] private float _bobAmplitudeX = 0.018f;
+        [SerializeField] private float _bobSpeedReference = 5f;
+        [SerializeField] private float _bobSmoothing = 12f;
+
+        [Header("Idle sway")]
+        [SerializeField] private float _idleSwayAmount = 0.015f;
+        [SerializeField] private float _idleSwaySpeed = 1.2f;
+
+        [Header("Strafe roll")]
+        [SerializeField] private float _strafeRollPerSpeed = 0.6f;
+        [SerializeField] private float _strafeRollMax = 2.5f;
+        [SerializeField] private float _strafeRollSmoothing = 8f;
+
+        [Header("Landing / FOV")]
+        [SerializeField] private float _landDipAmount = 0.12f;
+        [SerializeField] private float _landDipDuration = 0.25f;
+        [SerializeField] private float _landFovPunch = 6f;
+        [SerializeField] private float _fovPunchDecay = 18f;
+        [SerializeField] private float _moveFovAdd = 2.5f;
+        [SerializeField] private float _fovSmoothing = 8f;
+
         [Inject] private ICameraService _cameraService;
 
         private bool _active;
         private bool _downed;
         private PlayerLookController _look;
+        private PlayerMovement _movement;
         private bool _blending;
         private bool _toDowned;
         private float _blendElapsed;
@@ -46,6 +64,14 @@ namespace Gameplay.Player.Camera
         private Transform _spectateTarget;
         private Vector3 _spectateOffset;
         private bool _spectating;
+
+        private Vector3 _bobOffset;
+        private Vector3 _swayOffset;
+        private float _rollAngle;
+        private float _dipTime;
+        private float _fovPunch;
+        private float _baseFov = 60f;
+        private float _currentFov = 60f;
 
         public static PlayerCameraRig Local { get; private set; }
 
@@ -177,22 +203,84 @@ namespace Gameplay.Player.Camera
             }
 
             Transform t = _camera.transform;
+            if (t.parent == transform && !_blending && !_downed)
+            {
+                ApplyFeel(t);
+                return;
+            }
+
             t.localPosition -= _shakeOffset;
-            if (_trauma > 0f)
-            {
-                _trauma = Mathf.Max(0f, _trauma - _shakeDecay * Time.deltaTime);
-                float s = _trauma * _trauma;
-                float tt = Time.time * _shakeFrequency;
-                _shakeOffset = new Vector3(
-                    Mathf.PerlinNoise(_shakeSeed, tt) - 0.5f,
-                    Mathf.PerlinNoise(_shakeSeed + 11f, tt) - 0.5f,
-                    Mathf.PerlinNoise(_shakeSeed + 23f, tt) - 0.5f) * (2f * s * _shakeMaxOffset);
-            }
-            else
-            {
-                _shakeOffset = Vector3.zero;
-            }
+            _shakeOffset = ComputeShake();
             t.localPosition += _shakeOffset;
+        }
+
+        private Vector3 ComputeShake()
+        {
+            if (_trauma <= 0f) return Vector3.zero;
+            _trauma = Mathf.Max(0f, _trauma - _shakeDecay * Time.deltaTime);
+            float s = _trauma * _trauma;
+            float tt = Time.time * _shakeFrequency;
+            return new Vector3(
+                Mathf.PerlinNoise(_shakeSeed, tt) - 0.5f,
+                Mathf.PerlinNoise(_shakeSeed + 11f, tt) - 0.5f,
+                Mathf.PerlinNoise(_shakeSeed + 23f, tt) - 0.5f) * (2f * s * _shakeMaxOffset);
+        }
+
+        private void ApplyFeel(Transform t)
+        {
+            float dt = Time.deltaTime;
+            _shakeOffset = ComputeShake();
+
+            float speed = 0f, lateral = 0f, phase = 0f;
+            bool grounded = true;
+            if (_movement != null)
+            {
+                var snap = _movement.Snapshot;
+                speed = snap.HorizontalSpeed;
+                lateral = snap.LocalVelocity.x;
+                grounded = snap.IsGrounded;
+                phase = _movement.StepPhase;
+                if (snap.WasJustGrounded) { _dipTime = _landDipDuration; _fovPunch = _landFovPunch; }
+            }
+
+            float moveAmt = Mathf.Clamp01(speed / Mathf.Max(0.01f, _bobSpeedReference));
+
+            Vector3 bob = Vector3.zero;
+            if (grounded && moveAmt > 0.01f)
+            {
+                bob.y = Mathf.Sin(phase * Mathf.PI * 4f) * _bobAmplitudeY * moveAmt;
+                bob.x = Mathf.Sin(phase * Mathf.PI * 2f) * _bobAmplitudeX * moveAmt;
+            }
+            _bobOffset = Vector3.Lerp(_bobOffset, bob, 1f - Mathf.Exp(-_bobSmoothing * dt));
+
+            Vector3 sway = Vector3.zero;
+            if (moveAmt <= 0.05f)
+            {
+                float ts = Time.time;
+                sway.x = Mathf.Sin(ts * _idleSwaySpeed) * _idleSwayAmount;
+                sway.y = Mathf.Sin(ts * _idleSwaySpeed * 1.7f) * _idleSwayAmount * 0.6f;
+            }
+            _swayOffset = Vector3.Lerp(_swayOffset, sway, 1f - Mathf.Exp(-3f * dt));
+
+            Vector3 dip = Vector3.zero;
+            if (_dipTime > 0f)
+            {
+                _dipTime -= dt;
+                float k = Mathf.Clamp01(_dipTime / Mathf.Max(0.01f, _landDipDuration));
+                dip.y = -_landDipAmount * k;
+            }
+
+            float targetRoll = Mathf.Clamp(-lateral * _strafeRollPerSpeed, -_strafeRollMax, _strafeRollMax);
+            _rollAngle = Mathf.Lerp(_rollAngle, targetRoll, 1f - Mathf.Exp(-_strafeRollSmoothing * dt));
+
+            if (_fovPunch > 0f) _fovPunch = Mathf.Max(0f, _fovPunch - _fovPunchDecay * dt);
+            float targetFov = _baseFov + _fovPunch + moveAmt * _moveFovAdd;
+            _currentFov = Mathf.Lerp(_currentFov, targetFov, 1f - Mathf.Exp(-_fovSmoothing * dt));
+
+            t.localPosition = _localCameraOffset + _bobOffset + _swayOffset + dip + _shakeOffset;
+            float pitch = _look != null ? _look.Pitch : 0f;
+            t.localRotation = Quaternion.Euler(pitch, 0f, _rollAngle);
+            _camera.fieldOfView = _currentFov;
         }
 
         private void FollowSpectate()
@@ -224,6 +312,9 @@ namespace Gameplay.Player.Camera
             _camera.transform.localRotation = Quaternion.identity;
 
             _look = GetComponent<PlayerLookController>();
+            _movement = GetComponent<PlayerMovement>();
+            _baseFov = _camera.fieldOfView;
+            _currentFov = _baseFov;
             _shakeSeed = Random.value * 100f;
             Local = this;
             _active = true;

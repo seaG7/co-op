@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using FishNet.Connection;
-using Gameplay.Player.Carry;
 using Gameplay.Player.Look;
 using Gameplay.World.Items;
 using Infrastructure.Providers.Configs;
@@ -26,8 +25,6 @@ namespace Infrastructure.Services.Carry
         {
             public Carryable Item;
             public readonly List<Holder> Holders = new();
-            public Vector3 LastPos;
-            public Vector3 TrackedVelocity;
         }
 
         private readonly INetworkService _network;
@@ -60,7 +57,7 @@ namespace Infrastructure.Services.Carry
 
             if (!_held.TryGetValue(item, out var h))
             {
-                h = new HeldItem { Item = item, LastPos = item.transform.position };
+                h = new HeldItem { Item = item };
                 _held[item] = h;
             }
             if (h.Holders.Exists(x => x.Conn == conn)) return true;
@@ -92,7 +89,7 @@ namespace Infrastructure.Services.Carry
             }
             if (h.Holders.Count > 0) return;
 
-            var baseVel = explicitVelocity ?? h.TrackedVelocity;
+            var baseVel = explicitVelocity ?? Vector3.zero;
             _held.Remove(item);
             bool wasLifted = item.HolderClientId.Value != -1;
             item.HolderClientId.Value = -1;
@@ -162,36 +159,9 @@ namespace Infrastructure.Services.Carry
                     if (sep > carry.TwoHandMaxSeparation) { _toRelease.Add(item); continue; }
                 }
 
-                float holdDist = item.HoldDistance > 0f ? item.HoldDistance : carry.DefaultHoldDistance;
-                int n = h.Holders.Count;
-                var grips = new HolderGrip[n];
-                var anchors = new Vector3[n];
-                for (int i = 0; i < n; i++)
-                {
-                    var look = h.Holders[i].Look;
-                    Vector3 aim = look.AimDirection.normalized;
-                    grips[i] = new HolderGrip(look.EyePosition + aim * holdDist + Vector3.down * 0.1f, aim, Vector3.up);
-                    anchors[i] = item.AnchorLocalPosition(h.Holders[i].AnchorIndex);
-                }
-
-                var target = CarrySolver.SolveTarget(grips, anchors, Vector3.up);
-                float massMult = carry.SpeedMultiplierForMass(item.Mass);
-
-                Vector3 cur = item.transform.position;
-                Vector3 vel = CarrySolver.FollowVelocity(cur, target.Position, dt,
-                    carry.FollowMaxSpeed * massMult, carry.FollowResponsiveness * massMult);
-                Vector3 newPos = cur + vel * dt;
-
-                Vector3 angVel = CarrySolver.AngularVelocity(item.transform.rotation, target.Rotation, dt, carry.FollowMaxAngularSpeed);
-                float w = angVel.magnitude;
-                Quaternion newRot = w > 1e-6f
-                    ? Quaternion.AngleAxis(w * Mathf.Rad2Deg * dt, angVel / w) * item.transform.rotation
-                    : item.transform.rotation;
-
-                item.transform.SetPositionAndRotation(newPos, newRot);
-
-                h.TrackedVelocity = Vector3.Lerp(h.TrackedVelocity, (newPos - h.LastPos) / dt, 0.5f);
-                h.LastPos = newPos;
+                // Item transform while held is set client-side (rigid to the holder's CarryAnchor).
+                // The server only does holder bookkeeping here; on release it re-enables the
+                // NetworkTransform and applies throw velocity.
             }
 
             for (int i = 0; i < _toRelease.Count; i++)

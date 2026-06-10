@@ -81,21 +81,38 @@ namespace UI.Room
                 else if (other == null) other = members[i];
             }
 
-            if (me.HasValue) _view.SetLocalReady(me.Value.Ready);
+            bool localIsHost = _lobby.IsHost;
+            bool meReady = me?.Ready ?? false;
+            bool otherReady = other?.Ready ?? false;
+            string otherNick = other?.Nick;
 
-            bool hasOther = other.HasValue;
-            _view.ShowRemote(hasOther);
-            if (hasOther) _view.SetRemote(other.Value.Nick, other.Value.Ready);
+            if (localIsHost)
+            {
+                _view.SetHostSlot(true, null);
+                _view.SetClientSlot(false, other.HasValue, otherNick, otherReady);
+            }
+            else
+            {
+                _view.SetHostSlot(false, string.IsNullOrEmpty(otherNick) ? "Хост" : otherNick);
+                _view.SetClientSlot(true, true, null, meReady);
+            }
 
-            bool host = _lobby.IsHost;
-            _view.SetStartVisible(host, _lobby.CanStart);
+            _view.ShowReadyToggle(!localIsHost);
+            if (!localIsHost) _view.SetLocalReady(meReady);
 
-            int count = members.Length;
+            _view.SetStartVisible(localIsHost, _lobby.CanStart);
+
             string status;
-            if (count == 0) status = "Подключение…";
-            else if (count == 1) status = "Соло — можно начать (или ждите второго)  1/2";
-            else if (_lobby.AllReady) status = $"Готовы {count}/2 — можно начинать";
-            else status = $"Игроки {count}/2 — ждём готовности";
+            if (localIsHost)
+            {
+                if (!other.HasValue) status = "Соло — можно начать (или ждите второго)";
+                else if (otherReady) status = "Напарник готов — можно начинать";
+                else status = "Ждём готовности напарника";
+            }
+            else
+            {
+                status = meReady ? "Готов — ждём запуска хостом" : "Отметьте готовность";
+            }
             _view.SetStatus(status);
         }
     }

@@ -16,6 +16,10 @@ namespace Data.Configs
         public float DefaultHoldDistance = 0.7f;
         [Tooltip("Seconds the item eases into the hand on pickup instead of teleporting. 0 = instant snap.")]
         public float PickupBlendDuration = 0.25f;
+        [Tooltip("Reach speed (m/s) for the pickup ease-in: pickup duration = distance / this (clamped). Lower = the hand visibly travels longer to far items.")]
+        public float PickupReachSpeed = 4f;
+        [Tooltip("Max pickup ease-in duration (s) regardless of distance.")]
+        public float PickupMaxDuration = 0.7f;
         [Tooltip("(Legacy single-hand kinematic follow — superseded by the physical-follow fields below; kept until the old owner-drive path is fully removed.)")]
         public float HeldFollowSharpness = 14f;
 
@@ -75,6 +79,7 @@ namespace Data.Configs
             MaxReach = 2f; ServerReachTolerance = 1.2f;
             DefaultHoldDistance = 0.7f;
             PickupBlendDuration = 0.25f;
+            PickupReachSpeed = 4f; PickupMaxDuration = 0.7f;
             HeldFollowSharpness = 14f;
             FollowResponsiveness = 18f;
             FollowMaxSpeed = 9f;

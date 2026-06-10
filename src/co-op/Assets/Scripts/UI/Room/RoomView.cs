@@ -8,19 +8,19 @@ namespace UI.Room
 {
     public class RoomView : WindowView<RoomPresenter>
     {
-        [Header("Local player")]
-        [SerializeField] private TMP_InputField _nicknameInput;
-        [SerializeField] private Toggle _readyToggle;
+        [Header("Host slot (left)")]
+        [SerializeField] private TMP_InputField _hostInput;
+        [SerializeField] private TMP_Text _hostLabel;
 
-        [Header("Remote player slot")]
-        [Tooltip("Shown while the second player has not joined yet.")]
-        [SerializeField] private GameObject _remoteWaitingRoot;
-        [Tooltip("Shown when the second player is present (their nick + readiness).")]
-        [SerializeField] private GameObject _remoteReadyRoot;
-        [SerializeField] private TMP_Text _remoteNameLabel;
-        [SerializeField] private TMP_Text _remoteReadyLabel;
+        [Header("Client slot (right)")]
+        [SerializeField] private TMP_InputField _clientInput;
+        [SerializeField] private TMP_Text _clientLabel;
+        [SerializeField] private TMP_Text _clientReadyLabel;
+        [Tooltip("Shown in the client slot while the second player has not joined yet.")]
+        [SerializeField] private GameObject _clientWaitingRoot;
 
         [Header("Controls")]
+        [SerializeField] private Toggle _readyToggle;
         [SerializeField] private Button _startButton;
         [SerializeField] private Button _leaveButton;
         [SerializeField] private TMP_Text _statusLabel;
@@ -34,7 +34,8 @@ namespace UI.Room
         {
             if (_startButton != null) _startButton.onClick.AddListener(RaiseStart);
             if (_leaveButton != null) _leaveButton.onClick.AddListener(RaiseLeave);
-            if (_nicknameInput != null) _nicknameInput.onEndEdit.AddListener(RaiseNickname);
+            if (_hostInput != null) _hostInput.onEndEdit.AddListener(RaiseNickname);
+            if (_clientInput != null) _clientInput.onEndEdit.AddListener(RaiseNickname);
             if (_readyToggle != null) _readyToggle.onValueChanged.AddListener(RaiseReady);
         }
 
@@ -42,7 +43,8 @@ namespace UI.Room
         {
             if (_startButton != null) _startButton.onClick.RemoveListener(RaiseStart);
             if (_leaveButton != null) _leaveButton.onClick.RemoveListener(RaiseLeave);
-            if (_nicknameInput != null) _nicknameInput.onEndEdit.RemoveListener(RaiseNickname);
+            if (_hostInput != null) _hostInput.onEndEdit.RemoveListener(RaiseNickname);
+            if (_clientInput != null) _clientInput.onEndEdit.RemoveListener(RaiseNickname);
             if (_readyToggle != null) _readyToggle.onValueChanged.RemoveListener(RaiseReady);
         }
 
@@ -51,10 +53,29 @@ namespace UI.Room
         private void RaiseNickname(string v) => NicknameChanged?.Invoke(v);
         private void RaiseReady(bool v) => ReadyChanged?.Invoke(v);
 
-        public void SetLocalNickname(string nick)
+        public void SetHostSlot(bool localEditable, string nick)
         {
-            if (_nicknameInput != null && _nicknameInput.text != (nick ?? string.Empty))
-                _nicknameInput.text = nick ?? string.Empty;
+            SetActive(_hostInput, localEditable);
+            SetActive(_hostLabel, !localEditable);
+            if (!localEditable && _hostLabel != null) _hostLabel.text = nick ?? string.Empty;
+        }
+
+        public void SetClientSlot(bool localEditable, bool present, string nick, bool ready)
+        {
+            if (localEditable)
+            {
+                SetActive(_clientInput, true);
+                SetActive(_clientLabel, false);
+                SetActive(_clientWaitingRoot, false);
+                SetReady(_clientReadyLabel, false, ready);
+                return;
+            }
+
+            SetActive(_clientInput, false);
+            SetActive(_clientLabel, present);
+            SetActive(_clientWaitingRoot, !present);
+            if (present && _clientLabel != null) _clientLabel.text = nick ?? string.Empty;
+            SetReady(_clientReadyLabel, present, ready);
         }
 
         public void SetLocalReady(bool ready)
@@ -62,16 +83,9 @@ namespace UI.Room
             if (_readyToggle != null) _readyToggle.SetIsOnWithoutNotify(ready);
         }
 
-        public void ShowRemote(bool present)
+        public void ShowReadyToggle(bool show)
         {
-            if (_remoteWaitingRoot != null) _remoteWaitingRoot.SetActive(!present);
-            if (_remoteReadyRoot != null) _remoteReadyRoot.SetActive(present);
-        }
-
-        public void SetRemote(string nick, bool ready)
-        {
-            if (_remoteNameLabel != null) _remoteNameLabel.text = nick ?? string.Empty;
-            if (_remoteReadyLabel != null) _remoteReadyLabel.text = ready ? "Готов" : "Не готов";
+            if (_readyToggle != null) _readyToggle.gameObject.SetActive(show);
         }
 
         public void SetStartVisible(bool visible, bool interactable)
@@ -84,6 +98,23 @@ namespace UI.Room
         public void SetStatus(string s)
         {
             if (_statusLabel != null) _statusLabel.text = s ?? string.Empty;
+        }
+
+        private static void SetReady(TMP_Text label, bool visible, bool ready)
+        {
+            if (label == null) return;
+            label.gameObject.SetActive(visible);
+            if (visible) label.text = ready ? "Готов" : "Не готов";
+        }
+
+        private static void SetActive(Component c, bool active)
+        {
+            if (c != null) c.gameObject.SetActive(active);
+        }
+
+        private static void SetActive(GameObject go, bool active)
+        {
+            if (go != null) go.SetActive(active);
         }
     }
 }

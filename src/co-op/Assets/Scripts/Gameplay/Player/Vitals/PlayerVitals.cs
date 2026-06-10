@@ -28,7 +28,7 @@ namespace Gameplay.Player.Vitals
         private PlayerLookController _look;
         private PlayerCameraRig _cameraRig;
         private CharacterController _cc;
-        private Renderer[] _renderers;
+        private Gameplay.Player.View.PlayerModelVisibility _modelVisibility;
 
         private Transform _spectateTarget;
         private float _downTimer;
@@ -46,7 +46,7 @@ namespace Gameplay.Player.Vitals
             _look = GetComponent<PlayerLookController>();
             _cameraRig = GetComponent<PlayerCameraRig>();
             _cc = GetComponent<CharacterController>();
-            _renderers = GetComponentsInChildren<Renderer>(true);
+            _modelVisibility = GetComponent<Gameplay.Player.View.PlayerModelVisibility>();
         }
 
         public override void OnStartNetwork()
@@ -70,7 +70,6 @@ namespace Gameplay.Player.Vitals
             _downTimer = _configs?.Vitals != null ? Mathf.Max(0.1f, _configs.Vitals.DownReviveSeconds) : 15f;
             _state.Value = PlayerLifeState.Downed;
             if (_carry != null) _carry.ServerForceDrop();
-            if (NoneAlive()) _signalBus?.Fire(new AllPlayersDownedOrDeadSignal());
         }
 
         public void ServerRevive()
@@ -132,7 +131,7 @@ namespace Gameplay.Player.Vitals
             if (base.IsOwner)
             {
                 if (_movement != null) _movement.enabled = alive;
-                SetOwnerBodyVisible(downed);
+                SetOwnerHeadVisible(!alive);
 
                 if (dead)
                 {
@@ -154,11 +153,9 @@ namespace Gameplay.Player.Vitals
             if (_cc != null) _cc.enabled = !dead;
         }
 
-        private void SetOwnerBodyVisible(bool visible)
+        private void SetOwnerHeadVisible(bool visible)
         {
-            if (_renderers == null) return;
-            for (int i = 0; i < _renderers.Length; i++)
-                if (_renderers[i] != null) _renderers[i].enabled = visible;
+            if (_modelVisibility != null) _modelVisibility.SetOwnerHeadVisible(visible);
         }
 
         private void BeginSpectate()

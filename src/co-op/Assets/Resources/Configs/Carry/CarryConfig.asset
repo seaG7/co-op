@@ -16,8 +16,19 @@ MonoBehaviour:
   ServerReachTolerance: 1.2
   DefaultHoldDistance: 0.7
   PickupBlendDuration: 0.25
-  FreeCarryMass: 5
-  MovementSlowdownPerKg: 0.05
+  PickupReachSpeed: 4
+  PickupMaxDuration: 0.7
+  HeldFollowSharpness: 14
+  FollowResponsiveness: 18
+  FollowMaxSpeed: 9
+  FollowMaxAngularSpeed: 720
+  TwoHandMaxSeparation: 2.5
+  ThrowVelocityScaleV2: 1
+  ThrowAimImpulse: 2.5
+  DefaultFragileImpulse: 6
+  SnapAimMaxAngle: 30
+  FreeCarryMass: 0
+  MovementSlowdownPerKg: 0.12
   MinSpeedMultiplier: 0.3
   ThrowVelocityScale: 1.2
   MaxThrowSpeed: 12

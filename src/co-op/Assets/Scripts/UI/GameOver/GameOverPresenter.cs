@@ -43,7 +43,9 @@ namespace UI.GameOver
 
         private void ApplyOutcome()
         {
-            switch (_round.Outcome)
+            var outcome = _round.Outcome;
+            _view.SetOutcomePanels(outcome == RoundOutcome.Victory, outcome == RoundOutcome.Defeat);
+            switch (outcome)
             {
                 case RoundOutcome.Victory: _view.SetOutcome("ПОБЕДА", new Color(0.5f, 1f, 0.6f)); break;
                 case RoundOutcome.Defeat: _view.SetOutcome("ПОРАЖЕНИЕ", new Color(1f, 0.4f, 0.4f)); break;

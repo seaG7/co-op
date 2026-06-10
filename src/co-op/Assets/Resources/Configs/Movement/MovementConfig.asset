@@ -13,17 +13,25 @@ MonoBehaviour:
   m_Name: MovementConfig
   m_EditorClassIdentifier: Assembly-CSharp::Data.Configs.MovementConfig
   MoveSpeed: 5.5
-  Acceleration: 50
-  Deceleration: 70
+  Acceleration: 16
+  Deceleration: 30
+  TurnBrakeDeceleration: 45
+  TurnBrakeDot: -0.2
   AirControlCoefficient: 0.55
   Gravity: 25
   FallGravityMultiplier: 1.8
   ApexGravityMultiplier: 0.55
   ApexThreshold: 2
   MaxFallSpeed: 40
-  JumpHeight: 1.6
+  JumpHeight: 1.5
   VariableJumpCutoff: 0.4
   CoyoteTimeSec: 0.12
   JumpBufferSec: 0.12
   GroundProbeDistance: 0.15
+  GroundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
   MaxSlopeAngle: 50
+  StepLength: 3.5
+  GaitSpeedAmplitude: 0.05
+  StepMinSpeed: 0.3

@@ -4,6 +4,7 @@ using FishNet.Connection;
 using FishNet.Object;
 using Gameplay.Player.Camera;
 using Gameplay.Player.Look;
+using Gameplay.Player.Movement;
 using Gameplay.Player.Vitals;
 using Gameplay.World.Items;
 using Gameplay.World.Weapon;
@@ -20,6 +21,8 @@ namespace Gameplay.Player.Carry
     {
         [SerializeField] private LayerMask _carryableMask;
         [SerializeField] private PlayerCameraRig _cameraRig;
+        [Tooltip("In-hand hold point in front of the chest (child of the player). Held item is pinned here rigidly.")]
+        [SerializeField] private Transform _carryAnchor;
 
         [Inject] private IInputService _input;
         [Inject] private IConfigDataProvider _configs;
@@ -33,13 +36,14 @@ namespace Gameplay.Player.Carry
 
         private WeaponSnapPoint _highlightedSnap;
 
-        private Carryable _predItem;
-        private Vector3 _predPos;
-        private Quaternion _predRot;
+        private PlayerMovement _movement;
 
-        private Carryable _velItem;
-        private Vector3 _lastHeldPos;
-        private Vector3 _heldVel;
+        private Carryable _attachItem;
+        private Vector3 _pickupFromPos;
+        private Quaternion _pickupFromRot;
+        private float _pickupElapsed;
+        private float _pickupDuration = 0.25f;
+        public float PickupDuration => _pickupDuration;
 
         private bool _promptActive;
         private InteractPromptKind _promptKind;
@@ -52,6 +56,7 @@ namespace Gameplay.Player.Carry
         {
             _look = GetComponent<PlayerLookController>();
             _vitals = GetComponent<PlayerVitals>();
+            _movement = GetComponent<PlayerMovement>();
         }
 
         public override void OnStartClient()
@@ -125,7 +130,8 @@ namespace Gameplay.Player.Carry
             Vector3 aimOrigin = cam != null ? cam.transform.position : transform.position;
             Vector3 aimDir = cam != null ? cam.transform.forward : transform.forward;
             Vector3 releasePos = _heldItem != null ? _heldItem.transform.position : transform.position;
-            RequestRelease(aimOrigin, aimDir, releasePos, _heldVel);
+            Vector3 releaseVel = _movement != null ? _movement.WorldVelocity : Vector3.zero;
+            RequestRelease(aimOrigin, aimDir, releasePos, releaseVel);
         }
 
         [ServerRpc]
@@ -266,20 +272,58 @@ namespace Gameplay.Player.Carry
             _heldItem = itemNob != null ? itemNob.GetComponent<Carryable>() : null;
         }
 
+        public void PinForIK() => ApplyHeldPose(advance: false);
+
+        private void ApplyHeldPose(bool advance)
+        {
+            var held = CurrentHeld;
+            if (held != _attachItem)
+            {
+                _attachItem = held;
+                if (held != null && _carryAnchor != null)
+                {
+                    _pickupFromPos = held.transform.position;
+                    _pickupFromRot = held.transform.rotation;
+                    _pickupElapsed = 0f;
+                    var cc = _configs?.Carry;
+                    float reach = cc != null ? Mathf.Max(0.1f, cc.PickupReachSpeed) : 4f;
+                    float maxDur = cc != null ? cc.PickupMaxDuration : 0.7f;
+                    float dist = Vector3.Distance(_pickupFromPos, _carryAnchor.position);
+                    _pickupDuration = Mathf.Clamp(dist / reach, 0.12f, maxDur);
+                }
+            }
+
+            if (held == null || _carryAnchor == null || held.IsSnapped.Value) return;
+
+            if (_pickupElapsed < _pickupDuration)
+            {
+                if (advance) _pickupElapsed += Time.deltaTime;
+                float k = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(_pickupElapsed / _pickupDuration));
+                held.transform.SetPositionAndRotation(
+                    Vector3.Lerp(_pickupFromPos, _carryAnchor.position, k),
+                    Quaternion.Slerp(_pickupFromRot, _carryAnchor.rotation, k));
+            }
+            else
+            {
+                held.transform.SetPositionAndRotation(_carryAnchor.position, _carryAnchor.rotation);
+            }
+        }
+
         private void LateUpdate()
         {
+            ApplyHeldPose(advance: true);
+
             if (!base.IsOwner) return;
 
-            if (_interactionSuppressed)
+            if (_interactionSuppressed || (_vitals != null && !_vitals.IsAlive))
             {
+                ClearSnapHighlight();
                 SetPrompt(false);
                 return;
             }
 
             if (_heldItem == null)
             {
-                _predItem = null;
-                _velItem = null;
                 ClearSnapHighlight();
                 var hover = RaycastForCarryable();
                 bool canPick = hover != null && hover.HolderClientId.Value == -1;
@@ -290,52 +334,6 @@ namespace Gameplay.Player.Carry
             var cam = _cameraRig != null ? _cameraRig.Camera : null;
             if (cam == null || _configs?.Carry == null) return;
             var carry = _configs.Carry;
-
-            if (!base.IsServerInitialized && _look != null
-                && _heldItem.HoldersRequired <= 1 && !_heldItem.IsSnapped.Value)
-            {
-                if (_predItem != _heldItem)
-                {
-                    _predItem = _heldItem;
-                    _predPos = _heldItem.transform.position;
-                    _predRot = _heldItem.transform.rotation;
-                }
-
-                Vector3 aim = _look.AimDirection;
-                aim = aim.sqrMagnitude > 1e-6f ? aim.normalized : cam.transform.forward;
-                float dist = _heldItem.HoldDistance > 0f ? _heldItem.HoldDistance : carry.DefaultHoldDistance;
-                Quaternion targetRot = Quaternion.LookRotation(aim, Vector3.up);
-                Vector3 targetPos = (_look.EyePosition + aim * dist + Vector3.down * 0.1f)
-                                    - targetRot * _heldItem.AnchorLocalPosition(0);
-
-                float dt = Time.deltaTime;
-                float massMult = carry.SpeedMultiplierForMass(_heldItem.Mass);
-                Vector3 vel = CarrySolver.FollowVelocity(_predPos, targetPos, dt,
-                    carry.FollowMaxSpeed * massMult, carry.FollowResponsiveness * massMult);
-                _predPos += vel * dt;
-
-                Vector3 angVel = CarrySolver.AngularVelocity(_predRot, targetRot, dt, carry.FollowMaxAngularSpeed);
-                float w = angVel.magnitude;
-                if (w > 1e-6f)
-                    _predRot = Quaternion.AngleAxis(w * Mathf.Rad2Deg * dt, angVel / w) * _predRot;
-
-                _heldItem.transform.SetPositionAndRotation(_predPos, _predRot);
-            }
-            else
-            {
-                _predItem = null;
-            }
-
-            if (_velItem != _heldItem)
-            {
-                _velItem = _heldItem;
-                _lastHeldPos = _heldItem.transform.position;
-                _heldVel = Vector3.zero;
-            }
-            float vdt = Time.deltaTime;
-            if (vdt > 0f)
-                _heldVel = Vector3.Lerp(_heldVel, (_heldItem.transform.position - _lastHeldPos) / vdt, 0.5f);
-            _lastHeldPos = _heldItem.transform.position;
 
             UpdateSnapHighlight(_heldItem.transform.position);
 
@@ -409,6 +407,23 @@ namespace Gameplay.Player.Carry
         public float HeldMass => _heldItem != null ? _heldItem.Mass : 0f;
 
         public bool IsHolding => _heldItem != null;
+
+        public Carryable CurrentHeld { get; private set; }
+
+        private void Update()
+        {
+            if (_heldItem != null) { CurrentHeld = _heldItem; return; }
+
+            var all = Carryable.All;
+            int myId = base.OwnerId;
+            Carryable found = null;
+            for (int i = 0; i < all.Count; i++)
+            {
+                var c = all[i];
+                if (c != null && c.HolderClientId.Value == myId) { found = c; break; }
+            }
+            CurrentHeld = found;
+        }
 
         public void SetInteractionSuppressed(bool suppressed) => _interactionSuppressed = suppressed;
 

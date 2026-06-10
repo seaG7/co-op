@@ -17,6 +17,7 @@ namespace Infrastructure.Providers.Configs
         CarryConfig Carry { get; }
         VitalsConfig Vitals { get; }
         WeaponConfig Weapon { get; }
+        AnimationConfig Animation { get; }
         VfxCatalog Vfx { get; }
         SfxCatalog Sfx { get; }
 

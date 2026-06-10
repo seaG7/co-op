@@ -45,8 +45,10 @@ namespace Infrastructure.Services.Lobby
             get
             {
                 if (!IsHost) return false;
-                if (_members.Length == 1) return true;
-                return AllReady;
+                int localId = LocalClientId;
+                for (int i = 0; i < _members.Length; i++)
+                    if (_members[i].ClientId != localId && !_members[i].Ready) return false;
+                return true;
             }
         }
 

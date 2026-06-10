@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e671817a775484ab0344c233a19981, type: 3}
   m_Name: InteractableItemConfig
   m_EditorClassIdentifier: Assembly-CSharp::Data.Configs.InteractableItemConfig
-  Prefab: {fileID: 5169839222677621110, guid: 473f50271f2c21b45b8bf16c60d1b1ba, type: 3}
-  Mass: 8
-  MaxCarrySpeed: 5
+  Prefab: {fileID: 6968801262064596989, guid: 1885c0f34e44c1b47ae248c5be563d8f, type: 3}
+  Mass: 1.5
+  MaxCarrySpeed: 10
   HoldDistance: 0
   MinHolders: 1
+  UsesTwoHands: 1
+  FragileImpulse: 0

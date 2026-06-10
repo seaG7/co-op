@@ -8,6 +8,7 @@ namespace Data.Paths
         public const string CARRY_CONFIG_PATH = "Configs/Carry/CarryConfig";
         public const string VITALS_CONFIG_PATH = "Configs/Vitals/VitalsConfig";
         public const string WEAPON_CONFIG_PATH = "Configs/Weapon/WeaponConfig";
+        public const string ANIMATION_CONFIG_PATH = "Configs/Animation/AnimationConfig";
         public const string VFX_CATALOG_PATH = "Configs/Effects/VfxCatalog";
         public const string SFX_CATALOG_PATH = "Configs/Effects/SfxCatalog";
     }

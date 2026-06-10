@@ -21,15 +21,29 @@ namespace Gameplay.Player.Movement
             var worldInput = right * moveInput.x + forward * moveInput.y;
 
             var inputMagnitude = Mathf.Clamp01(worldInput.magnitude);
-            var desiredVelocity = inputMagnitude > 0.001f
-                ? worldInput.normalized * (_config.MoveSpeed * inputMagnitude)
-                : Vector3.zero;
-
-            var rate = inputMagnitude > 0.01f ? _config.Acceleration : _config.Deceleration;
-            if (!isGrounded) rate *= _config.AirControlCoefficient;
+            bool hasInput = inputMagnitude > 0.01f;
 
             var current = new Vector3(currentVelocity.x, 0f, currentVelocity.z);
-            var next = Vector3.MoveTowards(current, desiredVelocity, rate * deltaTime);
+            float air = isGrounded ? 1f : _config.AirControlCoefficient;
+
+            Vector3 next;
+            if (!hasInput)
+            {
+                next = Vector3.MoveTowards(current, Vector3.zero, _config.Deceleration * air * deltaTime);
+            }
+            else
+            {
+                var desiredDir = worldInput.normalized;
+                var desiredVelocity = desiredDir * (_config.MoveSpeed * inputMagnitude);
+                float curSpeed = current.magnitude;
+                float align = curSpeed > 0.01f ? Vector3.Dot(current / curSpeed, desiredDir) : 1f;
+
+                if (curSpeed > 0.5f && align < _config.TurnBrakeDot)
+                    next = Vector3.MoveTowards(current, Vector3.zero, _config.TurnBrakeDeceleration * air * deltaTime);
+                else
+                    next = Vector3.MoveTowards(current, desiredVelocity, _config.Acceleration * air * deltaTime);
+            }
+
             return new Vector3(next.x, currentVelocity.y, next.z);
         }
 

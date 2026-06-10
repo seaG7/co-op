@@ -23,6 +23,10 @@ namespace Data.Configs
         [Tooltip("Number of simultaneous holders required to LIFT this item (1 = one-hand, 2 = two-hand). A 2-holder item can't be lifted by one player. The prefab must have at least this many grab anchors on Carryable.")]
         [Min(1)] public int MinHolders = 1;
 
+        [Tooltip("Visual: a single player grips this with both hands (IK to LeftHandGrip + RightHandGrip). " +
+                 "False = one-hand carry (right hand only). Independent of MinHolders (co-op lift count).")]
+        public bool UsesTwoHands = true;
+
         [Header("Fragility")]
         [Tooltip("Collision impulse above which this item fires ItemImpactSignal (audio/VFX). <= 0 falls back to CarryConfig.DefaultFragileImpulse.")]
         public float FragileImpulse = 0f;

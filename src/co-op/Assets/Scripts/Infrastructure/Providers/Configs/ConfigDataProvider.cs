@@ -17,20 +17,22 @@ namespace Infrastructure.Providers.Configs
         public CarryConfig Carry { get; private set; }
         public VitalsConfig Vitals { get; private set; }
         public WeaponConfig Weapon { get; private set; }
+        public AnimationConfig Animation { get; private set; }
         public VfxCatalog Vfx { get; private set; }
         public SfxCatalog Sfx { get; private set; }
 
         public async UniTask LoadAsync(CancellationToken ct = default)
         {
-            var (windows, network, movement, carry, vitals, weapon) = await UniTask.WhenAll(
+            var (windows, network, movement, carry, vitals, weapon, animation) = await UniTask.WhenAll(
                 LoadOneAsync<WindowsConfig>(ConfigPaths.WINDOWS_CONFIG_PATH, ct),
                 LoadOneAsync<NetworkConfig>(ConfigPaths.NETWORK_CONFIG_PATH, ct),
                 LoadOneAsync<MovementConfig>(ConfigPaths.MOVEMENT_CONFIG_PATH, ct),
                 LoadOneAsync<CarryConfig>(ConfigPaths.CARRY_CONFIG_PATH, ct),
                 LoadOneAsync<VitalsConfig>(ConfigPaths.VITALS_CONFIG_PATH, ct),
-                LoadOneAsync<WeaponConfig>(ConfigPaths.WEAPON_CONFIG_PATH, ct));
+                LoadOneAsync<WeaponConfig>(ConfigPaths.WEAPON_CONFIG_PATH, ct),
+                LoadOneAsync<AnimationConfig>(ConfigPaths.ANIMATION_CONFIG_PATH, ct));
 
-            Windows = windows; Network = network; Movement = movement; Carry = carry; Vitals = vitals; Weapon = weapon;
+            Windows = windows; Network = network; Movement = movement; Carry = carry; Vitals = vitals; Weapon = weapon; Animation = animation;
 
             Vfx = await LoadOneAsync<VfxCatalog>(ConfigPaths.VFX_CATALOG_PATH, ct);
             Sfx = await LoadOneAsync<SfxCatalog>(ConfigPaths.SFX_CATALOG_PATH, ct);
@@ -43,6 +45,7 @@ namespace Infrastructure.Providers.Configs
                 $"Carry: {(Carry != null ? "ok" : "MISSING")}, " +
                 $"Vitals: {(Vitals != null ? "ok" : "MISSING")}, " +
                 $"Weapon: {(Weapon != null ? "ok" : "MISSING")}, " +
+                $"Animation: {(Animation != null ? "ok" : "MISSING")}, " +
                 $"Vfx: {(Vfx != null ? "ok" : "MISSING")}, Sfx: {(Sfx != null ? "ok" : "MISSING")}.");
         }
 
