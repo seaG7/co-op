@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Data.Configs
@@ -7,26 +5,19 @@ namespace Data.Configs
     [CreateAssetMenu(menuName = "Configs/Wave Set Config", fileName = "WaveSetConfig")]
     public sealed class WaveSetConfig : ScriptableObject
     {
-        [Serializable]
-        public struct Wave
-        {
-            [Min(1)] public int Count;
-            [Tooltip("Seconds between each enemy spawn within this wave.")]
-            public float SpawnInterval;
-        }
+        [Tooltip("Seconds of the Gather phase (assemble the weapon) before the source opens.")]
+        public float GatherDurationSec = 30f;
 
-        [Tooltip("Networked enemy prefab to spawn (must be a FishNet spawnable prefab with an Enemy component).")]
-        public GameObject EnemyPrefab;
+        [Tooltip("Seconds between enemy spawns while the source is Open.")]
+        public float SpawnInterval = 2.5f;
 
-        [Tooltip("Seconds after the source starts before the first wave.")]
-        public float GraceBeforeFirstWave = 5f;
+        [Tooltip("Max simultaneously-alive enemies (0 = unlimited).")]
+        [Min(0)] public int MaxAliveEnemies = 15;
 
-        [Tooltip("Seconds of pause between waves.")]
-        public float PauseBetweenWaves = 8f;
+        [Tooltip("Charged cannon shots needed to destroy the source. Model B: the source is vulnerable for the whole wave; the real gate is the cannon's corpse charge, not a timed window.")]
+        [Min(1)] public int HitsToDestroy = 1;
 
-        [Tooltip("Source hit points; destroying it ends the round in victory.")]
-        public float SourceMaxHealth = 100f;
-
-        public List<Wave> Waves = new();
+        [Tooltip("Random horizontal radius (m) scattered around the spawn point so a burst doesn't stack on one spot (stacked spiders climb each other and jam). 0 = exact point.")]
+        [Min(0f)] public float SpawnScatterRadius = 1.5f;
     }
 }

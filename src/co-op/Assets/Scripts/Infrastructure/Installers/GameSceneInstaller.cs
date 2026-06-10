@@ -26,6 +26,8 @@ namespace Infrastructure.Installers
             BindBridge();
             BindCamera();
             BindCarry();
+            BindEnemies();
+            BindEffects();
             BindExecutionOrders();
         }
 
@@ -33,6 +35,24 @@ namespace Infrastructure.Installers
         {
 
             Container.BindInterfacesAndSelfTo<PhysicalCarryService>().AsSingle().NonLazy();
+        }
+
+        private void BindEnemies()
+        {
+            Container.Bind<Infrastructure.Services.Enemies.IEnemyTargetingService>()
+                .To<Infrastructure.Services.Enemies.EnemyTargetingService>().AsSingle();
+        }
+
+        private void BindEffects()
+        {
+            Container.Bind<Infrastructure.Services.Effects.IVfxService>()
+                .To<Infrastructure.Services.Effects.VfxService>().AsSingle();
+            Container.Bind<Infrastructure.Services.Effects.ISfxService>()
+                .To<Infrastructure.Services.Effects.SfxService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<Infrastructure.Services.Effects.WorldEffectBindings>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<Infrastructure.Services.Effects.PlayerEffectBindings>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<Infrastructure.Services.Effects.EnemyEffectBindings>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<Infrastructure.Services.Effects.CameraShakeBindings>().AsSingle().NonLazy();
         }
 
         private void RegisterSceneContainer()

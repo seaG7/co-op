@@ -13,6 +13,8 @@ namespace Infrastructure.Services.Input
         private InputAction _lookAction;
         private InputAction _jumpAction;
         private InputAction _interactAction;
+        private InputAction _fireAction;
+        private InputAction _meleeAction;
 
         public Vector2 MoveAxis { get; private set; }
         public Vector2 LookAxis { get; private set; }
@@ -25,6 +27,8 @@ namespace Infrastructure.Services.Input
         public event Action JumpCanceled;
         public event Action InteractStarted;
         public event Action InteractCanceled;
+        public event Action FireStarted;
+        public event Action MeleeStarted;
 
         public void Initialize() => TryBindGeneratedControls();
 
@@ -37,6 +41,8 @@ namespace Infrastructure.Services.Input
                 _lookAction?.Enable();
                 _jumpAction?.Enable();
                 _interactAction?.Enable();
+                _fireAction?.Enable();
+                _meleeAction?.Enable();
             }
             IsEnabled = true;
         }
@@ -50,6 +56,8 @@ namespace Infrastructure.Services.Input
                 _lookAction?.Disable();
                 _jumpAction?.Disable();
                 _interactAction?.Disable();
+                _fireAction?.Disable();
+                _meleeAction?.Disable();
             }
             IsEnabled = false;
             MoveAxis = Vector2.zero;
@@ -64,12 +72,16 @@ namespace Infrastructure.Services.Input
             UnsubscribeAction(_lookAction, OnLookPerformed, OnLookPerformed);
             UnsubscribeAction(_jumpAction, OnJumpPerformed, OnJumpCanceled);
             UnsubscribeAction(_interactAction, OnInteractPerformed, OnInteractCanceled);
+            if (_fireAction != null) _fireAction.performed -= OnFirePerformed;
+            if (_meleeAction != null) _meleeAction.performed -= OnMeleePerformed;
             if (_generatedControls is IDisposable d) d.Dispose();
             _generatedControls = null;
             _moveAction = null;
             _lookAction = null;
             _jumpAction = null;
             _interactAction = null;
+            _fireAction = null;
+            _meleeAction = null;
             _hasGeneratedActions = false;
         }
 
@@ -109,10 +121,20 @@ namespace Infrastructure.Services.Input
                 if (_interactAction == null)
                     Debug.LogWarning("[InputService] Interact action not found on Gameplay map. Add an Interact button (e.g. <Keyboard>/e) to the .inputactions asset.");
 
+                _fireAction = gameplay.GetType().GetProperty("Fire")?.GetValue(gameplay) as InputAction;
+                if (_fireAction == null)
+                    Debug.LogWarning("[InputService] Fire action not found on Gameplay map. Add a Fire button (e.g. <Mouse>/leftButton) to the .inputactions asset to operate the weapon.");
+
+                _meleeAction = gameplay.GetType().GetProperty("Melee")?.GetValue(gameplay) as InputAction;
+                if (_meleeAction == null)
+                    Debug.LogWarning("[InputService] Melee action not found on Gameplay map. Add a Melee button (e.g. <Keyboard>/f) to the .inputactions asset to bash enemies.");
+
                 SubscribeAction(_moveAction, OnMovePerformed, OnMovePerformed);
                 SubscribeAction(_lookAction, OnLookPerformed, OnLookPerformed);
                 SubscribeAction(_jumpAction, OnJumpPerformed, OnJumpCanceled);
                 SubscribeAction(_interactAction, OnInteractPerformed, OnInteractCanceled);
+                if (_fireAction != null) _fireAction.performed += OnFirePerformed;
+                if (_meleeAction != null) _meleeAction.performed += OnMeleePerformed;
                 _hasGeneratedActions = true;
             }
             catch (Exception ex)
@@ -203,5 +225,7 @@ namespace Infrastructure.Services.Input
 
         private void OnInteractPerformed(InputAction.CallbackContext _) => InteractStarted?.Invoke();
         private void OnInteractCanceled(InputAction.CallbackContext _)  => InteractCanceled?.Invoke();
+        private void OnFirePerformed(InputAction.CallbackContext _) => FireStarted?.Invoke();
+        private void OnMeleePerformed(InputAction.CallbackContext _) => MeleeStarted?.Invoke();
     }
 }

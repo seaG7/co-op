@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Data.Configs;
 using Data.Players;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
@@ -29,16 +28,16 @@ namespace Gameplay.Player.Vitals
         private PlayerLookController _look;
         private PlayerCameraRig _cameraRig;
         private CharacterController _cc;
+        private Renderer[] _renderers;
 
-        private float _downTimer;
-        private float _reviveProgress;
-        private float _progressBroadcastTimer;
         private Transform _spectateTarget;
+        private float _downTimer;
 
         public PlayerLifeState State => _state.Value;
         public bool IsAlive => _state.Value == PlayerLifeState.Alive;
         public bool IsDowned => _state.Value == PlayerLifeState.Downed;
         public bool IsDead => _state.Value == PlayerLifeState.Dead;
+        public bool HasLatchedAttacker { get; set; }
 
         private void Awake()
         {
@@ -47,6 +46,7 @@ namespace Gameplay.Player.Vitals
             _look = GetComponent<PlayerLookController>();
             _cameraRig = GetComponent<PlayerCameraRig>();
             _cc = GetComponent<CharacterController>();
+            _renderers = GetComponentsInChildren<Renderer>(true);
         }
 
         public override void OnStartNetwork()
@@ -66,69 +66,33 @@ namespace Gameplay.Player.Vitals
         public void ServerKnockDown()
         {
             if (!base.IsServerInitialized || _state.Value != PlayerLifeState.Alive) return;
-            var cfg = _configs?.Vitals;
-            _downTimer = cfg != null ? cfg.DownReviveSeconds : 15f;
-            _reviveProgress = 0f;
-            _progressBroadcastTimer = 0f;
+            HasLatchedAttacker = true;
+            _downTimer = _configs?.Vitals != null ? Mathf.Max(0.1f, _configs.Vitals.DownReviveSeconds) : 15f;
             _state.Value = PlayerLifeState.Downed;
             if (_carry != null) _carry.ServerForceDrop();
+            if (NoneAlive()) _signalBus?.Fire(new AllPlayersDownedOrDeadSignal());
+        }
+
+        public void ServerRevive()
+        {
+            if (!base.IsServerInitialized || _state.Value != PlayerLifeState.Downed) return;
+            HasLatchedAttacker = false;
+            _state.Value = PlayerLifeState.Alive;
         }
 
         private void Update()
         {
             if (!base.IsServerInitialized || _state.Value != PlayerLifeState.Downed) return;
-
-            var cfg = _configs?.Vitals;
-            float hold = cfg != null ? cfg.ReviveHoldSeconds : 3f;
-            float dt = Time.deltaTime;
-
-            if (HasAliveReviverInRange(cfg))
-            {
-                _reviveProgress += dt;
-                if (hold > 0f && _reviveProgress >= hold) { ServerRevive(); return; }
-            }
-            else
-            {
-                float decay = cfg != null ? cfg.ReviveDecayMultiplier : 2f;
-                _reviveProgress = Mathf.Max(0f, _reviveProgress - dt * decay);
-                _downTimer -= dt;
-                if (_downTimer <= 0f) { ServerDie(); return; }
-            }
-
-            _progressBroadcastTimer -= dt;
-            if (_progressBroadcastTimer <= 0f)
-            {
-                _progressBroadcastTimer = 0.2f;
-                BroadcastProgress(Mathf.Max(0f, _downTimer), hold > 0f ? Mathf.Clamp01(_reviveProgress / hold) : 0f);
-            }
-        }
-
-        private bool HasAliveReviverInRange(VitalsConfig cfg)
-        {
-            float range = cfg != null ? cfg.ReviveRange : 2.5f;
-            float rangeSq = range * range;
-            Vector3 p = transform.position;
-            for (int i = 0; i < _all.Count; i++)
-            {
-                var v = _all[i];
-                if (v == null || v == this || v.State != PlayerLifeState.Alive) continue;
-                if ((v.transform.position - p).sqrMagnitude <= rangeSq) return true;
-            }
-            return false;
-        }
-
-        private void ServerRevive()
-        {
-            _reviveProgress = 0f;
-            _downTimer = 0f;
-            _state.Value = PlayerLifeState.Alive;
+            _downTimer -= Time.deltaTime;
+            if (_downTimer <= 0f) ServerDie();
         }
 
         private void ServerDie()
         {
+            if (!base.IsServerInitialized || _state.Value != PlayerLifeState.Downed) return;
+            HasLatchedAttacker = false;
             _state.Value = PlayerLifeState.Dead;
-            if (NoneAlive())
-                _signalBus?.Fire(new AllPlayersDownedOrDeadSignal());
+            if (NoneAlive()) _signalBus?.Fire(new AllPlayersDownedOrDeadSignal());
         }
 
         private static bool NoneAlive()
@@ -136,12 +100,6 @@ namespace Gameplay.Player.Vitals
             for (int i = 0; i < _all.Count; i++)
                 if (_all[i] != null && _all[i].State == PlayerLifeState.Alive) return false;
             return true;
-        }
-
-        [ObserversRpc]
-        private void BroadcastProgress(float remaining, float reviveProgress01)
-        {
-            _signalBus?.Fire(new DownStateProgressSignal(base.OwnerId, base.IsOwner, remaining, reviveProgress01));
         }
 
         private void OnStateChanged(PlayerLifeState prev, PlayerLifeState next, bool asServer)
@@ -168,28 +126,51 @@ namespace Gameplay.Player.Vitals
         private void ApplyLifeStateLocally(PlayerLifeState state)
         {
             bool alive = state == PlayerLifeState.Alive;
+            bool downed = state == PlayerLifeState.Downed;
             bool dead = state == PlayerLifeState.Dead;
 
             if (base.IsOwner)
             {
                 if (_movement != null) _movement.enabled = alive;
-                if (_look != null) _look.enabled = !dead;
-                if (dead) BeginSpectate();
-                else StopSpectate();
+                SetOwnerBodyVisible(downed);
+
+                if (dead)
+                {
+                    if (_look != null) _look.enabled = false;
+                    BeginSpectate();
+                }
+                else if (downed)
+                {
+                    if (_look != null) _look.enabled = false;
+                    if (_cameraRig != null) _cameraRig.SetDownedView(true);
+                }
+                else
+                {
+                    StopSpectate();
+                    if (_cameraRig != null) _cameraRig.SetDownedView(false);
+                }
             }
 
             if (_cc != null) _cc.enabled = !dead;
         }
 
+        private void SetOwnerBodyVisible(bool visible)
+        {
+            if (_renderers == null) return;
+            for (int i = 0; i < _renderers.Length; i++)
+                if (_renderers[i] != null) _renderers[i].enabled = visible;
+        }
+
         private void BeginSpectate()
         {
             _spectateTarget = FindAliveTeammate();
-            var off = _configs?.Vitals != null ? _configs.Vitals.SpectateCameraOffset : new Vector3(0f, 0.85f, 0f);
+            var off = _configs?.Vitals != null ? _configs.Vitals.SpectateCameraOffset : new Vector3(0f, 2f, -3.5f);
             if (_cameraRig != null) _cameraRig.SpectateFollow(_spectateTarget, off);
         }
 
         private void StopSpectate()
         {
+            if (_spectateTarget == null) return;
             _spectateTarget = null;
             if (_cameraRig != null) _cameraRig.SpectateFollow(null, Vector3.zero);
         }
@@ -202,19 +183,6 @@ namespace Gameplay.Player.Vitals
                 if (v != null && v != this && v.State == PlayerLifeState.Alive) return v.transform;
             }
             return null;
-        }
-
-        private void LateUpdate()
-        {
-            if (!base.IsOwner || _state.Value != PlayerLifeState.Dead) return;
-
-            bool targetGone = _spectateTarget == null;
-            if (!targetGone)
-            {
-                var tv = _spectateTarget.GetComponent<PlayerVitals>();
-                targetGone = tv == null || tv.State != PlayerLifeState.Alive;
-            }
-            if (targetGone) BeginSpectate();
         }
     }
 }

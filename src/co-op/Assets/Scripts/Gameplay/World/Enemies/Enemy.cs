@@ -2,8 +2,15 @@ using System.Collections.Generic;
 using Data.Configs;
 using FishNet.Object.Synchronizing;
 using Gameplay.Net;
-using Gameplay.Player.Vitals;
+using Data.Effects;
+using FishNet.Object;
+using Gameplay.World.Enemies.AI;
+using Infrastructure.Services.Effects;
+using Infrastructure.Services.Enemies;
+using Infrastructure.Services.Spawn;
+using Signals;
 using UnityEngine;
+using Zenject;
 
 namespace Gameplay.World.Enemies
 {
@@ -13,12 +20,18 @@ namespace Gameplay.World.Enemies
         public static IReadOnlyList<Enemy> All => _all;
 
         [SerializeField] private EnemyConfig _config;
+        [SerializeField] private Transform _body;
+        [SerializeField] private GameObject _corpsePrefab;
+
+        [Inject] private IEnemyTargetingService _targeting;
+        [Inject] private SignalBus _signalBus;
+        [Inject] private ISfxService _sfx;
+        [Inject] private INetworkSpawnService _spawner;
 
         public readonly SyncVar<float> Health = new(0f);
 
-        private PlayerVitals _target;
-        private float _retargetTimer;
-        private float _attackTimer;
+        private EnemyBrain _brain;
+        private ISfxHandle _moveLoop;
 
         public override void OnStartNetwork()
         {
@@ -35,77 +48,102 @@ namespace Gameplay.World.Enemies
         public override void OnStartServer()
         {
             base.OnStartServer();
-            Health.Value = _config != null ? _config.MaxHealth : 10f;
+            Health.Value = _config != null ? _config.MaxHealth : 30f;
+            if (_config == null)
+            {
+                Debug.LogError($"[{nameof(Enemy)}] No EnemyConfig assigned.", this);
+                return;
+            }
+            _brain = new EnemyBrain(_body != null ? _body : transform, _config, _targeting);
         }
 
-        public void ServerDespawn()
+        public override void OnStartClient()
         {
-            if (IsServerInitialized && NetworkObject != null)
-                ServerManager.Despawn(NetworkObject);
+            base.OnStartClient();
+            _signalBus?.Fire(new EnemySpawnedSignal(transform.position));
+            _moveLoop = _sfx?.PlayLoop(SfxId.EnemyMove, transform);
         }
 
-        public static void ServerDespawnAll()
+        public override void OnStopClient()
         {
-            var snapshot = _all.ToArray();
-            for (int i = 0; i < snapshot.Length; i++)
-                snapshot[i]?.ServerDespawn();
+            _moveLoop?.Stop();
+            _moveLoop = null;
+            _signalBus?.Fire(new EnemyDiedSignal(transform.position));
+            base.OnStopClient();
+        }
+
+        private void Update()
+        {
+            if (!IsServerInitialized || _brain == null) return;
+            _brain.Tick(Time.deltaTime);
+
+            var ctx = _brain.Context;
+            if (ctx.PendingKnockdown != null)
+            {
+                var player = ctx.PendingKnockdown;
+                ctx.PendingKnockdown = null;
+                player.HasLatchedAttacker = true;
+                player.ServerKnockDown();
+            }
+
+            if (ctx.PendingEffect != EnemyEffectKind.None)
+            {
+                var pe = ctx.PendingEffect;
+                ctx.PendingEffect = EnemyEffectKind.None;
+                RpcEffect((byte)pe, transform.position, ctx.PendingLatchOnPlayer);
+            }
         }
 
         public void ServerApplyDamage(float amount)
         {
             if (!IsServerInitialized) return;
             Health.Value -= amount;
-            if (Health.Value <= 0f && NetworkObject != null)
-                ServerManager.Despawn(NetworkObject);
+            if (Health.Value <= 0f) { SpawnCorpse(); ServerDespawn(); return; }
+            RpcEffect((byte)EnemyEffectKind.Damaged, transform.position, false);
         }
 
-        private void Update()
+        private void SpawnCorpse()
         {
-            if (!IsServerInitialized || _config == null) return;
+            if (_corpsePrefab != null && _spawner != null)
+                _spawner.SpawnNetworked(_corpsePrefab, transform.position, transform.rotation, owner: null);
+        }
 
-            float dt = Time.deltaTime;
-            if (_attackTimer > 0f) _attackTimer -= dt;
-
-            _retargetTimer -= dt;
-            if (_target == null || !_target.IsAlive || _retargetTimer <= 0f)
+        [ObserversRpc(RunLocally = true)]
+        private void RpcEffect(byte kind, Vector3 pos, bool onPlayer)
+        {
+            if (_signalBus == null) return;
+            switch ((EnemyEffectKind)kind)
             {
-                _target = FindNearestAlivePlayer();
-                _retargetTimer = 0.5f;
-            }
-            if (_target == null) return;
-
-            Vector3 to = _target.transform.position - transform.position;
-            to.y = 0f;
-            float dist = to.magnitude;
-
-            if (dist > _config.StopDistance)
-            {
-                Vector3 dir = to / Mathf.Max(dist, 1e-4f);
-                transform.position += dir * (_config.MoveSpeed * dt);
-                transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
-            }
-
-            if (dist <= _config.AttackRange && _attackTimer <= 0f)
-            {
-                _target.ServerKnockDown();
-                _attackTimer = _config.AttackCooldown;
+                case EnemyEffectKind.PrePounce: _signalBus.Fire(new EnemyPrePounceSignal(pos)); break;
+                case EnemyEffectKind.Pounced: _signalBus.Fire(new EnemyPouncedSignal(pos)); break;
+                case EnemyEffectKind.Latched: _signalBus.Fire(new EnemyLatchedSignal(pos, onPlayer)); break;
+                case EnemyEffectKind.Damaged: _signalBus.Fire(new EnemyDamagedSignal(pos)); break;
             }
         }
 
-        private PlayerVitals FindNearestAlivePlayer()
+        public void ServerDespawn()
         {
-            var all = PlayerVitals.All;
-            PlayerVitals best = null;
-            float bestSq = float.MaxValue;
-            Vector3 p = transform.position;
-            for (int i = 0; i < all.Count; i++)
+            if (!IsServerInitialized || NetworkObject == null) return;
+            ReleaseLatchedPlayer();
+            ServerManager.Despawn(NetworkObject);
+        }
+
+        public static void ServerDespawnAll()
+        {
+            var snapshot = _all.ToArray();
+            for (int i = 0; i < snapshot.Length; i++) snapshot[i]?.ServerDespawn();
+        }
+
+        private void ReleaseLatchedPlayer()
+        {
+            var ctx = _brain?.Context;
+            if (ctx == null || !ctx.Latch.Active) return;
+            if (ctx.Latch.Player != null)
             {
-                var v = all[i];
-                if (v == null || !v.IsAlive) continue;
-                float sq = (v.transform.position - p).sqrMagnitude;
-                if (sq < bestSq) { bestSq = sq; best = v; }
+                ctx.Latch.Player.HasLatchedAttacker = false;
+                ctx.Latch.Player.ServerRevive();
             }
-            return best;
+            if (ctx.Latch.Module != null) ctx.Latch.Module.RemoveMob();
         }
     }
 }

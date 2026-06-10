@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 119c1bd3601648f28a252a6030e067b6, type: 3}
+  m_Name: UnityFigmaBridgeSettings
+  m_EditorClassIdentifier: UnityFigmaBridgeEditor::UnityFigmaBridge.Editor.Settings.UnityFigmaBridgeSettings
+  DocumentUrl: https://www.figma.com/design/8XHfboedU0bfxTu4V5yog1/co-op?node-id=169-19&t=oSmRmLl3fp03w9Qz-1
+  BuildPrototypeFlow: 1
+  RunTimeAssetsScenePath: Assets/Scenes/UI.unity
+  EnableAutoLayout: 0
+  ScreenBindingNamespace: 
+  ServerRenderImageScale: 3
+  EnableGoogleFontsDownloads: 1
+  CreateScreenNameCSharpFile: 0
+  GenerateNodesMarkedForExport: 1
+  OnlyImportSelectedPages: 1
+  PageDataList:
+  - Name: Design System
+    NodeId: 0:1
+    Selected: 1
+  - Name: Menu
+    NodeId: 3:34
+    Selected: 1
+  - Name: HUD
+    NodeId: 3:35
+    Selected: 1
+  - Name: End & Transition
+    NodeId: 3:36
+    Selected: 1

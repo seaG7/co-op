@@ -16,6 +16,8 @@ namespace Infrastructure.Services.Input
         event Action JumpCanceled;
         event Action InteractStarted;
         event Action InteractCanceled;
+        event Action FireStarted;
+        event Action MeleeStarted;
 
         void Enable();
         void Disable();

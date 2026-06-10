@@ -19,7 +19,9 @@ GameObject:
   - component: {fileID: 2692969962917151686}
   - component: {fileID: 2356400211324542570}
   - component: {fileID: 4756220902788597875}
-  m_Layer: 0
+  - component: {fileID: 6232596022909457123}
+  - component: {fileID: 8800000000000000007}
+  m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,6 +124,9 @@ MonoBehaviour:
   - {fileID: 4758935643432927610}
   - {fileID: 2692969962917151686}
   - {fileID: 2356400211324542570}
+  - {fileID: 4756220902788597875}
+  - {fileID: 6232596022909457123}
+  - {fileID: 8800000000000000007}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -132,7 +137,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584218658203654011
+  _initializedTimestamp: -8584205729340476787
   _localLevelOfDetailCalculationType: 0
   _useLevelOfDetail: 0
   _useRootLevelOfDetail: 1
@@ -151,7 +156,7 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 0
+  <PrefabId>k__BackingField: 1
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 2092870565765373345
   SceneId: 0
@@ -280,6 +285,7 @@ MonoBehaviour:
   _pitchSensitivity: 0.4
   _pitchClamp: 85
   _cameraRig: {fileID: 2356400211324542570}
+  _eyeLocalOffset: {x: 0, y: 0.85, z: 0}
 --- !u!114 &2356400211324542570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,6 +303,12 @@ MonoBehaviour:
   _networkObjectCache: {fileID: -4691359204086986153}
   _camera: {fileID: 0}
   _localCameraOffset: {x: 0, y: 0.85, z: 0}
+  _downedCameraOffset: {x: 3, y: 1.8, z: -1}
+  _downedLookTarget: {x: 0, y: 1, z: 0}
+  _blendDuration: 0.4
+  _shakeMaxOffset: 0.25
+  _shakeDecay: 1.8
+  _shakeFrequency: 22
 --- !u!114 &4756220902788597875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,10 +321,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010603ebf9e9a3049b0e20857e8ff43e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.Player.Carry.PlayerCarry
-  _componentIndexCache: 255
+  _componentIndexCache: 5
   _addedNetworkObject: {fileID: -4691359204086986153}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: -4691359204086986153}
   _carryableMask:
     serializedVersion: 2
     m_Bits: 256
   _cameraRig: {fileID: 2356400211324542570}
+--- !u!114 &6232596022909457123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2668258204628415609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3ed96e97a3a0145922c412445ad39d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CoOp.Main::Gameplay.Player.Weapons.PlayerWeaponControl
+  _componentIndexCache: 6
+  _addedNetworkObject: {fileID: -4691359204086986153}
+  _networkObjectCache: {fileID: -4691359204086986153}
+  _weaponMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &8800000000000000007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2668258204628415609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e662d897e87c0a418bbf1519248c7fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 7
+  _addedNetworkObject: {fileID: -4691359204086986153}
+  _networkObjectCache: {fileID: -4691359204086986153}
+  _range: 2.2
+  _radius: 1.2
+  _damage: 15
+  _cooldown: 0.6

@@ -40,8 +40,7 @@ namespace Gameplay.World.Round
         private void Subscribe()
         {
             if (_subscribed || _signalBus == null) return;
-            _signalBus.Subscribe<AllWavesClearedSignal>(OnAllWavesCleared);
-            _signalBus.Subscribe<SourceDestroyedSignal>(OnSourceDestroyed);
+            _signalBus.Subscribe<PortalEnteredSignal>(OnPortalEntered);
             _signalBus.Subscribe<AllPlayersDownedOrDeadSignal>(OnAllPlayersDown);
             _subscribed = true;
         }
@@ -49,14 +48,12 @@ namespace Gameplay.World.Round
         private void Unsubscribe()
         {
             if (!_subscribed || _signalBus == null) return;
-            _signalBus.TryUnsubscribe<AllWavesClearedSignal>(OnAllWavesCleared);
-            _signalBus.TryUnsubscribe<SourceDestroyedSignal>(OnSourceDestroyed);
+            _signalBus.TryUnsubscribe<PortalEnteredSignal>(OnPortalEntered);
             _signalBus.TryUnsubscribe<AllPlayersDownedOrDeadSignal>(OnAllPlayersDown);
             _subscribed = false;
         }
 
-        private void OnAllWavesCleared(AllWavesClearedSignal _) => ServerSetOutcome(RoundOutcome.Victory);
-        private void OnSourceDestroyed(SourceDestroyedSignal _) => ServerSetOutcome(RoundOutcome.Victory);
+        private void OnPortalEntered(PortalEnteredSignal _) => ServerSetOutcome(RoundOutcome.Victory);
         private void OnAllPlayersDown(AllPlayersDownedOrDeadSignal _) => ServerSetOutcome(RoundOutcome.Defeat);
 
         private void ServerSetOutcome(RoundOutcome outcome)
@@ -64,6 +61,8 @@ namespace Gameplay.World.Round
             if (!base.IsServerInitialized || _outcome.Value != RoundOutcome.None) return;
             _outcome.Value = outcome;
         }
+
+        public void ServerDebugSetOutcome(RoundOutcome outcome) => ServerSetOutcome(outcome);
 
         private void OnOutcomeChanged(RoundOutcome prev, RoundOutcome next, bool asServer)
         {

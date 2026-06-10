@@ -1,3 +1,4 @@
+using Data.UI;
 using Infrastructure.Factories.UI;
 using UI.Common;
 using UnityEngine;

@@ -30,6 +30,8 @@ namespace Gameplay.Player.Look
 
         public Vector3 EyePosition => transform.TransformPoint(_eyeLocalOffset);
 
+        public float Pitch => _pitch;
+
         public Vector3 AimDirection
         {
             get

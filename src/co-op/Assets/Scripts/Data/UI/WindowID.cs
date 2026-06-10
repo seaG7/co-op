@@ -1,4 +1,4 @@
-namespace Infrastructure.Services.UI
+namespace Data.UI
 {
 
     public enum WindowID
@@ -10,5 +10,6 @@ namespace Infrastructure.Services.UI
         Loading = 3,
         HUD = 4,
         GameOver = 5,
+        Room = 6,
     }
 }

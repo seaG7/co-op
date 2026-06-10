@@ -2,6 +2,7 @@ using System.Threading;
 using Core.StateMachine;
 using Core.States;
 using Cysharp.Threading.Tasks;
+using Data.UI;
 using Infrastructure.Providers.Configs;
 using Infrastructure.Services.Network;
 using Infrastructure.Services.UI;

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Signals
 {
     public readonly struct PlayerDownedSignal
@@ -21,20 +23,18 @@ namespace Signals
         public PlayerDiedSignal(int clientId, bool isLocal) { ClientId = clientId; IsLocal = isLocal; }
     }
 
-    public readonly struct DownStateProgressSignal
+    public readonly struct AllPlayersDownedOrDeadSignal { }
+
+    public readonly struct PlayerMeleeSignal
     {
-        public readonly int ClientId;
-        public readonly bool IsLocal;
-        public readonly float SecondsRemaining;
-        public readonly float ReviveProgress01;
-        public DownStateProgressSignal(int clientId, bool isLocal, float secondsRemaining, float reviveProgress01)
-        {
-            ClientId = clientId;
-            IsLocal = isLocal;
-            SecondsRemaining = secondsRemaining;
-            ReviveProgress01 = reviveProgress01;
-        }
+        public readonly Vector3 Position;
+        public readonly bool Hit;
+        public PlayerMeleeSignal(Vector3 position, bool hit) { Position = position; Hit = hit; }
     }
 
-    public readonly struct AllPlayersDownedOrDeadSignal { }
+    public readonly struct MeleePromptSignal
+    {
+        public readonly bool Show;
+        public MeleePromptSignal(bool show) { Show = show; }
+    }
 }

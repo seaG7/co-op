@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UI.Common;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,8 @@ namespace UI.MainMenu
         [SerializeField] private Button _hostButton;
         [SerializeField] private Button _connectButton;
         [SerializeField] private Button _quitButton;
+        [Tooltip("Optional status line for create/join feedback ('Поиск комнаты…', 'Комната не найдена').")]
+        [SerializeField] private TMP_Text _statusLabel;
 
         public event Action HostClicked;
         public event Action ConnectClicked;
@@ -34,6 +37,11 @@ namespace UI.MainMenu
             if (_hostButton != null) _hostButton.interactable = on;
             if (_connectButton != null) _connectButton.interactable = on;
             if (_quitButton != null) _quitButton.interactable = on;
+        }
+
+        public void SetStatus(string s)
+        {
+            if (_statusLabel != null) _statusLabel.text = s ?? string.Empty;
         }
     }
 }

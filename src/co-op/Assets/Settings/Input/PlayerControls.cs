@@ -129,6 +129,24 @@ namespace CoOp.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""11111111-1111-4111-8111-111111111111"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Melee"",
+                    ""type"": ""Button"",
+                    ""id"": ""33333333-3333-4333-8333-333333333333"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -263,6 +281,28 @@ namespace CoOp.Input
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""22222222-2222-4222-8222-222222222222"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""44444444-4444-4444-8444-444444444444"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Melee"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -292,6 +332,8 @@ namespace CoOp.Input
             m_Gameplay_Look = m_Gameplay.FindAction("Look", throwIfNotFound: true);
             m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
             m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
+            m_Gameplay_Fire = m_Gameplay.FindAction("Fire", throwIfNotFound: true);
+            m_Gameplay_Melee = m_Gameplay.FindAction("Melee", throwIfNotFound: true);
         }
 
         ~@PlayerControls()
@@ -376,6 +418,8 @@ namespace CoOp.Input
         private readonly InputAction m_Gameplay_Look;
         private readonly InputAction m_Gameplay_Jump;
         private readonly InputAction m_Gameplay_Interact;
+        private readonly InputAction m_Gameplay_Fire;
+        private readonly InputAction m_Gameplay_Melee;
         /// <summary>
         /// Provides access to input actions defined in input action map "Gameplay".
         /// </summary>
@@ -403,6 +447,14 @@ namespace CoOp.Input
             /// Provides access to the underlying input action "Gameplay/Interact".
             /// </summary>
             public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/Fire".
+            /// </summary>
+            public InputAction @Fire => m_Wrapper.m_Gameplay_Fire;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/Melee".
+            /// </summary>
+            public InputAction @Melee => m_Wrapper.m_Gameplay_Melee;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -441,6 +493,12 @@ namespace CoOp.Input
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
+                @Melee.started += instance.OnMelee;
+                @Melee.performed += instance.OnMelee;
+                @Melee.canceled += instance.OnMelee;
             }
 
             /// <summary>
@@ -464,6 +522,12 @@ namespace CoOp.Input
                 @Interact.started -= instance.OnInteract;
                 @Interact.performed -= instance.OnInteract;
                 @Interact.canceled -= instance.OnInteract;
+                @Fire.started -= instance.OnFire;
+                @Fire.performed -= instance.OnFire;
+                @Fire.canceled -= instance.OnFire;
+                @Melee.started -= instance.OnMelee;
+                @Melee.performed -= instance.OnMelee;
+                @Melee.canceled -= instance.OnMelee;
             }
 
             /// <summary>
@@ -545,6 +609,20 @@ namespace CoOp.Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnInteract(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Fire" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnFire(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Melee" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnMelee(InputAction.CallbackContext context);
         }
     }
 }

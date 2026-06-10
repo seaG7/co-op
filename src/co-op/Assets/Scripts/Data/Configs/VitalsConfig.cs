@@ -17,7 +17,7 @@ namespace Data.Configs
         [Tooltip("How fast revive progress drains (multiplier of real time) when no reviver is in range.")]
         public float ReviveDecayMultiplier = 2f;
 
-        [Tooltip("Local position offset for the spectator camera when following a teammate.")]
-        public Vector3 SpectateCameraOffset = new Vector3(0f, 0.85f, 0f);
+        [Tooltip("Spectator camera offset relative to the followed teammate's facing (z = behind, y = up) for a third-person watch view, e.g. (0, 2, -3.5).")]
+        public Vector3 SpectateCameraOffset = new Vector3(0f, 2f, -3.5f);
     }
 }
