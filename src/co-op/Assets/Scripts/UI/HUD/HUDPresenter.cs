@@ -1,4 +1,5 @@
 using Data.Players;
+using Data.World;
 using Infrastructure.Services.Network;
 using Infrastructure.Services.Player;
 using Signals;
@@ -13,6 +14,9 @@ namespace UI.HUD
         private readonly IPlayerService _playerService;
         private readonly SignalBus _signalBus;
 
+        private bool _sourceOpen;
+        private bool _charged;
+
         public HUDPresenter(HUDView view, ISessionService session, IPlayerService playerService, SignalBus signalBus)
         {
             _view = view; _session = session; _playerService = playerService; _signalBus = signalBus;
@@ -24,6 +28,13 @@ namespace UI.HUD
             _playerService.LocalPlayerAssigned += OnLocalPlayer;
             _playerService.LocalPlayerRemoved += OnLocalPlayer;
             _signalBus.Subscribe<InteractPromptSignal>(OnInteractPrompt);
+            _signalBus.Subscribe<SourceStateChangedSignal>(OnSourceState);
+            _signalBus.Subscribe<WeaponMountedSignal>(OnWeaponMounted);
+            _signalBus.Subscribe<CannonChargeChangedSignal>(OnCannonCharge);
+            _signalBus.Subscribe<CannonModulesChangedSignal>(OnCannonModules);
+            _signalBus.Subscribe<MeleePromptSignal>(OnMeleePrompt);
+            _signalBus.Subscribe<PlayerDownedSignal>(OnPlayerDowned);
+            _signalBus.Subscribe<PlayerRevivedSignal>(OnPlayerRevived);
             Refresh();
         }
 
@@ -33,6 +44,13 @@ namespace UI.HUD
             _playerService.LocalPlayerAssigned -= OnLocalPlayer;
             _playerService.LocalPlayerRemoved -= OnLocalPlayer;
             _signalBus.TryUnsubscribe<InteractPromptSignal>(OnInteractPrompt);
+            _signalBus.TryUnsubscribe<SourceStateChangedSignal>(OnSourceState);
+            _signalBus.TryUnsubscribe<WeaponMountedSignal>(OnWeaponMounted);
+            _signalBus.TryUnsubscribe<CannonChargeChangedSignal>(OnCannonCharge);
+            _signalBus.TryUnsubscribe<CannonModulesChangedSignal>(OnCannonModules);
+            _signalBus.TryUnsubscribe<MeleePromptSignal>(OnMeleePrompt);
+            _signalBus.TryUnsubscribe<PlayerDownedSignal>(OnPlayerDowned);
+            _signalBus.TryUnsubscribe<PlayerRevivedSignal>(OnPlayerRevived);
         }
 
         private void OnSessionState(SessionState _) => Refresh();
@@ -40,6 +58,41 @@ namespace UI.HUD
 
         private void OnInteractPrompt(InteractPromptSignal s)
             => _view.SetInteractPrompt(s.Show, s.Show ? PromptText(s.Kind) : null);
+
+        private void OnSourceState(SourceStateChangedSignal s)
+        {
+            _view.SetGather(s.State == SourceState.Gather, s.Remaining, s.Total);
+            _sourceOpen = s.State == SourceState.Open;
+            UpdateBreakable();
+        }
+
+        private void OnCannonCharge(CannonChargeChangedSignal s)
+        {
+            _charged = s.IsCharged;
+            _view.SetCharge(s.Loaded, s.Required);
+            UpdateBreakable();
+        }
+
+        private void OnCannonModules(CannonModulesChangedSignal s)
+            => _view.SetModulesWarning(s.UnderAttack, s.Detached);
+
+        private void OnMeleePrompt(MeleePromptSignal s) => _view.SetMeleePrompt(s.Show);
+
+        private void OnPlayerDowned(PlayerDownedSignal s)
+        {
+            if (s.IsLocal) _view.SetDownedSelf(true);
+            else _view.SetPartnerDowned(true);
+        }
+
+        private void OnPlayerRevived(PlayerRevivedSignal s)
+        {
+            if (s.IsLocal) _view.SetDownedSelf(false);
+            else _view.SetPartnerDowned(false);
+        }
+
+        private void OnWeaponMounted(WeaponMountedSignal s) => _view.SetCrosshair(s.Mounted);
+
+        private void UpdateBreakable() => _view.SetShootNow(_sourceOpen && _charged);
 
         private static string PromptText(InteractPromptKind kind) => kind switch
         {

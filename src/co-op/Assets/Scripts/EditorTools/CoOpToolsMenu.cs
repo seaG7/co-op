@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Data.Configs;
 using Data.Paths;
+using Data.UI;
 using FishNet.Object;
 using Gameplay.Player;
 using Gameplay.Spawn;

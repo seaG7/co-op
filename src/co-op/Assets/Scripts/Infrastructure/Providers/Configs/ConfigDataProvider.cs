@@ -3,6 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Data.Configs;
 using Data.Paths;
+using Data.UI;
 using Infrastructure.Services.UI;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ namespace Infrastructure.Providers.Configs
         public CarryConfig Carry { get; private set; }
         public VitalsConfig Vitals { get; private set; }
         public WeaponConfig Weapon { get; private set; }
+        public VfxCatalog Vfx { get; private set; }
+        public SfxCatalog Sfx { get; private set; }
 
         public async UniTask LoadAsync(CancellationToken ct = default)
         {
@@ -29,6 +32,9 @@ namespace Infrastructure.Providers.Configs
 
             Windows = windows; Network = network; Movement = movement; Carry = carry; Vitals = vitals; Weapon = weapon;
 
+            Vfx = await LoadOneAsync<VfxCatalog>(ConfigPaths.VFX_CATALOG_PATH, ct);
+            Sfx = await LoadOneAsync<SfxCatalog>(ConfigPaths.SFX_CATALOG_PATH, ct);
+
             Debug.Log(
                 $"[ConfigDataProvider] Loaded — " +
                 $"Windows: {(Windows != null ? $"{Windows.windows?.Count ?? 0} entries" : "MISSING")}, " +
@@ -36,7 +42,8 @@ namespace Infrastructure.Providers.Configs
                 $"Movement: {(Movement != null ? "ok" : "MISSING")}, " +
                 $"Carry: {(Carry != null ? "ok" : "MISSING")}, " +
                 $"Vitals: {(Vitals != null ? "ok" : "MISSING")}, " +
-                $"Weapon: {(Weapon != null ? "ok" : "MISSING")}.");
+                $"Weapon: {(Weapon != null ? "ok" : "MISSING")}, " +
+                $"Vfx: {(Vfx != null ? "ok" : "MISSING")}, Sfx: {(Sfx != null ? "ok" : "MISSING")}.");
         }
 
         public GameObject GetWindowPrefab(WindowID id)

@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648021c758d09804fb6169de840bd353, type: 3}
+  m_Name: EnemyConfig
+  m_EditorClassIdentifier: CoOp.Data::Data.Configs.EnemyConfig
+  MaxHealth: 10
+  CrawlSpeed: 4.5
+  HoverHeight: 0.15
+  AlignRate: 8
+  SurfaceMask:
+    serializedVersion: 2
+    m_Bits: 311
+  StickProbeUp: 0.5
+  MaxStepDown: 1.2
+  StepHeight: 0.4
+  LookAhead: 0.7
+  FanRayCount: 5
+  FanHalfAngle: 35
+  WallAngleThreshold: 45
+  ClimbCoverage: 0.5
+  SweepSteps: 6
+  SweepMaxAngle: 110
+  FallSpeed: 6
+  PlayerAggroRadius: 6
+  BlockingAngleDeg: 45
+  PlayerThreatRadius: 3
+  PounceRange: 4
+  PounceCooldown: 2
+  PounceSpeed: 9
+  PounceArcHeight: 1.5
+  PounceTimeout: 1.5
+  LatchDistance: 0.9
+  LatchHover: -0.5
+  StuckTime: 2.5
+  ProgressEpsilon: 0.25

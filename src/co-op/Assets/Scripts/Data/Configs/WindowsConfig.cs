@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Infrastructure.Services.UI;
+using Data.UI;
 using UnityEngine;
 
 namespace Data.Configs

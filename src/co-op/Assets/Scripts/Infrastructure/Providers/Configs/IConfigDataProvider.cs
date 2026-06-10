@@ -1,6 +1,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Data.Configs;
+using Data.UI;
 using Infrastructure.Services.UI;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ namespace Infrastructure.Providers.Configs
         CarryConfig Carry { get; }
         VitalsConfig Vitals { get; }
         WeaponConfig Weapon { get; }
+        VfxCatalog Vfx { get; }
+        SfxCatalog Sfx { get; }
 
         GameObject GetWindowPrefab(WindowID id);
     }

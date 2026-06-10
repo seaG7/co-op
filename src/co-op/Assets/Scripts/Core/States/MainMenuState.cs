@@ -1,6 +1,7 @@
 using System.Threading;
 using Core.StateMachine;
 using Cysharp.Threading.Tasks;
+using Data.UI;
 using Infrastructure.Services.UI;
 using UnityEngine;
 

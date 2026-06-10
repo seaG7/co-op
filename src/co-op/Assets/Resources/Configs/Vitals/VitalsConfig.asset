@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d16ed2333e9a8814fb116ada93795021, type: 3}
+  m_Name: VitalsConfig
+  m_EditorClassIdentifier: CoOp.Data::Data.Configs.VitalsConfig
+  DownReviveSeconds: 15
+  ReviveHoldSeconds: 3
+  ReviveRange: 2.5
+  ReviveDecayMultiplier: 2
+  SpectateCameraOffset: {x: 0, y: 0.85, z: 0}

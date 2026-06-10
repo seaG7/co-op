@@ -1,3 +1,4 @@
+using Data.World;
 using UnityEngine;
 
 namespace Signals
@@ -24,7 +25,26 @@ namespace Signals
         public SourceDamagedSignal(float health, float maxHealth) { Health = health; MaxHealth = maxHealth; }
     }
 
+    public readonly struct SourceStateChangedSignal
+    {
+        public readonly SourceState State;
+        public readonly float Remaining;
+        public readonly float Total;
+        public SourceStateChangedSignal(SourceState state, float remaining, float total)
+        {
+            State = state; Remaining = remaining; Total = total;
+        }
+    }
+
     public readonly struct SourceDestroyedSignal { }
+
+    public readonly struct PortalEnteredSignal { }
+
+    public readonly struct WeaponMountedSignal
+    {
+        public readonly bool Mounted;
+        public WeaponMountedSignal(bool mounted) { Mounted = mounted; }
+    }
 
     public readonly struct WeaponFiredSignal
     {

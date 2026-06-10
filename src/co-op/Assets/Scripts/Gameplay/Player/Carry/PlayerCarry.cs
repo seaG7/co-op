@@ -46,6 +46,8 @@ namespace Gameplay.Player.Carry
 
         private NetworkConnection _heldByConnection;
 
+        private bool _interactionSuppressed;
+
         private void Awake()
         {
             _look = GetComponent<PlayerLookController>();
@@ -101,6 +103,7 @@ namespace Gameplay.Player.Carry
 
         private void OnInteractStarted()
         {
+            if (_interactionSuppressed) return;
             if (_vitals != null && !_vitals.IsAlive) return;
             if (_heldItem != null) return;
             var cam = _cameraRig != null ? _cameraRig.Camera : null;
@@ -267,6 +270,12 @@ namespace Gameplay.Player.Carry
         {
             if (!base.IsOwner) return;
 
+            if (_interactionSuppressed)
+            {
+                SetPrompt(false);
+                return;
+            }
+
             if (_heldItem == null)
             {
                 _predItem = null;
@@ -400,6 +409,8 @@ namespace Gameplay.Player.Carry
         public float HeldMass => _heldItem != null ? _heldItem.Mass : 0f;
 
         public bool IsHolding => _heldItem != null;
+
+        public void SetInteractionSuppressed(bool suppressed) => _interactionSuppressed = suppressed;
 
         public void ServerForceDrop()
         {

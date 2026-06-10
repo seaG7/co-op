@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Data.UI;
 using Infrastructure.Providers.Configs;
 using Infrastructure.Services.UI;
 using UI.Common;
@@ -48,6 +49,7 @@ namespace Infrastructure.Factories.UI
             }
 
             view.BindPresenter();
+            view.PlayShow();
             _opened[id] = view;
             return view;
         }
@@ -56,7 +58,7 @@ namespace Infrastructure.Factories.UI
         {
             if (!_opened.Remove(id, out var view) || view == null) return;
             view.UnbindPresenter();
-            Object.Destroy(view.gameObject);
+            view.PlayHide(() => { if (view != null) Object.Destroy(view.gameObject); });
         }
 
         public T GetView<T>(WindowID id) where T : Component =>

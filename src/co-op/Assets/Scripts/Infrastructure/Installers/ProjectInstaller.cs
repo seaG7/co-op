@@ -6,6 +6,7 @@ using Infrastructure.Factories.UI;
 using Infrastructure.Providers.Configs;
 using Infrastructure.Services.DI;
 using Infrastructure.Services.Input;
+using Infrastructure.Services.Lobby;
 using Infrastructure.Services.Network;
 using Infrastructure.Services.Player;
 using Infrastructure.Services.Round;
@@ -64,7 +65,6 @@ namespace Infrastructure.Installers
             Container.DeclareSignal<PlayerDownedSignal>();
             Container.DeclareSignal<PlayerRevivedSignal>();
             Container.DeclareSignal<PlayerDiedSignal>();
-            Container.DeclareSignal<DownStateProgressSignal>();
             Container.DeclareSignal<AllPlayersDownedOrDeadSignal>();
 
             Container.DeclareSignal<SourceVulnerableSignal>();
@@ -117,6 +117,7 @@ namespace Infrastructure.Installers
 
             Container.BindInterfacesAndSelfTo<NetworkService>().AsSingle();
             Container.BindInterfacesAndSelfTo<SessionService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<LobbyService>().AsSingle().NonLazy();
         }
 
         private void BindPlayer()
@@ -140,6 +141,7 @@ namespace Infrastructure.Installers
             Container.Bind<BootstrapState>().AsTransient();
             Container.Bind<LoadMainMenuState>().AsTransient();
             Container.Bind<MainMenuState>().AsTransient();
+            Container.Bind<LobbyState>().AsTransient();
             Container.Bind<LoadGameState>().AsTransient();
             Container.Bind<GameplayState>().AsTransient();
             Container.Bind<GameOverState>().AsTransient();
@@ -149,6 +151,7 @@ namespace Infrastructure.Installers
         {
             Container.BindExecutionOrder<NetworkService>(-40);
             Container.BindExecutionOrder<SessionService>(-30);
+            Container.BindExecutionOrder<LobbyService>(-20);
         }
     }
 }
