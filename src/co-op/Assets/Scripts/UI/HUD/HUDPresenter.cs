@@ -32,6 +32,9 @@ namespace UI.HUD
             _signalBus.Subscribe<WeaponMountedSignal>(OnWeaponMounted);
             _signalBus.Subscribe<CannonChargeChangedSignal>(OnCannonCharge);
             _signalBus.Subscribe<CannonModulesChangedSignal>(OnCannonModules);
+            _signalBus.Subscribe<WaveStartedSignal>(OnWaveStarted);
+            _signalBus.Subscribe<WaveClearedSignal>(OnWaveCleared);
+            _signalBus.Subscribe<AllWavesClearedSignal>(OnAllWavesCleared);
             _signalBus.Subscribe<MeleePromptSignal>(OnMeleePrompt);
             _signalBus.Subscribe<PlayerDownedSignal>(OnPlayerDowned);
             _signalBus.Subscribe<PlayerRevivedSignal>(OnPlayerRevived);
@@ -48,6 +51,9 @@ namespace UI.HUD
             _signalBus.TryUnsubscribe<WeaponMountedSignal>(OnWeaponMounted);
             _signalBus.TryUnsubscribe<CannonChargeChangedSignal>(OnCannonCharge);
             _signalBus.TryUnsubscribe<CannonModulesChangedSignal>(OnCannonModules);
+            _signalBus.TryUnsubscribe<WaveStartedSignal>(OnWaveStarted);
+            _signalBus.TryUnsubscribe<WaveClearedSignal>(OnWaveCleared);
+            _signalBus.TryUnsubscribe<AllWavesClearedSignal>(OnAllWavesCleared);
             _signalBus.TryUnsubscribe<MeleePromptSignal>(OnMeleePrompt);
             _signalBus.TryUnsubscribe<PlayerDownedSignal>(OnPlayerDowned);
             _signalBus.TryUnsubscribe<PlayerRevivedSignal>(OnPlayerRevived);
@@ -74,7 +80,14 @@ namespace UI.HUD
         }
 
         private void OnCannonModules(CannonModulesChangedSignal s)
-            => _view.SetModulesWarning(s.UnderAttack, s.Detached);
+        {
+            _view.SetModulesWarning(s.UnderAttack, s.Detached);
+            _view.SetCannonModules(s.Modules, s.Assembled, s.Total);
+        }
+
+        private void OnWaveStarted(WaveStartedSignal s) => _view.SetCannonWaveActive(true);
+        private void OnWaveCleared(WaveClearedSignal s) => _view.SetCannonWaveActive(false);
+        private void OnAllWavesCleared(AllWavesClearedSignal s) => _view.SetCannonWaveActive(false);
 
         private void OnMeleePrompt(MeleePromptSignal s) => _view.SetMeleePrompt(s.Show);
 
@@ -99,6 +112,7 @@ namespace UI.HUD
             InteractPromptKind.PickUp => "Hold to pick up",
             InteractPromptKind.Drop => "Release to drop",
             InteractPromptKind.PlaceOnSocket => "Release to place",
+            InteractPromptKind.Drink => "Зажмите E чтобы выпить",
             _ => "Hold to interact",
         };
 

@@ -23,4 +23,15 @@ namespace Signals
             Impact = impact;
         }
     }
+
+    public readonly struct PlayerDrunkSignal
+    {
+        public readonly bool IsOwner;
+        public readonly float Intensity;
+        public PlayerDrunkSignal(bool isOwner, float intensity)
+        {
+            IsOwner = isOwner;
+            Intensity = intensity;
+        }
+    }
 }

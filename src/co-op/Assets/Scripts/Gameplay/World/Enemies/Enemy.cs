@@ -20,7 +20,6 @@ namespace Gameplay.World.Enemies
         public static IReadOnlyList<Enemy> All => _all;
 
         [SerializeField] private EnemyConfig _config;
-        [SerializeField] private Transform _body;
         [SerializeField] private GameObject _corpsePrefab;
 
         [Inject] private IEnemyTargetingService _targeting;
@@ -30,8 +29,12 @@ namespace Gameplay.World.Enemies
 
         public readonly SyncVar<float> Health = new(0f);
 
+        public Vector3 HitCenter => transform.position;
+
         private EnemyBrain _brain;
         private ISfxHandle _moveLoop;
+        private Vector3 _lastStepPos;
+        private bool _stepInit;
 
         public override void OnStartNetwork()
         {
@@ -54,7 +57,7 @@ namespace Gameplay.World.Enemies
                 Debug.LogError($"[{nameof(Enemy)}] No EnemyConfig assigned.", this);
                 return;
             }
-            _brain = new EnemyBrain(_body != null ? _body : transform, _config, _targeting);
+            _brain = new EnemyBrain(transform, _config, _targeting);
         }
 
         public override void OnStartClient()
@@ -62,6 +65,8 @@ namespace Gameplay.World.Enemies
             base.OnStartClient();
             _signalBus?.Fire(new EnemySpawnedSignal(transform.position));
             _moveLoop = _sfx?.PlayLoop(SfxId.EnemyMove, transform);
+            _lastStepPos = transform.position;
+            _stepInit = true;
         }
 
         public override void OnStopClient()
@@ -92,6 +97,15 @@ namespace Gameplay.World.Enemies
                 ctx.PendingEffect = EnemyEffectKind.None;
                 RpcEffect((byte)pe, transform.position, ctx.PendingLatchOnPlayer);
             }
+        }
+
+        private void LateUpdate()
+        {
+            if (!_stepInit || _sfx == null) return;
+            Vector3 d = transform.position - _lastStepPos; d.y = 0f;
+            if (d.sqrMagnitude < 1.3f * 1.3f) return;
+            _lastStepPos = transform.position;
+            _sfx.Play(SfxId.EnemyStep, transform.position);
         }
 
         public void ServerApplyDamage(float amount)

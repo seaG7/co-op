@@ -42,6 +42,20 @@ namespace Gameplay.Player.Animation
 
             ApplyHand(AvatarIKGoal.RightHand, held != null ? held.HandGrip(HandSide.Right) : null, _weights.PrimaryWeight, c);
             ApplyHand(AvatarIKGoal.LeftHand, held != null ? held.HandGrip(HandSide.Left) : null, _weights.SecondaryWeight, c);
+
+            ApplyHint(AvatarIKHint.RightElbow, held != null ? held.ElbowHint(HandSide.Right) : null, _weights.PrimaryWeight);
+            ApplyHint(AvatarIKHint.LeftElbow, held != null ? held.ElbowHint(HandSide.Left) : null, _weights.SecondaryWeight);
+        }
+
+        private void ApplyHint(AvatarIKHint hint, Transform target, float weight)
+        {
+            if (target == null || weight <= 0f)
+            {
+                _animator.SetIKHintPositionWeight(hint, 0f);
+                return;
+            }
+            _animator.SetIKHintPositionWeight(hint, weight);
+            _animator.SetIKHintPosition(hint, target.position);
         }
 
         private void ApplyHand(AvatarIKGoal goal, Transform target, float weight, AnimationConfig c)

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &82721089218761288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2859413039370398294}
+  m_Layer: 0
+  m_Name: DrinkAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2859413039370398294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82721089218761288}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.04, y: 0.03, z: 0.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6164357757416567273}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &126462413438391482
 GameObject:
   m_ObjectHideFlags: 0
@@ -2082,6 +2113,8 @@ GameObject:
   - component: {fileID: 8180165701915820064}
   - component: {fileID: 8644302744978882788}
   - component: {fileID: 6578207929519627772}
+  - component: {fileID: 1435250423920221999}
+  - component: {fileID: 5886349141084212684}
   m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
@@ -2364,6 +2397,10 @@ MonoBehaviour:
   _fovPunchDecay: 18
   _moveFovAdd: 2.5
   _fovSmoothing: 8
+  _drunkSway: 0.06
+  _drunkRoll: 5
+  _drunkFov: 5
+  _drunkSpeed: 1.4
 --- !u!114 &-4264476515254317172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2482,6 +2519,47 @@ MonoBehaviour:
   _componentIndexCache: 9
   _addedNetworkObject: {fileID: 2398372742057593142}
   _networkObjectCache: {fileID: 2398372742057593142}
+--- !u!114 &1435250423920221999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3115400375524619112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384f5665bd79340428c722f7e5c07887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CoOp.Main::Gameplay.Player.Combat.PlayerDrink
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 2398372742057593142}
+  _networkObjectCache: {fileID: 0}
+  _drinkableMask:
+    serializedVersion: 2
+    m_Bits: 256
+  _drinkAnchor: {fileID: 2859413039370398294}
+  _reach: 2.5
+  _drinkDuration: 3
+  _throwForce: 2.5
+--- !u!114 &5886349141084212684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3115400375524619112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1efce85d79ee07d48869d8b4b68c4b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CoOp.Main::Gameplay.Player.Vitals.PlayerDrunk
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 2398372742057593142}
+  _networkObjectCache: {fileID: 0}
+  _maxIntensity: 2
+  _perDrink: 0.6
+  _decayPerSec: 0.06
+  _drunkThreshold: 0.05
 --- !u!1 &3169208645727693438
 GameObject:
   m_ObjectHideFlags: 0
@@ -3666,6 +3744,7 @@ Transform:
   - {fileID: 903456099634327682}
   - {fileID: 772593842195272263}
   - {fileID: 907895671020848579}
+  - {fileID: 2859413039370398294}
   m_Father: {fileID: 2785853071178143847}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4913215953014567319

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 namespace CoOp.EditorTools
 {
@@ -158,6 +160,173 @@ namespace CoOp.EditorTools
             var go = new GameObject(name);
             go.transform.SetParent(parent, false);
             return go.transform;
+        }
+
+        [MenuItem("Tools/CoOp/Build Drunk Volume")]
+        public static void BuildDrunkVolume()
+        {
+            const string profilePath = "Assets/Prefabs/DrunkVolumeProfile.asset";
+            const string prefabPath = "Assets/Prefabs/DrunkVolume.prefab";
+
+            var profile = AssetDatabase.LoadAssetAtPath<VolumeProfile>(profilePath);
+            if (profile == null)
+            {
+                profile = ScriptableObject.CreateInstance<VolumeProfile>();
+                AssetDatabase.CreateAsset(profile, profilePath);
+            }
+
+            foreach (var sub in AssetDatabase.LoadAllAssetsAtPath(profilePath))
+                if (sub is VolumeComponent vc) UnityEngine.Object.DestroyImmediate(vc, true);
+            profile.components.Clear();
+
+            var ca = AddOverride<ChromaticAberration>(profile);
+            ca.intensity.overrideState = true; ca.intensity.value = 1f;
+
+            var ld = AddOverride<LensDistortion>(profile);
+            ld.intensity.overrideState = true; ld.intensity.value = -0.35f;
+            ld.scale.overrideState = true; ld.scale.value = 1f;
+
+            var vg = AddOverride<Vignette>(profile);
+            vg.intensity.overrideState = true; vg.intensity.value = 0.45f;
+            vg.smoothness.overrideState = true; vg.smoothness.value = 0.55f;
+
+            var dof = AddOverride<DepthOfField>(profile);
+            dof.mode.overrideState = true; dof.mode.value = DepthOfFieldMode.Gaussian;
+            dof.gaussianStart.overrideState = true; dof.gaussianStart.value = 8f;
+            dof.gaussianEnd.overrideState = true; dof.gaussianEnd.value = 32f;
+
+            EditorUtility.SetDirty(profile);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.ImportAsset(profilePath);
+
+            if (AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath) == null)
+            {
+                var go = new GameObject("DrunkVolume");
+                try
+                {
+                    var vol = go.AddComponent<Volume>();
+                    vol.isGlobal = true;
+                    vol.priority = 100f;
+                    vol.weight = 0f;
+                    vol.sharedProfile = profile;
+
+                    var fxType = FindType("Gameplay.Player.View.DrunkPostFx");
+                    var fx = fxType != null ? go.AddComponent(fxType) : null;
+                    SetRef(fx, "_volume", vol);
+
+                    PrefabUtility.SaveAsPrefabAsset(go, prefabPath);
+                }
+                finally { UnityEngine.Object.DestroyImmediate(go); }
+                Debug.Log($"[DrunkVolume] profile + prefab created at {prefabPath}. Drop it into the scene.");
+            }
+            else
+            {
+                Debug.Log($"[DrunkVolume] profile rebuilt with {profile.components.Count} overrides " +
+                          "(prefab left intact — existing scene instance keeps working).");
+            }
+        }
+
+        private static T AddOverride<T>(VolumeProfile profile) where T : VolumeComponent
+        {
+            var comp = ScriptableObject.CreateInstance<T>();
+            comp.name = typeof(T).Name;
+            comp.hideFlags = HideFlags.HideInHierarchy;
+            profile.components.Add(comp);
+            AssetDatabase.AddObjectToAsset(comp, profile);
+            return comp;
+        }
+
+        [MenuItem("Tools/CoOp/Wire Drink Mechanic")]
+        public static void WireDrink()
+        {
+            int interactLayer = 0;
+            var ci = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/World/Items/ComponentItem.prefab");
+            if (ci != null) interactLayer = ci.layer;
+
+            var root = PrefabUtility.LoadPrefabContents(PrefabPath);
+            try
+            {
+                var pDrink = EnsureComponent(root, "Gameplay.Player.Combat.PlayerDrink");
+                EnsureComponent(root, "Gameplay.Player.Vitals.PlayerDrunk");
+
+                var hand = FindChild(root.transform, "CC_Base_R_Hand");
+                Transform anchor = FindChild(root.transform, "DrinkAnchor");
+                if (hand != null)
+                {
+                    if (anchor == null) { var go = new GameObject("DrinkAnchor"); go.transform.SetParent(hand, false); anchor = go.transform; }
+                    else if (anchor.parent != hand) anchor.SetParent(hand, false);
+                    anchor.localPosition = new Vector3(0.04f, 0.03f, 0.03f);
+                    anchor.localRotation = Quaternion.identity;
+                }
+                else Debug.LogWarning("[WireDrink] CC_Base_R_Hand not found on Player.");
+
+                SetRef(pDrink, "_drinkAnchor", anchor);
+                SetLayerMask(pDrink, "_drinkableMask", 1 << interactLayer);
+
+                PrefabUtility.SaveAsPrefabAsset(root, PrefabPath);
+            }
+            finally { PrefabUtility.UnloadPrefabContents(root); }
+
+            BuildBottlePrefab(interactLayer);
+            Debug.Log($"[WireDrink] done. interactLayer={interactLayer} ({UnityEngine.LayerMask.LayerToName(interactLayer)}).");
+        }
+
+        private static void BuildBottlePrefab(int layer)
+        {
+            const string outPath = "Assets/Prefabs/World/Items/BottleDrinkable.prefab";
+            const string visSrc = "Assets/DownloadedAssets/ToonScapes/Spring Isles/Prefabs/Props/Tea_Set/TSI_Bottle_01A.prefab";
+
+            var rootGo = new GameObject("BottleDrinkable");
+            try
+            {
+                var src = AssetDatabase.LoadAssetAtPath<GameObject>(visSrc);
+                if (src != null)
+                {
+                    var vis = (GameObject)PrefabUtility.InstantiatePrefab(src);
+                    vis.transform.SetParent(rootGo.transform, false);
+                }
+                else Debug.LogWarning($"[WireDrink] bottle visual not found at {visSrc}.");
+
+                var col = rootGo.AddComponent<BoxCollider>();
+                col.center = new Vector3(0f, 0.12f, 0f);
+                col.size = new Vector3(0.1f, 0.24f, 0.1f);
+                var rb = rootGo.AddComponent<Rigidbody>();
+                rb.mass = 0.5f;
+
+                var noType = FindType("FishNet.Object.NetworkObject");
+                if (noType != null) rootGo.AddComponent(noType);
+                var ntType = FindType("FishNet.Component.Transforming.NetworkTransform");
+                if (ntType != null) rootGo.AddComponent(ntType);
+                var drinkType = FindType("Gameplay.World.Items.Drinkable");
+                var drink = drinkType != null ? rootGo.AddComponent(drinkType) : null;
+
+                var grip = new GameObject("Grip");
+                grip.transform.SetParent(rootGo.transform, false);
+                grip.transform.localPosition = new Vector3(0f, 0.05f, 0f);
+                SetRef(drink, "_grip", grip.transform);
+
+                SetLayerRecursive(rootGo, layer);
+
+                PrefabUtility.SaveAsPrefabAsset(rootGo, outPath);
+                Debug.Log($"[WireDrink] bottle prefab saved: {outPath} (visual={(src != null)}).");
+            }
+            finally { UnityEngine.Object.DestroyImmediate(rootGo); }
+        }
+
+        private static void SetLayerMask(Component c, string prop, int mask)
+        {
+            if (c == null) return;
+            var so = new SerializedObject(c);
+            var p = so.FindProperty(prop);
+            if (p == null) { Debug.LogWarning($"[PlayerPrefabWire] no property {prop} on {c.GetType().Name}"); return; }
+            p.intValue = mask;
+            so.ApplyModifiedPropertiesWithoutUndo();
+        }
+
+        private static void SetLayerRecursive(GameObject go, int layer)
+        {
+            go.layer = layer;
+            foreach (Transform t in go.transform) SetLayerRecursive(t.gameObject, layer);
         }
 
         private static Component EnsureComponent(GameObject go, string fullTypeName)

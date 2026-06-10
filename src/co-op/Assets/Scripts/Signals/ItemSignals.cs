@@ -34,14 +34,27 @@ namespace Signals
         public CannonChargeChangedSignal(int loaded, int required) { Loaded = loaded; Required = required; }
     }
 
+    public readonly struct CannonModuleState
+    {
+        public readonly int Order;
+        public readonly bool Assembled;
+        public readonly int MobCount;
+        public CannonModuleState(int order, bool assembled, int mobCount)
+        {
+            Order = order; Assembled = assembled; MobCount = mobCount;
+        }
+    }
+
     public readonly struct CannonModulesChangedSignal
     {
+        public readonly CannonModuleState[] Modules;
+        public readonly int Assembled;
         public readonly int UnderAttack;
         public readonly int Detached;
         public readonly int Total;
-        public CannonModulesChangedSignal(int underAttack, int detached, int total)
+        public CannonModulesChangedSignal(CannonModuleState[] modules, int assembled, int underAttack, int detached, int total)
         {
-            UnderAttack = underAttack; Detached = detached; Total = total;
+            Modules = modules; Assembled = assembled; UnderAttack = underAttack; Detached = detached; Total = total;
         }
     }
 

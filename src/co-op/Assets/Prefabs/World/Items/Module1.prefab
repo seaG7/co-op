@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &198264742103550808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3744531963716585538}
+  m_Layer: 8
+  m_Name: RightHandGrip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3744531963716585538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198264742103550808}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.9299347, y: -0, z: 0.000000007450581, w: -0.36772487}
+  m_LocalPosition: {x: -0.35914388, y: 0.64999056, z: -0.9205534}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 904103429239624679}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1217805388715810214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6538139843307982559}
+  m_Layer: 0
+  m_Name: LeftElbowHint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6538139843307982559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217805388715810214}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3, y: -0.15, z: -0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 904103429239624679}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1242878172143380212
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,6 +76,7 @@ GameObject:
   - component: {fileID: -5939732178990179149}
   - component: {fileID: 40043242758642507}
   - component: {fileID: -486585509810840635}
+  - component: {fileID: 3919836058067540909}
   m_Layer: 8
   m_Name: Module1
   m_TagString: Untagged
@@ -43,6 +106,10 @@ Transform:
   - {fileID: 7351737750117212771}
   - {fileID: 1080334750362308585}
   - {fileID: 7537922527354036197}
+  - {fileID: 6005126740283100941}
+  - {fileID: 3744531963716585538}
+  - {fileID: 6538139843307982559}
+  - {fileID: 6206201667050480165}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3558028483565256211
@@ -84,7 +151,9 @@ MonoBehaviour:
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
-  NetworkBehaviours: []
+  NetworkBehaviours:
+  - {fileID: 40043242758642507}
+  - {fileID: -486585509810840635}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -95,7 +164,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: 0
+  _initializedTimestamp: -8584204808060401590
   _localLevelOfDetailCalculationType: 0
   _useLevelOfDetail: 0
   _useRootLevelOfDetail: 1
@@ -114,15 +183,15 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 65535
+  <PrefabId>k__BackingField: 10
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 8382583651986337307
   SceneId: 0
   SerializedTransformProperties:
     Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 0}
-    Scale: {x: 0, y: 0, z: 0}
-    IsValid: 0
+    Rotation: {x: -0.000000081460335, y: -0, z: -0, w: 1}
+    Scale: {x: 0.45, y: 0.45, z: 0.45}
+    IsValid: 1
 --- !u!54 &-5939732178990179149
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -162,9 +231,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
-  _componentIndexCache: 255
+  _componentIndexCache: 0
   _addedNetworkObject: {fileID: -6563011875490084678}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: -6563011875490084678}
   _componentConfiguration: 0
   _synchronizeParent: 0
   _packing:
@@ -208,15 +277,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185f0808cabe0354d9b8cf1a4599be2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: CoOp.Main::Gameplay.World.Items.Carryable
-  _componentIndexCache: 255
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: -6563011875490084678}
-  _networkObjectCache: {fileID: 0}
-  _config: {fileID: 0}
-  _rb: {fileID: 0}
-  _networkTransform: {fileID: 0}
+  _networkObjectCache: {fileID: -6563011875490084678}
+  _config: {fileID: 11400000, guid: 3629b42e0edb60e42862f149225e29b5, type: 2}
+  _rb: {fileID: -5939732178990179149}
+  _networkTransform: {fileID: 40043242758642507}
   _grabAnchors: []
-  _leftHandGrip: {fileID: 0}
-  _rightHandGrip: {fileID: 0}
+  _leftHandGrip: {fileID: 6005126740283100941}
+  _rightHandGrip: {fileID: 3744531963716585538}
+  _leftElbowHint: {fileID: 6538139843307982559}
+  _rightElbowHint: {fileID: 6206201667050480165}
+  _holdPositionOffset: {x: 0, y: -0.27371937, z: -0.0860351}
+  _holdEulerOffset: {x: -0, y: 273.84625, z: 0}
+--- !u!114 &3919836058067540909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242878172143380212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dbe122c5acc37a44a42cbc24f046dc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CoOp.Main::Gameplay.World.Weapon.WeaponModulePart
+  _order: 1
 --- !u!1 &2011556098174191212
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,6 +393,37 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2372648472114046432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6206201667050480165}
+  m_Layer: 0
+  m_Name: RightElbowHint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6206201667050480165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372648472114046432}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.3, y: -0.15, z: -0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 904103429239624679}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2596184752508533714
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,3 +1144,34 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8210981345139262999
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6005126740283100941}
+  m_Layer: 8
+  m_Name: LeftHandGrip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6005126740283100941
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8210981345139262999}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.46019098, y: 0.34571368, z: -0.4911654, w: 0.65380645}
+  m_LocalPosition: {x: -0.44576696, y: 0.7733155, z: 0.9381681}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 904103429239624679}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

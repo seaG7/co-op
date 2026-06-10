@@ -718,10 +718,16 @@ MonoBehaviour:
   _componentIndexCache: 255
   _addedNetworkObject: {fileID: 6606222554807155886}
   _networkObjectCache: {fileID: 0}
-  _snapPoints: []
+  _slots: []
   _turretPivot: {fileID: 0}
   _muzzle: {fileID: 0}
   _cameraAnchor: {fileID: 0}
+  _harpoon: {fileID: 0}
+  _cameraPivot: {fileID: 0}
+  _crosshairPoint: {fileID: 0}
+  _aimMask:
+    serializedVersion: 2
+    m_Bits: 3127
 --- !u!1 &8538762460451919432
 GameObject:
   m_ObjectHideFlags: 0

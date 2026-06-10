@@ -143,30 +143,22 @@ namespace Gameplay.Player.Carry
             if (Vector3.Distance(transform.position, carryable.transform.position) >
                 carry.MaxReach * carry.ServerReachTolerance + carry.DefaultHoldDistance) return;
 
-            if (carryable.IsSnapped.Value)
-            {
-                var slots = WeaponModuleSlot.All;
-                for (int i = 0; i < slots.Count; i++)
-                {
-                    var s = slots[i];
-                    if (s != null && s.AttachedModule == carryable)
-                    {
-                        s.AttachedModule = null;
-                        s.IsOccupied.Value = false;
-                        break;
-                    }
-                }
-            }
-
             Vector3 eye = _look != null ? _look.EyePosition : transform.position;
             Vector3 aim = _look != null ? _look.AimDirection : transform.forward;
             if (!_carryService.TryGrab(carryable, base.Owner, eye, aim)) return;
 
             _heldItem = carryable;
             _heldByConnection = base.Owner;
+            RpcGrabFx(carryable.transform.position);
             if (base.Owner != null && base.Owner.IsValid && !base.Owner.IsHost)
                 SetHeldItemOnOwner(base.Owner, itemNob);
         }
+
+        [ObserversRpc(RunLocally = true)]
+        private void RpcGrabFx(Vector3 pos) => _signalBus?.Fire(new ItemPickedUpSignal(pos));
+
+        [ObserversRpc(RunLocally = true)]
+        private void RpcThrowFx(Vector3 pos) => _signalBus?.Fire(new ItemThrownSignal(pos));
 
         [ServerRpc]
         private void RequestRelease(Vector3 aimOrigin, Vector3 aimDir, Vector3 releasePos, Vector3 releaseVel)
@@ -176,25 +168,61 @@ namespace Gameplay.Player.Carry
             var dir = aimDir.sqrMagnitude > 1e-6f ? aimDir.normalized : transform.forward;
 
             bool soleHolder = _carryService.HolderCount(item) <= 1;
-            WeaponModuleSlot slot = null;
-            Vector3? throwVel = null;
+            WeaponModuleSlot slot = soleHolder
+                ? FindAttachSlot(ModuleOrder(item), releasePos, aimOrigin, dir, SnapAimMinDot(_configs?.Carry))
+                : null;
 
-            if (soleHolder)
+            if (slot != null)
+            {
+                _carryService.Release(item, base.Owner, Vector3.zero);
+            }
+            else
             {
                 item.transform.position = releasePos;
-                float minDot = SnapAimMinDot(_configs?.Carry);
-                slot = FindAttachSlot(ModuleOrder(item), releasePos, aimOrigin, dir, minDot);
-                if (slot == null) throwVel = releaseVel;
+                _carryService.Release(item, base.Owner, dir, releaseVel);
+                RpcThrowFx(releasePos);
             }
-
-            _carryService.Release(item, base.Owner, slot != null ? Vector3.zero : dir, throwVel);
 
             _heldItem = null;
             _heldByConnection = null;
             if (base.Owner != null && base.Owner.IsValid && !base.Owner.IsHost)
                 SetHeldItemOnOwner(base.Owner, null);
 
-            if (slot != null) AnimateAttachAsync(item, slot).Forget();
+            if (slot != null) AnimateAssembleAsync(item, slot).Forget();
+        }
+
+        private async UniTaskVoid AnimateAssembleAsync(Carryable item, WeaponModuleSlot slot)
+        {
+            if (item == null || slot == null) return;
+
+            item.IsSnapped.Value = true;
+            item.ApplyPhysicsState();
+
+            Vector3 startPos = item.transform.position;
+            Quaternion startRot = item.transform.rotation;
+
+            var cc = _configs?.Carry;
+            float reach = cc != null ? Mathf.Max(0.1f, cc.PickupReachSpeed) : 4f;
+            float maxDur = cc != null ? cc.PickupMaxDuration : 0.7f;
+            float dur = Mathf.Clamp(Vector3.Distance(startPos, slot.GhostCenter) / reach, 0.12f, maxDur);
+
+            float t = 0f;
+            while (t < dur)
+            {
+                if (item == null || slot == null) return;
+                t += Time.deltaTime;
+                float k = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(t / dur));
+                item.transform.SetPositionAndRotation(
+                    Vector3.Lerp(startPos, slot.GhostCenter, k),
+                    Quaternion.Slerp(startRot, slot.transform.rotation, k));
+                await UniTask.Yield(PlayerLoopTiming.Update);
+            }
+
+            if (item == null || slot == null) return;
+
+            slot.IsOccupied.Value = true;
+            if (item.NetworkObject != null && base.IsServerInitialized)
+                base.NetworkManager.ServerManager.Despawn(item.NetworkObject);
         }
 
         private static float SnapAimMinDot(CarryConfig carry)
@@ -210,44 +238,14 @@ namespace Gameplay.Player.Carry
             var slot = WeaponModuleSlot.Find(heldOrder);
             if (slot == null || !slot.IsFree) return null;
 
+            Vector3 center = slot.GhostCenter;
             float maxDist = slot.AttachDistance;
-            if ((itemPos - slot.transform.position).sqrMagnitude > maxDist * maxDist) return null;
+            if ((itemPos - center).sqrMagnitude > maxDist * maxDist) return null;
 
-            Vector3 toSlot = slot.transform.position - aimOrigin;
+            Vector3 toSlot = center - aimOrigin;
             float sqr = toSlot.sqrMagnitude;
             if (sqr >= 1e-6f && Vector3.Dot(aimDir, toSlot * (1f / Mathf.Sqrt(sqr))) < minDot) return null;
             return slot;
-        }
-
-        private const float SnapAnimationDurationSec = 0.25f;
-
-        private async UniTaskVoid AnimateAttachAsync(Carryable item, WeaponModuleSlot slot)
-        {
-            slot.AttachedModule = item;
-            slot.IsOccupied.Value = true;
-            item.IsSnapped.Value = true;
-            item.ApplyPhysicsState();
-
-            Vector3 startPos = item.transform.position;
-            Quaternion startRot = item.transform.rotation;
-            Vector3 endPos = slot.transform.position;
-            Quaternion endRot = slot.transform.rotation;
-
-            float t = 0f;
-            while (t < SnapAnimationDurationSec)
-            {
-                if (item == null || !item.IsSnapped.Value) return;
-                t += Time.deltaTime;
-                float k = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(t / SnapAnimationDurationSec));
-                item.transform.SetPositionAndRotation(
-                    Vector3.Lerp(startPos, endPos, k),
-                    Quaternion.Slerp(startRot, endRot, k));
-                await UniTask.Yield(PlayerLoopTiming.Update);
-            }
-            if (item == null || !item.IsSnapped.Value) return;
-
-            item.transform.SetPositionAndRotation(endPos, endRot);
-            item.HasBeenGrabbedOnce.Value = false;
         }
 
         [TargetRpc]
@@ -279,17 +277,25 @@ namespace Gameplay.Player.Carry
 
             if (held == null || _carryAnchor == null || held.IsSnapped.Value) return;
 
+            if (held.HoldTuning)
+            {
+                held.CaptureHoldOffset(_carryAnchor);
+                return;
+            }
+
+            held.GetHoldPose(_carryAnchor, out Vector3 targetPos, out Quaternion targetRot);
+
             if (_pickupElapsed < _pickupDuration)
             {
                 if (advance) _pickupElapsed += Time.deltaTime;
                 float k = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(_pickupElapsed / _pickupDuration));
                 held.transform.SetPositionAndRotation(
-                    Vector3.Lerp(_pickupFromPos, _carryAnchor.position, k),
-                    Quaternion.Slerp(_pickupFromRot, _carryAnchor.rotation, k));
+                    Vector3.Lerp(_pickupFromPos, targetPos, k),
+                    Quaternion.Slerp(_pickupFromRot, targetRot, k));
             }
             else
             {
-                held.transform.SetPositionAndRotation(_carryAnchor.position, _carryAnchor.rotation);
+                held.transform.SetPositionAndRotation(targetPos, targetRot);
             }
         }
 
@@ -307,9 +313,13 @@ namespace Gameplay.Player.Carry
 
             if (_heldItem == null)
             {
-                var hover = RaycastForCarryable();
-                bool canPick = hover != null && hover.HolderClientId.Value == -1;
-                SetPrompt(canPick, InteractPromptKind.PickUp);
+                RaycastInteractable(out var hoverItem, out var hoverBottle);
+                if (hoverItem != null && hoverItem.HolderClientId.Value == -1)
+                    SetPrompt(true, InteractPromptKind.PickUp);
+                else if (hoverBottle != null && !hoverBottle.IsClaimed)
+                    SetPrompt(true, InteractPromptKind.Drink);
+                else
+                    SetPrompt(false);
                 return;
             }
 
@@ -323,16 +333,19 @@ namespace Gameplay.Player.Carry
             SetPrompt(true, canPlace ? InteractPromptKind.PlaceOnSocket : InteractPromptKind.Drop);
         }
 
-        private Carryable RaycastForCarryable()
+        private void RaycastInteractable(out Carryable carryable, out Drinkable drinkable)
         {
+            carryable = null;
+            drinkable = null;
             var cam = _cameraRig != null ? _cameraRig.Camera : null;
-            if (cam == null || _configs?.Carry == null) return null;
+            if (cam == null || _configs?.Carry == null) return;
             const float probe = 50f;
             if (!Physics.Raycast(cam.transform.position, cam.transform.forward, out var hit,
                     probe, _carryableMask, QueryTriggerInteraction.Ignore))
-                return null;
-            if (Vector3.Distance(transform.position, hit.point) > _configs.Carry.MaxReach) return null;
-            return hit.collider.GetComponentInParent<Carryable>();
+                return;
+            if (Vector3.Distance(transform.position, hit.point) > _configs.Carry.MaxReach) return;
+            carryable = hit.collider.GetComponentInParent<Carryable>();
+            drinkable = hit.collider.GetComponentInParent<Drinkable>();
         }
 
         private void SetPrompt(bool show, InteractPromptKind kind = InteractPromptKind.PickUp)
@@ -346,6 +359,8 @@ namespace Gameplay.Player.Carry
         public float HeldMass => _heldItem != null ? _heldItem.Mass : 0f;
 
         public bool IsHolding => _heldItem != null;
+
+        public Transform CarryAnchor => _carryAnchor;
 
         public Carryable CurrentHeld { get; private set; }
 

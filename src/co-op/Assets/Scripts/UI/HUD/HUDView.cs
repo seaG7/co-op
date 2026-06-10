@@ -1,3 +1,4 @@
+using Signals;
 using TMPro;
 using UI.Common;
 using UnityEngine;
@@ -50,6 +51,9 @@ namespace UI.HUD
         [Tooltip("Call-to-action shown when the partner is downed and needs rescue.")]
         [SerializeField] private GameObject _partnerDownedRoot;
 
+        [Header("Cannon panel")]
+        [SerializeField] private CannonHudPanel _cannonPanel;
+
         private int _lastLoaded;
 
         public void SetStatus(string s)
@@ -88,6 +92,7 @@ namespace UI.HUD
             if (_chargeLabel != null) _chargeLabel.text = $"Charge {loaded}/{Mathf.Max(0, required)}";
             if (loaded > _lastLoaded && _chargeRoot != null) UITween.Punch(_chargeRoot.transform, 0.22f, 0.35f);
             _lastLoaded = loaded;
+            if (_cannonPanel != null) _cannonPanel.SetCharge(loaded, required);
         }
 
         public void SetModulesWarning(int underAttack, int detached)
@@ -98,6 +103,18 @@ namespace UI.HUD
             if (detached > 0 && underAttack > 0) _modulesWarnLabel.text = $"Cannon: {detached} down, {underAttack} under attack!";
             else if (detached > 0) _modulesWarnLabel.text = $"Cannon: {detached} module(s) down — reinstall!";
             else _modulesWarnLabel.text = $"Cannon under attack ({underAttack})!";
+        }
+
+        public void SetCannonModules(CannonModuleState[] modules, int assembled, int total)
+        {
+            if (_cannonPanel == null) return;
+            _cannonPanel.SetAssembly(assembled, total);
+            _cannonPanel.SetModules(modules);
+        }
+
+        public void SetCannonWaveActive(bool active)
+        {
+            if (_cannonPanel != null) _cannonPanel.SetWaveActive(active);
         }
 
         public void SetMeleePrompt(bool show)

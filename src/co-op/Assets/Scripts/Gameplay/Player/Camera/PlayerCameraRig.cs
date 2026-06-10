@@ -1,6 +1,7 @@
 using FishNet.Object;
 using Gameplay.Player.Look;
 using Gameplay.Player.Movement;
+using Gameplay.Player.Vitals;
 using Infrastructure.Services.Camera;
 using UnityEngine;
 using Zenject;
@@ -47,12 +48,19 @@ namespace Gameplay.Player.Camera
         [SerializeField] private float _moveFovAdd = 2.5f;
         [SerializeField] private float _fovSmoothing = 8f;
 
+        [Header("Drunk (scaled by PlayerDrunk.Intensity — tune/extend freely)")]
+        [SerializeField] private float _drunkSway = 0.06f;
+        [SerializeField] private float _drunkRoll = 5f;
+        [SerializeField] private float _drunkFov = 5f;
+        [SerializeField] private float _drunkSpeed = 1.4f;
+
         [Inject] private ICameraService _cameraService;
 
         private bool _active;
         private bool _downed;
         private PlayerLookController _look;
         private PlayerMovement _movement;
+        private PlayerDrunk _drunk;
         private bool _blending;
         private bool _toDowned;
         private float _blendElapsed;
@@ -277,6 +285,18 @@ namespace Gameplay.Player.Camera
             float targetFov = _baseFov + _fovPunch + moveAmt * _moveFovAdd;
             _currentFov = Mathf.Lerp(_currentFov, targetFov, 1f - Mathf.Exp(-_fovSmoothing * dt));
 
+            float drunk = _drunk != null ? _drunk.Intensity : 0f;
+            if (drunk > 0.01f)
+            {
+                float ts = Time.time;
+                _bobOffset += new Vector3(
+                    Mathf.Sin(ts * _drunkSpeed) * _drunkSway * drunk,
+                    Mathf.Sin(ts * _drunkSpeed * 1.3f + 1.1f) * _drunkSway * 0.6f * drunk,
+                    0f);
+                _rollAngle += Mathf.Sin(ts * _drunkSpeed * 0.7f) * _drunkRoll * drunk;
+                _currentFov += Mathf.Sin(ts * _drunkSpeed * 0.5f) * _drunkFov * drunk;
+            }
+
             t.localPosition = _localCameraOffset + _bobOffset + _swayOffset + dip + _shakeOffset;
             float pitch = _look != null ? _look.Pitch : 0f;
             t.localRotation = Quaternion.Euler(pitch, 0f, _rollAngle);
@@ -313,6 +333,7 @@ namespace Gameplay.Player.Camera
 
             _look = GetComponent<PlayerLookController>();
             _movement = GetComponent<PlayerMovement>();
+            _drunk = GetComponent<PlayerDrunk>();
             _baseFov = _camera.fieldOfView;
             _currentFov = _baseFov;
             _shakeSeed = Random.value * 100f;

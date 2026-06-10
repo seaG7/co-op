@@ -5,6 +5,7 @@ namespace Signals
         PickUp,
         Drop,
         PlaceOnSocket,
+        Drink,
     }
 
     public readonly struct InteractPromptSignal

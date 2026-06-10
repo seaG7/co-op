@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 098e495c5d43c844eb1b990dc218ba7c, type: 3}
   m_Name: VfxCatalog
   m_EditorClassIdentifier: CoOp.Data::Data.Configs.VfxCatalog
-  Entries: []
+  Entries:
+  - Id: 0
+    Prefab: {fileID: 0}
+    LifetimeOverride: 0
+    ParentToTarget: 0

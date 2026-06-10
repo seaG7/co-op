@@ -17,8 +17,15 @@ namespace Gameplay.World.Weapon
     {
         [SerializeField, HideInInspector] private List<WeaponModuleSlot> _slots = new();
 
-        [Header("Turret")]
-        [SerializeField] private Transform _turretPivot;
+        [Header("Turret (2-axis)")]
+        [Tooltip("Rotates horizontally (yaw). Parent of the pitch pivot; holds the parts that swing left/right.")]
+        [SerializeField] private Transform _yawPivot;
+        [Tooltip("Local axis the yaw pivot spins around. Default Y (up).")]
+        [SerializeField] private Vector3 _yawAxis = Vector3.up;
+        [Tooltip("Rotates vertically (pitch / elevation). Child of the yaw pivot; holds the barrel/harpoon.")]
+        [SerializeField] private Transform _pitchPivot;
+        [Tooltip("Local axis the pitch pivot spins around for up/down. Default Z (forward) — set X (right) if your barrel elevates around X.")]
+        [SerializeField] private Vector3 _pitchAxis = Vector3.forward;
         [SerializeField] private Transform _muzzle;
         [SerializeField] private Transform _cameraAnchor;
 
@@ -37,12 +44,15 @@ namespace Gameplay.World.Weapon
 
         public readonly SyncVar<int> OperatorClientId = new(-1);
         public readonly SyncVar<int> CorpsesLoaded = new(0);
-        private readonly SyncVar<Quaternion> _aimRot = new(Quaternion.identity);
+        private readonly SyncVar<float> _aimYaw = new(0f);
+        private readonly SyncVar<float> _aimPitch = new(0f);
 
         private float _desiredYaw;
         private float _desiredPitch;
-        private Quaternion _localAim = Quaternion.identity;
-        private Quaternion _lastSentAim = Quaternion.identity;
+        private float _localYaw;
+        private float _localPitch;
+        private float _lastSentYaw;
+        private float _lastSentPitch;
 
         private float _harpoonBusyUntil;
         private Source _pendingSource;
@@ -50,9 +60,10 @@ namespace Gameplay.World.Weapon
         private float _pendingDamage;
         private float _pendingApplyAt;
         private bool _pendingActive;
+        private bool _wasAssembled;
 
         public Transform CameraAnchor =>
-            _cameraAnchor != null ? _cameraAnchor : (_turretPivot != null ? _turretPivot : transform);
+            _cameraAnchor != null ? _cameraAnchor : (_pitchPivot != null ? _pitchPivot : (_yawPivot != null ? _yawPivot : transform));
 
         public bool IsFree => OperatorClientId.Value == -1;
 
@@ -92,10 +103,11 @@ namespace Gameplay.World.Weapon
         {
             _slots.Clear();
             _slots.AddRange(GetComponentsInChildren<WeaponModuleSlot>(includeInactive: true));
-            if (_turretPivot == null) _turretPivot = transform.Find("Turret");
-            var pivot = _turretPivot != null ? _turretPivot : transform;
-            if (_muzzle == null) _muzzle = pivot.Find("Muzzle");
-            if (_cameraAnchor == null) _cameraAnchor = pivot.Find("CameraAnchor");
+            if (_yawPivot == null) _yawPivot = transform.Find("YawPivot");
+            if (_pitchPivot == null) _pitchPivot = _yawPivot != null ? _yawPivot.Find("PitchPivot") : transform.Find("PitchPivot");
+            var aimRoot = _pitchPivot != null ? _pitchPivot : (_yawPivot != null ? _yawPivot : transform);
+            if (_muzzle == null) _muzzle = aimRoot.Find("Muzzle");
+            if (_cameraAnchor == null) _cameraAnchor = aimRoot.Find("CameraAnchor");
             if (_harpoon == null) _harpoon = GetComponentInChildren<Harpoon>(includeInactive: true);
             if (_cameraPivot == null) _cameraPivot = _cameraAnchor;
         }
@@ -121,10 +133,15 @@ namespace Gameplay.World.Weapon
         {
             base.OnStartServer();
             _targeting?.RegisterCannon(transform);
+            _wasAssembled = IsAssembled;
+            for (int i = 0; i < _slots.Count; i++)
+                if (_slots[i] != null) _slots[i].IsOccupied.OnChange += OnSlotOccupancyChanged;
         }
 
         public override void OnStopServer()
         {
+            for (int i = 0; i < _slots.Count; i++)
+                if (_slots[i] != null) _slots[i].IsOccupied.OnChange -= OnSlotOccupancyChanged;
             _targeting?.UnregisterCannon(transform);
             base.OnStopServer();
         }
@@ -132,29 +149,30 @@ namespace Gameplay.World.Weapon
         private void Update()
         {
             if (IsServerInitialized && _pendingActive && Time.time >= _pendingApplyAt) ApplyPendingDamage();
-            if (_turretPivot == null) return;
 
             if (IsLocalOperator)
             {
                 var cfg = _configs?.Weapon;
                 float resp = cfg != null ? Mathf.Max(0.1f, cfg.AimResponsiveness) : 6f;
-                var target = Quaternion.Euler(_desiredPitch, _desiredYaw, 0f);
-                _localAim = Quaternion.Slerp(_localAim, target, 1f - Mathf.Exp(-resp * Time.deltaTime));
-                _turretPivot.localRotation = _localAim;
+                float k = 1f - Mathf.Exp(-resp * Time.deltaTime);
+                _localYaw = Mathf.Lerp(_localYaw, _desiredYaw, k);
+                _localPitch = Mathf.Lerp(_localPitch, _desiredPitch, k);
             }
             else
             {
-                _turretPivot.localRotation = Quaternion.Slerp(
-                    _turretPivot.localRotation, _aimRot.Value, 1f - Mathf.Exp(-10f * Time.deltaTime));
+                float k = 1f - Mathf.Exp(-10f * Time.deltaTime);
+                _localYaw = Mathf.LerpAngle(_localYaw, _aimYaw.Value, k);
+                _localPitch = Mathf.LerpAngle(_localPitch, _aimPitch.Value, k);
             }
+
+            if (_yawPivot != null) _yawPivot.localRotation = Quaternion.AngleAxis(_localYaw, _yawAxis.sqrMagnitude > 1e-6f ? _yawAxis : Vector3.up);
+            if (_pitchPivot != null) _pitchPivot.localRotation = Quaternion.AngleAxis(_localPitch, _pitchAxis.sqrMagnitude > 1e-6f ? _pitchAxis : Vector3.forward);
         }
 
         public void BeginLocalAim()
         {
-            _localAim = _turretPivot != null ? _turretPivot.localRotation : Quaternion.identity;
-            var e = _localAim.eulerAngles;
-            _desiredYaw = Mathf.DeltaAngle(0f, e.y);
-            _desiredPitch = Mathf.DeltaAngle(0f, e.x);
+            _desiredYaw = _localYaw;
+            _desiredPitch = _localPitch;
         }
 
         public void DriveAim(Vector2 lookDelta)
@@ -177,7 +195,7 @@ namespace Gameplay.World.Weapon
         public void ClientFire()
         {
             if (_harpoon != null && !_harpoon.IsDocked) return;
-            Vector3 origin = _muzzle != null ? _muzzle.position : transform.position;
+            Vector3 origin = _harpoon != null ? _harpoon.NoseWorldPosition : (_muzzle != null ? _muzzle.position : transform.position);
             ServerFire(origin, ComputeAimPoint(origin));
         }
 
@@ -199,9 +217,10 @@ namespace Gameplay.World.Weapon
 
         public void ClientSubmitAim()
         {
-            if (Quaternion.Angle(_localAim, _lastSentAim) < 1f) return;
-            _lastSentAim = _localAim;
-            SubmitAim(_localAim);
+            if (Mathf.Abs(_localYaw - _lastSentYaw) < 0.5f && Mathf.Abs(_localPitch - _lastSentPitch) < 0.5f) return;
+            _lastSentYaw = _localYaw;
+            _lastSentPitch = _localPitch;
+            SubmitAim(_localYaw, _localPitch);
         }
 
         [ServerRpc(RequireOwnership = false)]
@@ -219,10 +238,11 @@ namespace Gameplay.World.Weapon
         }
 
         [ServerRpc(RequireOwnership = false)]
-        private void SubmitAim(Quaternion rot, NetworkConnection conn = null)
+        private void SubmitAim(float yaw, float pitch, NetworkConnection conn = null)
         {
             if (conn == null || OperatorClientId.Value != conn.ClientId) return;
-            _aimRot.Value = rot;
+            _aimYaw.Value = yaw;
+            _aimPitch.Value = pitch;
         }
 
         [ServerRpc(RequireOwnership = false)]
@@ -280,5 +300,15 @@ namespace Gameplay.World.Weapon
         }
 
         private void OnHarpoonLanded(Vector3 point) => _signalBus?.Fire(new HarpoonImpactSignal(point));
+
+        private void OnSlotOccupancyChanged(bool prev, bool next, bool asServer)
+        {
+            bool now = IsAssembled;
+            if (now && !_wasAssembled) { _wasAssembled = true; RpcAssembled(transform.position); }
+            else if (!now) _wasAssembled = false;
+        }
+
+        [ObserversRpc]
+        private void RpcAssembled(Vector3 pos) => _signalBus?.Fire(new WeaponAssembledSignal(pos));
     }
 }

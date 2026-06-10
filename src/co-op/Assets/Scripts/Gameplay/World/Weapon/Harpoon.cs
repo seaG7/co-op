@@ -7,10 +7,10 @@ namespace Gameplay.World.Weapon
     {
         public enum State { Docked, Flying, Landed, Returning }
 
-        [Header("Anchors")]
-        [Tooltip("Resting pose at the muzzle. The harpoon snaps here while docked (follows the turret) and is reeled back here.")]
-        [SerializeField] private Transform _dock;
-        [Tooltip("Optional nose marker. The distance root→nose is used so the NOSE lands exactly on the aim point. Null = the prefab pivot is the nose.")]
+        [Header("Parts")]
+        [Tooltip("The object that flies — the whole harpoon body/root. If null, this component's own transform. Its authored local pose (resting in the barrel) IS the dock — no separate dock point needed.")]
+        [SerializeField] private Transform _body;
+        [Tooltip("The harpoon tip (child marker at the pointy end). The nose lands exactly on the aim point, and the shot launches from here.")]
         [SerializeField] private Transform _nose;
 
         [Header("Flight")]
@@ -37,6 +37,9 @@ namespace Gameplay.World.Weapon
         public State Current { get; private set; } = State.Docked;
         public bool IsDocked => Current == State.Docked;
 
+        private Transform Body => _body != null ? _body : transform;
+        public Vector3 NoseWorldPosition => _nose != null ? _nose.position : Body.position;
+
         private float _noseOffset;
         private Vector3 _origin;
         private Vector3 _target;
@@ -51,10 +54,18 @@ namespace Gameplay.World.Weapon
         private float _returnDur;
         private float _roll;
 
+        private Vector3 _dockLocalPos;
+        private Quaternion _dockLocalRot;
+        private bool _dockCaptured;
+
+        private Vector3 DockWorldPos => Body.parent != null ? Body.parent.TransformPoint(_dockLocalPos) : _dockLocalPos;
+        private Quaternion DockWorldRot => Body.parent != null ? Body.parent.rotation * _dockLocalRot : _dockLocalRot;
+
         private void Awake()
         {
-            if (TryGetComponent<Rigidbody>(out var rb)) rb.isKinematic = true;
-            _noseOffset = _nose != null ? Vector3.Distance(transform.position, _nose.position) : 0f;
+            if (Body.TryGetComponent<Rigidbody>(out var rb)) rb.isKinematic = true;
+            CaptureDock();
+            _noseOffset = _nose != null ? Vector3.Distance(Body.position, _nose.position) : 0f;
         }
 
         private void OnEnable()
@@ -63,14 +74,21 @@ namespace Gameplay.World.Weapon
             SnapToDock();
         }
 
+        private void CaptureDock()
+        {
+            if (_dockCaptured) return;
+            _dockLocalPos = Body.localPosition;
+            _dockLocalRot = Body.localRotation;
+            _dockCaptured = true;
+        }
+
         public float EstimateFlightSeconds(Vector3 origin, Vector3 target)
             => Mathf.Clamp(Vector3.Distance(origin, target) / Mathf.Max(1f, _launchSpeed), _minFlightTime, _maxFlightTime);
 
         public float EstimateCycleSeconds(Vector3 origin, Vector3 target)
         {
             float flight = EstimateFlightSeconds(origin, target);
-            float dockDist = _dock != null ? Vector3.Distance(target, _dock.position) : Vector3.Distance(target, origin);
-            float ret = Mathf.Clamp(dockDist / Mathf.Max(1f, _returnSpeed), _minReturnTime, _maxReturnTime);
+            float ret = Mathf.Clamp(Vector3.Distance(target, DockWorldPos) / Mathf.Max(1f, _returnSpeed), _minReturnTime, _maxReturnTime);
             return flight + Mathf.Max(0f, _landedWait) + ret + 0.1f;
         }
 
@@ -100,7 +118,9 @@ namespace Gameplay.World.Weapon
 
         private void SnapToDock()
         {
-            if (_dock != null) transform.SetPositionAndRotation(_dock.position, _dock.rotation);
+            if (!_dockCaptured) CaptureDock();
+            Body.localPosition = _dockLocalPos;
+            Body.localRotation = _dockLocalRot;
         }
 
         private void TickFlying(float dt)
@@ -109,19 +129,19 @@ namespace Gameplay.World.Weapon
             float t = Mathf.Min(_t, _flightTime);
             Vector3 nose = _origin + _v0 * t + 0.5f * _grav * (t * t);
             Vector3 vel = _v0 + _grav * t;
-            Quaternion rot = vel.sqrMagnitude > 1e-5f ? Quaternion.LookRotation(vel.normalized, Vector3.up) : transform.rotation;
+            Quaternion rot = vel.sqrMagnitude > 1e-5f ? Quaternion.LookRotation(vel.normalized, Vector3.up) : Body.rotation;
             if (_flightSpin != 0f)
             {
                 _roll += _flightSpin * dt;
                 rot *= Quaternion.AngleAxis(_roll, Vector3.forward);
             }
-            transform.SetPositionAndRotation(nose - (rot * Vector3.forward) * _noseOffset, rot);
+            Body.SetPositionAndRotation(nose - (rot * Vector3.forward) * _noseOffset, rot);
 
             if (_t < _flightTime) return;
 
             Vector3 finalVel = _v0 + _grav * _flightTime;
-            Quaternion finalRot = finalVel.sqrMagnitude > 1e-5f ? Quaternion.LookRotation(finalVel.normalized, Vector3.up) : transform.rotation;
-            transform.SetPositionAndRotation(_target - (finalRot * Vector3.forward) * _noseOffset, finalRot);
+            Quaternion finalRot = finalVel.sqrMagnitude > 1e-5f ? Quaternion.LookRotation(finalVel.normalized, Vector3.up) : Body.rotation;
+            Body.SetPositionAndRotation(_target - (finalRot * Vector3.forward) * _noseOffset, finalRot);
             Current = State.Landed;
             _landedTimer = 0f;
             Landed?.Invoke(_target);
@@ -131,30 +151,39 @@ namespace Gameplay.World.Weapon
         {
             _landedTimer += dt;
             if (_landedTimer < Mathf.Max(0f, _landedWait)) return;
-            _returnFromPos = transform.position;
-            _returnFromRot = transform.rotation;
-            float dist = _dock != null ? Vector3.Distance(transform.position, _dock.position) : 0f;
-            _returnDur = Mathf.Clamp(dist / Mathf.Max(1f, _returnSpeed), _minReturnTime, _maxReturnTime);
+            _returnFromPos = Body.position;
+            _returnFromRot = Body.rotation;
+            _returnDur = Mathf.Clamp(Vector3.Distance(Body.position, DockWorldPos) / Mathf.Max(1f, _returnSpeed), _minReturnTime, _maxReturnTime);
             _returnT = 0f;
             Current = State.Returning;
         }
 
         private void TickReturning(float dt)
         {
-            if (_dock == null)
-            {
-                Current = State.Docked;
-                Redocked?.Invoke();
-                return;
-            }
             _returnT += dt;
             float k = _returnDur > 0f ? Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(_returnT / _returnDur)) : 1f;
-            transform.SetPositionAndRotation(
-                Vector3.Lerp(_returnFromPos, _dock.position, k),
-                Quaternion.Slerp(_returnFromRot, _dock.rotation, k));
+            Body.SetPositionAndRotation(
+                Vector3.Lerp(_returnFromPos, DockWorldPos, k),
+                Quaternion.Slerp(_returnFromRot, DockWorldRot, k));
             if (k < 1f) return;
             Current = State.Docked;
             Redocked?.Invoke();
         }
+
+#if UNITY_EDITOR
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = new Color(0.4f, 0.8f, 1f, 1f);
+            Gizmos.DrawWireSphere(Body.position, 0.08f);
+            UnityEditor.Handles.Label(Body.position, "Harpoon rest (dock)");
+            if (_nose != null)
+            {
+                Gizmos.color = new Color(1f, 0.5f, 0.3f, 1f);
+                Gizmos.DrawWireSphere(_nose.position, 0.06f);
+                Gizmos.DrawLine(Body.position, _nose.position);
+                UnityEditor.Handles.Label(_nose.position, "Nose / launch point");
+            }
+        }
+#endif
     }
 }

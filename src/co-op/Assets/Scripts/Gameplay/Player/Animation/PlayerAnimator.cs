@@ -19,18 +19,37 @@ namespace Gameplay.Player.Animation
 
         private AnimationConfig Cfg => _configs != null ? _configs.Animation : null;
 
-        private int _hSpeed, _hVx, _hVz, _hVy, _hGrounded, _hCarrying, _hDowned, _hJump, _hLand, _hPickup, _hPickupSpeed, _hGettingUp;
+        private int _hSpeed, _hVx, _hVz, _hVy, _hGrounded, _hCarrying, _hDowned, _hJump, _hLand, _hPickup, _hPickupSpeed, _hGettingUp, _hTurn, _hKick, _hDrinking, _hDrunk;
         private bool _hashed;
         private bool _prevGrounded = true;
         private bool _prevCarrying;
         private bool _prevDowned;
+        private float _prevYaw;
+        private float _turnValue;
+        private PlayerDrunk _drunk;
 
         private void Awake()
         {
             if (_movement == null) _movement = GetComponentInParent<PlayerMovement>();
             if (_carry == null) _carry = GetComponentInParent<PlayerCarry>();
             if (_vitals == null) _vitals = GetComponentInParent<PlayerVitals>();
+            if (_drunk == null) _drunk = GetComponentInParent<PlayerDrunk>();
             if (_animator == null) _animator = GetComponentInChildren<Animator>();
+            _prevYaw = transform.eulerAngles.y;
+        }
+
+        public void TriggerKick()
+        {
+            if (_animator == null) return;
+            EnsureHashes();
+            _animator.SetTrigger(_hKick);
+        }
+
+        public void SetDrinking(bool drinking)
+        {
+            if (_animator == null) return;
+            EnsureHashes();
+            _animator.SetBool(_hDrinking, drinking);
         }
 
         private void EnsureHashes()
@@ -50,6 +69,10 @@ namespace Gameplay.Player.Animation
             _hPickup = Animator.StringToHash(c.PickUpTrigger);
             _hPickupSpeed = Animator.StringToHash(c.PickUpSpeedParam);
             _hGettingUp = Animator.StringToHash(c.GettingUpTrigger);
+            _hTurn = Animator.StringToHash(c.TurnParam);
+            _hKick = Animator.StringToHash(c.KickTrigger);
+            _hDrinking = Animator.StringToHash(c.DrinkingParam);
+            _hDrunk = Animator.StringToHash(c.IsDrunkParam);
             _hashed = true;
         }
 
@@ -69,6 +92,13 @@ namespace Gameplay.Player.Animation
             _animator.SetFloat(_hVz, Mathf.Clamp(s.LocalVelocity.z * inv, -1f, 1f), c.LocomotionDampTime, dt);
             _animator.SetFloat(_hVy, s.VerticalVelocity);
             _animator.SetBool(_hGrounded, s.IsGrounded);
+
+            float yaw = transform.eulerAngles.y;
+            float yawRate = Mathf.DeltaAngle(_prevYaw, yaw) / dt;
+            _prevYaw = yaw;
+            float turnTarget = Mathf.Clamp(yawRate / Mathf.Max(1f, c.TurnRateForFull), -1f, 1f);
+            _turnValue = Mathf.Lerp(_turnValue, turnTarget, 1f - Mathf.Exp(-(1f / Mathf.Max(0.01f, c.TurnDamp)) * dt));
+            _animator.SetFloat(_hTurn, _turnValue);
 
             var d = AnimatorStateResolver.Evaluate(
                 _prevGrounded, s.IsGrounded, s.VerticalVelocity, c.JumpDetectVelocity);
@@ -91,6 +121,8 @@ namespace Gameplay.Player.Animation
             if (_prevDowned && !downed && (_vitals == null || _vitals.IsAlive))
                 _animator.SetTrigger(_hGettingUp);
             _prevDowned = downed;
+
+            if (_drunk != null) _animator.SetBool(_hDrunk, _drunk.IsDrunk);
         }
     }
 }

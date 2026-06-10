@@ -4,6 +4,7 @@ using Data.Rounds;
 using Data.World;
 using Gameplay.World.Portals;
 using Gameplay.World.Sources;
+using Gameplay.World.Weapon;
 using Signals;
 using UnityEngine;
 using Zenject;
@@ -18,6 +19,7 @@ namespace Infrastructure.Services.Effects
 
         private IVfxHandle _auraVfx;
         private ISfxHandle _auraSfx;
+        private ISfxHandle _aimServoSfx;
 
         public WorldEffectBindings(SignalBus bus, IVfxService vfx, ISfxService sfx)
         {
@@ -30,6 +32,9 @@ namespace Infrastructure.Services.Effects
         {
             _bus.Subscribe<ItemImpactSignal>(OnItemImpact);
             _bus.Subscribe<ItemSnappedSignal>(OnItemSnapped);
+            _bus.Subscribe<ItemPickedUpSignal>(OnItemPickedUp);
+            _bus.Subscribe<ItemThrownSignal>(OnItemThrown);
+            _bus.Subscribe<WeaponAssembledSignal>(OnAssembled);
             _bus.Subscribe<WeaponMountedSignal>(OnMounted);
             _bus.Subscribe<WeaponFiredSignal>(OnFired);
             _bus.Subscribe<HarpoonImpactSignal>(OnHarpoonImpact);
@@ -46,6 +51,9 @@ namespace Infrastructure.Services.Effects
         {
             _bus.Unsubscribe<ItemImpactSignal>(OnItemImpact);
             _bus.Unsubscribe<ItemSnappedSignal>(OnItemSnapped);
+            _bus.Unsubscribe<ItemPickedUpSignal>(OnItemPickedUp);
+            _bus.Unsubscribe<ItemThrownSignal>(OnItemThrown);
+            _bus.Unsubscribe<WeaponAssembledSignal>(OnAssembled);
             _bus.Unsubscribe<WeaponMountedSignal>(OnMounted);
             _bus.Unsubscribe<WeaponFiredSignal>(OnFired);
             _bus.Unsubscribe<HarpoonImpactSignal>(OnHarpoonImpact);
@@ -58,6 +66,7 @@ namespace Infrastructure.Services.Effects
             _bus.Unsubscribe<GameEndedSignal>(OnGameEnded);
             _auraVfx?.Stop();
             _auraSfx?.Stop();
+            _aimServoSfx?.Stop();
         }
 
         private static Vector3 SourcePos()
@@ -68,11 +77,25 @@ namespace Infrastructure.Services.Effects
 
         private void OnItemImpact(ItemImpactSignal s) { _vfx.Play(VfxId.ItemImpact, s.Point); _sfx.Play(SfxId.ItemDrop, s.Point); }
         private void OnItemSnapped(ItemSnappedSignal s) { _vfx.Play(VfxId.SnapConfirm, s.Position); _sfx.Play(SfxId.ItemSnap, s.Position); }
-        private void OnMounted(WeaponMountedSignal s) { if (s.Mounted) _sfx.Play(SfxId.WeaponMount, SourcePos()); }
+        private void OnItemPickedUp(ItemPickedUpSignal s) => _sfx.Play(SfxId.ItemPickup, s.Position);
+        private void OnItemThrown(ItemThrownSignal s) => _sfx.Play(SfxId.ItemThrow, s.Position);
+        private void OnAssembled(WeaponAssembledSignal s) { _vfx.Play(VfxId.AssembleFlash, s.Position); _sfx.Play(SfxId.WeaponAssembled, s.Position); }
+
+        private void OnMounted(WeaponMountedSignal s)
+        {
+            if (s.Mounted)
+            {
+                _sfx.Play(SfxId.WeaponMount, SourcePos());
+                var w = UnityEngine.Object.FindFirstObjectByType<Weapon>();
+                if (w != null) _aimServoSfx = _sfx.PlayLoop(SfxId.AimServo, w.transform);
+            }
+            else { _aimServoSfx?.Stop(); _aimServoSfx = null; }
+        }
 
         private void OnFired(WeaponFiredSignal s)
         {
             _vfx.Play(VfxId.MuzzleFlash, s.Origin);
+            _vfx.Play(VfxId.Tracer, s.Origin);
             _sfx.Play(SfxId.WeaponFire, s.Origin);
             if (s.Hit)
             {

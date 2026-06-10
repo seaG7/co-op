@@ -38,9 +38,6 @@ namespace Gameplay.Player.Movement
         public float StepPhase => _cadence.Phase;
         public Vector3 WorldVelocity => _moveVel;
 
-        [SerializeField] private bool _debugSpeed = true;
-        private float _dbgIntended, _dbgActual;
-
         private void Awake()
         {
             _cc = GetComponent<CharacterController>();
@@ -165,26 +162,9 @@ namespace Gameplay.Player.Movement
                     _signalBus.Fire(new PlayerLandedSignal(transform.position, Mathf.Abs(_lastVerticalVel)));
             }
 
-#if UNITY_EDITOR
-            _dbgIntended = new Vector2(moveVel.x, moveVel.z).magnitude;
-            var dpos = transform.position - _lastPosition;
-            _dbgActual = new Vector2(dpos.x, dpos.z).magnitude / dt;
-#endif
-
             _wasGrounded = _ground.IsGrounded;
             _lastVerticalVel = moveVel.y;
             _lastPosition = transform.position;
         }
-
-#if UNITY_EDITOR
-        private void OnGUI()
-        {
-            if (!_debugSpeed || !base.IsOwner) return;
-            bool holding = _playerCarry != null && _playerCarry.IsHolding;
-            GUI.color = Color.yellow;
-            GUI.Label(new Rect(10, 40, 640, 22),
-                $"SPEED intended={_dbgIntended:F2}  actual={_dbgActual:F2}  holding={holding}");
-        }
-#endif
     }
 }

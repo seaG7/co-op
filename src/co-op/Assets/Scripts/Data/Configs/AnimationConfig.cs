@@ -18,6 +18,10 @@ namespace Data.Configs
         public string PickUpTrigger = "PickUp";
         public string PickUpSpeedParam = "PickUpSpeed";
         public string GettingUpTrigger = "GettingUp";
+        public string TurnParam = "Turn";
+        public string KickTrigger = "Kick";
+        public string DrinkingParam = "Drinking";
+        public string IsDrunkParam = "IsDrunk";
 
         [Header("Locomotion")]
         [Tooltip("Horizontal speed (m/s) mapped to Speed = 1 in the blend tree. Match MovementConfig.MoveSpeed.")]
@@ -32,6 +36,12 @@ namespace Data.Configs
         [Header("Pickup")]
         [Tooltip("Length (s) of the PickUp clip at speed 1. The clip is sped up/down to span the actual reach duration.")]
         public float PickupClipLength = 1.0f;
+
+        [Header("In-place turn")]
+        [Tooltip("Body yaw rate (deg/s) that maps to a full Left/Right turn animation (Turn = ±1).")]
+        public float TurnRateForFull = 120f;
+        [Tooltip("Smoothing time (s) for the Turn parameter.")]
+        public float TurnDamp = 0.12f;
 
         [Header("Hand IK")]
         [Range(0f, 1f)] public float HandIkMaxWeight = 1f;

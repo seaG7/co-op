@@ -92,5 +92,28 @@ namespace Gameplay.World.Weapon
 
             _line.SetPositions(_pos);
         }
+
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            if (_reel == null || _harpoon == null) return;
+            Vector3 a = _reel.position, b = _harpoon.position;
+            float dist = Vector3.Distance(a, b);
+            int n = Mathf.Max(2, _segments);
+            Gizmos.color = new Color(0.95f, 0.85f, 0.4f, 0.95f);
+            Vector3 prev = a;
+            for (int i = 1; i <= n; i++)
+            {
+                float t = i / (float)n;
+                Vector3 p = Vector3.Lerp(a, b, t);
+                p.y -= Mathf.Sin(t * Mathf.PI) * _slack * dist;
+                Gizmos.DrawLine(prev, p);
+                prev = p;
+            }
+            Gizmos.color = new Color(0.3f, 1f, 0.5f, 1f);
+            Gizmos.DrawWireSphere(a, 0.05f);
+            Gizmos.DrawWireSphere(b, 0.05f);
+        }
+#endif
     }
 }

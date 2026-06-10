@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1000000000000000010}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.8, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51,7 +51,7 @@ MonoBehaviour:
   legCount: 0
   deployedLegs: 0
   minimumAnchoredLegs: 2
-  minimumAnchoredParts: 4
+  minimumAnchoredParts: 2
   minLegLifetime: 5
   maxLegLifetime: 15
   legPlacerOrigin: {x: 0, y: 0, z: 0}
@@ -62,7 +62,7 @@ MonoBehaviour:
   minGrowCoef: 8
   maxGrowCoef: 11
   newLegCooldown: 0.03
-  velocity: {x: -0.60192335, y: 0, z: 0.02245657}
+  velocity: {x: 0.4879587, y: 0, z: 0.6809808}
   groundMask:
     serializedVersion: 2
     m_Bits: 311
@@ -234,7 +234,6 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 8410178815373342681}
   _networkObjectCache: {fileID: 0}
   _config: {fileID: 11400000, guid: c86983f7c799ecf41b4b101070204a78, type: 2}
-  _body: {fileID: 1000000000000000011}
   _corpsePrefab: {fileID: 6968801262064596989, guid: 1885c0f34e44c1b47ae248c5be563d8f, type: 3}
 --- !u!135 &3977267757210292606
 SphereCollider:
@@ -255,5 +254,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.8
   m_Center: {x: 0, y: 0, z: 0}

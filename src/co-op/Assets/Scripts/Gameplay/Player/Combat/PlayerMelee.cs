@@ -1,4 +1,5 @@
 using FishNet.Object;
+using Gameplay.Player.Animation;
 using Gameplay.Player.Vitals;
 using Gameplay.World.Enemies;
 using Infrastructure.Services.Input;
@@ -18,23 +19,41 @@ namespace Gameplay.Player.Combat
         [Inject] private IInputService _input;
         [Inject] private SignalBus _signalBus;
         private PlayerVitals _vitals;
+        private PlayerAnimator _animator;
+        private bool _mounted;
         private float _cd;
         private float _promptCheck;
         private bool _promptShown;
 
-        private void Awake() => _vitals = GetComponent<PlayerVitals>();
+        private void Awake()
+        {
+            _vitals = GetComponent<PlayerVitals>();
+            _animator = GetComponent<PlayerAnimator>();
+        }
 
         public override void OnStartClient()
         {
             base.OnStartClient();
-            if (IsOwner && _input != null) _input.MeleeStarted += OnMelee;
+            if (IsOwner && _input != null)
+            {
+                _input.MeleeStarted += OnMelee;
+                _input.FireStarted += OnMelee;
+            }
+            if (IsOwner) _signalBus?.Subscribe<WeaponMountedSignal>(OnMounted);
         }
 
         public override void OnStopClient()
         {
-            if (IsOwner && _input != null) _input.MeleeStarted -= OnMelee;
+            if (IsOwner && _input != null)
+            {
+                _input.MeleeStarted -= OnMelee;
+                _input.FireStarted -= OnMelee;
+            }
+            if (IsOwner) _signalBus?.TryUnsubscribe<WeaponMountedSignal>(OnMounted);
             base.OnStopClient();
         }
+
+        private void OnMounted(WeaponMountedSignal s) => _mounted = s.Mounted;
 
         private void Update()
         {
@@ -54,15 +73,19 @@ namespace Gameplay.Player.Combat
         private bool HasTargetInRange()
         {
             Vector3 center = transform.position + transform.forward * (_range * 0.5f);
-            var hits = Physics.OverlapSphere(center, _radius, ~0, QueryTriggerInteraction.Ignore);
-            for (int i = 0; i < hits.Length; i++)
-                if (hits[i].GetComponentInParent<Enemy>() != null) return true;
+            float rSq = _radius * _radius;
+            var all = Enemy.All;
+            for (int i = 0; i < all.Count; i++)
+            {
+                var e = all[i];
+                if (e != null && (e.HitCenter - center).sqrMagnitude <= rSq) return true;
+            }
             return false;
         }
 
         private void OnMelee()
         {
-            if (!IsOwner || _cd > 0f) return;
+            if (!IsOwner || _cd > 0f || _mounted) return;
             if (_vitals != null && !_vitals.IsAlive) return;
             _cd = _cooldown;
             ServerBash(transform.position, transform.forward);
@@ -72,17 +95,24 @@ namespace Gameplay.Player.Combat
         private void ServerBash(Vector3 origin, Vector3 forward)
         {
             Vector3 center = origin + forward * (_range * 0.5f);
-            var hits = Physics.OverlapSphere(center, _radius, ~0, QueryTriggerInteraction.Ignore);
+            float rSq = _radius * _radius;
             bool any = false;
-            for (int i = 0; i < hits.Length; i++)
+            var all = Enemy.All;
+            for (int i = all.Count - 1; i >= 0; i--)
             {
-                var enemy = hits[i].GetComponentInParent<Enemy>();
-                if (enemy != null) { enemy.ServerApplyDamage(_damage); any = true; }
+                var e = all[i];
+                if (e == null || (e.HitCenter - center).sqrMagnitude > rSq) continue;
+                e.ServerApplyDamage(_damage);
+                any = true;
             }
             RpcMelee(center, any);
         }
 
         [ObserversRpc(RunLocally = true)]
-        private void RpcMelee(Vector3 pos, bool hit) => _signalBus?.Fire(new PlayerMeleeSignal(pos, hit));
+        private void RpcMelee(Vector3 pos, bool hit)
+        {
+            _animator?.TriggerKick();
+            _signalBus?.Fire(new PlayerMeleeSignal(pos, hit));
+        }
     }
 }

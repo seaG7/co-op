@@ -27,6 +27,16 @@ namespace Gameplay.World.Items
         [SerializeField] private Transform _leftHandGrip;
         [SerializeField] private Transform _rightHandGrip;
 
+        [Header("Per-hand IK elbow hints (optional child transforms; the elbow is pulled toward these).")]
+        [SerializeField] private Transform _leftElbowHint;
+        [SerializeField] private Transform _rightElbowHint;
+
+        [Header("In-hand pose (offset from the player's carry anchor — tune in Play Mode + bake)")]
+        [Tooltip("Local position of the item relative to the carry anchor while held.")]
+        [SerializeField] private Vector3 _holdPositionOffset;
+        [Tooltip("Local rotation (euler) of the item relative to the carry anchor while held.")]
+        [SerializeField] private Vector3 _holdEulerOffset;
+
         [Inject] private SignalBus _signalBus;
         [Inject] private Infrastructure.Providers.Configs.IConfigDataProvider _configs;
 
@@ -62,6 +72,34 @@ namespace Gameplay.World.Items
         {
             if (side == HandSide.Left) return _leftHandGrip != null ? _leftHandGrip : transform;
             return _rightHandGrip != null ? _rightHandGrip : transform;
+        }
+
+        public Transform RawGrip(HandSide side) => side == HandSide.Left ? _leftHandGrip : _rightHandGrip;
+        public Transform ElbowHint(HandSide side) => side == HandSide.Left ? _leftElbowHint : _rightElbowHint;
+
+#if UNITY_EDITOR
+        public void EditorSetGrip(HandSide side, Transform t) { if (side == HandSide.Left) _leftHandGrip = t; else _rightHandGrip = t; }
+        public void EditorSetElbowHint(HandSide side, Transform t) { if (side == HandSide.Left) _leftElbowHint = t; else _rightElbowHint = t; }
+        public void EditorSetHoldPose(Vector3 posOffset, Vector3 eulerOffset) { _holdPositionOffset = posOffset; _holdEulerOffset = eulerOffset; }
+#endif
+
+        public Vector3 HoldPositionOffset => _holdPositionOffset;
+        public Vector3 HoldEulerOffset => _holdEulerOffset;
+
+        [System.NonSerialized] public bool HoldTuning;
+
+        public void GetHoldPose(Transform carryAnchor, out Vector3 pos, out Quaternion rot)
+        {
+            if (carryAnchor == null) { pos = transform.position; rot = transform.rotation; return; }
+            pos = carryAnchor.TransformPoint(_holdPositionOffset);
+            rot = carryAnchor.rotation * Quaternion.Euler(_holdEulerOffset);
+        }
+
+        public void CaptureHoldOffset(Transform carryAnchor)
+        {
+            if (carryAnchor == null) return;
+            _holdPositionOffset = carryAnchor.InverseTransformPoint(transform.position);
+            _holdEulerOffset = (Quaternion.Inverse(carryAnchor.rotation) * transform.rotation).eulerAngles;
         }
 
         public float FragileImpulse => (_config != null && _config.FragileImpulse > 0f) ? _config.FragileImpulse : -1f;

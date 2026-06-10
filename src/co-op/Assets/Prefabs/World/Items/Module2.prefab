@@ -90,6 +90,37 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3197201297350064461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9125198506519960051}
+  m_Layer: 8
+  m_Name: LeftHandGrip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9125198506519960051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3197201297350064461}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.1702, y: 0.1175, z: 0.23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8192045129134264481}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4510126161168115602
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +315,7 @@ GameObject:
   - component: {fileID: -7568539984392047987}
   - component: {fileID: -6844842765435563554}
   - component: {fileID: 105820822187476793}
+  - component: {fileID: 1455198782791666919}
   m_Layer: 8
   m_Name: Module2
   m_TagString: Untagged
@@ -308,6 +340,8 @@ Transform:
   - {fileID: 7784541432051130229}
   - {fileID: 6780496720078230156}
   - {fileID: 3424771615592723790}
+  - {fileID: 9125198506519960051}
+  - {fileID: 8844819114622931848}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &6425985629799620539
@@ -351,7 +385,9 @@ MonoBehaviour:
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
-  NetworkBehaviours: []
+  NetworkBehaviours:
+  - {fileID: -6844842765435563554}
+  - {fileID: 105820822187476793}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -362,7 +398,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: 0
+  _initializedTimestamp: -8584204808060401590
   _localLevelOfDetailCalculationType: 0
   _useLevelOfDetail: 0
   _useRootLevelOfDetail: 1
@@ -381,15 +417,15 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 65535
+  <PrefabId>k__BackingField: 9
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 7065059577355394301
   SceneId: 0
   SerializedTransformProperties:
     Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 0}
-    Scale: {x: 0, y: 0, z: 0}
-    IsValid: 0
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    Scale: {x: 1, y: 1, z: 1}
+    IsValid: 1
 --- !u!54 &-7568539984392047987
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -429,9 +465,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
-  _componentIndexCache: 255
+  _componentIndexCache: 0
   _addedNetworkObject: {fileID: 449428854652338016}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 449428854652338016}
   _componentConfiguration: 0
   _synchronizeParent: 0
   _packing:
@@ -475,15 +511,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185f0808cabe0354d9b8cf1a4599be2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: CoOp.Main::Gameplay.World.Items.Carryable
-  _componentIndexCache: 255
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: 449428854652338016}
-  _networkObjectCache: {fileID: 0}
-  _config: {fileID: 0}
-  _rb: {fileID: 0}
-  _networkTransform: {fileID: 0}
+  _networkObjectCache: {fileID: 449428854652338016}
+  _config: {fileID: 11400000, guid: 9a32303fb33a6a14b9b6e96b376ea43d, type: 2}
+  _rb: {fileID: -7568539984392047987}
+  _networkTransform: {fileID: -6844842765435563554}
   _grabAnchors: []
-  _leftHandGrip: {fileID: 0}
-  _rightHandGrip: {fileID: 0}
+  _leftHandGrip: {fileID: 9125198506519960051}
+  _rightHandGrip: {fileID: 8844819114622931848}
+  _holdPositionOffset: {x: 0, y: 0, z: 0}
+  _holdEulerOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &1455198782791666919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6347952621191949328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dbe122c5acc37a44a42cbc24f046dc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CoOp.Main::Gameplay.World.Weapon.WeaponModulePart
+  _order: 2
+--- !u!1 &7001920620382459483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8844819114622931848}
+  m_Layer: 8
+  m_Name: RightHandGrip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8844819114622931848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7001920620382459483}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.1619, y: 0.13, z: -0.169}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8192045129134264481}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9064209439055129257
 GameObject:
   m_ObjectHideFlags: 0
