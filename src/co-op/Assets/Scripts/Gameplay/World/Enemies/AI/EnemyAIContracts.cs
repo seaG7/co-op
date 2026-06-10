@@ -25,7 +25,7 @@ namespace Gameplay.World.Enemies.AI
         public Transform Target;
         public Vector3 LocalOffset;
         public PlayerVitals Player;
-        public WeaponSnapPoint Module;
+        public WeaponModuleSlot Module;
     }
 
     public enum EnemyStateId { Pursue, Pounce, Latched, Dead }

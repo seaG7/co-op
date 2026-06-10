@@ -10,7 +10,7 @@ namespace Gameplay.World.Enemies.AI
         public void Enter(EnemyContext ctx)
         {
             Transform t = ctx.Target.Transform;
-            WeaponSnapPoint module = null;
+            WeaponModuleSlot module = null;
             if (ctx.Target.Kind == EnemyTargetKind.Cannon)
             {
                 module = NearestOccupiedModule(ctx.Body.position);
@@ -63,10 +63,10 @@ namespace Gameplay.World.Enemies.AI
             return Id;
         }
 
-        private static WeaponSnapPoint NearestOccupiedModule(Vector3 pos)
+        private static WeaponModuleSlot NearestOccupiedModule(Vector3 pos)
         {
-            var all = WeaponSnapPoint.All;
-            WeaponSnapPoint best = null;
+            var all = WeaponModuleSlot.All;
+            WeaponModuleSlot best = null;
             float bestSq = float.MaxValue;
             for (int i = 0; i < all.Count; i++)
             {

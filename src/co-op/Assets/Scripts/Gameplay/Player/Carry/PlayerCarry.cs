@@ -34,8 +34,6 @@ namespace Gameplay.Player.Carry
         private PlayerVitals _vitals;
         private bool _inputBound;
 
-        private WeaponSnapPoint _highlightedSnap;
-
         private PlayerMovement _movement;
 
         private Carryable _attachItem;
@@ -87,7 +85,6 @@ namespace Gameplay.Player.Carry
         private void OnDestroy()
         {
             UnbindInput();
-            ClearSnapHighlight();
         }
 
         private void BindInput()
@@ -148,13 +145,13 @@ namespace Gameplay.Player.Carry
 
             if (carryable.IsSnapped.Value)
             {
-                var snaps = WeaponSnapPoint.All;
-                for (int i = 0; i < snaps.Count; i++)
+                var slots = WeaponModuleSlot.All;
+                for (int i = 0; i < slots.Count; i++)
                 {
-                    var s = snaps[i];
-                    if (s != null && s.AttachedCarryable == carryable)
+                    var s = slots[i];
+                    if (s != null && s.AttachedModule == carryable)
                     {
-                        s.AttachedCarryable = null;
+                        s.AttachedModule = null;
                         s.IsOccupied.Value = false;
                         break;
                     }
@@ -179,75 +176,62 @@ namespace Gameplay.Player.Carry
             var dir = aimDir.sqrMagnitude > 1e-6f ? aimDir.normalized : transform.forward;
 
             bool soleHolder = _carryService.HolderCount(item) <= 1;
-            WeaponSnapPoint snap = null;
+            WeaponModuleSlot slot = null;
             Vector3? throwVel = null;
 
             if (soleHolder)
             {
                 item.transform.position = releasePos;
-                float tol = _configs?.Carry != null ? Mathf.Max(1f, _configs.Carry.ServerReachTolerance) : 1f;
                 float minDot = SnapAimMinDot(_configs?.Carry);
-                snap = FindNearestFreeSnapForServer(releasePos, tol, aimOrigin, dir, minDot);
-                if (snap == null) throwVel = releaseVel;
+                slot = FindAttachSlot(ModuleOrder(item), releasePos, aimOrigin, dir, minDot);
+                if (slot == null) throwVel = releaseVel;
             }
 
-            _carryService.Release(item, base.Owner, snap != null ? Vector3.zero : dir, throwVel);
+            _carryService.Release(item, base.Owner, slot != null ? Vector3.zero : dir, throwVel);
 
             _heldItem = null;
             _heldByConnection = null;
             if (base.Owner != null && base.Owner.IsValid && !base.Owner.IsHost)
                 SetHeldItemOnOwner(base.Owner, null);
 
-            if (snap != null) AnimateSnapAsync(item, snap).Forget();
+            if (slot != null) AnimateAttachAsync(item, slot).Forget();
         }
 
         private static float SnapAimMinDot(CarryConfig carry)
             => carry != null ? Mathf.Cos(Mathf.Clamp(carry.SnapAimMaxAngle, 1f, 180f) * Mathf.Deg2Rad) : -1f;
 
-        private static bool IsSnapCandidate(WeaponSnapPoint s, Vector3 itemPos, float distanceMult,
+        private static int ModuleOrder(Carryable item)
+            => item != null && item.TryGetComponent<WeaponModulePart>(out var part) ? part.Order : 0;
+
+        private static WeaponModuleSlot FindAttachSlot(int heldOrder, Vector3 itemPos,
             Vector3 aimOrigin, Vector3 aimDir, float minDot)
         {
-            if (s == null || !s.IsFree) return false;
+            if (heldOrder <= 0 || heldOrder != WeaponModuleSlot.NextOrder()) return null;
+            var slot = WeaponModuleSlot.Find(heldOrder);
+            if (slot == null || !slot.IsFree) return null;
 
-            float maxDist = s.SnapDistance * distanceMult;
-            if ((itemPos - s.transform.position).sqrMagnitude > maxDist * maxDist) return false;
+            float maxDist = slot.AttachDistance;
+            if ((itemPos - slot.transform.position).sqrMagnitude > maxDist * maxDist) return null;
 
-            Vector3 toSocket = s.transform.position - aimOrigin;
-            float sqr = toSocket.sqrMagnitude;
-            if (sqr < 1e-6f) return true;
-            float dot = Vector3.Dot(aimDir, toSocket * (1f / Mathf.Sqrt(sqr)));
-            return dot >= minDot;
-        }
-
-        private static WeaponSnapPoint FindNearestFreeSnapForServer(Vector3 itemPos, float distanceMult,
-            Vector3 aimOrigin, Vector3 aimDir, float minDot)
-        {
-            WeaponSnapPoint best = null;
-            float bestDistSq = float.MaxValue;
-            var all = WeaponSnapPoint.All;
-            for (int i = 0; i < all.Count; i++)
-            {
-                var s = all[i];
-                if (!IsSnapCandidate(s, itemPos, distanceMult, aimOrigin, aimDir, minDot)) continue;
-                float dSq = (itemPos - s.transform.position).sqrMagnitude;
-                if (dSq < bestDistSq) { bestDistSq = dSq; best = s; }
-            }
-            return best;
+            Vector3 toSlot = slot.transform.position - aimOrigin;
+            float sqr = toSlot.sqrMagnitude;
+            if (sqr >= 1e-6f && Vector3.Dot(aimDir, toSlot * (1f / Mathf.Sqrt(sqr))) < minDot) return null;
+            return slot;
         }
 
         private const float SnapAnimationDurationSec = 0.25f;
 
-        private async UniTaskVoid AnimateSnapAsync(Carryable item, WeaponSnapPoint snap)
+        private async UniTaskVoid AnimateAttachAsync(Carryable item, WeaponModuleSlot slot)
         {
-            snap.AttachedCarryable = item;
-            snap.IsOccupied.Value = true;
+            slot.AttachedModule = item;
+            slot.IsOccupied.Value = true;
             item.IsSnapped.Value = true;
             item.ApplyPhysicsState();
 
             Vector3 startPos = item.transform.position;
             Quaternion startRot = item.transform.rotation;
-            Vector3 endPos = snap.transform.position;
-            Quaternion endRot = snap.transform.rotation;
+            Vector3 endPos = slot.transform.position;
+            Quaternion endRot = slot.transform.rotation;
 
             float t = 0f;
             while (t < SnapAnimationDurationSec)
@@ -317,14 +301,12 @@ namespace Gameplay.Player.Carry
 
             if (_interactionSuppressed || (_vitals != null && !_vitals.IsAlive))
             {
-                ClearSnapHighlight();
                 SetPrompt(false);
                 return;
             }
 
             if (_heldItem == null)
             {
-                ClearSnapHighlight();
                 var hover = RaycastForCarryable();
                 bool canPick = hover != null && hover.HolderClientId.Value == -1;
                 SetPrompt(canPick, InteractPromptKind.PickUp);
@@ -335,22 +317,10 @@ namespace Gameplay.Player.Carry
             if (cam == null || _configs?.Carry == null) return;
             var carry = _configs.Carry;
 
-            UpdateSnapHighlight(_heldItem.transform.position);
-
             float minDot = SnapAimMinDot(carry);
-            float tol = Mathf.Max(1f, carry.ServerReachTolerance);
-            bool canPlace = HasSnapCandidate(_heldItem.transform.position, tol,
-                cam.transform.position, cam.transform.forward, minDot);
+            bool canPlace = FindAttachSlot(ModuleOrder(_heldItem), _heldItem.transform.position,
+                cam.transform.position, cam.transform.forward, minDot) != null;
             SetPrompt(true, canPlace ? InteractPromptKind.PlaceOnSocket : InteractPromptKind.Drop);
-        }
-
-        private static bool HasSnapCandidate(Vector3 itemPos, float distanceMult,
-            Vector3 aimOrigin, Vector3 aimDir, float minDot)
-        {
-            var all = WeaponSnapPoint.All;
-            for (int i = 0; i < all.Count; i++)
-                if (IsSnapCandidate(all[i], itemPos, distanceMult, aimOrigin, aimDir, minDot)) return true;
-            return false;
         }
 
         private Carryable RaycastForCarryable()
@@ -371,37 +341,6 @@ namespace Gameplay.Player.Carry
             _promptActive = show;
             _promptKind = kind;
             _signalBus?.Fire(new InteractPromptSignal(show, kind));
-        }
-
-        private void UpdateSnapHighlight(Vector3 itemPos)
-        {
-            WeaponSnapPoint nearest = null;
-            float bestDistSq = float.MaxValue;
-            var all = WeaponSnapPoint.All;
-            for (int i = 0; i < all.Count; i++)
-            {
-                var s = all[i];
-                if (s == null || !s.IsFree) continue;
-                float dSq = (itemPos - s.transform.position).sqrMagnitude;
-                float maxSq = s.HighlightDistance * s.HighlightDistance;
-                if (dSq <= maxSq && dSq < bestDistSq)
-                {
-                    bestDistSq = dSq;
-                    nearest = s;
-                }
-            }
-
-            if (nearest == _highlightedSnap) return;
-            if (_highlightedSnap != null) _highlightedSnap.SetHighlight(false);
-            _highlightedSnap = nearest;
-            if (_highlightedSnap != null) _highlightedSnap.SetHighlight(true);
-        }
-
-        private void ClearSnapHighlight()
-        {
-            if (_highlightedSnap == null) return;
-            _highlightedSnap.SetHighlight(false);
-            _highlightedSnap = null;
         }
 
         public float HeldMass => _heldItem != null ? _heldItem.Mass : 0f;

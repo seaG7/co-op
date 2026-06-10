@@ -79,7 +79,7 @@ namespace MimicSpace
             float rot = 360f / maxLegs;
             Vector2 randV = Random.insideUnitCircle;
             velocity = new Vector3(randV.x, 0, randV.y);
-            minimumAnchoredParts = minimumAnchoredLegs * partsPerLeg;
+            minimumAnchoredParts = partsPerLeg;
             maxLegDistance = newLegRadius * 2.1f;
 
         }
@@ -132,11 +132,12 @@ namespace MimicSpace
                     myHit = hit.point;
 
                 float lifeTime = Random.Range(minLegLifetime, maxLegLifetime);
+                float deployScale = 1f + velocity.magnitude * 0.6f;
 
                 StartCoroutine("NewLegCooldown");
                 for (int i = 0; i < partsPerLeg; i++)
                 {
-                    RequestLeg(myHit, legResolution, maxLegDistance, Random.Range(minGrowCoef, maxGrowCoef), this, lifeTime);
+                    RequestLeg(myHit, legResolution, maxLegDistance, Random.Range(minGrowCoef, maxGrowCoef) * deployScale, this, lifeTime);
                     if (legCount >= maxLegs)
                         return;
                 }

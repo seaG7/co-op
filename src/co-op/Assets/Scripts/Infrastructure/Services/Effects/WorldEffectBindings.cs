@@ -32,6 +32,7 @@ namespace Infrastructure.Services.Effects
             _bus.Subscribe<ItemSnappedSignal>(OnItemSnapped);
             _bus.Subscribe<WeaponMountedSignal>(OnMounted);
             _bus.Subscribe<WeaponFiredSignal>(OnFired);
+            _bus.Subscribe<HarpoonImpactSignal>(OnHarpoonImpact);
             _bus.Subscribe<SourceStateChangedSignal>(OnSourceState);
             _bus.Subscribe<SourceVulnerableSignal>(OnVulnerable);
             _bus.Subscribe<SourceDamagedSignal>(OnSourceDamaged);
@@ -47,6 +48,7 @@ namespace Infrastructure.Services.Effects
             _bus.Unsubscribe<ItemSnappedSignal>(OnItemSnapped);
             _bus.Unsubscribe<WeaponMountedSignal>(OnMounted);
             _bus.Unsubscribe<WeaponFiredSignal>(OnFired);
+            _bus.Unsubscribe<HarpoonImpactSignal>(OnHarpoonImpact);
             _bus.Unsubscribe<SourceStateChangedSignal>(OnSourceState);
             _bus.Unsubscribe<SourceVulnerableSignal>(OnVulnerable);
             _bus.Unsubscribe<SourceDamagedSignal>(OnSourceDamaged);
@@ -77,6 +79,12 @@ namespace Infrastructure.Services.Effects
                 _vfx.Play(VfxId.ShotImpact, s.HitPoint);
                 _sfx.Play(SfxId.ShotImpact, s.HitPoint);
             }
+        }
+
+        private void OnHarpoonImpact(HarpoonImpactSignal s)
+        {
+            _vfx.Play(VfxId.HarpoonImpact, s.Point);
+            _sfx.Play(SfxId.ShotImpact, s.Point);
         }
 
         private void OnSourceState(SourceStateChangedSignal s)

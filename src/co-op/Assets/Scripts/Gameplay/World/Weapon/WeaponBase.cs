@@ -36,7 +36,7 @@ namespace Gameplay.World.Weapon
             {
                 if (mf == null || mf.sharedMesh == null) continue;
                 Matrix4x4 localToPrefab = prefabRoot.worldToLocalMatrix * mf.transform.localToWorldMatrix;
-                Matrix4x4 worldOfGhost = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
+                Matrix4x4 worldOfGhost = Matrix4x4.TRS(transform.position, transform.rotation, prefabRoot.localScale);
                 Gizmos.matrix = worldOfGhost * localToPrefab;
                 Gizmos.DrawMesh(mf.sharedMesh, 0);
             }

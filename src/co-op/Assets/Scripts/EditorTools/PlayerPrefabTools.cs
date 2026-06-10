@@ -17,25 +17,16 @@ namespace CoOp.EditorTools
             var root = PrefabUtility.LoadPrefabContents(PrefabPath);
             try
             {
-                var sb = new StringBuilder();
-                sb.AppendLine("[PlayerPrefabDump] structure + colliders of " + PrefabPath);
-                foreach (var t in root.GetComponentsInChildren<Transform>(true))
-                {
-                    var col = t.GetComponent<Collider>();
-                    bool isBone = t.name.StartsWith("CC_Base_");
-                    if (isBone && col == null) continue;
-                    var comps = t.GetComponents<Component>();
-                    var names = new StringBuilder();
-                    foreach (var c in comps)
-                    {
-                        if (c == null) { names.Append("<null> "); continue; }
-                        names.Append(c.GetType().Name);
-                        if (c is Collider cc) names.Append(cc.enabled ? "(on)" : "(off)");
-                        names.Append(' ');
-                    }
-                    sb.AppendLine($"  {GetPath(t)} | [{names.ToString().TrimEnd()}] | pos={t.localPosition} eul={t.localEulerAngles}");
-                }
-                Debug.Log(sb.ToString());
+                var cols = root.GetComponentsInChildren<Collider>(true);
+                var cs = new StringBuilder("[PlayerDumpColliders] count=" + cols.Length + ": ");
+                foreach (var c in cols)
+                    cs.Append(c.transform.name + "<" + c.GetType().Name + (c.enabled ? ",on" : ",off") + (c.isTrigger ? ",trig" : "") + "> ");
+                Debug.Log(cs.ToString());
+
+                var anchor = FindChild(root.transform, "CarryAnchor");
+                Debug.Log("[PlayerDumpAnchor] " + (anchor != null
+                    ? "path=" + GetPath(anchor) + " localPos=" + anchor.localPosition + " parent=" + (anchor.parent != null ? anchor.parent.name : "-")
+                    : "CarryAnchor MISSING"));
             }
             finally
             {

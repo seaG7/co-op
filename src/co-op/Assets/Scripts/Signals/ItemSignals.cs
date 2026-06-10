@@ -48,6 +48,7 @@ namespace Signals
     public readonly struct ModuleDetachedSignal
     {
         public readonly Vector3 Position;
-        public ModuleDetachedSignal(Vector3 position) { Position = position; }
+        public readonly int Order;
+        public ModuleDetachedSignal(Vector3 position, int order) { Position = position; Order = order; }
     }
 }

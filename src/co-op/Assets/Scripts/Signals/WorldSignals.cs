@@ -58,4 +58,10 @@ namespace Signals
             Hit = hit;
         }
     }
+
+    public readonly struct HarpoonImpactSignal
+    {
+        public readonly Vector3 Point;
+        public HarpoonImpactSignal(Vector3 point) { Point = point; }
+    }
 }
