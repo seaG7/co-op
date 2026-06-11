@@ -12,4 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7adcef71aca7194a86ec673b1dff551, type: 3}
   m_Name: SfxCatalog
   m_EditorClassIdentifier: CoOp.Data::Data.Configs.SfxCatalog
-  Entries: []
+  Entries:
+  - Id: 0
+    Clips: []
+    Volume: 0
+    PitchRange: {x: 0, y: 0}
+    SpatialBlend: 0
+    Loop: 0
+    MinIntervalSec: 0
+  - Id: 30
+    Clips:
+    - {fileID: 8300000, guid: b51eebcb54edf0442a9c91906ba84099, type: 3}
+    Volume: 1
+    PitchRange: {x: 0, y: 0}
+    SpatialBlend: 0
+    Loop: 0
+    MinIntervalSec: 0

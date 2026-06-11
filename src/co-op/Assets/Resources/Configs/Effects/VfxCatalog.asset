@@ -13,7 +13,15 @@ MonoBehaviour:
   m_Name: VfxCatalog
   m_EditorClassIdentifier: CoOp.Data::Data.Configs.VfxCatalog
   Entries:
+  - Id: 24
+    Prefab: {fileID: 8579966591951127539, guid: afbaad5e885477641b7d006c2bf8125a, type: 3}
+    LifetimeOverride: 1
+    ParentToTarget: 0
+  - Id: 18
+    Prefab: {fileID: 447409866740539227, guid: da34d66431c8cd04aa98411a543a83bf, type: 3}
+    LifetimeOverride: 2
+    ParentToTarget: 0
   - Id: 0
-    Prefab: {fileID: 0}
-    LifetimeOverride: 0
+    Prefab: {fileID: 8579966591951127539, guid: afbaad5e885477641b7d006c2bf8125a, type: 3}
+    LifetimeOverride: 1
     ParentToTarget: 0
