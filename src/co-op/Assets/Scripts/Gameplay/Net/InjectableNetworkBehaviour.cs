@@ -51,6 +51,7 @@ namespace Gameplay.Net
                 container.InjectGameObject(gameObject);
                 _injected = true;
                 OnInjected();
+                NotifyInjectionListeners();
             }
             catch (Exception e)
             {
@@ -59,6 +60,19 @@ namespace Gameplay.Net
         }
 
         protected virtual void OnInjected() { }
+
+        private void NotifyInjectionListeners()
+        {
+            var listeners = GetComponents<IRuntimeInjectionListener>();
+            for (int i = 0; i < listeners.Length; i++)
+            {
+                try { listeners[i].OnRuntimeInjected(); }
+                catch (Exception e)
+                {
+                    Debug.LogError($"[InjectableNetworkBehaviour] OnRuntimeInjected failed on '{name}': {e.Message}", this);
+                }
+            }
+        }
 
         private async UniTaskVoid RetryInjectAsync()
         {

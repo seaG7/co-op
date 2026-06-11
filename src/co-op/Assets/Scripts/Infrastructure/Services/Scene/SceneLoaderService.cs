@@ -23,11 +23,19 @@ namespace Infrastructure.Services.Scene
             _loadingScreen.SetProgress(0f);
             await UniTask.NextFrame(ct);
 
-            var op = SceneManager.LoadSceneAsync(sceneName, loadSceneMode);
+            AsyncOperation op = null;
+            for (int attempt = 0; attempt < 5; attempt++)
+            {
+                op = SceneManager.LoadSceneAsync(sceneName, loadSceneMode);
+                if (op != null) break;
+                await UniTask.NextFrame(ct);
+            }
             if (op == null)
             {
                 _loadingScreen.Hide();
-                throw new InvalidOperationException($"[SceneLoaderService] Failed to start load of scene '{sceneName}'.");
+                throw new InvalidOperationException(
+                    $"[SceneLoaderService] Failed to start load of scene '{sceneName}' after retries. " +
+                    "Verify it is in Build Settings and that no other scene load/unload is stuck in progress.");
             }
 
             try

@@ -1,5 +1,6 @@
 using Data.Players;
 using Data.World;
+using Gameplay.World.Weapon;
 using Infrastructure.Services.Network;
 using Infrastructure.Services.Player;
 using Signals;
@@ -40,6 +41,7 @@ namespace UI.HUD
             _signalBus.Subscribe<PlayerRevivedSignal>(OnPlayerRevived);
             _signalBus.Subscribe<CorpseHeldSignal>(OnCorpseHeld);
             Refresh();
+            WeaponModuleSlot.PushHudState();
         }
 
         public void Dispose()

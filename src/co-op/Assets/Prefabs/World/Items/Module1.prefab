@@ -131,8 +131,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.2450699, y: 2.627937, z: 1}
-  m_Center: {x: -0.122534804, y: -0.16793543, z: 1.7481684e-15}
+  m_Size: {x: 1.2450699, y: 2.627937, z: 1.7829359}
+  m_Center: {x: -0.122534834, y: -0.16793545, z: -0.05677154}
 --- !u!114 &-6563011875490084678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +218,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &40043242758642507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +245,7 @@ MonoBehaviour:
   _extrapolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  _clientAuthoritative: 1
+  _clientAuthoritative: 0
   _sendToOwner: 1
   _interval: 1
   _synchronizePosition: 1

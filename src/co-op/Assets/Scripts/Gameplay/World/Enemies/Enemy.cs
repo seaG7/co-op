@@ -70,6 +70,14 @@ namespace Gameplay.World.Enemies
                 Debug.LogError($"[{nameof(Enemy)}] No EnemyConfig assigned.", this);
                 return;
             }
+            TryCreateBrain();
+        }
+
+        protected override void OnInjected() => TryCreateBrain();
+
+        private void TryCreateBrain()
+        {
+            if (_brain != null || !IsServerInitialized || _config == null || _targeting == null) return;
             _brain = new EnemyBrain(transform, _config, _targeting);
         }
 

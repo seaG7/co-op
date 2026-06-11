@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using Data.Configs;
 using FishNet.Connection;
 using FishNet.Object;
+using Gameplay.Net;
 using Gameplay.Player.Camera;
 using Gameplay.Player.Look;
 using Gameplay.Player.Movement;
@@ -17,7 +18,7 @@ using Zenject;
 
 namespace Gameplay.Player.Carry
 {
-    public sealed class PlayerCarry : NetworkBehaviour
+    public sealed class PlayerCarry : NetworkBehaviour, IRuntimeInjectionListener
     {
         [SerializeField] private LayerMask _carryableMask;
         [SerializeField] private PlayerCameraRig _cameraRig;
@@ -61,6 +62,11 @@ namespace Gameplay.Player.Carry
         public override void OnStartClient()
         {
             base.OnStartClient();
+            if (base.IsOwner) BindInput();
+        }
+
+        public void OnRuntimeInjected()
+        {
             if (base.IsOwner) BindInput();
         }
 

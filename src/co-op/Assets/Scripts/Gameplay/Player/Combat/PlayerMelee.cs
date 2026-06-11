@@ -1,4 +1,5 @@
 using FishNet.Object;
+using Gameplay.Net;
 using Gameplay.Player.Animation;
 using Gameplay.Player.Vitals;
 using Gameplay.World.Enemies;
@@ -9,7 +10,7 @@ using Zenject;
 
 namespace Gameplay.Player.Combat
 {
-    public sealed class PlayerMelee : NetworkBehaviour
+    public sealed class PlayerMelee : NetworkBehaviour, IRuntimeInjectionListener
     {
         [SerializeField] private float _range = 2.2f;
         [SerializeField] private float _radius = 1.2f;
@@ -21,6 +22,7 @@ namespace Gameplay.Player.Combat
         private PlayerVitals _vitals;
         private PlayerAnimator _animator;
         private bool _mounted;
+        private bool _bound;
         private float _cd;
         private float _promptCheck;
         private bool _promptShown;
@@ -34,22 +36,32 @@ namespace Gameplay.Player.Combat
         public override void OnStartClient()
         {
             base.OnStartClient();
-            if (IsOwner && _input != null)
-            {
-                _input.MeleeStarted += OnMelee;
-                _input.FireStarted += OnMelee;
-            }
-            if (IsOwner) _signalBus?.Subscribe<WeaponMountedSignal>(OnMounted);
+            BindOwner();
+        }
+
+        public void OnRuntimeInjected() => BindOwner();
+
+        private void BindOwner()
+        {
+            if (_bound || !IsOwner || _input == null || _signalBus == null) return;
+            _input.MeleeStarted += OnMelee;
+            _input.FireStarted += OnMelee;
+            _signalBus.Subscribe<WeaponMountedSignal>(OnMounted);
+            _bound = true;
         }
 
         public override void OnStopClient()
         {
-            if (IsOwner && _input != null)
+            if (_bound)
             {
-                _input.MeleeStarted -= OnMelee;
-                _input.FireStarted -= OnMelee;
+                if (_input != null)
+                {
+                    _input.MeleeStarted -= OnMelee;
+                    _input.FireStarted -= OnMelee;
+                }
+                _signalBus?.TryUnsubscribe<WeaponMountedSignal>(OnMounted);
+                _bound = false;
             }
-            if (IsOwner) _signalBus?.TryUnsubscribe<WeaponMountedSignal>(OnMounted);
             base.OnStopClient();
         }
 

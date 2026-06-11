@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1431436840306761172}
   - component: {fileID: 7763960857543957169}
   - component: {fileID: 4302417910950634004}
-  - component: {fileID: 7771560670687091417}
   m_Layer: 8
   m_Name: Harpoon004
   m_TagString: Untagged
@@ -91,27 +90,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7771560670687091417
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2600240250221930501}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.34764856, y: 0.82798564, z: 0.82798564}
-  m_Center: {x: 0.00003052503, y: 0, z: -0.000000014901161}
 --- !u!1 &2960575062992738897
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,6 +166,7 @@ GameObject:
   - component: {fileID: -2161274934068642398}
   - component: {fileID: -42975286421078406}
   - component: {fileID: 368294841522277295}
+  - component: {fileID: 6199454836186284450}
   m_Layer: 8
   m_Name: Module4
   m_TagString: Untagged
@@ -307,7 +286,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &-2161274934068642398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,7 +313,7 @@ MonoBehaviour:
   _extrapolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  _clientAuthoritative: 1
+  _clientAuthoritative: 0
   _sendToOwner: 1
   _interval: 1
   _synchronizePosition: 1
@@ -392,6 +371,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: CoOp.Main::Gameplay.World.Weapon.WeaponModulePart
   _order: 4
+--- !u!65 &6199454836186284450
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3620107010768729305}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6008512, y: 1.4537927, z: 3.8731582}
+  m_Center: {x: -0.048081614, y: 8.407669e-22, z: 0.00000013245477}
 --- !u!1 &3792879618213370547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,7 +1018,6 @@ GameObject:
   - component: {fileID: 6034541120124543354}
   - component: {fileID: 7941867995913924170}
   - component: {fileID: 7574482137204933175}
-  - component: {fileID: 1023106668688485866}
   m_Layer: 8
   m_Name: Harpoon009
   m_TagString: Untagged
@@ -1098,28 +1097,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1023106668688485866
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8090496144235550518}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5765166965734014488, guid: d130822507222c7439e8301a0a9acf7e, type: 3}
 --- !u!1 &8609613352343280468
 GameObject:
   m_ObjectHideFlags: 0

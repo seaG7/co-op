@@ -258,6 +258,12 @@ namespace Gameplay.World.Weapon
             _signalBus?.Fire(new CannonModulesChangedSignal(_stateBuf.ToArray(), occupied, underAttack, total - occupied, total));
         }
 
+        public static void PushHudState()
+        {
+            for (int i = 0; i < _all.Count; i++)
+                if (_all[i] != null && _all[i]._signalBus != null) { _all[i].FireModulesChanged(); return; }
+        }
+
         private static void RefreshAllGhosts()
         {
             int next = NextOrder();

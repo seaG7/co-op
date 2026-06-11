@@ -23,7 +23,7 @@ MonoBehaviour:
   - Id: 30
     Clips:
     - {fileID: 8300000, guid: b51eebcb54edf0442a9c91906ba84099, type: 3}
-    Volume: 1
+    Volume: 0.1
     PitchRange: {x: 0, y: 0}
     SpatialBlend: 0
     Loop: 0

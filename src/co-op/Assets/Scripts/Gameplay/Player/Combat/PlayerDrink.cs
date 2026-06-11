@@ -1,4 +1,5 @@
 using FishNet.Object;
+using Gameplay.Net;
 using Gameplay.Player.Animation;
 using Gameplay.Player.Camera;
 using Gameplay.Player.Movement;
@@ -14,7 +15,7 @@ namespace Gameplay.Player.Combat
     // still. Release E early -> cancel (bottle drops, no effect). Hold to the end -> bottle is
     // tossed back into the world and the player gets (stacking) drunk. Server-authoritative;
     // the bottle is pinned to the drink anchor on every client for the duration.
-    public sealed class PlayerDrink : NetworkBehaviour
+    public sealed class PlayerDrink : NetworkBehaviour, IRuntimeInjectionListener
     {
         [SerializeField] private LayerMask _drinkableMask;
         [SerializeField] private Transform _drinkAnchor;
@@ -49,12 +50,17 @@ namespace Gameplay.Player.Combat
         public override void OnStartClient()
         {
             base.OnStartClient();
-            if (base.IsOwner && _input != null)
-            {
-                _input.InteractStarted += OnInteractStarted;
-                _input.InteractCanceled += OnInteractCanceled;
-                _inputBound = true;
-            }
+            BindInput();
+        }
+
+        public void OnRuntimeInjected() => BindInput();
+
+        private void BindInput()
+        {
+            if (_inputBound || !base.IsOwner || _input == null) return;
+            _input.InteractStarted += OnInteractStarted;
+            _input.InteractCanceled += OnInteractCanceled;
+            _inputBound = true;
         }
 
         public override void OnStopClient()

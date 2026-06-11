@@ -1,4 +1,5 @@
 using FishNet.Object;
+using Gameplay.Net;
 using Gameplay.Player.Camera;
 using Gameplay.Player.Carry;
 using Gameplay.Player.Look;
@@ -14,7 +15,7 @@ using Zenject;
 
 namespace Gameplay.Player.Weapons
 {
-    public sealed class PlayerWeaponControl : NetworkBehaviour
+    public sealed class PlayerWeaponControl : NetworkBehaviour, IRuntimeInjectionListener
     {
         [SerializeField] private LayerMask _weaponMask = ~0;
 
@@ -51,6 +52,11 @@ namespace Gameplay.Player.Weapons
         public override void OnStartClient()
         {
             base.OnStartClient();
+            if (base.IsOwner) BindInput();
+        }
+
+        public void OnRuntimeInjected()
+        {
             if (base.IsOwner) BindInput();
         }
 
