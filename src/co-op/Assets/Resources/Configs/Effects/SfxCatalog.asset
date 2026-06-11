@@ -28,3 +28,11 @@ MonoBehaviour:
     SpatialBlend: 0
     Loop: 0
     MinIntervalSec: 0
+  - Id: 7
+    Clips:
+    - {fileID: 8300000, guid: 55189f6e214a75244a773478b916a917, type: 3}
+    Volume: 1
+    PitchRange: {x: 0, y: 0}
+    SpatialBlend: 0
+    Loop: 0
+    MinIntervalSec: 0
