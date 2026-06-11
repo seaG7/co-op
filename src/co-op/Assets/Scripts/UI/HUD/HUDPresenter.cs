@@ -103,7 +103,8 @@ namespace UI.HUD
             else _view.SetPartnerDowned(false);
         }
 
-        private void OnWeaponMounted(WeaponMountedSignal s) => _view.SetCrosshair(s.Mounted);
+        // HUD crosshair shows on foot, HIDES while mounted (aim is by the cannon's 3D crosshair object).
+        private void OnWeaponMounted(WeaponMountedSignal s) => _view.SetCrosshair(!s.Mounted);
 
         private void UpdateBreakable() => _view.SetShootNow(_sourceOpen && _charged);
 

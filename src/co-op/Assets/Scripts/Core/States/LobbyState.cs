@@ -2,7 +2,6 @@ using System.Threading;
 using Core.StateMachine;
 using Cysharp.Threading.Tasks;
 using Data.UI;
-using Infrastructure.Providers.Configs;
 using Infrastructure.Services.Network;
 using Infrastructure.Services.UI;
 using Signals;
@@ -15,29 +14,28 @@ namespace Core.States
         private readonly IGameStateMachine _stateMachine;
         private readonly SignalBus _signalBus;
         private readonly ISessionService _session;
-        private readonly IConfigDataProvider _configs;
 
         private bool _starting;
-        private bool _migrating;
 
         public LobbyState(IWindowService windowService,
                           IGameStateMachine stateMachine,
                           SignalBus signalBus,
-                          ISessionService session,
-                          IConfigDataProvider configs)
+                          ISessionService session)
         {
             _windowService = windowService;
             _stateMachine = stateMachine;
             _signalBus = signalBus;
             _session = session;
-            _configs = configs;
         }
 
         public UniTask EnterAsync(CancellationToken ct)
         {
             _starting = false;
-            _migrating = false;
             _signalBus.Subscribe<LobbyGameStartingSignal>(OnGameStarting);
+
+            if (_session.IsServerOnly)
+                return UniTask.CompletedTask;
+
             _signalBus.Subscribe<ConnectionLostSignal>(OnConnectionLost);
             _windowService.Open(WindowID.Room);
             return UniTask.CompletedTask;
@@ -47,7 +45,8 @@ namespace Core.States
         {
             _signalBus.TryUnsubscribe<LobbyGameStartingSignal>(OnGameStarting);
             _signalBus.TryUnsubscribe<ConnectionLostSignal>(OnConnectionLost);
-            _windowService.Close(WindowID.Room);
+            if (!_session.IsServerOnly)
+                _windowService.Close(WindowID.Room);
             return UniTask.CompletedTask;
         }
 
@@ -59,17 +58,11 @@ namespace Core.States
             _stateMachine.EnterAsync<LoadGameState>().Forget();
         }
 
-        private async void OnConnectionLost(ConnectionLostSignal _)
+        private void OnConnectionLost(ConnectionLostSignal _)
         {
-            if (_starting || _migrating) return;
-            _migrating = true;
-
-            var port = _configs?.Network != null ? _configs.Network.DefaultPort : (ushort)7777;
-            await _session.LeaveAsync(CancellationToken.None);
-            var ok = await _session.StartHostAsync(port);
-
-            _migrating = false;
-            if (!ok) _stateMachine.EnterAsync<LoadMainMenuState>().Forget();
+            if (_starting) return;
+            UnityEngine.Debug.Log("[Lobby] Connection lost -> LoadMainMenuState");
+            _stateMachine.EnterAsync<LoadMainMenuState>().Forget();
         }
     }
 }

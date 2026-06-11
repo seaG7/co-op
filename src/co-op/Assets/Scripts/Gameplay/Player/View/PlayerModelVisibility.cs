@@ -16,12 +16,14 @@ namespace Gameplay.Player.View
         [SerializeField] private Renderer[] _ownerHiddenRenderers;
 
         private bool _isLocalOwner;
+        private Renderer[] _allRenderers;
 
         public override void OnStartClient()
         {
             base.OnStartClient();
             if (!base.IsOwner) return;
             _isLocalOwner = true;
+            _allRenderers = GetComponentsInChildren<Renderer>(true);
             SetOwnerHeadVisible(false);
         }
 
@@ -30,6 +32,16 @@ namespace Gameplay.Player.View
             if (!_isLocalOwner || _ownerHiddenRenderers == null) return;
             for (int i = 0; i < _ownerHiddenRenderers.Length; i++)
                 if (_ownerHiddenRenderers[i] != null) _ownerHiddenRenderers[i].enabled = visible;
+        }
+
+        // Hide the WHOLE local model (e.g. while operating the cannon — the body would otherwise clip
+        // the barrel/camera). Owner-only; re-applies the FP head-hide when shown again.
+        public void SetOwnerModelHidden(bool hidden)
+        {
+            if (!_isLocalOwner || _allRenderers == null) return;
+            for (int i = 0; i < _allRenderers.Length; i++)
+                if (_allRenderers[i] != null) _allRenderers[i].enabled = !hidden;
+            if (!hidden) SetOwnerHeadVisible(false);
         }
     }
 }

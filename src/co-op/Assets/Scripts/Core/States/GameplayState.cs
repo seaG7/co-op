@@ -49,6 +49,9 @@ namespace Core.States
             _cts = CancellationTokenSource.CreateLinkedTokenSource(ct);
             var localCts = _cts;
 
+            if (_session.IsServerOnly)
+                return;
+
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
@@ -63,6 +66,7 @@ namespace Core.States
             {
                 await _playerService.WaitForLocalPlayerAsync(watchdogCts.Token);
                 if (!watchdogCts.IsCancellationRequested) watchdogCts.Cancel();
+                _loadingScreen.SetProgress(1f);
                 _loadingScreen.Hide();
             }
             catch (OperationCanceledException)
@@ -86,6 +90,14 @@ namespace Core.States
 
         public UniTask ExitAsync(CancellationToken ct)
         {
+            if (_session.IsServerOnly)
+            {
+                _cts?.Cancel();
+                _cts?.Dispose();
+                _cts = null;
+                return UniTask.CompletedTask;
+            }
+
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 

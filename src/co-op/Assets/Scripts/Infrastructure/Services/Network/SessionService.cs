@@ -21,6 +21,7 @@ namespace Infrastructure.Services.Network
         private SessionState _state = SessionState.Disconnected;
 
         public SessionState State => _state;
+        public bool IsServerOnly => _network != null && _network.IsServer && !_network.IsClient;
         public string LastError { get; private set; }
 
         public int LocalClientId =>
@@ -64,6 +65,29 @@ namespace Infrastructure.Services.Network
             _network.ServerStopped -= OnServerStopped;
             _network.ClientStopped -= OnClientStopped;
             _network.ConnectionFailed -= OnConnectionFailed;
+        }
+
+        public async UniTask<bool> StartServerOnlyAsync(ushort port, CancellationToken ct = default)
+        {
+            if (_state != SessionState.Disconnected && _state != SessionState.Failed)
+            {
+                LastError = $"Cannot start server from state {_state}";
+                Debug.LogWarning($"[SessionService] {LastError}");
+                return false;
+            }
+
+            SetState(SessionState.StartingServer);
+            if (!await _network.StartServerAsync(port, ct))
+            {
+                LastError = "Failed to start server";
+                SetState(SessionState.Failed);
+                return false;
+            }
+
+            SetState(SessionState.Connected);
+            SeedConnectedClientsFromServer();
+            _signalBus.Fire(new ServerStartedSignal(port));
+            return true;
         }
 
         public async UniTask<bool> StartHostAsync(ushort port, CancellationToken ct = default)

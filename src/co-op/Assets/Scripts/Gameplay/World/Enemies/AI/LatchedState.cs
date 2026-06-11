@@ -13,12 +13,17 @@ namespace Gameplay.World.Enemies.AI
             WeaponModuleSlot module = null;
             if (ctx.Target.Kind == EnemyTargetKind.Cannon)
             {
-                module = NearestOccupiedModule(ctx.Body.position);
+                module = ChooseModule(ctx.Body.position);
                 if (module != null)
                 {
                     t = module.transform;
-                    ctx.Body.position = t.position + Vector3.up * ctx.Config.LatchHover;
+                    // Sit on the module's visible mesh at a spread-out spot, clear of the surface (gap).
+                    ctx.Body.position = module.SitPoint(ctx.Body.position, ctx.Config.LatchGap);
                 }
+            }
+            else if (ctx.Target.Kind == EnemyTargetKind.Player && ctx.Target.Player != null && t != null)
+            {
+                ctx.Body.position = t.position + Vector3.up * 1.1f - t.forward * 0.25f;
             }
 
             ctx.Latch = new LatchInfo
@@ -63,17 +68,22 @@ namespace Gameplay.World.Enemies.AI
             return Id;
         }
 
-        private static WeaponModuleSlot NearestOccupiedModule(Vector3 pos)
+        // Pick an installed module to climb: prefer the FEWEST mobs already on it (spreads mobs
+        // across modules), tie-broken by distance.
+        private static WeaponModuleSlot ChooseModule(Vector3 pos)
         {
             var all = WeaponModuleSlot.All;
             WeaponModuleSlot best = null;
+            int bestMobs = int.MaxValue;
             float bestSq = float.MaxValue;
             for (int i = 0; i < all.Count; i++)
             {
                 var m = all[i];
                 if (m == null || !m.IsOccupied.Value) continue;
+                int mobs = m.MobCount.Value;
                 float sq = (m.transform.position - pos).sqrMagnitude;
-                if (sq < bestSq) { bestSq = sq; best = m; }
+                if (mobs < bestMobs || (mobs == bestMobs && sq < bestSq))
+                { bestMobs = mobs; bestSq = sq; best = m; }
             }
             return best;
         }

@@ -32,6 +32,7 @@ namespace Bootstrap
 
             _concreteStateMachine.OnEnterFailed = () =>
             {
+                if (_session.IsServerOnly) return;
                 var current = _stateMachine.CurrentState?.GetType().Name;
                 if (current == nameof(LoadMainMenuState) || current == nameof(MainMenuState) || current == nameof(BootstrapState))
                     return;
@@ -79,6 +80,13 @@ namespace Bootstrap
                 }
                 var ok = await _session.JoinAsync(net.DefaultAddress, net.DefaultPort);
                 if (ok) await _stateMachine.EnterAsync<LoadGameState>();
+            }
+            else if (mode == "Server")
+            {
+                var net = _configs?.Network;
+                var port = net != null ? net.DefaultPort : (ushort)7777;
+                var ok = await _session.StartServerOnlyAsync(port);
+                if (ok) await _stateMachine.EnterAsync<LobbyState>();
             }
         }
 #endif

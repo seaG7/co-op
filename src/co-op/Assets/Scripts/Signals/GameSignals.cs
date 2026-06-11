@@ -23,4 +23,8 @@ namespace Signals
         public readonly RoundOutcome Outcome;
         public GameEndedSignal(RoundOutcome outcome) => Outcome = outcome;
     }
+
+    // Server-driven restart: relayed to everyone (incl. the dedicated server) so all peers re-enter
+    // LoadGameState and the server reloads the global scene.
+    public readonly struct GameRestartingSignal { }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7479157611493835825}
   - component: {fileID: 8222001518403754079}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5724358347942757796}
   - component: {fileID: 4521282040827567631}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon-5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7436272987110261587}
   - component: {fileID: 4893448273920730810}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 1649338128253050520}
   - component: {fileID: 8026336683193874764}
   - component: {fileID: 3035193982609249309}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HarpoonWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 785798793169442577}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.043619405, z: 0, w: 0.9990483}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_ConstrainProportionsScale: 1
@@ -235,7 +235,7 @@ Transform:
   - {fileID: 4385238491855385463}
   - {fileID: 2794267420733437774}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -5, z: 0}
 --- !u!114 &1649338128253050520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,13 +360,14 @@ MonoBehaviour:
   _pitchPivot: {fileID: 2051755177043378024}
   _pitchAxis: {x: 0, y: 0, z: 1}
   _muzzle: {fileID: 915767328795296486}
-  _cameraAnchor: {fileID: 4662642599810183181}
+  _cameraAnchor: {fileID: 5888199648533131677}
   _harpoon: {fileID: 7323997698937562801}
-  _cameraPivot: {fileID: 4662642599810183181}
   _crosshairPoint: {fileID: 8447997536311201328}
   _aimMask:
     serializedVersion: 2
     m_Bits: 3127
+  _operatorStand: {fileID: 3065718898330397501}
+  _operatorRadius: 0.5
 --- !u!1 &883859203061682584
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +379,7 @@ GameObject:
   - component: {fileID: 2794267420733437774}
   - component: {fileID: 4271614737905714822}
   - component: {fileID: 7982580135424038200}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Rope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,7 +542,7 @@ GameObject:
   - component: {fileID: 1861959147983389320}
   - component: {fileID: 986319367803292809}
   - component: {fileID: 6951813461138248071}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon050
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +561,9 @@ Transform:
   m_LocalPosition: {x: 1.4634329, y: 3.998139, z: 0.0014825126}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5888199648533131677}
+  - {fileID: 3065718898330397501}
   m_Father: {fileID: 7436272987110261587}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &986319367803292809
@@ -631,7 +634,7 @@ GameObject:
   - component: {fileID: 932224208915010145}
   - component: {fileID: 3447569591185968525}
   - component: {fileID: 499802703396689999}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,7 +723,7 @@ GameObject:
   m_Component:
   - component: {fileID: 915767328795296486}
   - component: {fileID: 7323997698937562801}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Nose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -735,13 +738,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596961641071136885}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.947, y: 2.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5724358347942757796}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7323997698937562801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,15 +759,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: CoOp.Main::Gameplay.World.Weapon.Harpoon
   _body: {fileID: 5724358347942757796}
   _nose: {fileID: 915767328795296486}
-  _launchSpeed: 45
+  _launchSpeed: 20
   _minFlightTime: 0.12
   _maxFlightTime: 0.8
   _gravity: 8
   _flightSpin: 0
+  _orientToVelocity: 0
   _landedWait: 1
-  _returnSpeed: 30
+  _returnSpeed: 10
   _minReturnTime: 0.15
-  _maxReturnTime: 0.7
+  _maxReturnTime: 1
 --- !u!1 &1714545770084871928
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,7 +780,7 @@ GameObject:
   - component: {fileID: 519951934096230716}
   - component: {fileID: 3549344377618091097}
   - component: {fileID: 4868687468680700050}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -866,7 +870,7 @@ GameObject:
   - component: {fileID: 5562951154828136107}
   - component: {fileID: 8278451111370140173}
   - component: {fileID: 7408774581817790301}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon048
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -956,7 +960,7 @@ GameObject:
   - component: {fileID: 4474327676100180446}
   - component: {fileID: 7484420044358336882}
   - component: {fileID: 3685733513329617961}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1046,7 +1050,7 @@ GameObject:
   - component: {fileID: 389642136486294526}
   - component: {fileID: 5873602164061261364}
   - component: {fileID: 3148721175943189105}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon022
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1136,7 +1140,7 @@ GameObject:
   - component: {fileID: 3362762825868887322}
   - component: {fileID: 8095836431245573408}
   - component: {fileID: 5596286028396820932}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon024
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1226,7 +1230,7 @@ GameObject:
   - component: {fileID: 4385238491855385463}
   - component: {fileID: 7474843605504981763}
   - component: {fileID: 5456717293316687009}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1308,7 +1312,7 @@ GameObject:
   - component: {fileID: 3723509701978996960}
   - component: {fileID: 8282842688182565692}
   - component: {fileID: 606102239160677867}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1398,7 +1402,7 @@ GameObject:
   - component: {fileID: 5807582895569381590}
   - component: {fileID: 5324818198204280611}
   - component: {fileID: 8711018418447191115}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon015
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1488,7 +1492,7 @@ GameObject:
   - component: {fileID: 4212694996016629611}
   - component: {fileID: 800351544542562935}
   - component: {fileID: 5360635453942006771}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1578,7 +1582,7 @@ GameObject:
   - component: {fileID: 2051755177043378024}
   - component: {fileID: 4534333240107001925}
   - component: {fileID: 260668321568668945}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1601,7 +1605,6 @@ Transform:
   - {fileID: 7436272987110261587}
   - {fileID: 5724358347942757796}
   - {fileID: 5952612797725065089}
-  - {fileID: 4662642599810183181}
   m_Father: {fileID: 8311807720052575932}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.299}
 --- !u!33 &4534333240107001925
@@ -1670,7 +1673,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2258977255801918788}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AttachPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1703,7 +1706,7 @@ GameObject:
   - component: {fileID: 5664366461097029562}
   - component: {fileID: 7529597373552052285}
   - component: {fileID: 6969638091989056952}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon026
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1793,7 +1796,7 @@ GameObject:
   - component: {fileID: 5224123091040333413}
   - component: {fileID: 8377379496532911129}
   - component: {fileID: 8770523103369678302}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon013
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1883,7 +1886,7 @@ GameObject:
   - component: {fileID: 8033260918984997068}
   - component: {fileID: 360188679328672299}
   - component: {fileID: 4308468703202359384}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon025
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1973,7 +1976,7 @@ GameObject:
   - component: {fileID: 6855772838290158869}
   - component: {fileID: 218954957044435618}
   - component: {fileID: 8063199490151832323}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon017
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2062,7 +2065,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7463420651466353905}
   - component: {fileID: 8759722860688158865}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2117,6 +2120,37 @@ MonoBehaviour:
   _alphaProperty: _Alpha
   _nextAlpha: 0.55
   _pendingAlpha: 0.12
+--- !u!1 &4019486396694123186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5888199648533131677}
+  m_Layer: 12
+  m_Name: Pivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5888199648533131677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4019486396694123186}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.695, y: -0.025, z: -0.209}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1861959147983389320}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4192889407374870008
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,7 +2162,7 @@ GameObject:
   - component: {fileID: 5992041526872228174}
   - component: {fileID: 4252891549443715273}
   - component: {fileID: 5472289152269435004}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon051
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2218,7 +2252,7 @@ GameObject:
   - component: {fileID: 1004602778414380626}
   - component: {fileID: 4621583271640613712}
   - component: {fileID: 6049890519806712725}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon021
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2308,7 +2342,7 @@ GameObject:
   - component: {fileID: 8311807720052575932}
   - component: {fileID: 5537121145898135479}
   - component: {fileID: 6604145132873676388}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Yaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2405,7 +2439,7 @@ GameObject:
   - component: {fileID: 3771723195166347632}
   - component: {fileID: 5088786759374736078}
   - component: {fileID: 1166817170284313391}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon039
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2495,7 +2529,7 @@ GameObject:
   - component: {fileID: 65443720869207899}
   - component: {fileID: 6664306454818117082}
   - component: {fileID: 2697388364117591324}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon038
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2585,7 +2619,7 @@ GameObject:
   - component: {fileID: 8208597159012521017}
   - component: {fileID: 8587121812951719088}
   - component: {fileID: 8101617444293320972}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2664,37 +2698,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &4810146659121827495
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4662642599810183181}
-  m_Layer: 0
-  m_Name: Pivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4662642599810183181
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4810146659121827495}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.0017218952, y: 0.65903807, z: 0.0019651572, w: 0.7521051}
-  m_LocalPosition: {x: -1.9594928, y: 1.5626976, z: -0.27126414}
-  m_LocalScale: {x: 0.45000002, y: 0.45, z: 0.45000002}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2051755177043378024}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5083301821083578157
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,7 +2709,7 @@ GameObject:
   - component: {fileID: 7848177710224312687}
   - component: {fileID: 5926367024940782341}
   - component: {fileID: 5502074140169824210}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon044
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2794,7 +2797,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7201383237297446443}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2827,7 +2830,7 @@ GameObject:
   - component: {fileID: 7052483631006824235}
   - component: {fileID: 3447213792383673859}
   - component: {fileID: 990180638916897016}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2916,7 +2919,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7315642772418954658}
   - component: {fileID: 9093651785048290527}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2978,7 +2981,7 @@ GameObject:
   - component: {fileID: 6783796126249447564}
   - component: {fileID: 5663248491412927540}
   - component: {fileID: 1452405147358275665}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon035
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3068,7 +3071,7 @@ GameObject:
   - component: {fileID: 5952612797725065089}
   - component: {fileID: 5435153388531986294}
   - component: {fileID: 4777693413320514983}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon018
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3158,7 +3161,7 @@ GameObject:
   - component: {fileID: 5145131183997272900}
   - component: {fileID: 8439695502753201537}
   - component: {fileID: 6369699058067715232}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon045
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3248,7 +3251,7 @@ GameObject:
   - component: {fileID: 4449171340395640734}
   - component: {fileID: 3272883277007832583}
   - component: {fileID: 3829846251539088482}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon023
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3327,6 +3330,37 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6821124805664957165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3065718898330397501}
+  m_Layer: 12
+  m_Name: Stand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3065718898330397501
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6821124805664957165}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.00017201215, y: -0.06580834, z: 0.0026071395, w: 0.99782896}
+  m_LocalPosition: {x: -4.169, y: -4.011, z: -0.097}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1861959147983389320}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6942544514845664920
 GameObject:
   m_ObjectHideFlags: 0
@@ -3339,7 +3373,7 @@ GameObject:
   - component: {fileID: 6752716096123131915}
   - component: {fileID: 3682138512245347025}
   - component: {fileID: 3364066330886342506}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon020
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3451,7 +3485,7 @@ GameObject:
   - component: {fileID: 4282137054820003002}
   - component: {fileID: 5922623525356905943}
   - component: {fileID: 6151208238012874208}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3541,7 +3575,7 @@ GameObject:
   - component: {fileID: 9026544147348155454}
   - component: {fileID: 5523542538613152845}
   - component: {fileID: 6559345546802269639}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon027
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3631,7 +3665,7 @@ GameObject:
   - component: {fileID: 5457482511308957002}
   - component: {fileID: 889270213591209391}
   - component: {fileID: 1989011842878232055}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon014
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3721,7 +3755,7 @@ GameObject:
   - component: {fileID: 2580451173791102431}
   - component: {fileID: 4460502780590794175}
   - component: {fileID: 3712215477245041644}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon030
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3811,7 +3845,7 @@ GameObject:
   - component: {fileID: 6869416703791971059}
   - component: {fileID: 1438070827803591885}
   - component: {fileID: 155336413255147312}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3901,7 +3935,7 @@ GameObject:
   - component: {fileID: 5846040709788315227}
   - component: {fileID: 4006939016051650137}
   - component: {fileID: 7740305115508799550}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon028
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3989,7 +4023,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 508667052050673138}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Reel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4022,7 +4056,7 @@ GameObject:
   - component: {fileID: 8447997536311201328}
   - component: {fileID: 2577970717404327833}
   - component: {fileID: 7717889146987734484}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CrosshairPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4112,7 +4146,7 @@ GameObject:
   - component: {fileID: 4395394402897938370}
   - component: {fileID: 2641164586010385667}
   - component: {fileID: 5646713406521978674}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon029
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4202,7 +4236,7 @@ GameObject:
   - component: {fileID: 460485941733538918}
   - component: {fileID: 1351170844059848059}
   - component: {fileID: 6249627209733919208}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon041
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4292,7 +4326,7 @@ GameObject:
   - component: {fileID: 1244399547192901657}
   - component: {fileID: 1305498847338851341}
   - component: {fileID: 6653053782432330097}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon049
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4382,7 +4416,7 @@ GameObject:
   - component: {fileID: 688855319113752101}
   - component: {fileID: 760100442848854423}
   - component: {fileID: 3067269868279716400}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon033
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4472,7 +4506,7 @@ GameObject:
   - component: {fileID: 4297608017621363596}
   - component: {fileID: 5710115774139360469}
   - component: {fileID: 2093459674564350749}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Harpoon042
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,4 +1,5 @@
 using Data.Rounds;
+using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using Gameplay.Net;
 using Signals;
@@ -40,7 +41,7 @@ namespace Gameplay.World.Round
         private void Subscribe()
         {
             if (_subscribed || _signalBus == null) return;
-            _signalBus.Subscribe<PortalEnteredSignal>(OnPortalEntered);
+            _signalBus.Subscribe<SourceDestroyedSignal>(OnSourceDestroyed);
             _signalBus.Subscribe<AllPlayersDownedOrDeadSignal>(OnAllPlayersDown);
             _subscribed = true;
         }
@@ -48,12 +49,12 @@ namespace Gameplay.World.Round
         private void Unsubscribe()
         {
             if (!_subscribed || _signalBus == null) return;
-            _signalBus.TryUnsubscribe<PortalEnteredSignal>(OnPortalEntered);
+            _signalBus.TryUnsubscribe<SourceDestroyedSignal>(OnSourceDestroyed);
             _signalBus.TryUnsubscribe<AllPlayersDownedOrDeadSignal>(OnAllPlayersDown);
             _subscribed = false;
         }
 
-        private void OnPortalEntered(PortalEnteredSignal _) => ServerSetOutcome(RoundOutcome.Victory);
+        private void OnSourceDestroyed(SourceDestroyedSignal _) => ServerSetOutcome(RoundOutcome.Victory);
         private void OnAllPlayersDown(AllPlayersDownedOrDeadSignal _) => ServerSetOutcome(RoundOutcome.Defeat);
 
         private void ServerSetOutcome(RoundOutcome outcome)
@@ -69,5 +70,13 @@ namespace Gameplay.World.Round
             if (asServer || next == RoundOutcome.None) return;
             _signalBus?.Fire(new GameEndedSignal(next));
         }
+
+        // Any client may ask the server to restart the round; the server relays it to everyone
+        // (RunLocally → server included) so all peers re-enter LoadGameState and the server reloads.
+        [ServerRpc(RequireOwnership = false)]
+        public void ServerRequestRestart() => RpcRestart();
+
+        [ObserversRpc(RunLocally = true)]
+        private void RpcRestart() => _signalBus?.Fire(new GameRestartingSignal());
     }
 }

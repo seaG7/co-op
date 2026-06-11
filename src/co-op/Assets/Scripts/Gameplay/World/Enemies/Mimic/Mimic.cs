@@ -48,6 +48,29 @@ namespace MimicSpace
 
         bool canCreateLeg = true;
 
+        // --- Cling mode: set by the enemy when latched onto a player; legs grab the given body
+        // parts (hands/head/...) and track them instead of planting on the ground. ---
+        private List<Transform> _clingTargets;
+        private bool _clinging;
+        private int _clingCursor;
+
+        public void SetCling(IReadOnlyList<Transform> targets)
+        {
+            _clingTargets = new List<Transform>();
+            if (targets != null)
+                for (int i = 0; i < targets.Count; i++)
+                    if (targets[i] != null) _clingTargets.Add(targets[i]);
+            _clinging = _clingTargets.Count > 0;
+        }
+
+        public void ClearCling()
+        {
+            _clinging = false;
+            _clingTargets = null;
+            foreach (Leg leg in GetComponentsInChildren<Leg>())
+                leg.footTarget = null;
+        }
+
         List<GameObject> availableLegPool = new List<GameObject>();
 
         [Tooltip("This must be updates as the Mimin moves to assure great leg placement")]
@@ -94,6 +117,8 @@ namespace MimicSpace
         // Update is called once per frame
         void Update()
         {
+            if (_clinging) { UpdateCling(); return; }
+
             if (!canCreateLeg)
                 return;
 
@@ -158,8 +183,43 @@ namespace MimicSpace
                 newLeg = Instantiate(legPrefab, transform.position, Quaternion.identity);
             }
             newLeg.SetActive(true);
-            newLeg.GetComponent<Leg>().Initialize(footPosition, legResolution, maxLegDistance, growCoef, myMimic, lifeTime);
+            Leg legComp = newLeg.GetComponent<Leg>();
+            legComp.footTarget = null;
+            legComp.Initialize(footPosition, legResolution, maxLegDistance, growCoef, myMimic, lifeTime);
             newLeg.transform.SetParent(myMimic.transform);
+        }
+
+        void UpdateCling()
+        {
+            if (!canCreateLeg || _clingTargets == null || _clingTargets.Count == 0) return;
+            if (legCount > maxLegs - 1) return;
+
+            Transform target = _clingTargets[_clingCursor % _clingTargets.Count];
+            _clingCursor++;
+            if (target == null) return;
+
+            float lifeTime = Random.Range(minLegLifetime, maxLegLifetime);
+            StartCoroutine("NewLegCooldown");
+            RequestClingLeg(target, Random.Range(minGrowCoef, maxGrowCoef), lifeTime);
+        }
+
+        void RequestClingLeg(Transform target, float growCoef, float lifeTime)
+        {
+            GameObject newLeg;
+            if (availableLegPool.Count > 0)
+            {
+                newLeg = availableLegPool[availableLegPool.Count - 1];
+                availableLegPool.RemoveAt(availableLegPool.Count - 1);
+            }
+            else
+            {
+                newLeg = Instantiate(legPrefab, transform.position, Quaternion.identity);
+            }
+            newLeg.SetActive(true);
+            Leg leg = newLeg.GetComponent<Leg>();
+            leg.footTarget = target;
+            leg.Initialize(target.position, legResolution, maxLegDistance, growCoef, this, lifeTime);
+            newLeg.transform.SetParent(transform);
         }
 
         public void RecycleLeg(GameObject leg)

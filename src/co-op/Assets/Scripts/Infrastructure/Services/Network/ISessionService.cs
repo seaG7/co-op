@@ -18,6 +18,7 @@ namespace Infrastructure.Services.Network
     public interface ISessionService
     {
         SessionState State { get; }
+        bool IsServerOnly { get; }
         string LastError { get; }
         int LocalClientId { get; }
         IReadOnlyList<int> ConnectedClientIds { get; }
@@ -26,6 +27,7 @@ namespace Infrastructure.Services.Network
         event Action<int> ClientJoined;
         event Action<int> ClientLeft;
 
+        UniTask<bool> StartServerOnlyAsync(ushort port, CancellationToken ct = default);
         UniTask<bool> StartHostAsync(ushort port, CancellationToken ct = default);
         UniTask<bool> JoinAsync(string address, ushort port, CancellationToken ct = default);
         UniTask LeaveAsync(CancellationToken ct = default);

@@ -3,6 +3,7 @@ using Core.StateMachine;
 using Core.States;
 using Cysharp.Threading.Tasks;
 using Data.Rounds;
+using Gameplay.World.Round;
 using Signals;
 using UnityEngine;
 using Zenject;
@@ -16,6 +17,7 @@ namespace Infrastructure.Services.Round
 
         public RoundOutcome Outcome { get; private set; } = RoundOutcome.None;
         public int CurrentWaveIndex { get; private set; } = -1;
+        private bool _restarting;
 
         public RoundService(SignalBus signalBus, IGameStateMachine stateMachine)
         {
@@ -28,6 +30,7 @@ namespace Infrastructure.Services.Round
             _signalBus.Subscribe<GameStartedSignal>(OnGameStarted);
             _signalBus.Subscribe<WaveStartedSignal>(OnWaveStarted);
             _signalBus.Subscribe<GameEndedSignal>(OnGameEnded);
+            _signalBus.Subscribe<GameRestartingSignal>(OnRestarting);
         }
 
         public void Dispose()
@@ -35,12 +38,14 @@ namespace Infrastructure.Services.Round
             _signalBus.TryUnsubscribe<GameStartedSignal>(OnGameStarted);
             _signalBus.TryUnsubscribe<WaveStartedSignal>(OnWaveStarted);
             _signalBus.TryUnsubscribe<GameEndedSignal>(OnGameEnded);
+            _signalBus.TryUnsubscribe<GameRestartingSignal>(OnRestarting);
         }
 
         private void OnGameStarted(GameStartedSignal _)
         {
             Outcome = RoundOutcome.None;
             CurrentWaveIndex = -1;
+            _restarting = false;
         }
 
         private void OnWaveStarted(WaveStartedSignal s) => CurrentWaveIndex = s.Index;
@@ -51,6 +56,21 @@ namespace Infrastructure.Services.Round
             Outcome = s.Outcome;
             Debug.Log($"[RoundService] Round ended: {s.Outcome}.");
             _stateMachine.EnterAsync<GameOverState>().Forget();
+        }
+
+        private void OnRestarting(GameRestartingSignal _)
+        {
+            if (_restarting) return;
+            _restarting = true;
+            Debug.Log("[RoundService] Restarting round.");
+            _stateMachine.EnterAsync<LoadGameState>().Forget();
+        }
+
+        public void RequestRestart()
+        {
+            var ctrl = UnityEngine.Object.FindFirstObjectByType<RoundNetworkController>();
+            if (ctrl != null) ctrl.ServerRequestRestart();
+            else Debug.LogWarning("[RoundService] No RoundNetworkController to restart through.");
         }
     }
 }

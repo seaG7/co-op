@@ -4,6 +4,7 @@ using Gameplay.Player.Carry;
 using Gameplay.Player.Look;
 using Gameplay.Player.Movement;
 using Gameplay.Player.Vitals;
+using Gameplay.Player.View;
 using Gameplay.World.Weapon;
 using Infrastructure.Providers.Configs;
 using Infrastructure.Services.Input;
@@ -27,12 +28,15 @@ namespace Gameplay.Player.Weapons
         private PlayerMovement _movement;
         private PlayerCarry _carry;
         private PlayerVitals _vitals;
+        private PlayerModelVisibility _modelVis;
 
         private Weapon _weapon;
         private bool _mounted;
         private bool _inputBound;
 
         public bool IsMounted => _mounted;
+        public Transform MountGripLeft => _mounted && _weapon != null ? _weapon.GripLeft : null;
+        public Transform MountGripRight => _mounted && _weapon != null ? _weapon.GripRight : null;
 
         private void Awake()
         {
@@ -41,6 +45,7 @@ namespace Gameplay.Player.Weapons
             _carry = GetComponent<PlayerCarry>();
             _vitals = GetComponent<PlayerVitals>();
             _cameraRig = GetComponent<PlayerCameraRig>();
+            _modelVis = GetComponent<PlayerModelVisibility>();
         }
 
         public override void OnStartClient()
@@ -105,6 +110,7 @@ namespace Gameplay.Player.Weapons
             var weapon = hit.collider.GetComponentInParent<Weapon>();
             if (weapon == null || !weapon.IsFree || !weapon.IsAssembled) return;
             if (Vector3.Distance(transform.position, weapon.transform.position) > range + 2f) return;
+            if (!weapon.CanMountFrom(transform.position)) return;
 
             _weapon = weapon;
             weapon.ClientRequestMount();
@@ -132,7 +138,8 @@ namespace Gameplay.Player.Weapons
             if (_look != null) _look.enabled = false;
             if (_movement != null) _movement.enabled = false;
             if (_carry != null) _carry.SetInteractionSuppressed(true);
-            if (_cameraRig != null) _cameraRig.MountTo(_weapon.CameraAnchor);
+            if (_modelVis != null) _modelVis.SetOwnerModelHidden(true);
+            if (_cameraRig != null) _cameraRig.MountLookAt(_weapon.CameraAnchor, _weapon.CrosshairPoint);
             _signalBus?.Fire(new WeaponMountedSignal(true));
         }
 
@@ -143,6 +150,7 @@ namespace Gameplay.Player.Weapons
             if (_look != null) _look.enabled = true;
             if (_movement != null) _movement.enabled = true;
             if (_carry != null) _carry.SetInteractionSuppressed(false);
+            if (_modelVis != null) _modelVis.SetOwnerModelHidden(false);
             _weapon = null;
             _signalBus?.Fire(new WeaponMountedSignal(false));
         }

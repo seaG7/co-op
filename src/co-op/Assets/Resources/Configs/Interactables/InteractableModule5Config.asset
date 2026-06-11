@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: InteractableModule5Config
   m_EditorClassIdentifier: Assembly-CSharp::Data.Configs.InteractableItemConfig
   Prefab: {fileID: 5201939074808195001, guid: 48053f905b6362646997219ce1a3525b, type: 3}
-  Mass: 1.5
+  Mass: 2
   MaxCarrySpeed: 10
   HoldDistance: 0
   MinHolders: 1

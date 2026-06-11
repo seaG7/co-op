@@ -3,6 +3,7 @@ using System.Threading;
 using Core.StateMachine;
 using Cysharp.Threading.Tasks;
 using Data.Paths;
+using FishNet.Managing.Scened;
 using Infrastructure.Providers.Configs;
 using Infrastructure.Services.Network;
 using Infrastructure.Services.Scene;
@@ -34,7 +35,8 @@ namespace Core.States
 
         public async UniTask EnterAsync(CancellationToken ct)
         {
-            _loadingScreen.Show();
+            bool showUi = !_session.IsServerOnly;
+            if (showUi) _loadingScreen.Show();
             try
             {
                 if (_session.State == SessionState.Disconnected || _session.State == SessionState.Failed)
@@ -44,15 +46,24 @@ namespace Core.States
                     if (!ok)
                     {
                         Debug.LogError($"[LoadGameState] StartHost failed: {_session.LastError}");
-                        _loadingScreen.Hide();
+                        if (showUi) _loadingScreen.Hide();
                         await _stateMachine.EnterAsync<LoadMainMenuState>(CancellationToken.None);
                         return;
                     }
                 }
 
+                if (showUi) _loadingScreen.SetProgress(0.1f);
+
                 var levelTcs = new UniTaskCompletionSource();
                 void OnLevelReady(LevelReadySignal _) => levelTcs.TrySetResult();
+                void OnScenePercent(SceneLoadPercentEventArgs a)
+                {
+                    if (showUi) _loadingScreen.SetProgress(0.1f + 0.6f * Mathf.Clamp01(a.Percent));
+                }
+
                 _signalBus.Subscribe<LevelReadySignal>(OnLevelReady);
+                var sceneManager = _network.NetworkManager != null ? _network.NetworkManager.SceneManager : null;
+                if (sceneManager != null) sceneManager.OnLoadPercentChange += OnScenePercent;
                 try
                 {
                     if (_network.IsServer)
@@ -60,14 +71,18 @@ namespace Core.States
                     else
                         await _network.WaitForSceneLoadedAsync(ScenePaths.GAME_SCENE, ct);
 
+                    if (showUi) _loadingScreen.SetProgress(0.7f);
+
                     await levelTcs.Task
                         .AttachExternalCancellation(ct)
                         .Timeout(TimeSpan.FromSeconds(60));
+
+                    if (showUi) _loadingScreen.SetProgress(0.9f);
                 }
                 catch (TimeoutException)
                 {
                     Debug.LogError("[LoadGameState] Level-ready timed out.");
-                    _loadingScreen.Hide();
+                    if (showUi) _loadingScreen.Hide();
                     await _session.LeaveAsync(CancellationToken.None);
                     await _stateMachine.EnterAsync<LoadMainMenuState>(CancellationToken.None);
                     return;
@@ -75,17 +90,18 @@ namespace Core.States
                 finally
                 {
                     _signalBus.TryUnsubscribe<LevelReadySignal>(OnLevelReady);
+                    if (sceneManager != null) sceneManager.OnLoadPercentChange -= OnScenePercent;
                 }
             }
             catch (OperationCanceledException)
             {
-                _loadingScreen.Hide();
+                if (showUi) _loadingScreen.Hide();
                 throw;
             }
             catch (Exception ex)
             {
                 Debug.LogError($"[LoadGameState] {ex}");
-                _loadingScreen.Hide();
+                if (showUi) _loadingScreen.Hide();
                 await _session.LeaveAsync(CancellationToken.None);
                 await _stateMachine.EnterAsync<LoadMainMenuState>(CancellationToken.None);
                 return;

@@ -87,7 +87,7 @@ LineRenderer:
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.4
+    widthMultiplier: 0.14
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -227,13 +227,13 @@ MonoBehaviour:
   legResolution: 0
   legLine: {fileID: 0}
   handlesCount: 8
-  legMinHeight: 0.6
-  legMaxHeight: 1.2
+  legMinHeight: 0.22
+  legMaxHeight: 0.42
   handles: []
-  handleOffsetMinRadius: 0.2
-  handleOffsetMaxRadius: 0.65
+  handleOffsetMinRadius: 0.06
+  handleOffsetMaxRadius: 0.18
   handleOffsets: []
-  finalFootDistance: 0.35
+  finalFootDistance: 0.12
   growCoef: 3
   growTarget: 1
   progression: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyConfig
   m_EditorClassIdentifier: CoOp.Data::Data.Configs.EnemyConfig
   MaxHealth: 10
-  CrawlSpeed: 4.5
+  CrawlSpeed: 2.8
   HoverHeight: 0.15
   AlignRate: 8
   SurfaceMask:

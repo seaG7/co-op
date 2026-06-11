@@ -25,6 +25,20 @@ namespace Gameplay.World.Enemies.AI
                 goal = Quaternion.AngleAxis(ctx.DetourSign * 65f, ctx.Up) * goal;
             }
 
+            // Chaotic weave: sway left/right around the straight line, fading to 0 as it nears the
+            // target so the mob still converges onto the module. Per-mob phase = unsynced wandering.
+            ctx.WanderTime += dt;
+            if (ctx.Config.WanderAngle > 0f)
+            {
+                float falloff = Mathf.Clamp01((dist - ctx.Config.LatchDistance) / 3f);
+                if (falloff > 0f)
+                {
+                    float w = Mathf.Sin(ctx.WanderTime * ctx.Config.WanderSpeed + ctx.WanderSeed)
+                              * ctx.Config.WanderAngle * falloff;
+                    goal = Quaternion.AngleAxis(w, ctx.Up) * goal;
+                }
+            }
+
             ctx.Crawler.Step(ctx, goal, ctx.Config.CrawlSpeed, dt);
 
             if (dist < ctx.LastTargetDistance - ctx.Config.ProgressEpsilon)

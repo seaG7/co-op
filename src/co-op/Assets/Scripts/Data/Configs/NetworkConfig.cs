@@ -12,5 +12,8 @@ namespace Data.Configs
 
         [Header("Timeouts (seconds)")]
         public float ConnectTimeoutSec = 10f;
+
+        [Header("Dedicated server")]
+        public bool UseDedicatedServer = false;
     }
 }

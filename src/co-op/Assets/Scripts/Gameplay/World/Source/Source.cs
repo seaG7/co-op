@@ -101,7 +101,8 @@ namespace Gameplay.World.Sources
             RpcAnnounce(SourceState.Destroyed, 0f, 0f);
             _cts?.Cancel();
             Enemy.ServerDespawnAll();
-            SpawnPortal();
+            // Victory triggers directly off SourceDestroyed now (portal cut). SpawnPortal() left
+            // dormant — no longer called.
             _signalBus?.Fire(new SourceDestroyedSignal());
         }
 

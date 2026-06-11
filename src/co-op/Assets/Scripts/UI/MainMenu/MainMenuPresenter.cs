@@ -45,11 +45,17 @@ namespace UI.MainMenu
 
         private async void OnHost()
         {
-            var port = _configs?.Network != null ? _configs.Network.DefaultPort : (ushort)7777;
+            var net = _configs?.Network;
+            var port = net != null ? net.DefaultPort : (ushort)7777;
+            bool dedicated = net != null && net.UseDedicatedServer;
+
             _view.SetStatus("Создание комнаты…");
-            var ok = await _session.StartHostAsync(port);
+            var ok = dedicated
+                ? await _session.JoinAsync(net.DefaultAddress, port)
+                : await _session.StartHostAsync(port);
+
             if (!ok) { _view.SetStatus(_session.LastError ?? "Не удалось создать комнату"); return; }
-            _stateMachine.EnterAsync<LobbyState>().Forget();
+            EnterGame(dedicated);
         }
 
         private async void OnJoin()
@@ -57,10 +63,17 @@ namespace UI.MainMenu
             var net = _configs?.Network;
             var address = net != null ? net.DefaultAddress : "127.0.0.1";
             var port = net != null ? net.DefaultPort : (ushort)7777;
+
             _view.SetStatus("Поиск комнаты…");
             var ok = await _session.JoinAsync(address, port);
-            if (!ok) { _view.SetStatus(_session.LastError ?? "Комната не найдена"); return; }
-            _stateMachine.EnterAsync<LobbyState>().Forget();
+            if (!ok) { _view.SetStatus(_session.LastError ?? "Не удалось подключиться"); return; }
+            EnterGame(net != null && net.UseDedicatedServer);
+        }
+
+        private void EnterGame(bool dedicated)
+        {
+            if (dedicated) _stateMachine.EnterAsync<LobbyState>().Forget();
+            else _stateMachine.EnterAsync<LoadGameState>().Forget();
         }
 
         private void OnQuit()

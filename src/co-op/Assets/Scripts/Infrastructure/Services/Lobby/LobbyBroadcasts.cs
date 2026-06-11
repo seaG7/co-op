@@ -6,7 +6,6 @@ namespace Infrastructure.Services.Lobby
     {
         public int ClientId;
         public string Nick;
-        public bool Ready;
     }
 
     public struct SetNicknameBroadcast : IBroadcast
@@ -14,14 +13,14 @@ namespace Infrastructure.Services.Lobby
         public string Nick;
     }
 
-    public struct SetReadyBroadcast : IBroadcast
-    {
-        public bool Ready;
-    }
-
     public struct LobbyStateBroadcast : IBroadcast
     {
         public LobbyMember[] Members;
+        public int LeaderClientId;
+    }
+
+    public struct RequestStartBroadcast : IBroadcast
+    {
     }
 
     public struct GameStartingBroadcast : IBroadcast

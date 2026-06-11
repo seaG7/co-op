@@ -11,6 +11,7 @@ using Infrastructure.Services.Network;
 using Infrastructure.Services.Player;
 using Infrastructure.Services.Round;
 using Infrastructure.Services.Scene;
+using Infrastructure.Services.Settings;
 using Infrastructure.Services.UI;
 using Signals;
 using UnityEngine;
@@ -88,6 +89,7 @@ namespace Infrastructure.Installers
         {
             Container.Bind<ISceneLoaderService>().To<SceneLoaderService>().AsSingle();
             Container.Bind<ILoadingScreenService>().To<LoadingScreenService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<SettingsService>().AsSingle().NonLazy();
         }
 
         private void BindUIServices()

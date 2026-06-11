@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   legPrefab: {fileID: 1682633662898237459, guid: fb7bce2dee9494540a1866bb5d230a51, type: 3}
-  numberOfLegs: 3
+  numberOfLegs: 6
   partsPerLeg: 2
   legCount: 0
   deployedLegs: 0
@@ -55,13 +55,13 @@ MonoBehaviour:
   minLegLifetime: 5
   maxLegLifetime: 15
   legPlacerOrigin: {x: 0, y: 0, z: 0}
-  newLegRadius: 0.4
+  newLegRadius: 0.45
   minLegDistance: 0.3
   maxLegDistance: 0.84
   legResolution: 40
-  minGrowCoef: 8
-  maxGrowCoef: 11
-  newLegCooldown: 0.03
+  minGrowCoef: 3.5
+  maxGrowCoef: 5.5
+  newLegCooldown: 0.06
   velocity: {x: 0.4879587, y: 0, z: 0.6809808}
   groundMask:
     serializedVersion: 2

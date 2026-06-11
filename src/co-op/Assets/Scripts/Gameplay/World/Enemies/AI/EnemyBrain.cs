@@ -23,7 +23,8 @@ namespace Gameplay.World.Enemies.AI
                 Crawler = new SurfaceCrawler(sensor),
                 Targeting = targeting,
                 Up = body.up,
-                Forward = body.forward
+                Forward = body.forward,
+                WanderSeed = Random.value * Mathf.PI * 2f
             };
             _fsm = new EnemyStateMachine(_ctx, new IEnemyState[]
             {

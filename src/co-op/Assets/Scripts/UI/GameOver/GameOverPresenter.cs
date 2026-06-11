@@ -69,19 +69,13 @@ namespace UI.GameOver
             }
         }
 
-        private async void OnRestart()
+        private void OnRestart()
         {
             if (_busy) return;
             _busy = true;
-            try
-            {
-                await _stateMachine.EnterAsync<LoadGameState>();
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError($"[GameOverPresenter] Restart failed: {ex}");
-                _busy = false;
-            }
+            // Server-driven: the round controller relays a restart to everyone (incl. the dedicated
+            // server, which reloads the global scene). We transition via GameRestartingSignal, not here.
+            _round.RequestRestart();
         }
     }
 }

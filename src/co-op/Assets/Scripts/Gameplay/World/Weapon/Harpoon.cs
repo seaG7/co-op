@@ -22,6 +22,8 @@ namespace Gameplay.World.Weapon
         [SerializeField] private float _gravity = 8f;
         [Tooltip("Degrees/sec the harpoon rolls around its forward axis while flying. 0 = none.")]
         [SerializeField] private float _flightSpin = 0f;
+        [Tooltip("OFF (recommended): the harpoon keeps the orientation it launched in — flies in the pose it sits in. ON: the nose rotates to follow the arc (needs the model's nose along +Z).")]
+        [SerializeField] private bool _orientToVelocity = false;
 
         [Header("Return")]
         [Tooltip("Seconds the harpoon sticks in the surface before being reeled back.")]
@@ -40,7 +42,8 @@ namespace Gameplay.World.Weapon
         private Transform Body => _body != null ? _body : transform;
         public Vector3 NoseWorldPosition => _nose != null ? _nose.position : Body.position;
 
-        private float _noseOffset;
+        private Vector3 _noseLocalOffset;
+        private Quaternion _launchRot = Quaternion.identity;
         private Vector3 _origin;
         private Vector3 _target;
         private Vector3 _v0;
@@ -65,7 +68,7 @@ namespace Gameplay.World.Weapon
         {
             if (Body.TryGetComponent<Rigidbody>(out var rb)) rb.isKinematic = true;
             CaptureDock();
-            _noseOffset = _nose != null ? Vector3.Distance(Body.position, _nose.position) : 0f;
+            _noseLocalOffset = _nose != null ? Quaternion.Inverse(Body.rotation) * (_nose.position - Body.position) : Vector3.zero;
         }
 
         private void OnEnable()
@@ -101,6 +104,7 @@ namespace Gameplay.World.Weapon
             _v0 = (target - origin) / _flightTime - 0.5f * _grav * _flightTime;
             _t = 0f;
             _roll = 0f;
+            _launchRot = Body.rotation;
             Current = State.Flying;
         }
 
@@ -128,20 +132,29 @@ namespace Gameplay.World.Weapon
             _t += dt;
             float t = Mathf.Min(_t, _flightTime);
             Vector3 nose = _origin + _v0 * t + 0.5f * _grav * (t * t);
-            Vector3 vel = _v0 + _grav * t;
-            Quaternion rot = vel.sqrMagnitude > 1e-5f ? Quaternion.LookRotation(vel.normalized, Vector3.up) : Body.rotation;
+
+            Quaternion rot = _launchRot;
+            if (_orientToVelocity)
+            {
+                Vector3 vel = _v0 + _grav * t;
+                if (vel.sqrMagnitude > 1e-5f) rot = Quaternion.LookRotation(vel.normalized, Vector3.up);
+            }
             if (_flightSpin != 0f)
             {
                 _roll += _flightSpin * dt;
                 rot *= Quaternion.AngleAxis(_roll, Vector3.forward);
             }
-            Body.SetPositionAndRotation(nose - (rot * Vector3.forward) * _noseOffset, rot);
+            Body.SetPositionAndRotation(nose - rot * _noseLocalOffset, rot);
 
             if (_t < _flightTime) return;
 
-            Vector3 finalVel = _v0 + _grav * _flightTime;
-            Quaternion finalRot = finalVel.sqrMagnitude > 1e-5f ? Quaternion.LookRotation(finalVel.normalized, Vector3.up) : Body.rotation;
-            Body.SetPositionAndRotation(_target - (finalRot * Vector3.forward) * _noseOffset, finalRot);
+            Quaternion finalRot = _launchRot;
+            if (_orientToVelocity)
+            {
+                Vector3 finalVel = _v0 + _grav * _flightTime;
+                if (finalVel.sqrMagnitude > 1e-5f) finalRot = Quaternion.LookRotation(finalVel.normalized, Vector3.up);
+            }
+            Body.SetPositionAndRotation(_target - finalRot * _noseLocalOffset, finalRot);
             Current = State.Landed;
             _landedTimer = 0f;
             Landed?.Invoke(_target);

@@ -2,6 +2,7 @@ using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using Gameplay.Player.Camera;
 using Infrastructure.Services.Input;
+using Infrastructure.Services.Settings;
 using UnityEngine;
 using Zenject;
 
@@ -22,6 +23,7 @@ namespace Gameplay.Player.Look
         [SerializeField] private Vector3 _eyeLocalOffset = new Vector3(0f, 0.85f, 0f);
 
         [Inject] private IInputService _input;
+        [Inject] private ISettingsService _settings;
 
         private readonly SyncVar<float> _netPitch = new(0f);
 
@@ -47,9 +49,10 @@ namespace Gameplay.Player.Look
             var look = _input.LookAxis;
             if (look.sqrMagnitude < 0.0001f) return;
 
-            transform.Rotate(0f, look.x * _yawSensitivity, 0f, Space.Self);
+            float sens = _settings != null ? _settings.MouseSensitivity : 1f;
+            transform.Rotate(0f, look.x * _yawSensitivity * sens, 0f, Space.Self);
 
-            _pitch = Mathf.Clamp(_pitch - look.y * _pitchSensitivity, -_pitchClamp, _pitchClamp);
+            _pitch = Mathf.Clamp(_pitch - look.y * _pitchSensitivity * sens, -_pitchClamp, _pitchClamp);
 
             if (Mathf.Abs(_pitch - _lastSentPitch) > 0.5f)
             {

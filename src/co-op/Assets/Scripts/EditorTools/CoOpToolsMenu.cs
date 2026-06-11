@@ -128,6 +128,13 @@ namespace EditorTools
             EnsureBootstrapAndPlay();
         }
 
+        [MenuItem("Tools/CoOp/Playmode/Start Dedicated Server")]
+        private static void PlayServer()
+        {
+            EditorPrefs.SetString("CoOp.LaunchMode", "Server");
+            EnsureBootstrapAndPlay();
+        }
+
         private static void EnsureBootstrapAndPlay()
         {
             if (EditorApplication.isPlaying)

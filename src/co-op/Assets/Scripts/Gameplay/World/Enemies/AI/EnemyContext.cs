@@ -24,6 +24,8 @@ namespace Gameplay.World.Enemies.AI
         public float LastTargetDistance = float.MaxValue;
         public float DetourTimer;
         public float DetourSign = 1f;
+        public float WanderTime;
+        public float WanderSeed;
 
         public PlayerVitals PendingKnockdown;
         public bool DeadRequested;

@@ -34,7 +34,6 @@ namespace UI.Room
         public void Initialize()
         {
             _view.NicknameChanged += OnNicknameChanged;
-            _view.ReadyChanged += OnReadyChanged;
             _view.StartClicked += OnStart;
             _view.LeaveClicked += OnLeave;
             _signalBus.Subscribe<LobbyChangedSignal>(OnLobbyChanged);
@@ -45,14 +44,12 @@ namespace UI.Room
         public void Dispose()
         {
             _view.NicknameChanged -= OnNicknameChanged;
-            _view.ReadyChanged -= OnReadyChanged;
             _view.StartClicked -= OnStart;
             _view.LeaveClicked -= OnLeave;
             _signalBus.TryUnsubscribe<LobbyChangedSignal>(OnLobbyChanged);
         }
 
         private void OnNicknameChanged(string nick) => _lobby.SetLocalNickname(nick);
-        private void OnReadyChanged(bool ready) => _lobby.SetLocalReady(ready);
 
         private void OnStart()
         {
@@ -73,46 +70,31 @@ namespace UI.Room
             var members = _lobby.Members ?? Array.Empty<LobbyMember>();
             int localId = _lobby.LocalClientId;
 
-            LobbyMember? me = null;
             LobbyMember? other = null;
             for (int i = 0; i < members.Length; i++)
-            {
-                if (members[i].ClientId == localId) me = members[i];
-                else if (other == null) other = members[i];
-            }
+                if (members[i].ClientId != localId && other == null) other = members[i];
 
-            bool localIsHost = _lobby.IsHost;
-            bool meReady = me?.Ready ?? false;
-            bool otherReady = other?.Ready ?? false;
+            bool localIsLeader = _lobby.IsLeader;
             string otherNick = other?.Nick;
 
-            if (localIsHost)
+            if (localIsLeader)
             {
                 _view.SetHostSlot(true, null);
-                _view.SetClientSlot(false, other.HasValue, otherNick, otherReady);
+                _view.SetClientSlot(false, other.HasValue, otherNick);
             }
             else
             {
-                _view.SetHostSlot(false, string.IsNullOrEmpty(otherNick) ? "Хост" : otherNick);
-                _view.SetClientSlot(true, true, null, meReady);
+                _view.SetHostSlot(false, string.IsNullOrEmpty(otherNick) ? "Создатель" : otherNick);
+                _view.SetClientSlot(true, true, null);
             }
 
-            _view.ShowReadyToggle(!localIsHost);
-            if (!localIsHost) _view.SetLocalReady(meReady);
-
-            _view.SetStartVisible(localIsHost, _lobby.CanStart);
+            _view.SetStartVisible(localIsLeader, _lobby.CanStart);
 
             string status;
-            if (localIsHost)
-            {
-                if (!other.HasValue) status = "Соло — можно начать (или ждите второго)";
-                else if (otherReady) status = "Напарник готов — можно начинать";
-                else status = "Ждём готовности напарника";
-            }
+            if (localIsLeader)
+                status = other.HasValue ? "Второй игрок в комнате — можно начинать" : "Ожидание второго игрока…";
             else
-            {
-                status = meReady ? "Готов — ждём запуска хостом" : "Отметьте готовность";
-            }
+                status = "Вы в комнате — ждём запуска создателем";
             _view.SetStatus(status);
         }
     }

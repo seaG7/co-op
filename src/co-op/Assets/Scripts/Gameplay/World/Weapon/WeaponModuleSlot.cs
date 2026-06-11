@@ -74,6 +74,58 @@ namespace Gameplay.World.Weapon
             }
         }
 
+        // A point on this module's visible mesh for a latched mob to sit. Picks a RANDOM direction
+        // out of the mesh (per call → mobs spread to different spots), biased toward the approach
+        // side and upper hemisphere, then sits `gap` metres OUT from the surface (no clipping inside).
+        public Vector3 SitPoint(Vector3 from, float gap)
+        {
+            Bounds b = MeshBounds(out bool has);
+            if (!has) return transform.position + Vector3.up * gap;
+
+            Vector3 dir = Random.onUnitSphere;
+            Vector3 toApproach = from - b.center; toApproach.y = 0f;
+            if (toApproach.sqrMagnitude > 1e-4f) dir += toApproach.normalized * 0.5f;
+            dir.y = Mathf.Abs(dir.y) + 0.25f;
+            if (dir.sqrMagnitude < 1e-4f) dir = Vector3.up;
+            dir.Normalize();
+
+            return b.center + BoxSurfacePoint(dir, b.extents) + dir * gap;
+        }
+
+        private static Vector3 BoxSurfacePoint(Vector3 dir, Vector3 extents)
+        {
+            float tx = Mathf.Abs(dir.x) > 1e-5f ? extents.x / Mathf.Abs(dir.x) : float.MaxValue;
+            float ty = Mathf.Abs(dir.y) > 1e-5f ? extents.y / Mathf.Abs(dir.y) : float.MaxValue;
+            float tz = Mathf.Abs(dir.z) > 1e-5f ? extents.z / Mathf.Abs(dir.z) : float.MaxValue;
+            return dir * Mathf.Min(tx, Mathf.Min(ty, tz));
+        }
+
+        // Transforms a latched mob's legs grip (the module's visible child mesh renderers — their
+        // WorldTransforms, not the module pivot).
+        public List<Transform> ClingTargets()
+        {
+            var list = new List<Transform>();
+            var rends = (_ghostRenderers != null && _ghostRenderers.Length > 0) ? _ghostRenderers : GetComponentsInChildren<Renderer>(true);
+            for (int i = 0; i < rends.Length; i++)
+                if (rends[i] != null) list.Add(rends[i].transform);
+            if (list.Count == 0) list.Add(transform);
+            return list;
+        }
+
+        private Bounds MeshBounds(out bool has)
+        {
+            var rends = (_ghostRenderers != null && _ghostRenderers.Length > 0) ? _ghostRenderers : GetComponentsInChildren<Renderer>(true);
+            Bounds b = default; has = false;
+            for (int i = 0; i < rends.Length; i++)
+            {
+                var r = rends[i];
+                if (r == null) continue;
+                if (!has) { b = r.bounds; has = true; }
+                else b.Encapsulate(r.bounds);
+            }
+            return b;
+        }
+
         private static readonly List<WeaponModuleSlot> _all = new();
         public static IReadOnlyList<WeaponModuleSlot> All => _all;
 

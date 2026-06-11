@@ -9,6 +9,8 @@ namespace MimicSpace
         Mimic myMimic;
         public bool isDeployed = false;
         public Vector3 footPosition;
+        [Tooltip("Cling mode: when set, the foot tracks this transform (a player bone) and the leg never distance-retracts.")]
+        public Transform footTarget;
         public float maxLegDistance;
         public int legResolution;
         //public GameObject legObject;
@@ -70,10 +72,17 @@ namespace MimicSpace
 
             // each leg part have the same foot position, butto make it look like "toes" the last handle (handles[7])
             // is a bit offset for every leg part
-            Vector2 footOffset = Random.insideUnitCircle.normalized * finalFootDistance;
-            RaycastHit hit;
-            Physics.Raycast(footPosition + Vector3.up * 5f + new Vector3(footOffset.x, 0, footOffset.y), -Vector3.up, out hit, Mathf.Infinity, myMimic.groundMask, QueryTriggerInteraction.Ignore);
-            handles[7] = hit.point;
+            if (footTarget != null)
+            {
+                handles[7] = footPosition;
+            }
+            else
+            {
+                Vector2 footOffset = Random.insideUnitCircle.normalized * finalFootDistance;
+                RaycastHit hit;
+                Physics.Raycast(footPosition + Vector3.up * 5f + new Vector3(footOffset.x, 0, footOffset.y), -Vector3.up, out hit, Mathf.Infinity, myMimic.groundMask, QueryTriggerInteraction.Ignore);
+                handles[7] = hit.point;
+            }
 
             legHeight = Random.Range(legMinHeight, legMaxHeight);
             rotationSpeed = Random.Range(minRotSpeed, maxRotSpeed); // * (Random.Range(0f, 1f) > 0.5f ? -1 : 1);
@@ -108,10 +117,17 @@ namespace MimicSpace
 
         private void Update()
         {
+            // Cling mode: the foot tracks a moving body part (player bone) and never distance-retracts.
+            if (footTarget != null)
+            {
+                footPosition = footTarget.position;
+                handles[7] = footPosition;
+            }
+
             // The growTarget is set to 1 if the leg must grow, and 0 if it must retract
-            if (growTarget == 1 && Vector3.Distance(new Vector3(myMimic.legPlacerOrigin.x, 0, myMimic.legPlacerOrigin.z), new Vector3(footPosition.x, 0, footPosition.z)) > maxLegDistance && canDie && myMimic.deployedLegs > myMimic.minimumAnchoredParts)
+            if (footTarget == null && growTarget == 1 && Vector3.Distance(new Vector3(myMimic.legPlacerOrigin.x, 0, myMimic.legPlacerOrigin.z), new Vector3(footPosition.x, 0, footPosition.z)) > maxLegDistance && canDie && myMimic.deployedLegs > myMimic.minimumAnchoredParts)
                 growTarget = 0;
-            else if (growTarget == 1)
+            else if (footTarget == null && growTarget == 1)
             {
                 // Check is the body is in line of sight from the foot position, and initiates the retractation if it isn't
                 RaycastHit hit;

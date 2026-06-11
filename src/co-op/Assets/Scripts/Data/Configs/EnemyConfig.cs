@@ -43,6 +43,14 @@ namespace Data.Configs
 
         [Tooltip("Vertical offset (world up) of the enemy ROOT when it latches a cannon module. Negative pulls the body down onto the part (offsets the Mimic visual's height). Tune so the spider sits ON the module.")]
         public float LatchHover = -0.5f;
+        [Tooltip("Gap (m) a latched mob sits OUT from the module's mesh surface so it doesn't clip inside the module.")]
+        public float LatchGap = 0.35f;
+
+        [Header("Wander (chaotic approach)")]
+        [Tooltip("Max sideways weave angle (deg) added to the crawl path; fades to 0 as the mob nears its target so it still lands on the module.")]
+        public float WanderAngle = 28f;
+        [Tooltip("How fast the sideways weave oscillates.")]
+        public float WanderSpeed = 2.2f;
 
         [Header("Anti-stuck")]
         public float StuckTime = 2.5f;

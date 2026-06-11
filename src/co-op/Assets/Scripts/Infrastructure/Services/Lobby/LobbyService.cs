@@ -16,6 +16,7 @@ namespace Infrastructure.Services.Lobby
 
         private readonly Dictionary<int, LobbyMember> _serverMembers = new();
         private LobbyMember[] _members = Array.Empty<LobbyMember>();
+        private int _leaderClientId = -1;
         private string _localNick = "Player";
 
         public LobbyService(INetworkService network, ISessionService session, SignalBus signalBus)
@@ -25,32 +26,10 @@ namespace Infrastructure.Services.Lobby
             _signalBus = signalBus;
         }
 
-        public bool IsHost => _network != null && _network.IsServer;
         public int LocalClientId => _session?.LocalClientId ?? -1;
         public LobbyMember[] Members => _members;
-
-        public bool AllReady
-        {
-            get
-            {
-                if (_members.Length < 2) return false;
-                for (int i = 0; i < _members.Length; i++)
-                    if (!_members[i].Ready) return false;
-                return true;
-            }
-        }
-
-        public bool CanStart
-        {
-            get
-            {
-                if (!IsHost) return false;
-                int localId = LocalClientId;
-                for (int i = 0; i < _members.Length; i++)
-                    if (_members[i].ClientId != localId && !_members[i].Ready) return false;
-                return true;
-            }
-        }
+        public bool IsLeader => LocalClientId >= 0 && LocalClientId == _leaderClientId;
+        public bool CanStart => IsLeader;
 
         public string GetNickname(int clientId)
         {
@@ -64,7 +43,7 @@ namespace Infrastructure.Services.Lobby
             var nm = _network?.NetworkManager;
             if (nm == null) return;
             nm.ServerManager.RegisterBroadcast<SetNicknameBroadcast>(OnSetNickname, requireAuthentication: false);
-            nm.ServerManager.RegisterBroadcast<SetReadyBroadcast>(OnSetReady, requireAuthentication: false);
+            nm.ServerManager.RegisterBroadcast<RequestStartBroadcast>(OnRequestStart, requireAuthentication: false);
             nm.ClientManager.RegisterBroadcast<LobbyStateBroadcast>(OnLobbyState);
             nm.ClientManager.RegisterBroadcast<GameStartingBroadcast>(OnGameStarting);
             _session.ClientJoined += OnClientJoined;
@@ -78,7 +57,7 @@ namespace Infrastructure.Services.Lobby
             if (nm != null)
             {
                 nm.ServerManager.UnregisterBroadcast<SetNicknameBroadcast>(OnSetNickname);
-                nm.ServerManager.UnregisterBroadcast<SetReadyBroadcast>(OnSetReady);
+                nm.ServerManager.UnregisterBroadcast<RequestStartBroadcast>(OnRequestStart);
                 nm.ClientManager.UnregisterBroadcast<LobbyStateBroadcast>(OnLobbyState);
                 nm.ClientManager.UnregisterBroadcast<GameStartingBroadcast>(OnGameStarting);
             }
@@ -98,25 +77,18 @@ namespace Infrastructure.Services.Lobby
                 nm.ClientManager.Broadcast(new SetNicknameBroadcast { Nick = _localNick });
         }
 
-        public void SetLocalReady(bool ready)
-        {
-            var nm = _network?.NetworkManager;
-            if (nm != null && nm.IsClientStarted)
-                nm.ClientManager.Broadcast(new SetReadyBroadcast { Ready = ready });
-        }
-
         public void RefreshLobby() => BroadcastLobby();
 
         public void StartGame()
         {
-            var nm = _network?.NetworkManager;
-            bool server = nm != null && nm.IsServerStarted;
-            if (server && CanStart)
+            if (!IsLeader)
             {
-                nm.ServerManager.Broadcast(new GameStartingBroadcast());
+                UnityEngine.Debug.LogWarning($"[LobbyService] StartGame blocked: not leader (local={LocalClientId}, leader={_leaderClientId}).");
                 return;
             }
-            UnityEngine.Debug.LogWarning($"[LobbyService] StartGame blocked: serverStarted={server}, isHost={IsHost}, members={_members.Length}, canStart={CanStart}");
+            var nm = _network?.NetworkManager;
+            if (nm != null && nm.IsClientStarted)
+                nm.ClientManager.Broadcast(new RequestStartBroadcast());
         }
 
         private void OnSessionState(SessionState state)
@@ -129,13 +101,14 @@ namespace Infrastructure.Services.Lobby
             if (state != SessionState.Disconnected) return;
             _serverMembers.Clear();
             _members = Array.Empty<LobbyMember>();
+            _leaderClientId = -1;
             _signalBus?.Fire(new LobbyChangedSignal());
         }
 
         private void OnClientJoined(int clientId)
         {
             if (!_serverMembers.ContainsKey(clientId))
-                _serverMembers[clientId] = new LobbyMember { ClientId = clientId, Nick = $"Player {clientId}", Ready = false };
+                _serverMembers[clientId] = new LobbyMember { ClientId = clientId, Nick = $"Player {clientId}" };
             BroadcastLobby();
         }
 
@@ -158,16 +131,35 @@ namespace Infrastructure.Services.Lobby
             BroadcastLobby();
         }
 
-        private void OnSetReady(NetworkConnection conn, SetReadyBroadcast msg, Channel channel)
+        private void OnRequestStart(NetworkConnection conn, RequestStartBroadcast msg, Channel channel)
         {
             if (conn == null) return;
-            var m = _serverMembers.TryGetValue(conn.ClientId, out var existing)
-                ? existing
-                : new LobbyMember { ClientId = conn.ClientId, Nick = $"Player {conn.ClientId}" };
-            m.ClientId = conn.ClientId;
-            m.Ready = msg.Ready;
-            _serverMembers[conn.ClientId] = m;
-            BroadcastLobby();
+            var nm = _network?.NetworkManager;
+            if (nm == null || !nm.IsServerStarted) return;
+
+            int leader = ComputeLeaderId();
+            if (conn.ClientId != leader)
+            {
+                UnityEngine.Debug.LogWarning($"[LobbyService] RequestStart from {conn.ClientId} rejected (leader={leader}).");
+                return;
+            }
+
+            nm.ServerManager.Broadcast(new GameStartingBroadcast());
+            if (_session != null && _session.IsServerOnly)
+                _signalBus?.Fire(new LobbyGameStartingSignal());
+        }
+
+        private int ComputeLeaderId()
+        {
+            var nm = _network?.NetworkManager;
+            if (nm == null || !nm.IsServerStarted) return -1;
+            int leader = -1;
+            foreach (var kv in nm.ServerManager.Clients)
+            {
+                if (kv.Value == null) continue;
+                if (leader < 0 || kv.Key < leader) leader = kv.Key;
+            }
+            return leader;
         }
 
         private void BroadcastLobby()
@@ -176,21 +168,24 @@ namespace Infrastructure.Services.Lobby
             if (nm == null || !nm.IsServerStarted) return;
             var clients = nm.ServerManager.Clients;
             var list = new List<LobbyMember>(clients.Count);
+            int leader = -1;
             foreach (var kv in clients)
             {
                 if (kv.Value == null) continue;
                 int id = kv.Key;
+                if (leader < 0 || id < leader) leader = id;
                 if (!_serverMembers.TryGetValue(id, out var m))
-                    m = new LobbyMember { ClientId = id, Nick = $"Player {id}", Ready = false };
+                    m = new LobbyMember { ClientId = id, Nick = $"Player {id}" };
                 m.ClientId = id;
                 list.Add(m);
             }
-            nm.ServerManager.Broadcast(new LobbyStateBroadcast { Members = list.ToArray() });
+            nm.ServerManager.Broadcast(new LobbyStateBroadcast { Members = list.ToArray(), LeaderClientId = leader });
         }
 
         private void OnLobbyState(LobbyStateBroadcast msg, Channel channel)
         {
             _members = msg.Members ?? Array.Empty<LobbyMember>();
+            _leaderClientId = msg.LeaderClientId;
             _signalBus?.Fire(new LobbyChangedSignal());
         }
 

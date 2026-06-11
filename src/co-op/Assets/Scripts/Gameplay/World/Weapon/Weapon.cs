@@ -28,15 +28,22 @@ namespace Gameplay.World.Weapon
         [SerializeField] private Vector3 _pitchAxis = Vector3.forward;
         [SerializeField] private Transform _muzzle;
         [SerializeField] private Transform _cameraAnchor;
+        [Tooltip("Handles the operator's hands IK to while mounted (children of the pitch pivot; named GripL/GripR, else auto-created at a default — move them onto the real handles).")]
+        [SerializeField] private Transform _leftGrip;
+        [SerializeField] private Transform _rightGrip;
 
         [Header("Harpoon")]
         [SerializeField] private Harpoon _harpoon;
-        [Tooltip("Camera pivot used for aiming — the aim ray goes from here through the crosshair point. Falls back to the camera anchor.")]
-        [SerializeField] private Transform _cameraPivot;
-        [Tooltip("3D crosshair/reticle point in front of the camera. Aim direction = (crosshairPoint - cameraPivot).")]
+        [Tooltip("3D crosshair/reticle point on the turret. The camera centers on it; the aim ray goes from the camera anchor through it.")]
         [SerializeField] private Transform _crosshairPoint;
-        [Tooltip("Layers the aim/fire ray may hit. EXCLUDE the harpoon's own layer (and ideally the operator) so the shot never lands on the docked harpoon.")]
+        [Tooltip("Layers the aim/fire ray may hit. The cannon's own colliders are skipped automatically.")]
         [SerializeField] private LayerMask _aimMask = ~0;
+
+        [Header("Operator")]
+        [Tooltip("Spot the player must stand in to mount (e.g. an empty behind the cannon). Null = mount from anywhere within look-range.")]
+        [SerializeField] private Transform _operatorStand;
+        [Tooltip("How close (m) to the operator stand the player must be to mount.")]
+        [SerializeField] private float _operatorRadius = 1.5f;
 
         [Inject] private IConfigDataProvider _configs;
         [Inject] private SignalBus _signalBus;
@@ -64,6 +71,13 @@ namespace Gameplay.World.Weapon
 
         public Transform CameraAnchor =>
             _cameraAnchor != null ? _cameraAnchor : (_pitchPivot != null ? _pitchPivot : (_yawPivot != null ? _yawPivot : transform));
+
+        public Transform CrosshairPoint => _crosshairPoint;
+        public Transform GripLeft => _leftGrip;
+        public Transform GripRight => _rightGrip;
+
+        public bool CanMountFrom(Vector3 playerPos)
+            => _operatorStand == null || (playerPos - _operatorStand.position).sqrMagnitude <= _operatorRadius * _operatorRadius;
 
         public bool IsFree => OperatorClientId.Value == -1;
 
@@ -109,7 +123,19 @@ namespace Gameplay.World.Weapon
             if (_muzzle == null) _muzzle = aimRoot.Find("Muzzle");
             if (_cameraAnchor == null) _cameraAnchor = aimRoot.Find("CameraAnchor");
             if (_harpoon == null) _harpoon = GetComponentInChildren<Harpoon>(includeInactive: true);
-            if (_cameraPivot == null) _cameraPivot = _cameraAnchor;
+            if (_leftGrip == null) _leftGrip = aimRoot.Find("GripL");
+            if (_rightGrip == null) _rightGrip = aimRoot.Find("GripR");
+            if (_leftGrip == null) _leftGrip = MakeGrip(aimRoot, "GripL", -0.22f);
+            if (_rightGrip == null) _rightGrip = MakeGrip(aimRoot, "GripR", 0.22f);
+        }
+
+        private Transform MakeGrip(Transform parent, string name, float x)
+        {
+            var go = new GameObject(name);
+            go.transform.SetParent(parent, false);
+            Vector3 baseLocal = _cameraAnchor != null && _cameraAnchor.parent == parent ? _cameraAnchor.localPosition : Vector3.zero;
+            go.transform.localPosition = baseLocal + new Vector3(x, -0.2f, 0.12f);
+            return go.transform;
         }
 
         public override void OnStartNetwork()
@@ -184,7 +210,7 @@ namespace Gameplay.World.Weapon
             float pitchMin = cfg != null ? cfg.PitchMin : -45f;
             float pitchMax = cfg != null ? cfg.PitchMax : 20f;
             _desiredYaw = Mathf.Clamp(_desiredYaw + lookDelta.x * yawSens, -yawLimit, yawLimit);
-            _desiredPitch = Mathf.Clamp(_desiredPitch - lookDelta.y * pitchSens, pitchMin, pitchMax);
+            _desiredPitch = Mathf.Clamp(_desiredPitch + lookDelta.y * pitchSens, pitchMin, pitchMax);
         }
 
         public void ClientRequestMount() => ServerRequestMount();
@@ -203,16 +229,37 @@ namespace Gameplay.World.Weapon
         {
             var cfg = _configs?.Weapon;
             float range = cfg != null ? cfg.MuzzleRange : 200f;
-            Transform pivot = _cameraPivot != null ? _cameraPivot : CameraAnchor;
-            Vector3 from = pivot != null ? pivot.position : origin;
-            Vector3 dir = (_crosshairPoint != null && pivot != null)
-                ? (_crosshairPoint.position - from)
-                : (pivot != null ? pivot.forward : (_muzzle != null ? _muzzle.forward : transform.forward));
-            if (dir.sqrMagnitude < 1e-6f) dir = transform.forward;
+
+            // Aim STRICTLY along the cannon barrel through the 3D crosshair marker — NOT the camera /
+            // HUD screen centre. The ray starts at the harpoon nose (origin), so the shot always
+            // travels forward down the barrel.
+            Vector3 barrelFwd = _muzzle != null ? _muzzle.forward
+                : (_pitchPivot != null ? _pitchPivot.forward : transform.forward);
+
+            // Use the crosshair OBJECT's forward (its rotation is the authored aim axis) — NOT
+            // (crosshair.position - nose), which drifts sideways when the marker is offset laterally.
+            Vector3 dir = _crosshairPoint != null ? _crosshairPoint.forward : barrelFwd;
+
+            // Guard against a mis-oriented crosshair (facing backwards) that would fire backwards.
+            if (dir.sqrMagnitude < 1e-6f || Vector3.Dot(dir, barrelFwd) <= 0f)
+                dir = barrelFwd;
             dir.Normalize();
-            return Physics.Raycast(from, dir, out var hit, range, _aimMask, QueryTriggerInteraction.Ignore)
-                ? hit.point
-                : from + dir * range;
+
+            return RaycastIgnoringSelf(origin, dir, range, out var hit) ? hit.point : origin + dir * range;
+        }
+
+        private bool RaycastIgnoringSelf(Vector3 origin, Vector3 dir, float maxDist, out RaycastHit best)
+        {
+            best = default;
+            var hits = Physics.RaycastAll(origin, dir, maxDist, _aimMask, QueryTriggerInteraction.Ignore);
+            float bestDist = float.MaxValue;
+            bool found = false;
+            for (int i = 0; i < hits.Length; i++)
+            {
+                if (hits[i].collider.GetComponentInParent<Weapon>() == this) continue;
+                if (hits[i].distance < bestDist) { bestDist = hits[i].distance; best = hits[i]; found = true; }
+            }
+            return found;
         }
 
         public void ClientSubmitAim()
@@ -261,7 +308,7 @@ namespace Gameplay.World.Weapon
             Vector3 landing = target;
             Source hitSource = null;
             Enemy hitEnemy = null;
-            if (Physics.Raycast(origin, dir, out var rh, dist + 0.5f, _aimMask, QueryTriggerInteraction.Ignore))
+            if (RaycastIgnoringSelf(origin, dir, dist + 0.5f, out var rh))
             {
                 landing = rh.point;
                 hitSource = rh.collider.GetComponentInParent<Source>();

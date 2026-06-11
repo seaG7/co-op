@@ -72,6 +72,8 @@ namespace Gameplay.Player.Camera
         private Transform _spectateTarget;
         private Vector3 _spectateOffset;
         private bool _spectating;
+        private bool _mountAiming;
+        private Transform _mountLookTarget;
 
         private Vector3 _bobOffset;
         private Vector3 _swayOffset;
@@ -111,7 +113,22 @@ namespace Gameplay.Player.Camera
             _downed = false;
             _blending = false;
             _spectating = false;
+            _mountAiming = false;
+            _mountLookTarget = null;
             _camera.transform.SetParent(anchor, worldPositionStays: false);
+            _camera.transform.localPosition = Vector3.zero;
+            _camera.transform.localRotation = Quaternion.identity;
+        }
+
+        public void MountLookAt(Transform cameraPose, Transform lookTarget)
+        {
+            if (!base.IsOwner || _camera == null || cameraPose == null) return;
+            _downed = false;
+            _blending = false;
+            _spectating = false;
+            _mountAiming = true;
+            _mountLookTarget = lookTarget;
+            _camera.transform.SetParent(cameraPose, worldPositionStays: false);
             _camera.transform.localPosition = Vector3.zero;
             _camera.transform.localRotation = Quaternion.identity;
         }
@@ -122,6 +139,8 @@ namespace Gameplay.Player.Camera
             _downed = false;
             _blending = false;
             _spectating = false;
+            _mountAiming = false;
+            _mountLookTarget = null;
             _camera.transform.SetParent(transform, worldPositionStays: false);
             _camera.transform.localPosition = _localCameraOffset;
             _camera.transform.localRotation = Quaternion.identity;
@@ -131,6 +150,8 @@ namespace Gameplay.Player.Camera
         {
             if (!base.IsOwner || _camera == null) return;
             _spectating = false;
+            _mountAiming = false;
+            _mountLookTarget = null;
             _camera.transform.SetParent(transform, worldPositionStays: false);
 
             if (on)
@@ -207,6 +228,16 @@ namespace Gameplay.Player.Camera
             if (_spectating && _spectateTarget != null)
             {
                 FollowSpectate();
+                return;
+            }
+
+            if (_mountAiming && _mountLookTarget != null)
+            {
+                _shakeOffset = ComputeShake();
+                _camera.transform.localPosition = _shakeOffset;
+                Vector3 lookDir = _mountLookTarget.position - _camera.transform.position;
+                if (lookDir.sqrMagnitude > 1e-5f)
+                    _camera.transform.rotation = Quaternion.LookRotation(lookDir, Vector3.up);
                 return;
             }
 
