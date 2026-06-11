@@ -123,7 +123,6 @@ namespace Gameplay.World.Sources
             try
             {
                 ApplyStateVars(SourceState.Gather);
-                RpcAnnounce(SourceState.Gather, 0f, 0f);
 
                 await WaitUntilAssembledAsync(ct);
                 if (Destroyed.Value) return;
@@ -152,10 +151,13 @@ namespace Gameplay.World.Sources
 
         private async UniTask WaitUntilAssembledAsync(CancellationToken ct)
         {
+            float announceT = 0f;
             while (!Destroyed.Value)
             {
                 if (_weapon == null) _weapon = FindFirstObjectByType<WeaponBehaviour>();
                 if (_weapon != null && _weapon.IsAssembled) return;
+                announceT -= Time.deltaTime;
+                if (announceT <= 0f) { RpcAnnounce(SourceState.Gather, 0f, 0f); announceT = 0.5f; }
                 await UniTask.Yield(PlayerLoopTiming.Update, ct);
             }
         }

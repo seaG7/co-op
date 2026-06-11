@@ -17,18 +17,34 @@ namespace UI.Common
         private float _target;
         private float _current;
 
+        public static LoadingBarView Instance { get; private set; }
+
+        private void Awake()
+        {
+            Instance = this;
+            if (transform.parent == null) DontDestroyOnLoad(gameObject);
+            ResetBar();
+        }
+
+        private void OnDestroy()
+        {
+            if (Instance == this) Instance = null;
+        }
+
         public void SetProgress(float p)
         {
             float v = Mathf.Clamp01(p);
             if (v > _target) _target = v;
         }
 
-        protected override void OnBound()
+        public void ResetBar()
         {
             _target = 0f;
             _current = 0f;
             Apply();
         }
+
+        protected override void OnBound() => ResetBar();
 
         private void Update()
         {

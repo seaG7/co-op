@@ -40,9 +40,10 @@ namespace Infrastructure.Services.Scene
                 _loadingScreen.SetProgress(1f);
                 await UniTask.NextFrame(ct);
             }
-            finally
+            catch
             {
                 _loadingScreen.Hide();
+                throw;
             }
         }
     }

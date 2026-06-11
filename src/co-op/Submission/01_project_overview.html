@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Краткое описание проекта</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", Arial, sans-serif; color: #1a1a1a; font-size: 11pt; line-height: 1.45; }
+  h1 { font-size: 19pt; margin: 0 0 2pt; color: #14223c; }
+  h2 { font-size: 13.5pt; margin: 16pt 0 4pt; color: #1f3a66; border-bottom: 1.5px solid #c9d4e6; padding-bottom: 2pt; }
+  .sub { color: #555; margin: 0 0 10pt; font-size: 10.5pt; }
+  ul { margin: 4pt 0 4pt 0; padding-left: 18px; }
+  li { margin: 2.5pt 0; }
+  table { border-collapse: collapse; width: 100%; margin: 6pt 0; font-size: 10.5pt; }
+  th, td { border: 1px solid #c9d4e6; padding: 5px 8px; text-align: left; vertical-align: top; }
+  th { background: #eef2f8; }
+  code { background: #f0f2f5; padding: 0 3px; border-radius: 3px; font-size: 10pt; }
+  strong { color: #14223c; }
+</style>
+</head>
+<body>
+<h1>«Хранители неба» — краткое описание проекта</h1>
+<p class="sub"><strong>Команда:</strong> Данилов, Самсонова (БСБО-09-23) &nbsp;·&nbsp; <strong>Движок:</strong> Unity 6 (URP), Input System (new)</p>
+
+<h2>1. Идея</h2>
+<p>Кооперативный сетевой шутер <strong>от первого лица на двух игроков</strong>, раундовый, с волнами врагов. Светлая аниме-стилистика японской деревни; противники — жуткие чёрные пауки-мимики. Игроки совместно собирают и заряжают «пушку-гарпун», отбиваются от волн и уничтожают вражеский <strong>Источник</strong>. Гибель обоих игроков — поражение, уничтожение Источника — победа.</p>
+
+<h2>2. Сетевая архитектура</h2>
+<ul>
+  <li><strong>Сетевая библиотека:</strong> <strong>FishNet</strong> (не NGO и не Photon).</li>
+  <li><strong>Модель авторитета:</strong>
+    <ul>
+      <li><strong>Серверно-авторитетный геймплей</strong> — враги, Источник, пушка, раунд, здоровье игроков считаются на сервере и раздаются клиентам через <code>SyncVar</code> + <code>ObserversRpc</code>/<code>ServerRpc</code>;</li>
+      <li><strong>Owner-authoritative движение игрока</strong> — клиент-владелец двигает <code>CharacterController</code>, позиция идёт через клиент-авторитетный <code>NetworkTransform</code>, остальные интерполируют.</li>
+    </ul>
+  </li>
+  <li><strong>Режимы запуска (<code>SessionService</code>):</strong> <strong>Dedicated Server (Linux)</strong> — целевой: оба игрока как <strong>клиенты</strong> (<code>StartServerOnlyAsync</code> на сервере, <code>JoinAsync</code> на клиентах); <strong>Host / listen-server</strong> (<code>StartHostAsync</code>) — для локального теста.</li>
+  <li><strong>Транспорт:</strong> Tugboat (LiteNetLib, <strong>UDP</strong>), порт по умолчанию 7778.</li>
+  <li><strong>Лобби/комната:</strong> на <strong>FishNet Broadcast</strong> (без отдельного <code>NetworkObject</code>). Лидер = клиент с наименьшим ClientId; «создатель» запускает игру: клиент → <code>RequestStartBroadcast</code> → сервер проверяет и рассылает <code>GameStartingBroadcast</code>.</li>
+  <li><strong>Связь сети и логики:</strong> сетевые события сцены → локальный <code>SignalBus</code> через <code>NetworkEventBridge</code>; спавн игроков — серверный <code>PlayerSpawnService</code>, спавн объектов уровня — <code>MarkerBasedSpawnService</code> по маркерам.</li>
+</ul>
+
+<h2>3. Основные механики</h2>
+<ul>
+  <li><strong>Кооп-пушка (гарпун):</strong> заряжается «трупами» убитых врагов (зона <code>CorpseIntake</code> → <code>Weapon.CorpsesLoaded</code>); урон Источнику проходит только когда пушка заряжена.</li>
+  <li><strong>Модули пушки:</strong> игроки переносят детали и вставляют в слоты (<code>WeaponModuleSlot</code>); у слота «бюджет хвата» — насевшие враги могут сорвать модуль.</li>
+  <li><strong>Волны врагов:</strong> Источник спавнит волны; пауки ползают по любым поверхностям <strong>без NavMesh</strong> (<code>SurfaceCrawler</code>), прыгают и цепляются.</li>
+  <li><strong>Нокдаун / спасение:</strong> враг цепляется за игрока (нокдаун); спасти напарника = убить вцепившегося врага (без «hold-revive»).</li>
+  <li><strong>Ближний бой:</strong> ЛКМ (когда игрок не за пушкой) бьёт врагов по видимой позиции.</li>
+  <li><strong>Перенос предметов:</strong> серверный захват + клиентский «пин» (<code>PlayerCarry</code>, <code>Carryable</code>).</li>
+  <li><strong>Выпивка / опьянение:</strong> зажать E — стэкающееся опьянение, тряска камеры и пост-эффект.</li>
+</ul>
+
+<h2>4. Используемые технологии</h2>
+<table>
+  <tr><th>Технология</th><th>Назначение</th></tr>
+  <tr><td>Unity 6 (URP)</td><td>Движок и рендер</td></tr>
+  <tr><td>FishNet</td><td>Сетевой слой (server-authoritative)</td></tr>
+  <tr><td>Zenject</td><td>Внедрение зависимостей (ProjectContext / SceneContext)</td></tr>
+  <tr><td>UniTask</td><td>Вся асинхронность (без корутин)</td></tr>
+  <tr><td>Input System (new)</td><td>Ввод</td></tr>
+  <tr><td>UI — MVP (View + Presenter)</td><td>Своя обёртка окон <code>WindowView&lt;T&gt;</code></td></tr>
+  <tr><td>SignalBus (свой)</td><td>Локальная шина сигналов</td></tr>
+  <tr><td>DOTween</td><td>Твины UI/анимаций</td></tr>
+  <tr><td>ScriptableObject + <code>IConfigDataProvider</code></td><td>Конфиги как единый источник данных</td></tr>
+</table>
+</body>
+</html>

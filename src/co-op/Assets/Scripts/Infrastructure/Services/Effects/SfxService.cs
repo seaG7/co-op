@@ -61,7 +61,7 @@ namespace Infrastructure.Services.Effects
             EnsurePool();
             _2d.gameObject.SetActive(true);
             _2d.spatialBlend = 0f;
-            _2d.pitch = Random.Range(e.PitchRange.x, e.PitchRange.y);
+            _2d.pitch = ResolvePitch(e);
             _2d.PlayOneShot(SfxCatalog.PickClip(e, Random.Range(0, 10000)), e.Volume);
         }
 
@@ -106,9 +106,15 @@ namespace Infrastructure.Services.Effects
             src.transform.position = pos;
             src.clip = SfxCatalog.PickClip(e, Random.Range(0, 10000));
             src.volume = e.Volume;
-            src.pitch = Random.Range(e.PitchRange.x, e.PitchRange.y);
+            src.pitch = ResolvePitch(e);
             src.spatialBlend = e.SpatialBlend;
             src.loop = loop;
+        }
+
+        private static float ResolvePitch(SfxCatalog.Entry e)
+        {
+            float p = Random.Range(e.PitchRange.x, e.PitchRange.y);
+            return p <= 0.01f ? 1f : p;
         }
 
         private AudioSource FreeSource()

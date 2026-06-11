@@ -209,6 +209,12 @@ namespace Gameplay.World.Weapon
 
         private void OnMobCountChanged(int prev, int next, bool asServer) => FireModulesChanged();
 
+        protected override void OnInjected()
+        {
+            base.OnInjected();
+            FireModulesChanged();
+        }
+
         public void AddMob() { if (IsServerInitialized) MobCount.Value++; }
         public void RemoveMob() { if (IsServerInitialized) MobCount.Value = Mathf.Max(0, MobCount.Value - 1); }
 

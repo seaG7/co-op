@@ -155,6 +155,12 @@ namespace Gameplay.World.Weapon
         private void OnCorpsesChanged(int prev, int next, bool asServer)
             => _signalBus?.Fire(new CannonChargeChangedSignal(next, RequiredCorpses));
 
+        protected override void OnInjected()
+        {
+            base.OnInjected();
+            _signalBus?.Fire(new CannonChargeChangedSignal(CorpsesLoaded.Value, RequiredCorpses));
+        }
+
         public override void OnStartServer()
         {
             base.OnStartServer();

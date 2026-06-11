@@ -69,7 +69,8 @@ namespace UI.HUD
 
         private void OnSourceState(SourceStateChangedSignal s)
         {
-            _view.SetGather(s.State == SourceState.Gather && s.Total > 0f, s.Remaining, s.Total);
+            _view.SetGather(s.State == SourceState.Gather, s.Remaining, s.Total);
+            _view.SetWavePhase(s.State == SourceState.Open);
             _sourceOpen = s.State == SourceState.Open;
             UpdateBreakable();
         }
@@ -113,11 +114,11 @@ namespace UI.HUD
 
         private static string PromptText(InteractPromptKind kind) => kind switch
         {
-            InteractPromptKind.PickUp => "Hold to pick up",
-            InteractPromptKind.Drop => "Release to drop",
-            InteractPromptKind.PlaceOnSocket => "Release to place",
-            InteractPromptKind.Drink => "Зажмите E чтобы выпить",
-            _ => "Hold to interact",
+            InteractPromptKind.PickUp => "Зажмите, чтобы поднять",
+            InteractPromptKind.Drop => "Отпустите, чтобы бросить",
+            InteractPromptKind.PlaceOnSocket => "Отпустите, чтобы установить",
+            InteractPromptKind.Drink => "Зажмите E, чтобы выпить",
+            _ => "Зажмите, чтобы взаимодействовать",
         };
 
         private void Refresh() =>

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Data.Players;
 using Gameplay.Net;
 using Infrastructure.Services.Player;
@@ -19,7 +20,15 @@ namespace Gameplay.Player
         {
             base.OnStartClient();
             if (!base.IsOwner) return;
+            RegisterWhenReadyAsync().Forget();
+        }
 
+        private async UniTaskVoid RegisterWhenReadyAsync()
+        {
+            for (int i = 0; i < 900 && _playerService == null; i++)
+                await UniTask.Yield(PlayerLoopTiming.Update);
+
+            if (this == null || !base.IsOwner) return;
             if (_playerService == null)
             {
                 Debug.LogError("[PlayerNetwork] IPlayerService not injected after spawn — runtime injection failed.");

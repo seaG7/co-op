@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using FishNet.Object;
 using Gameplay.Player.Carry;
 using Gameplay.World.Items;
@@ -51,10 +52,26 @@ namespace Gameplay.Player.Movement
             PlayerItemPhysics.RegisterPlayer(_cc);
             if (_configs == null)
             {
-                Debug.LogError("[PlayerMovement] IConfigDataProvider not injected after spawn — runtime injection failed.");
                 enabled = false;
+                EnableWhenReadyAsync().Forget();
                 return;
             }
+            if (base.IsOwner) BindInput();
+        }
+
+        private async UniTaskVoid EnableWhenReadyAsync()
+        {
+            for (int i = 0; i < 900 && _configs == null; i++)
+                await UniTask.Yield(PlayerLoopTiming.Update);
+
+            if (this == null) return;
+            if (_configs == null)
+            {
+                Debug.LogError("[PlayerMovement] IConfigDataProvider not injected after spawn — runtime injection failed.");
+                return;
+            }
+
+            enabled = true;
             if (base.IsOwner) BindInput();
         }
 

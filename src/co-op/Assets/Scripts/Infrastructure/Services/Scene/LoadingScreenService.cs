@@ -7,23 +7,32 @@ namespace Infrastructure.Services.Scene
     public sealed class LoadingScreenService : ILoadingScreenService
     {
         private readonly IWindowService _windowService;
-        private LoadingBarView _view;
 
         public LoadingScreenService(IWindowService windowService) => _windowService = windowService;
 
         public void Show()
         {
-            if (_view == null) _view = _windowService.OpenAndGet<LoadingBarView>(WindowID.Loading);
-            _view?.SetProgress(0f);
+            var view = Resolve();
+            if (view == null) return;
+            view.gameObject.SetActive(true);
+            view.ResetBar();
         }
 
-        public void SetProgress(float p) => _view?.SetProgress(p);
+        public void SetProgress(float p)
+        {
+            if (LoadingBarView.Instance != null) LoadingBarView.Instance.SetProgress(p);
+        }
 
         public void Hide()
         {
-            if (_view == null) return;
-            _windowService.Close(WindowID.Loading);
-            _view = null;
+            if (LoadingBarView.Instance != null) LoadingBarView.Instance.gameObject.SetActive(false);
+        }
+
+        private LoadingBarView Resolve()
+        {
+            if (LoadingBarView.Instance == null)
+                _windowService.OpenAndGet<LoadingBarView>(WindowID.Loading);
+            return LoadingBarView.Instance;
         }
     }
 }

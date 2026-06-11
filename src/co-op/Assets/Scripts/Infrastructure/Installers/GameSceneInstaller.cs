@@ -57,7 +57,6 @@ namespace Infrastructure.Installers
 
         private void RegisterSceneContainer()
         {
-
             Container.BindInterfacesAndSelfTo<SceneContainerLifetime>().AsSingle().NonLazy();
         }
 

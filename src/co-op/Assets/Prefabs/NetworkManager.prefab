@@ -69,9 +69,9 @@ MonoBehaviour:
   _dontRoute: 0
   _reuseAddress: 0
   _ipv4BindAddress: 
-  _enableIpv6: 1
-  _ipv6BindAddress: 
-  _port: 7770
+  _enableIpv6: 0
+  _ipv6BindAddress:
+  _port: 7778
   _maximumClients: 4095
   _clientAddress: localhost
 --- !u!114 &-286534826326452862

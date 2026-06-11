@@ -1,4 +1,5 @@
 using System;
+using Cysharp.Threading.Tasks;
 using FishNet.Object;
 using Infrastructure.Services.DI;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace Gameplay.Net
     public abstract class InjectableNetworkBehaviour : NetworkBehaviour, IRuntimeInjectable
     {
         private bool _injected;
+        private bool _retrying;
 
         public override void OnStartNetwork()
         {
@@ -19,8 +21,8 @@ namespace Gameplay.Net
 
         public override void OnStopNetwork()
         {
-
             _injected = false;
+            _retrying = false;
             base.OnStopNetwork();
         }
 
@@ -31,22 +33,55 @@ namespace Gameplay.Net
             var container = ResolveSceneContainer();
             if (container == null)
             {
-                Debug.LogWarning(
-                    $"[InjectableNetworkBehaviour] No scene DiContainer available to inject '{name}'. " +
-                    "Falling back to serialized data. (Is GameSceneInstaller present and ProjectContext alive?)",
-                    this);
+                if (!_retrying)
+                {
+                    _retrying = true;
+                    RetryInjectAsync().Forget();
+                }
                 return;
             }
 
+            DoInject(container);
+        }
+
+        private void DoInject(DiContainer container)
+        {
             try
             {
                 container.InjectGameObject(gameObject);
                 _injected = true;
+                OnInjected();
             }
             catch (Exception e)
             {
                 Debug.LogError($"[InjectableNetworkBehaviour] Injection failed for '{name}': {e.Message}", this);
             }
+        }
+
+        protected virtual void OnInjected() { }
+
+        private async UniTaskVoid RetryInjectAsync()
+        {
+            for (int i = 0; i < 900 && !_injected; i++)
+            {
+                await UniTask.Yield(PlayerLoopTiming.Update);
+                if (this == null) return;
+                if (_injected) return;
+                var container = ResolveSceneContainer();
+                if (container != null)
+                {
+                    DoInject(container);
+                    _retrying = false;
+                    return;
+                }
+            }
+
+            _retrying = false;
+            if (!_injected)
+                Debug.LogWarning(
+                    $"[InjectableNetworkBehaviour] Scene DiContainer never became available for '{name}'. " +
+                    "Falling back to serialized data. (Is GameSceneInstaller present and ProjectContext alive?)",
+                    this);
         }
 
         public void MarkAlreadyInjected() => _injected = true;

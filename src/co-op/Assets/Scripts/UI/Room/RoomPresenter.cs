@@ -17,6 +17,7 @@ namespace UI.Room
         private readonly ISessionService _session;
         private readonly IGameStateMachine _stateMachine;
         private readonly SignalBus _signalBus;
+        private CancellationTokenSource _cts;
 
         public RoomPresenter(RoomView view,
                              ILobbyService lobby,
@@ -39,14 +40,26 @@ namespace UI.Room
             _signalBus.Subscribe<LobbyChangedSignal>(OnLobbyChanged);
             _lobby.RefreshLobby();
             Render();
+            _cts = new CancellationTokenSource();
+            WaitForLocalIdAsync(_cts.Token).Forget();
         }
 
         public void Dispose()
         {
+            _cts?.Cancel();
+            _cts?.Dispose();
+            _cts = null;
             _view.NicknameChanged -= OnNicknameChanged;
             _view.StartClicked -= OnStart;
             _view.LeaveClicked -= OnLeave;
             _signalBus.TryUnsubscribe<LobbyChangedSignal>(OnLobbyChanged);
+        }
+
+        private async UniTaskVoid WaitForLocalIdAsync(CancellationToken ct)
+        {
+            while (!ct.IsCancellationRequested && _lobby.LocalClientId < 0)
+                await UniTask.Yield(PlayerLoopTiming.Update);
+            if (!ct.IsCancellationRequested) Render();
         }
 
         private void OnNicknameChanged(string nick) => _lobby.SetLocalNickname(nick);

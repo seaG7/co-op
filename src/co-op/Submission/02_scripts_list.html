@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Список собственных скриптов</title>
+<style>
+  @page { size: A4; margin: 16mm 14mm; }
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", Arial, sans-serif; color: #1a1a1a; font-size: 10pt; line-height: 1.38; }
+  h1 { font-size: 18pt; margin: 0 0 6pt; color: #14223c; }
+  h2 { font-size: 12.5pt; margin: 14pt 0 4pt; color: #1f3a66; border-bottom: 1.5px solid #c9d4e6; padding-bottom: 2pt; }
+  p.note { color: #555; font-size: 9.5pt; margin: 0 0 8pt; }
+  ul { margin: 4pt 0; padding-left: 16px; }
+  li { margin: 2pt 0; }
+  table { border-collapse: collapse; width: 100%; margin: 6pt 0; font-size: 9pt; }
+  th, td { border: 1px solid #c9d4e6; padding: 4px 6px; text-align: left; vertical-align: top; }
+  th { background: #eef2f8; }
+  td:first-child { white-space: nowrap; }
+  code { background: #f0f2f5; padding: 0 2px; border-radius: 3px; font-size: 8.5pt; }
+  strong { color: #14223c; }
+  table { page-break-inside: auto; }
+  tr { page-break-inside: avoid; }
+</style>
+</head>
+<body>
+<h1>«Хранители неба» — список собственных скриптов</h1>
+<p class="note">Все скрипты — в <code>Assets/Scripts/</code> (ассембли <code>CoOp.Main</code>, <code>CoOp.Data</code>, <code>CoOp.EditorTools</code>). Плагины (FishNet, Zenject, UniTask, DOTween) и <code>DownloadedAssets</code> сюда не входят.</p>
+
+<h2>1. Сетевые объекты (FishNet <code>NetworkBehaviour</code>) — с сетевыми компонентами</h2>
+<table>
+<tr><th>Скрипт</th><th>Назначение</th><th>Сетевые компоненты</th></tr>
+<tr><td>Net/InjectableNetworkBehaviour</td><td>Базовый класс всех сетевых объектов: DI-инъекция в <code>OnStartNetwork</code> через scene-контейнер (идемпотентно, безопасно для пулинга)</td><td><code>NetworkBehaviour</code>; <code>OnStartNetwork</code></td></tr>
+<tr><td>Player/PlayerNetwork</td><td>Корень игрока; регистрирует локального игрока (<code>ILocalPlayer</code>)</td><td><code>NetworkBehaviour</code>; <code>OnStartClient</code> (owner)</td></tr>
+<tr><td>Player/Movement/PlayerMovement</td><td>Движение игрока (owner-authoritative, <code>CharacterController</code>)</td><td><code>NetworkBehaviour</code>; клиент-авторитетный <code>NetworkTransform</code></td></tr>
+<tr><td>Player/Look/PlayerLookController</td><td>Поворот тела и питч камеры; синхронизация питча для не-владельцев</td><td><code>NetworkBehaviour</code>; <code>SyncVar&lt;float&gt;</code> (питч); <code>[ServerRpc]</code> SubmitPitch</td></tr>
+<tr><td>Player/Camera/PlayerCameraRig</td><td>Камера от первого лица, тряска, эффекты (только у владельца)</td><td><code>NetworkBehaviour</code> (owner-gated)</td></tr>
+<tr><td>Player/Carry/PlayerCarry</td><td>Перенос предметов: серверный захват + клиентский «пин»</td><td><code>NetworkBehaviour</code>; <code>[ServerRpc]</code> + <code>[ObserversRpc]</code></td></tr>
+<tr><td>Player/Combat/PlayerMelee</td><td>Ближний бой (ЛКМ) по видимой позиции врага</td><td><code>NetworkBehaviour</code>; <code>[ServerRpc]</code></td></tr>
+<tr><td>Player/Combat/PlayerDrink</td><td>Механика «выпить» (зажать E)</td><td><code>NetworkBehaviour</code>; <code>[ServerRpc]</code></td></tr>
+<tr><td>Player/Vitals/PlayerDrunk</td><td>Состояние опьянения (стэк интенсивности)</td><td><code>NetworkBehaviour</code>; <code>SyncVar</code></td></tr>
+<tr><td>Player/Vitals/PlayerVitals</td><td>Здоровье / нокдаун / спасение игрока; «все выбыли»</td><td><code>NetworkBehaviour</code>; <code>SyncVar</code>; серверные ServerKnockDown/ServerRevive</td></tr>
+<tr><td>Player/Weapons/PlayerWeaponControl</td><td>Управление пушкой, когда игрок за ней</td><td><code>NetworkBehaviour</code></td></tr>
+<tr><td>Player/View/PlayerModelVisibility</td><td>Скрытие своей модели от первого лица</td><td><code>NetworkBehaviour</code></td></tr>
+<tr><td>World/Enemies/Enemy</td><td>Враг-паук: серверный FSM, цепляние за игрока/модуль, эффекты</td><td><code>NetworkBehaviour</code>; <code>SyncVar</code> (id игрока); <code>[ObserversRpc]</code></td></tr>
+<tr><td>World/Weapon/Weapon</td><td>Пушка/гарпун: заряд трупами, выстрел, урон Источнику</td><td><code>NetworkBehaviour</code>; <code>SyncVar</code> CorpsesLoaded; <code>[ServerRpc]</code>/<code>[ObserversRpc]</code></td></tr>
+<tr><td>World/Weapon/WeaponModuleSlot</td><td>Слот модуля: занятость, «бюджет хвата», эжект под атакой</td><td><code>NetworkBehaviour</code>; <code>SyncVar</code> IsOccupied/MobCount</td></tr>
+<tr><td>World/Source/Source</td><td>Вражеский Источник: фазы, спавн волн, уязвимость</td><td><code>NetworkBehaviour</code>; <code>SyncVar</code> State; <code>[ObserversRpc]</code></td></tr>
+<tr><td>World/Round/RoundNetworkController</td><td>Итог раунда (победа/поражение) → сигнал клиентам</td><td><code>NetworkBehaviour</code>; <code>SyncVar</code> RoundOutcome; <code>[ObserversRpc]</code></td></tr>
+<tr><td>World/Items/Carryable</td><td>Переносимый предмет: состояние захвата / установки в слот</td><td><code>NetworkBehaviour</code>; <code>SyncVar</code> (IsCarried/IsSnapped)</td></tr>
+<tr><td>World/Items/Drinkable</td><td>Переносимая «выпивка»</td><td><code>NetworkBehaviour</code>; <code>SyncVar</code></td></tr>
+<tr><td>World/Items/Corpse</td><td>Маркер «труп» — заряд для пушки (на объекте Carryable)</td><td>— (логика на Carryable)</td></tr>
+<tr><td>World/Portals/Portal</td><td>Портал (вырезается из дизайна)</td><td><code>NetworkBehaviour</code></td></tr>
+<tr><td>World/Weapon/CorpseIntake</td><td>Триггер-зона загрузки трупа в пушку</td><td>серверный триггер → Weapon.AddCorpse</td></tr>
+</table>
+
+<h2>2. Сетевые сервисы и инфраструктура</h2>
+<table>
+<tr><th>Скрипт</th><th>Назначение</th><th>Сетевые компоненты</th></tr>
+<tr><td>Network/NetworkService</td><td>Обёртка над FishNet <code>NetworkManager</code>: старт сервера/клиента, загрузка глобальной сцены</td><td>NetworkManager, ServerManager/ClientManager, SceneManager</td></tr>
+<tr><td>Network/SessionService</td><td>Сессия: StartServerOnly/StartHost/Join, состояние, события клиентов</td><td>ServerManager.Clients, OnRemoteConnectionState</td></tr>
+<tr><td>Network/NetworkEventBridge</td><td>Сетевые события сцены → локальный <code>SignalBus</code></td><td>подписка на FishNet-события</td></tr>
+<tr><td>Lobby/LobbyService</td><td>Лобби/комната: участники, ники, лидер, запуск игры</td><td><strong>FishNet Broadcast</strong> (без NetworkObject): client→server SetNickname/RequestStart, server→client LobbyState/GameStarting</td></tr>
+<tr><td>Lobby/LobbyBroadcasts</td><td>Структуры сообщений лобби</td><td><code>struct : IBroadcast</code></td></tr>
+<tr><td>Spawn/PlayerSpawnService</td><td>Серверный спавн игрока на каждое подключение</td><td>server, OnRemoteConnectionState + ServerManager.Clients</td></tr>
+<tr><td>Spawn/NetworkSpawnService</td><td>Спавн/деспавн сетевых объектов</td><td>ServerManager.Spawn/Despawn</td></tr>
+<tr><td>Spawn/MarkerBasedSpawnService</td><td>Серверный спавн объектов уровня по маркерам, LevelReadySignal</td><td>server spawn</td></tr>
+<tr><td>Spawn/WeaponBaseSpawner</td><td>Спавн базы пушки на старте уровня</td><td>server spawn</td></tr>
+<tr><td>DI/SceneDiContainerRegistry</td><td>Реестр scene-контейнера — через него сетевые объекты получают зависимости</td><td>используется в OnStartNetwork</td></tr>
+</table>
+
+<h2>3. Состояния и ядро (плейн-C#)</h2>
+<ul>
+<li><code>Bootstrap/EntryPoint</code> — точка входа, само-инъекция и запуск конечного автомата.</li>
+<li><code>Core/StateMachine/</code> — <code>IState</code>, <code>IGameStateMachine</code>, <code>GameStateMachine</code> (асинхронный КА на UniTask).</li>
+<li><code>Core/States/</code> — <code>BootstrapState</code> (загрузка конфигов; на dedicated-сервере сразу поднимает сервер), <code>LoadMainMenuState</code>, <code>MainMenuState</code>, <code>LobbyState</code>, <code>LoadGameState</code> (загрузка сцены + прогресс-бар), <code>GameplayState</code>, <code>GameOverState</code>.</li>
+</ul>
+
+<h2>4. Инфраструктура (прочие сервисы)</h2>
+<ul>
+<li><strong>UI:</strong> <code>WindowService</code>, <code>UIFactory</code> (окна по <code>WindowID</code>), <code>LoadingScreenService</code> (экран загрузки с прогрессом).</li>
+<li><strong>Ввод:</strong> <code>InputService</code> (новый Input System).</li>
+<li><strong>Игроки:</strong> <code>PlayerService</code> (ожидание/реестр локального игрока).</li>
+<li><strong>Камера:</strong> <code>CameraService</code>.</li>
+<li><strong>Эффекты:</strong> <code>VfxService</code>, <code>SfxService</code> (пулы; по <code>VfxId</code>/<code>SfxId</code>), <code>EnemyEffectBindings</code>, <code>CameraShakeBindings</code> (сигналы → эффекты).</li>
+<li><strong>Враги:</strong> <code>EnemyTargetingService</code> + <code>TargetingMath</code> (выбор цели).</li>
+<li><strong>Настройки:</strong> <code>SettingsService</code> (громкость через <code>AudioListener.volume</code> + чувствительность мыши, сохранение в <code>PlayerPrefs</code>).</li>
+<li><strong>Конфиги/сцены:</strong> <code>ConfigDataProvider</code> (загрузка SO), <code>SceneLoaderService</code>.</li>
+<li><strong>Раунд:</strong> <code>RoundService</code> (бэкенд раунда). <strong>Фабрики:</strong> <code>GameObjectFactory</code>.</li>
+</ul>
+
+<h2>5. Игровая логика без сети (плейн-C# / Mono)</h2>
+<ul>
+<li><strong>ИИ врага</strong> (<code>World/Enemies/AI/</code>): <code>EnemyBrain</code>, <code>EnemyContext</code>, <code>EnemyStateMachine</code>, состояния <code>Pursue/Pounce/Latched/Dead</code>, <code>SurfaceCrawler</code> (ползание без NavMesh), <code>PhysicsSurfaceProbe</code>, <code>SurfaceSensor</code>, <code>EnemyAIContracts</code>.</li>
+<li><strong>Визуал паука</strong> (<code>Mimic/</code>): <code>Mimic</code>, <code>Leg</code>, <code>MimicVisualDriver</code> (процедурные ноги, цепляние за кости).</li>
+<li><strong>Движение</strong> (<code>Player/Movement/</code>): <code>MovementCalculator</code>, <code>JumpController</code>, <code>GroundProbe</code>, <code>MovementSnapshot</code>, <code>StepCadence</code>.</li>
+<li><strong>Анимация</strong> (<code>Player/Animation/</code>): <code>PlayerAnimator</code>, <code>PlayerHandIK</code>, <code>IkWeightController</code>, <code>AnimatorStateResolver</code>, <code>HandSide</code>.</li>
+<li><strong>Переноска (поза):</strong> <code>CarrySolver</code>, <code>CarryHold</code>. <strong>Пушка (детали):</strong> <code>WeaponBase</code>, <code>WeaponModulePart</code>, <code>Harpoon</code>, <code>HarpoonRope</code>.</li>
+<li><strong>Прочее:</strong> <code>PlayerItemPhysics</code>, <code>DrunkPostFx</code>, маркеры спавна <code>InteractableSpawnMarker</code>/<code>PlayerSpawnArea</code>/<code>SpawnPoint</code>.</li>
+</ul>
+
+<h2>6. UI (MVP: View + Presenter)</h2>
+<p>По экрану — пара View+Presenter: <strong>MainMenu</strong>, <strong>Room</strong> (комната лобби), <strong>HUD</strong> (+ <code>CannonHudPanel</code> — состояния модулей пушки), <strong>GameOver</strong>, <strong>Pause</strong>, <strong>Settings</strong>, Connect (в простое). Общее (<code>UI/Common/</code>): <code>WindowView</code>/<code>WindowView&lt;T&gt;</code>, <code>IPresenter</code>/<code>EmptyPresenter</code>, <code>LoadingBarView</code> (прогресс-бар), <code>UIButtonAnimator</code>, <code>UITween</code>, <code>UIPanelPop</code>, <code>PauseMenuController</code>.</p>
+
+<h2>7. Данные и сигналы</h2>
+<ul>
+<li><strong><code>Data/</code> (CoOp.Data):</strong> конфиги-<code>ScriptableObject</code> (<code>WindowsConfig</code>, <code>WeaponConfig</code>, <code>VitalsConfig</code>, <code>MovementConfig</code>, <code>CarryConfig</code>, <code>AnimationConfig</code>, <code>NetworkConfig</code>, <code>VfxCatalog</code>, <code>SfxCatalog</code>, <code>InteractableItemConfig</code>), перечисления (<code>WindowID</code>, <code>SourceState</code>, <code>RoundOutcome</code>, <code>PlayerLifeState</code>, <code>VfxId</code>, <code>SfxId</code>), <code>Platform</code> (детект dedicated-сервера), <code>ILocalPlayer</code>, пути.</li>
+<li><strong><code>Signals/</code>:</strong> свой <code>SignalBus</code> + наборы сигналов (<code>NetworkSignals</code>, <code>RoundSignals</code>, <code>PlayerLifeSignals</code>, <code>EnemySignals</code>, <code>LobbySignals</code>, <code>ItemSignals</code>, <code>WorldSignals</code>).</li>
+</ul>
+
+<h2>8. Редакторные инструменты (<code>EditorTools</code>, только редактор)</h2>
+<p><code>CoOpToolsMenu</code> (меню сборки/запуска), <code>CarryTunerWindow</code> (настройка поз переноски), <code>PlayerPrefabTools</code>, гизмо/оверлеи спавна и пр. В рантайм-сборку не входят.</p>
+</body>
+</html>

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using FishNet.Object;
 using Gameplay.Player.Look;
 using Gameplay.Player.Movement;
@@ -349,6 +350,15 @@ namespace Gameplay.Player.Camera
         {
             base.OnStartClient();
             if (!base.IsOwner) return;
+            SetupWhenReadyAsync().Forget();
+        }
+
+        private async UniTaskVoid SetupWhenReadyAsync()
+        {
+            for (int i = 0; i < 900 && _cameraService == null; i++)
+                await UniTask.Yield(PlayerLoopTiming.Update);
+
+            if (this == null || !base.IsOwner) return;
 
             _camera = _cameraService?.ResolveCamera();
             if (_camera == null)

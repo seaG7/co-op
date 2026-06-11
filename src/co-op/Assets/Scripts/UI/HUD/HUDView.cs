@@ -34,6 +34,10 @@ namespace UI.HUD
         [Tooltip("Shown while the cannon is charged AND the source is exposed — 'break the Source now'.")]
         [SerializeField] private GameObject _shootNowRoot;
 
+        [Header("Wave phase")]
+        [Tooltip("Panel shown while the wave is active (source Open). Holds your static 'Обороняйте орудие' text.")]
+        [SerializeField] private GameObject _wavePhaseRoot;
+
         [Header("Weapon")]
         [Tooltip("Crosshair shown while operating the weapon.")]
         [SerializeField] private GameObject _crosshair;
@@ -94,13 +98,20 @@ namespace UI.HUD
         {
             if (_gatherRoot != null) _gatherRoot.SetActive(show);
             if (!show) return;
-            if (_gatherFill != null) _gatherFill.fillAmount = total > 0.01f ? Mathf.Clamp01(remaining / total) : 0f;
-            if (_gatherLabel != null) _gatherLabel.text = $"Wave in {Mathf.CeilToInt(Mathf.Max(0f, remaining))}s";
+            bool counting = total > 0.01f;
+            if (_gatherFill != null) _gatherFill.fillAmount = counting ? Mathf.Clamp01(remaining / total) : 0f;
+            if (_gatherLabel != null)
+                _gatherLabel.text = counting ? $"Волна через {Mathf.CeilToInt(Mathf.Max(0f, remaining))} с" : "СОБЕРИТЕ МОДУЛИ";
         }
 
         public void SetShootNow(bool show)
         {
             if (_shootNowRoot != null) _shootNowRoot.SetActive(show);
+        }
+
+        public void SetWavePhase(bool show)
+        {
+            if (_wavePhaseRoot != null) _wavePhaseRoot.SetActive(show);
         }
 
         public void SetCrosshair(bool on)
@@ -112,7 +123,7 @@ namespace UI.HUD
         {
             if (_chargeRoot != null) _chargeRoot.SetActive(required > 0);
             if (_chargeFill != null) _chargeFill.fillAmount = required > 0 ? Mathf.Clamp01((float)loaded / required) : 0f;
-            if (_chargeLabel != null) _chargeLabel.text = $"Charge {loaded}/{Mathf.Max(0, required)}";
+            if (_chargeLabel != null) _chargeLabel.text = $"Заряд {loaded}/{Mathf.Max(0, required)}";
             if (loaded > _lastLoaded && _chargeRoot != null) UITween.Punch(_chargeRoot.transform, 0.22f, 0.35f);
             _lastLoaded = loaded;
             if (_cannonPanel != null) _cannonPanel.SetCharge(loaded, required);
@@ -128,9 +139,9 @@ namespace UI.HUD
             bool show = underAttack > 0 || detached > 0;
             if (_modulesWarnRoot != null) _modulesWarnRoot.SetActive(show);
             if (!show || _modulesWarnLabel == null) return;
-            if (detached > 0 && underAttack > 0) _modulesWarnLabel.text = $"Cannon: {detached} down, {underAttack} under attack!";
-            else if (detached > 0) _modulesWarnLabel.text = $"Cannon: {detached} module(s) down — reinstall!";
-            else _modulesWarnLabel.text = $"Cannon under attack ({underAttack})!";
+            if (detached > 0 && underAttack > 0) _modulesWarnLabel.text = $"Орудие: сбито {detached}, под атакой {underAttack}!";
+            else if (detached > 0) _modulesWarnLabel.text = $"Орудие: сбито модулей — {detached}, верните на место!";
+            else _modulesWarnLabel.text = $"Орудие под атакой ({underAttack})!";
         }
 
         public void SetCannonModules(CannonModuleState[] modules, int assembled, int total)
@@ -165,6 +176,7 @@ namespace UI.HUD
             SetInteractPrompt(false);
             SetGather(false);
             SetShootNow(false);
+            SetWavePhase(false);
             SetCrosshair(false);
             SetCharge(0, 0);
             SetChargePrompt(false);
