@@ -6,6 +6,7 @@ using Data.Effects;
 using FishNet.Object;
 using Gameplay.Player.Vitals;
 using Gameplay.World.Enemies.AI;
+using Gameplay.World.Items;
 using Infrastructure.Services.Effects;
 using Infrastructure.Services.Enemies;
 using Infrastructure.Services.Spawn;
@@ -185,8 +186,9 @@ namespace Gameplay.World.Enemies
 
         private void SpawnCorpse()
         {
-            if (_corpsePrefab != null && _spawner != null)
-                _spawner.SpawnNetworked(_corpsePrefab, transform.position, transform.rotation, owner: null);
+            if (_corpsePrefab == null || _spawner == null) return;
+            var go = _spawner.SpawnNetworked(_corpsePrefab, transform.position, transform.rotation, owner: null);
+            if (go != null && go.TryGetComponent<Carryable>(out var c)) c.ServerMakeDynamic();
         }
 
         [ObserversRpc(RunLocally = true)]

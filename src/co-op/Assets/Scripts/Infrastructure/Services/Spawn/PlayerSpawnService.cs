@@ -188,7 +188,7 @@ namespace Infrastructure.Services.Spawn
             foreach (var kv in clients)
             {
                 var conn = kv.Value;
-                if (conn == null || !conn.IsValid || !conn.IsLocalClient) continue;
+                if (conn == null || !conn.IsValid) continue;
                 if (_spawnedByClientId.ContainsKey(conn.ClientId)) continue;
                 SpawnPlayerAsync(conn, _serviceCts.Token).Forget();
             }

@@ -44,6 +44,14 @@ namespace Infrastructure.Services.Network
                 Debug.LogError("[NetworkService] NetworkManager is null. Check ProjectInstaller — NetworkManager prefab field must be assigned.");
                 return;
             }
+
+            if (_nm.transform.parent != null)
+            {
+                _nm.transform.SetParent(null);
+                UnityEngine.Object.DontDestroyOnLoad(_nm.gameObject);
+                Debug.Log("[NetworkService] Moved NetworkManager to scene root (was parented — U6 DontDestroyOnLoad/TimeManager fix).");
+            }
+
             _nm.ServerManager.OnServerConnectionState += OnServerStateChanged;
             _nm.ClientManager.OnClientConnectionState += OnClientStateChanged;
         }
@@ -76,7 +84,9 @@ namespace Infrastructure.Services.Network
             _nm.ServerManager.OnServerConnectionState += Handler;
             try
             {
+                Debug.Log($"[NetworkService] StartConnection on {transportName}, port {port} (NM parent: {(_nm.transform.parent != null ? _nm.transform.parent.name : "<root>")}).");
                 _nm.ServerManager.StartConnection(port);
+                Debug.Log("[NetworkService] StartConnection returned; awaiting server-started event…");
                 var timeout = TimeSpan.FromSeconds(ConnectTimeoutSec);
                 var (isTimeout, ok) = await tcs.Task
                     .AttachExternalCancellation(ct)

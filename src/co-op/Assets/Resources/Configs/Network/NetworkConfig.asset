@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: NetworkConfig
   m_EditorClassIdentifier: Assembly-CSharp::Data.Configs.NetworkConfig
   DefaultPort: 7778
-  DefaultAddress: 127.0.0.1
+  DefaultAddress: 2.26.100.135
   LocalhostAddress: 127.0.0.1
   ConnectTimeoutSec: 10
+  UseDedicatedServer: 1

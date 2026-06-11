@@ -49,6 +49,7 @@ namespace Gameplay.Player.Carry
         private NetworkConnection _heldByConnection;
 
         private bool _interactionSuppressed;
+        private bool _wasHoldingCorpse;
 
         private void Awake()
         {
@@ -275,7 +276,7 @@ namespace Gameplay.Player.Carry
                 }
             }
 
-            if (held == null || _carryAnchor == null || held.IsSnapped.Value) return;
+            if (held == null || _carryAnchor == null || held.IsSnapped.Value || held.Consuming.Value) return;
 
             if (held.HoldTuning)
             {
@@ -366,17 +367,39 @@ namespace Gameplay.Player.Carry
 
         private void Update()
         {
-            if (_heldItem != null) { CurrentHeld = _heldItem; return; }
-
-            var all = Carryable.All;
-            int myId = base.OwnerId;
-            Carryable found = null;
-            for (int i = 0; i < all.Count; i++)
+            if (base.IsServerInitialized && _heldItem != null && _heldItem.Consuming.Value)
             {
-                var c = all[i];
-                if (c != null && c.HolderClientId.Value == myId) { found = c; break; }
+                _carryService.Release(_heldItem, _heldByConnection, Vector3.zero);
+                _heldItem = null;
+                _heldByConnection = null;
+                if (base.Owner != null && base.Owner.IsValid && !base.Owner.IsHost)
+                    SetHeldItemOnOwner(base.Owner, null);
             }
-            CurrentHeld = found;
+
+            if (_heldItem != null)
+            {
+                CurrentHeld = _heldItem;
+            }
+            else
+            {
+                var all = Carryable.All;
+                int myId = base.OwnerId;
+                Carryable found = null;
+                for (int i = 0; i < all.Count; i++)
+                {
+                    var c = all[i];
+                    if (c != null && c.HolderClientId.Value == myId) { found = c; break; }
+                }
+                CurrentHeld = found;
+            }
+
+            if (!base.IsOwner) return;
+            bool corpse = CurrentHeld != null && CurrentHeld.GetComponent<Corpse>() != null;
+            if (corpse != _wasHoldingCorpse)
+            {
+                _wasHoldingCorpse = corpse;
+                _signalBus?.Fire(new CorpseHeldSignal(corpse));
+            }
         }
 
         public void SetInteractionSuppressed(bool suppressed) => _interactionSuppressed = suppressed;

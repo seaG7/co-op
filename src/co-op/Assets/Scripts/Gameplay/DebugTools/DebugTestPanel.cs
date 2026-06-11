@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
 using FishNet;
 using Gameplay.Player.Vitals;
 using Gameplay.World.Enemies;
@@ -27,6 +27,7 @@ namespace Gameplay.DebugTools
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Bootstrap()
         {
+            if (Application.isBatchMode) return;
             if (_instance != null) return;
             var go = new GameObject("[DebugTestPanel]");
             DontDestroyOnLoad(go);

@@ -44,6 +44,13 @@ namespace Gameplay.World.Items
         public readonly SyncVar<bool> HasBeenGrabbedOnce = new(false);
         public readonly SyncVar<bool> IsSnapped = new(false);
 
+        public readonly SyncVar<bool> Consuming = new(false);
+        private readonly SyncVar<Vector3> _consumeStart = new();
+        private readonly SyncVar<Vector3> _consumeEnd = new();
+        private readonly SyncVar<float> _consumeProgress = new(0f);
+        private float _consumeDuration = 0.6f;
+        private Vector3 _baseScale = Vector3.one;
+
         public Rigidbody Body => _rb;
         public InteractableItemConfig Config => _config;
 
@@ -108,6 +115,7 @@ namespace Gameplay.World.Items
 
         private void Awake()
         {
+            _baseScale = transform.localScale;
             if (_rb == null) _rb = GetComponent<Rigidbody>();
             if (_networkTransform == null) _networkTransform = GetComponent<FishNet.Component.Transforming.NetworkTransform>();
             _colliders = GetComponentsInChildren<Collider>(true);
@@ -121,6 +129,7 @@ namespace Gameplay.World.Items
             HolderClientId.OnChange += OnHolderChanged;
             HasBeenGrabbedOnce.OnChange += OnFlagChanged;
             IsSnapped.OnChange += OnFlagChanged;
+            Consuming.OnChange += OnFlagChanged;
             ApplyPhysicsState();
             PlayerItemPhysics.RegisterItem(this);
         }
@@ -131,12 +140,14 @@ namespace Gameplay.World.Items
             HolderClientId.OnChange -= OnHolderChanged;
             HasBeenGrabbedOnce.OnChange -= OnFlagChanged;
             IsSnapped.OnChange -= OnFlagChanged;
+            Consuming.OnChange -= OnFlagChanged;
             _all.Remove(this);
             base.OnStopNetwork();
         }
 
         private void OnHolderChanged(int prev, int next, bool asServer)
         {
+            if (Consuming.Value) { ApplyPhysicsState(); return; }
             if (_networkTransform != null) _networkTransform.enabled = next == -1;
             ApplyPhysicsState();
         }
@@ -145,6 +156,22 @@ namespace Gameplay.World.Items
         public void ApplyPhysicsState()
         {
             if (_rb == null) return;
+
+            if (Consuming.Value)
+            {
+                if (_networkTransform != null) _networkTransform.enabled = false;
+                if (_colliders != null)
+                    for (int i = 0; i < _colliders.Length; i++)
+                        if (_colliders[i] != null) _colliders[i].enabled = false;
+                _rb.detectCollisions = false;
+                if (!_rb.isKinematic)
+                {
+                    _rb.linearVelocity = Vector3.zero;
+                    _rb.angularVelocity = Vector3.zero;
+                    _rb.isKinematic = true;
+                }
+                return;
+            }
 
             bool held = HolderClientId.Value != -1;
             bool snapped = IsSnapped.Value;
@@ -169,6 +196,35 @@ namespace Gameplay.World.Items
             {
                 _rb.isKinematic = false;
             }
+        }
+
+        public void ServerMakeDynamic()
+        {
+            if (!IsServerInitialized) return;
+            HasBeenGrabbedOnce.Value = true;
+            ApplyPhysicsState();
+        }
+
+        public void ServerBeginConsume(Vector3 start, Vector3 end, float duration)
+        {
+            if (!IsServerInitialized || Consuming.Value) return;
+            _consumeDuration = Mathf.Max(0.05f, duration);
+            _consumeStart.Value = start;
+            _consumeEnd.Value = end;
+            _consumeProgress.Value = 0f;
+            HolderClientId.Value = -1;
+            Consuming.Value = true;
+            ApplyPhysicsState();
+        }
+
+        private void Update()
+        {
+            if (!Consuming.Value) return;
+            float p = _consumeProgress.Value;
+            transform.position = Vector3.Lerp(_consumeStart.Value, _consumeEnd.Value, p);
+            transform.localScale = Vector3.Lerp(_baseScale, Vector3.zero, p);
+            if (IsServerInitialized && p < 1f)
+                _consumeProgress.Value = Mathf.Clamp01(p + Time.deltaTime / _consumeDuration);
         }
 
         private void OnCollisionEnter(Collision collision)

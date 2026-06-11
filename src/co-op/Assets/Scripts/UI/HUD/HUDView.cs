@@ -10,6 +10,15 @@ namespace UI.HUD
     {
         [SerializeField] private TMP_Text _statusLabel;
 
+        [Header("FPS")]
+        [Tooltip("Optional label showing the smoothed frames-per-second. Leave unassigned to disable.")]
+        [SerializeField] private TMP_Text _fpsLabel;
+        [Tooltip("Seconds between FPS text refreshes (averaged over this window).")]
+        [SerializeField] private float _fpsUpdateInterval = 0.25f;
+
+        private float _fpsElapsed;
+        private int _fpsFrames;
+
         [Header("Interact prompt")]
         [Tooltip("Root object of the interact prompt (shown/hidden).")]
         [SerializeField] private GameObject _interactPrompt;
@@ -35,6 +44,8 @@ namespace UI.HUD
         [Tooltip("Filled Image (Image Type = Filled) for the charge fraction.")]
         [SerializeField] private Image _chargeFill;
         [SerializeField] private TMP_Text _chargeLabel;
+        [Tooltip("Panel shown while the local player is carrying a mob corpse (prompt to charge the cannon — 'Зарядите пушку').")]
+        [SerializeField] private GameObject _chargePromptRoot;
 
         [Header("Cannon modules")]
         [Tooltip("Shown while any cannon module is under attack or detached.")]
@@ -61,6 +72,18 @@ namespace UI.HUD
             if (_statusLabel != null) _statusLabel.text = s;
         }
 
+        private void Update()
+        {
+            if (_fpsLabel == null) return;
+            _fpsElapsed += Time.unscaledDeltaTime;
+            _fpsFrames++;
+            if (_fpsElapsed < _fpsUpdateInterval) return;
+            float fps = _fpsFrames / _fpsElapsed;
+            _fpsLabel.text = $"{Mathf.RoundToInt(fps)} FPS";
+            _fpsElapsed = 0f;
+            _fpsFrames = 0;
+        }
+
         public void SetInteractPrompt(bool show, string text = null)
         {
             if (_interactPrompt != null) _interactPrompt.SetActive(show);
@@ -72,7 +95,7 @@ namespace UI.HUD
             if (_gatherRoot != null) _gatherRoot.SetActive(show);
             if (!show) return;
             if (_gatherFill != null) _gatherFill.fillAmount = total > 0.01f ? Mathf.Clamp01(remaining / total) : 0f;
-            if (_gatherLabel != null) _gatherLabel.text = $"Prepare: {Mathf.CeilToInt(Mathf.Max(0f, remaining))}s";
+            if (_gatherLabel != null) _gatherLabel.text = $"Wave in {Mathf.CeilToInt(Mathf.Max(0f, remaining))}s";
         }
 
         public void SetShootNow(bool show)
@@ -93,6 +116,11 @@ namespace UI.HUD
             if (loaded > _lastLoaded && _chargeRoot != null) UITween.Punch(_chargeRoot.transform, 0.22f, 0.35f);
             _lastLoaded = loaded;
             if (_cannonPanel != null) _cannonPanel.SetCharge(loaded, required);
+        }
+
+        public void SetChargePrompt(bool show)
+        {
+            if (_chargePromptRoot != null) _chargePromptRoot.SetActive(show);
         }
 
         public void SetModulesWarning(int underAttack, int detached)
@@ -139,6 +167,7 @@ namespace UI.HUD
             SetShootNow(false);
             SetCrosshair(false);
             SetCharge(0, 0);
+            SetChargePrompt(false);
             SetModulesWarning(0, 0);
             SetMeleePrompt(false);
             SetDownedSelf(false);

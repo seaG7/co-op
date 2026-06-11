@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c1fede809641446861cc54520bcd39, type: 3}
   m_Name: WaveSetConfig
   m_EditorClassIdentifier: CoOp.Data::Data.Configs.WaveSetConfig
-  GatherDurationSec: 30
+  PostAssembleDelaySec: 5
   SpawnInterval: 2.5
   MaxAliveEnemies: 5
   HitsToDestroy: 1

@@ -8,6 +8,7 @@ using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using Gameplay.Net;
 using Gameplay.World.Enemies;
+using WeaponBehaviour = Gameplay.World.Weapon.Weapon;
 using Infrastructure.Services.Network;
 using Infrastructure.Services.Spawn;
 using Signals;
@@ -44,9 +45,10 @@ namespace Gameplay.World.Sources
 
         private int _hits;
         private CancellationTokenSource _cts;
+        private WeaponBehaviour _weapon;
         [System.NonSerialized] public bool DebugSpawnsPaused;
 
-        private float GatherDuration => _waveSet != null ? Mathf.Max(0f, _waveSet.GatherDurationSec) : 30f;
+        private float PostAssembleDelay => _waveSet != null ? Mathf.Max(0f, _waveSet.PostAssembleDelaySec) : 5f;
         private float SpawnInterval => _waveSet != null ? Mathf.Max(0.1f, _waveSet.SpawnInterval) : 2.5f;
         private int MaxAlive => _waveSet != null ? _waveSet.MaxAliveEnemies : 15;
         private int HitsToDestroy => _waveSet != null ? Mathf.Max(1, _waveSet.HitsToDestroy) : 1;
@@ -121,7 +123,12 @@ namespace Gameplay.World.Sources
             try
             {
                 ApplyStateVars(SourceState.Gather);
-                await TimedPhaseAsync(SourceState.Gather, GatherDuration, ct);
+                RpcAnnounce(SourceState.Gather, 0f, 0f);
+
+                await WaitUntilAssembledAsync(ct);
+                if (Destroyed.Value) return;
+
+                await TimedPhaseAsync(SourceState.Gather, PostAssembleDelay, ct);
                 if (Destroyed.Value) return;
 
                 ApplyStateVars(SourceState.Open);
@@ -141,6 +148,16 @@ namespace Gameplay.World.Sources
                 }
             }
             catch (OperationCanceledException) { }
+        }
+
+        private async UniTask WaitUntilAssembledAsync(CancellationToken ct)
+        {
+            while (!Destroyed.Value)
+            {
+                if (_weapon == null) _weapon = FindFirstObjectByType<WeaponBehaviour>();
+                if (_weapon != null && _weapon.IsAssembled) return;
+                await UniTask.Yield(PlayerLoopTiming.Update, ct);
+            }
         }
 
         private async UniTask TimedPhaseAsync(SourceState state, float total, CancellationToken ct)

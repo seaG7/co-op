@@ -5,8 +5,8 @@ namespace Data.Configs
     [CreateAssetMenu(menuName = "Configs/Wave Set Config", fileName = "WaveSetConfig")]
     public sealed class WaveSetConfig : ScriptableObject
     {
-        [Tooltip("Seconds of the Gather phase (assemble the weapon) before the source opens.")]
-        public float GatherDurationSec = 30f;
+        [Tooltip("Seconds after the cannon is fully assembled before the source opens and enemies start spawning.")]
+        [Min(0f)] public float PostAssembleDelaySec = 5f;
 
         [Tooltip("Seconds between enemy spawns while the source is Open.")]
         public float SpawnInterval = 2.5f;

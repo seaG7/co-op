@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using FishNet.Object.Synchronizing;
 using Gameplay.Net;
+using Gameplay.World.Items;
 using Infrastructure.Services.Spawn;
 using Signals;
 using UnityEngine;
@@ -225,7 +226,10 @@ namespace Gameplay.World.Weapon
             _grip = _gripBudgetSec;
             IsOccupied.Value = false;
             if (_moduleItemPrefab != null && _spawner != null)
-                _spawner.SpawnNetworked(_moduleItemPrefab, GhostCenter + Vector3.up * 0.4f, Quaternion.identity, null);
+            {
+                var go = _spawner.SpawnNetworked(_moduleItemPrefab, GhostCenter + Vector3.up * 0.4f, Quaternion.identity, null);
+                if (go != null && go.TryGetComponent<Carryable>(out var c)) c.ServerMakeDynamic();
+            }
         }
 
         private static readonly List<CannonModuleState> _stateBuf = new();

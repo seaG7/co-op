@@ -38,6 +38,7 @@ namespace UI.HUD
             _signalBus.Subscribe<MeleePromptSignal>(OnMeleePrompt);
             _signalBus.Subscribe<PlayerDownedSignal>(OnPlayerDowned);
             _signalBus.Subscribe<PlayerRevivedSignal>(OnPlayerRevived);
+            _signalBus.Subscribe<CorpseHeldSignal>(OnCorpseHeld);
             Refresh();
         }
 
@@ -57,6 +58,7 @@ namespace UI.HUD
             _signalBus.TryUnsubscribe<MeleePromptSignal>(OnMeleePrompt);
             _signalBus.TryUnsubscribe<PlayerDownedSignal>(OnPlayerDowned);
             _signalBus.TryUnsubscribe<PlayerRevivedSignal>(OnPlayerRevived);
+            _signalBus.TryUnsubscribe<CorpseHeldSignal>(OnCorpseHeld);
         }
 
         private void OnSessionState(SessionState _) => Refresh();
@@ -67,7 +69,7 @@ namespace UI.HUD
 
         private void OnSourceState(SourceStateChangedSignal s)
         {
-            _view.SetGather(s.State == SourceState.Gather, s.Remaining, s.Total);
+            _view.SetGather(s.State == SourceState.Gather && s.Total > 0f, s.Remaining, s.Total);
             _sourceOpen = s.State == SourceState.Open;
             UpdateBreakable();
         }
@@ -91,6 +93,8 @@ namespace UI.HUD
 
         private void OnMeleePrompt(MeleePromptSignal s) => _view.SetMeleePrompt(s.Show);
 
+        private void OnCorpseHeld(CorpseHeldSignal s) => _view.SetChargePrompt(s.Holding);
+
         private void OnPlayerDowned(PlayerDownedSignal s)
         {
             if (s.IsLocal) _view.SetDownedSelf(true);
@@ -103,7 +107,6 @@ namespace UI.HUD
             else _view.SetPartnerDowned(false);
         }
 
-        // HUD crosshair shows on foot, HIDES while mounted (aim is by the cannon's 3D crosshair object).
         private void OnWeaponMounted(WeaponMountedSignal s) => _view.SetCrosshair(!s.Mounted);
 
         private void UpdateBreakable() => _view.SetShootNow(_sourceOpen && _charged);

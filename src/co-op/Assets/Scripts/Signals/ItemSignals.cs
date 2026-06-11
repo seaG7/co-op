@@ -20,6 +20,12 @@ namespace Signals
         public ItemSnappedSignal(Vector3 position) { Position = position; }
     }
 
+    public readonly struct CorpseHeldSignal
+    {
+        public readonly bool Holding;
+        public CorpseHeldSignal(bool holding) { Holding = holding; }
+    }
+
     public readonly struct WeaponAssembledSignal
     {
         public readonly Vector3 Position;
